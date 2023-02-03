@@ -1,0 +1,323 @@
+#!/usr/bin/env snakemake
+
+##########
+# IMPORT #
+##########
+
+import pandas as pd
+from snakemake.utils import min_version
+min_version("6.8")
+
+##########
+# CONFIG #
+##########
+
+configfile: workflow.source_path("../config/config.yaml")
+mappings = pd.read_csv(config["samples"])
+sampleids = mappings["Sample_ID"].tolist()
+run_id=os.environ.get("RUN_ID").split('=')[1]
+
+#########
+# RULES #
+#########
+
+rule all:
+   input:
+      data_release_report = expand("{runid}_data_release.txt", runid=run_id)
+      
+
+rule assemble:
+   message: "Assembling viral genome"
+   input:
+      sample_folder = ("{sample}")
+   params:
+      repo_dir = os.environ.get("GIT_REPODIR"),
+      pipeline = os.path.join(workflow.basedir, "../scripts/run_pipeline.py"),
+      reference = os.path.join(workflow.basedir, "../db/", config["reference"]),
+      forward_primer = os.path.join(workflow.basedir, "../db/", config["forward_primer"]),
+      reverse_primer = os.path.join(workflow.basedir, "../db/", config["reverse_primer"]),
+      genbankfile = os.path.join(workflow.basedir, "../db/", config["genbank"]),
+      length = config["length"]
+   output:
+      consensus_fasta_file=('{sample}/02_assembly/{sample}.fasta'),
+      bamfile = ("{sample}/02_assembly/{sample}_ref.bam")
+   conda:
+      "envs/env.yml"
+   shell:
+      """
+      if [ -d {input.sample_folder}/bams ]; then
+	     python {params.pipeline} -rd {params.repo_dir} -b {input.sample_folder}
+	  else
+         python {params.pipeline} -rd {params.repo_dir} -i {input.sample_folder} -s {input.sample_folder} -r1 _R1_001.fastq.gz -r2 _R2_001.fastq.gz -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -g {params.genbankfile} -l {params.length}
+      fi
+	  """
+
+rule variant_analysis:
+   message: "Perform intra host variant analysis on virus library"
+   input:
+      sample_folder = ("{sample}"),
+      consensus_fasta_file = ('{sample}/02_assembly/{sample}.fasta')
+   params:
+      repo_dir=os.environ.get("GIT_REPODIR"),
+      var_analysis=os.path.join(workflow.basedir, "../scripts/variant_analysis.py"),
+      reference = os.path.join(workflow.basedir, "../db/", config["reference"]),
+      ps_2kb = os.path.join(workflow.basedir, "../db/", config["primer_set_2kb"]),
+      ps_1_5kb = os.path.join(workflow.basedir, "../db/", config["primer_set_1_5kb"]),
+   output:
+      pileup_file=('{sample}/04_variants/pileup')
+   conda:
+      "envs/env.yml"
+   shell:
+      """
+      if [ -d {input.sample_folder}/bams ]; then
+         python {params.var_analysis} -rd {params.repo_dir} -b {input.sample_folder}
+      else
+         python {params.var_analysis} -rd {params.repo_dir} -i {input.sample_folder} -r {params.reference} -ps_2 {params.ps_2kb} -ps_1_5 {params.ps_1_5kb}
+	  fi
+      """
+      
+rule QC_analysis:
+   message: "Perform QC analysis of the virus library"
+   input:
+      sample_folder = ("{sample}"),
+      pileup_file = ('{sample}/04_variants/pileup'),
+      
+   params:
+      repo_dir=os.environ.get("GIT_REPODIR"),
+      run_ID=os.environ.get("RUN_ID"),
+      QC=os.path.join(workflow.basedir, "../scripts/run_QC.py"),
+      reference = os.path.join(workflow.basedir, "../db/", config["reference"]),
+      forward_primer = os.path.join(workflow.basedir, "../db/", config["forward_primer"]),
+      reverse_primer = os.path.join(workflow.basedir, "../db/", config["reverse_primer"]),
+      virus = config["virus"],
+   output:
+      qc_file = ('{sample}/03_qualityControl/{sample}_quality_control.pdf'),
+      kraken = ("{sample}/03_qualityControl/{sample}_kraken_report.out")		
+   conda:
+      "envs/env.yml"
+   shell:
+      """
+      if [ -d {input.sample_folder}/bams ]; then
+         python {params.QC} -rd {params.repo_dir} -b {input.sample_folder} -kdb /sc/arion/projects/PVI/db/minikraken_8GB_20200312
+      else
+         python {params.QC} -rd {params.repo_dir} -i {input.sample_folder} -kdb /sc/arion/projects/PVI/db/minikraken_8GB_20200312 -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -v {params.virus}
+      fi
+      """
+
+rule file_rename:
+   message: "Rename input file for consistency"
+   input:
+      sample_folder = ("{sample}/{sample}"),
+      qc_file = ('{sample}/03_qualityControl/{sample}_quality_control.pdf')
+   output:
+      renamed_file = directory(("{sample}/01_fastqs")),
+   shell:
+      """
+      mv {input.sample_folder} {output.renamed_file}
+      """
+		    
+rule push_data_pathogendb:
+   message: "Push genome assembly data to pathogenDB"
+   input:
+      renamed_file = ("{sample}/01_fastqs")
+   params:
+      sample_folder = ("{sample}"),
+      sample_name = ("{sample}"),
+      run_ID=os.environ.get("RUN_ID").split('=')[1],
+      project_ID=config["project"],
+      pdbpush=os.path.join(workflow.basedir, "../scripts/assembly_push_pdb.py"),
+      path=config["path"],
+      length=config["length"],
+      virus=config["ref_fasta_headers"]
+   output:
+      pdb_upload_check = ("{sample}/06_status/pdb_upload_complete.txt")
+   conda:
+      "envs/env.yml"
+   shell:
+      """
+      python {params.pdbpush} -s {params.sample_name} -r {params.run_ID} -d {params.project_ID} -p {params.path} -l {params.length} -v {params.virus}
+      touch {output.pdb_upload_check}
+      """
+
+rule run_QualiMap_sample:
+   message: "Run Qualimap for each sample" 
+   input:
+      bam = expand("{sample}/02_assembly/{sample}_ref.bam", sample=sampleids),
+      qc_file = expand('{sample}/03_qualityControl/{sample}_quality_control.pdf', sample=sampleids),
+      pdb_upload_check = expand("{sample}/06_status/pdb_upload_complete.txt", sample=sampleids)
+      
+   output:
+      qualimap_dirs = ("multi_bamqc/multisampleBamQcReport.html")
+   shell:
+      """
+      
+      module load qualimap
+      qualimap multi-bamqc -d multibamqc_input.txt -r
+      """
+
+rule multiqc:
+   message: "Generate MultiQC Report for the run"
+   input:
+      qualimap_all_report = ("multi_bamqc/multisampleBamQcReport.html")
+   output:
+      mqc_status = ("multiqc_report.html"),
+   conda:
+      "envs/env.yml"
+   shell:
+      """
+      multiqc .
+      """ 
+
+rule run_VADR:
+   message: "Preform genome annotation using VADR"
+   input:
+      consensus_fasta_file=('{sample}/02_assembly/{sample}.fasta'),
+      mqc_status = ("multiqc_report.html"),
+   params:
+      models = "/hpc/packages/minerva-centos7/vadr/1.3/",
+      current_sample = "{sample}",
+   output:
+      trimmedfasta = ("{sample}/05_VADR/{sample}_trimmed_fasta.fasta"),
+      vadr_out = directory("{sample}/05_VADR/annotation"),
+   shell:
+      """
+      module load vadr/1.3
+      export VADRMODELDIR=$VADRMODELDIR-sarscov2-1.3-1
+      export VADRSCRIPTSDIR="/hpc/users/khaliz03/opt/vadr/"
+      if [[ $(wc -l < {input.consensus_fasta_file}) -gt 1 ]]; then
+         $VADRSCRIPTSDIR/miniscripts/fasta-trim-terminal-ambigs.pl --minlen 50 --maxlen 30000 {input.consensus_fasta_file} > {output.trimmedfasta}
+         $VADRSCRIPTSDIR/v-annotate.pl --split --cpu 8 --glsearch -s -r --nomisc --mkey sarscov2 --lowsim5seq 6 --lowsim3seq 6 --alt_fail lowscore,insertnn,deletinn --mdir $VADRMODELDIR {output.trimmedfasta} {output.vadr_out} --noseqnamemax
+      else
+         touch {output.trimmedfasta}
+         mkdir -p {output.vadr_out}
+         echo "{params.current_sample} failed VADR genome annotation." > {output.vadr_out}/annotation.vadr.fail.list
+      fi
+      """
+
+rule check_VADR_output:
+   message: "Create empty output file if VADR directory is empty"
+   input:
+      vadr_out = expand("{sample}/05_VADR/annotation", sample=sampleids),
+   params:
+      vadr_fail = expand("{sample}/05_VADR/annotation/annotation.vadr.fail.list", sample=sampleids)
+   output:
+      vadr_report = expand("{runid}_VADR_fail.txt", runid = run_id)
+   shell:
+      """
+      cat {params.vadr_fail} > {output.vadr_report}
+      """
+      
+
+rule version_check:
+   message: "Generate version report for the run"
+   input:
+      vadr_report = "multiqc_report.html"
+   params:
+      run_ID = expand("{runid}", runid=run_id),
+      reference = config["reference"],
+      genbankfile = config["genbank"],
+      ps1 = config["primer_set_1_5kb"],
+      ps2 = config["primer_set_2kb"]
+   output:
+      version_report = expand("{runid}_software_version.txt", runid=run_id)
+   conda:
+      "envs/env.yml"
+   shell:
+      """
+      echo "{params.run_ID} was run using the following versions \n" > {output.version_report}
+      echo "\n Name                    Version                   Build  Channel \n SAMTOOLS: \n" &>> {output.version_report}
+      conda list | grep -w "^samtools" &>> {output.version_report}
+      
+      echo "\n CUTADAPT: \n" &>> {output.version_report}
+      conda list | grep -w "^cutadapt" &>> {output.version_report}
+      
+      echo "\n MINIMAP2: \n" &>> {output.version_report}
+      conda list | grep -w "minimap2" &>> {output.version_report}
+      
+      echo "\n PILON: \n" &>> {output.version_report}
+      conda list | grep "pilon" &>> {output.version_report}
+      
+	  echo "\n QUALIMAP: \n" &>> {output.version_report}
+	  conda list | grep "qualimap" &>> {output.version_report}
+	  
+	  echo "\n SHOVILL: \n" &>> {output.version_report}
+	  conda list | grep "shovill" &>> {output.version_report}
+	  
+	  echo "\n PROKKA: \n" &>> {output.version_report}
+	  conda list | grep "prokka" &>> {output.version_report}
+	  
+	  echo "\n KRAKEN2: \n" &>> {output.version_report}
+	  conda list | grep "kraken2" &>> {output.version_report}
+	  
+	  echo "\n PYTHON: \n" &>> {output.version_report}
+	  conda list | grep "^python" &>> {output.version_report}
+	  
+	  echo "\n MULTIQC: \n" &>> {output.version_report}
+	  conda list | grep "multiqc" &>> {output.version_report}
+	  
+	  echo "\n FASTQC: \n" &>> {output.version_report}
+	  conda list | grep "fastqc" &>> {output.version_report}
+
+	  echo "\n PICARD Alignment Sumamry Metrics: \n" &>> {output.version_report}
+	  conda list | grep "picard" &>> {output.version_report}
+	  
+	  echo "\n {params.run_ID} was aligned against the following reference: \n {params.reference} \n Using the following genabnk file: \n {params.genbankfile} \n " &>> {output.version_report}
+	  echo "\n primer sets used were: \n (1) {params.ps1} \n (2) {params.ps2}" &>> {output.version_report}
+      """
+
+rule clean_up:
+   message: "Remove intermediatary output"
+   input:
+      version_report = expand("{runid}_software_version.txt", runid=run_id)
+   output:
+      cleanup_report = expand("{runid}_cleaned.txt", runid=run_id)
+   params:
+      sample_ids = expand("{sample}", sample=sampleids),
+      cleanup = os.path.join(workflow.basedir, "../scripts/cleanup.py"),
+      samples_run = config["samples"]
+   conda:
+      "envs/env.yml"
+   shell:
+      """
+      python {params.cleanup} -p {params.samples_run}
+      touch {output.cleanup_report}
+      """
+    
+      
+rule run_report:
+   message: "Generate run summary report"
+   input:
+      cleanup_report = expand("{runid}_cleaned.txt", runid=run_id)
+   output:
+      run_report = expand("{runid}_run_report.csv", runid=run_id)
+   params:
+      runid = run_id,
+      report_script = os.path.join(workflow.basedir, "../scripts/generate_run_report.R"),
+   conda:
+      "envs/env.yml"
+   shell:
+      """
+      Rscript {params.report_script} {params.runid}
+      """
+      
+  
+rule data_release_prep:
+   message: "Create Data Release files"
+   input:
+      cleanup_report = expand("{runid}_cleaned.txt", runid=run_id)
+   output:
+      data_release_report = expand("{runid}_data_release.txt", runid=run_id)
+   params:
+      runid = run_id,
+      status_script = os.path.join(workflow.basedir, "../scripts/data_release_script.py"),
+      sample_mapping = config["samples"],
+      ref_header = config["ref_fasta_headers"],
+      virus = config["virus"]
+   conda:
+      "envs/env.yml"
+   shell:
+      """
+      python {params.status_script} -p {params.sample_mapping} -r {params.runid} -v {params.virus} -f {params.ref_header}
+      touch {output.data_release_report}
+      """
+            

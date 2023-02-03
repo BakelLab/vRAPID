@@ -1,0 +1,191 @@
+# v1.3-1, August 2021
+# 
+#
+# notebook dirs where models were put in bitbucket and 
+# 1.3-1 set was tested, created, and model mapping 
+# files were created:
+# 21_0701_vadr_mnf_nonessential
+# 21_0709_vadr_sarscov2_models_1p3
+# 21_0714_vadr_sarscov2_map_models
+#
+# notebook dir where models were put in bitbucket and 
+# 1.2-2 set was created:
+# 21_0326_vadr_corona_b1525
+#
+# notebook dir where models were put in bitbucket and 
+# 1.2-1 set was created:
+# 21_0225_vadr_1p2_models_bitbucket
+#
+# notebook dir where models were combined to make 1.1.3-1 set:
+# 21_0210_vadr_corona_models_1p1p3
+#
+# notebook dir where NC_045512-del28254 was built:
+# 21_0125_vadr_corona_models_fp339
+# 
+# notebook dir where MW422255-NC_045512 was built:
+# 20_1229_vadr_corona_b117_variant
+# 
+# notebook dir where original NC_045512 model was built:
+# 20_0130_vadr_2019_nCoV
+#
+###############
+# 
+# NOTES below are on making models for all coronaviridae RefSeqs
+# As of model file v1.1.3-1 I only include SARS-CoV-2
+# models. Use v1.1.2-1 or earlier model file if you're
+# interested in the other coronaviridae models.
+# 
+# 56 RefSeqs were returned with this entrez query:
+# idfetch -dn -c 2 -q "(Coronaviridae[orgn]) AND (RefSeq[filter])" -n > coronaviridae.56.20200130.gi.list
+# 
+# 1 of those failed the build step (NC_038861) because of a weird CDS
+# (ORF 1a/1b) that caused v-build.pl to fail due to protein length
+# exceeding the nucleotide coords:
+#
+# ERROR in vdr_CoordsProtToNuc, protein length * 3 (20055) exceeds nucleotide length (20054) for protein coords: 1..6685:+ and nucleotide coords: 315..20368:+
+# So I left that one out, leaving 55 models, including NC_045512 (SARS-CoV-2)
+#
+#####
+# 
+# I built the 55 models using a develop branch commit of infernal
+# 1.1.3 that was built with a develop branch commit of hmmer 3.3. 
+# I could not use v-build with release 1.1.3 because of a bug in hmmer
+# github issue #176. 
+# 
+# I compiled these versions of infernal and hmmer here:
+# 20_0130_vadr_2019_nCoV/infernal
+# 
+# Then used vadr 1.0.2 with that infernal dir and v-build.pl commands
+# like the following for 54 of the 55 models (all but NC_045512):
+# v-build.pl -f --forcelong NC_004718 NC_004718
+# 
+# For NC_045512, I additionally wanted to include stem_loop features, 
+# so the command was (from
+# 20_0131_rfam_2019_nCoV/building-vadr-model-with-ss-20200305)
+# > v-build.pl -f --forcelong --stk NC_045512.v1.stk --qftradd stem_loop --qadd note,function,inference --fadd stem_loop --group Sarbecovirus --subgroup SARS-CoV-2 NC_045512 NC_045512
+#
+# ***Then manually change 'function' qualifiers in stem_loop features to 'note's.
+# ***and remove the existing 'note' for the 's2m' feature
+# ***also there are other differences in the NC_045512 stem_loop
+# ***minfo: included .minfo file has 'COORDINATES:' instead of 
+# ***'COORDINATES: ' from v-build.pl input of RefSeq record
+# ***and ':' instead of '::' in RefSeq record as of writing.
+#
+#####
+
+> cat NC_*/*.minfo > corona.minfo
+> cat NC_*/*.cm > corona.cm
+> cat NC_*/*.hmm > corona.hmm
+> cat NC_*/*.nt.fa > corona.fa
+> cat AC_*/*.nt.fa >> corona.fa
+
+> cp NC_045512/*.minfo ./NC_045512.minfo
+> cp NC_045512/*.cm ./NC_045512.cm
+> cp NC_045512/*.hmm ./NC_045512.hmm
+> cp NC_045512/*.nt.fa ./NC_045512.fa
+> cp NC_045512.v1.stk ./
+
+# make blastn database
+$VADRBLASTDIR/makeblastdb -dbtype nucl -in corona.fa
+$VADRBLASTDIR/makeblastdb -dbtype nucl -in NC_045512.fa
+
+# press CM dbs
+#  first make sure $VADRINFERNALDIR points to the proper dir: 
+#  echo $VADRINFERNALDIR
+> $VADRINFERNALDIR/cmpress corona.cm
+> $VADRINFERNALDIR/cmpress NC_045512.cm
+
+# press HMM dbs
+#  first make sure $VADRHMMERDIR points to the proper dir: 
+#  echo $VADRHMMERDIR
+> $VADRHMMERDIR/hmmpress corona.hmm
+> $VADRHMMERDIR/hmmpress NC_045512.hmm
+
+# update RELEASE-NOTES.txt
+# update 00README.txt
+
+# copy all files to a new dir in which we'll tar and gzip:
+# first set env variable for version and old version
+> export VADR_CORONA_MODEL_VERSION=1.1-1
+> export VADR_CORONA_MODEL_OLD_VERSION=1.0.2dev-5
+> mkdir vadr-models-corona-${VADR_CORONA_MODEL_VERSION}
+> cp 00NOTES.txt vadr-models-corona-${VADR_CORONA_MODEL_VERSION}
+> cp RELEASE-NOTES.txt vadr-models-corona-${VADR_CORONA_MODEL_VERSION}/
+> cp 00README.txt vadr-models-corona-${VADR_CORONA_MODEL_VERSION}
+> cp corona.minfo NC_045512.minfo NC_045512.minfo vadr-models-corona-${VADR_CORONA_MODEL_VERSION}/
+> cp corona.cm* NC_045512.cm* vadr-models-corona-${VADR_CORONA_MODEL_VERSION}/
+> cp corona.hmm* NC_045512.hmm* vadr-models-corona-${VADR_CORONA_MODEL_VERSION}/
+> cp corona.fa* NC_045512.fa* vadr-models-corona-${VADR_CORONA_MODEL_VERSION}/
+> cp corona.list NC_045512.list vadr-models-corona-${VADR_CORONA_MODEL_VERSION}/
+> cp NC_045512.v1.stk vadr-models-corona-${VADR_CORONA_MODEL_VERSION}/
+> cp NC_*/NC_*protein* vadr-models-corona-${VADR_CORONA_MODEL_VERSION}/
+> cp AC_*/AC_*protein* vadr-models-corona-${VADR_CORONA_MODEL_VERSION}/
+
+> rm vadr-models-corona-${VADR_CORONA_MODEL_VERSION}/\#*
+> rm vadr-models-corona-${VADR_CORONA_MODEL_VERSION}/*~
+> tar -cvf vadr-models-corona-${VADR_CORONA_MODEL_VERSION}.tar vadr-models-corona-${VADR_CORONA_MODEL_VERSION}
+> gzip vadr-models-corona-${VADR_CORONA_MODEL_VERSION}.tar 
+> mkdir $FTPDIR/vadr-models/corona/${VADR_CORONA_MODEL_VERSION}
+> cp vadr-models-corona-${VADR_CORONA_MODEL_VERSION}.tar.gz $FTPDIR/vadr-models/corona/${VADR_CORONA_MODEL_VERSION}
+
+# copy to either CURRENT/ or develop/ directory or both, 
+# (develop if only being used for testing develop branch code)
+# but first make sure a directory exists with copy of the model file
+# currently in CURRENT/ and or develop/
+# e.g. $FTPDIR/vadr-models/corona/1.1-1
+# Remove old CURRENT or develop model file
+
+> rm $FTPDIR/vadr-models/CURRENT/vadr-models-corona-${VADR_CORONA_MODEL_OLD_VERSION}.tar.gz
+> cp vadr-models-corona-${VADR_CORONA_MODEL_VERSION}.tar.gz $FTPDIR/vadr-models/corona/CURRENT
+# and/or
+> rm $FTPDIR/vadr-models/corona/develop/vadr-models-corona-${VADR_CORONA_MODEL_OLD_VERSION}.tar.gz
+> cp vadr-models-corona-${VADR_CORONA_MODEL_VERSION}.tar.gz $FTPDIR/vadr-models/corona/develop
+
+# copy to central NCBI location for running on command line
+
+# TEST: sanity check on the new tarball of models with v-annotate.pl
+
+default:
+# copy all files to a new dir in which we'll tar and gzip:
+#  first set env variable for version and old version
+> export VADR_MODEL_VERSION=1.1-1
+> export VADR_MODEL_OLD_VERSION=1.0.2dev-5
+> mkdir vadr-models-corona-
+> cp 00NOTES.txt vadr-models
+> cp RELEASE-NOTES.txt vadr-models
+> cp 00README.txt vadr-models
+> cp vadr.minfo noro.minfo dengue.minfo hcv.minfo vadr-models
+> cp vadr.cm* noro.cm* dengue.cm* hcv.cm* vadr-models
+> cp vadr.hmm* noro.hmm* dengue.hmm* hcv.hmm* vadr-models
+> cp vadr.fa* noro.fa* dengue.fa* hcv.fa* vadr-models
+> cp noro.list dengue.list hcv.list non-noro-dengue-hcv.173.list vadr-models
+> cp NC_*/NC_*protein* vadr-models
+
+# make sure dengue .stk files are present
+
+# tar up models and copy model files to public FTP dir:
+> rm vadr-models/\#*
+> rm vadr-models/*~
+> tar -cvf vadr-models-${VADR_MODEL_VERSION}.tar vadr-models
+> gzip vadr-models-${VADR_MODEL_VERSION}.tar 
+> mkdir $FTPDIR/vadr-models/${VADR_MODEL_VERSION}
+> cp vadr-models-${VADR_MODEL_VERSION}.tar.gz $FTPDIR/vadr-models/${VADR_MODEL_VERSION}
+
+# copy to either CURRENT/ or develop/ directory or both, 
+# (develop if only being used for testing develop branch code)
+# but first make sure a directory exists with copy of the model file
+# currently in CURRENT/ and or develop/
+# e.g. $FTPDIR/vadr-models/1.0-1
+# Remove old CURRENT or develop model file, but 
+# ***leave vadr-models-1.0-1.tar.gz and 00README.txt***
+# vadr v1.0 install script looks for 1.0-1 tarball in CURRENT
+
+> rm $FTPDIR/vadr-models/CURRENT/vadr-models-${VADR_MODEL_OLD_VERSION}.tar.gz
+> cp vadr-models-${VADR_MODEL_VERSION}.tar.gz $FTPDIR/vadr-models/CURRENT
+# and/or
+> rm $FTPDIR/vadr-models/develop/vadr-models-${VADR_MODEL_OLD_VERSION}.tar.gz
+> cp vadr-models-${VADR_MODEL_VERSION}.tar.gz $FTPDIR/vadr-models/develop
+
+# copy to central NCBI location for running on command line
+
+# TEST: sanity check on the new tarball of models with v-annotate.pl

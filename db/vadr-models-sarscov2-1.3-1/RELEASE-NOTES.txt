@@ -1,0 +1,136 @@
+Release notes for vadr SARS-CoV-2 models:
+
+Download site:
+https://ftp.ncbi.nlm.nih.gov/pub/nawrocki/vadr-models/sarscov2
+
+Bitbucket repo:
+https://bitbucket.org/nawrockie/vadr-models-sarscov2
+
+====================================================
+
+1.3-1:   [Aug 2021]: Changed the CDS and gene features with gene
+         qualifier values of 'ORF3a', 'ORF6', 'ORF7a', 'ORF7b', and
+         'ORF10' so that most fatal alerts in those features do not
+         cause a sequence to FAIL by adding the string
+         'misc_not_failure:"1"' to their 'FEATURE' lines in the
+         sarscov2.minfo file. This was done for all 4 models. This is
+         the *only* change to models made between 1.2-2 and 1.3-1.
+         Also adds sarscov2.mmap file for use with
+         vadr-map-model-coords.pl and vadr-map-two-complete-model.pl
+         scripts in vadr miniscripts/ directory. See 00README.txt for
+         example usage. 
+
+1.2-2:   [April 2021]: Added NC_045512-MW809059 model, did not change
+         any of the existing 3 models.
+
+         4 total models
+         Model 1: NC_045512          (same as from 1.2-1)
+         Model 2: NC_045512-del28254 (same as from 1.2-1)
+         Model 3: NC_045512-MW422255 (same as from 1.2-1)
+         Model 4: NC_045512-MW809059 (description below)
+         
+         NC_045512-MW809059 model is identical to sequence MW809059
+         except for the following changes:
+
+         - the model was extended past the 5' and 3' ends of MW809059
+           to include the 5' and 3' ends of NC_045512, by adding 2nt
+           from NC_045512 at the 5' end and 50nt from NC_045512 at the
+           3' end.
+         - the stem_loop feature Coronavirus 3' stem-loop II-like
+           motif (s2m) present in NC_045512 is not expected or
+           annotated by this model
+         - the blastx protein validation stage blast db includes the 
+           NC_045512 ORF6 and nucleocapsid phosphoprotein proteins as
+           well as the MW809059 versions of those proteins. This allows 
+           sequences that match best to the NC_045512-MW809059 model 
+           that do or do not have the del:27205:3 and/or del:28278:3
+           deletions to pass.
+
+1.2-1:   [March 2021]: identical to 1.1.3-1 but files renamed from
+         'NC_045512' to 'sarscov2' to reflect that there is more than
+         just a single RefSeq model now. Also some formatting changes
+         relative to 1.1.3-1 required for use with vadr 1.2. NO
+         CHANGES TO ACTUAL MODELS OR MODEL PARAMETERS.
+
+1.1.3-1: [Feb 2021]: 3 total models
+         Model 1: NC_045512 (same as from 1.1-1 and 1.1.2-1)
+         Model 2: NC_045512-del28254 which is identical to NC_045512
+           but has position 28254 deleted, which extends ORF8
+           by 4 amino acids. 
+         Model 3: NC_045512-MW422255: renamed from MW422255-NC_045512
+           from v1.1.2-1 (but same model except for different name).
+           This model was renamed to avoid a problem with score
+           tie-breaks for sequences that match equally well to
+           NC_045512 and MW422255.
+         
+         A new attribute was added to the .minfo files for ORF8 of the
+         two NC_045512* models that allow it to be annotated as a
+         misc_feature instead of as a CDS, in which case a protein
+         record will not be created from it in GenBank. This
+         misc_feature-ization is only possible with vadr v1.1.3 or
+         later and occurs if the ORF8 region is flagged with certain
+         types of errors (e.g. invalid start/stop codons). See the
+         vadr documentation on github or email eric.nawrocki@nih.gov
+         for more information.
+
+         Note that the 54 other (non-SARS-CoV-2) coronaviridae models
+         from v1.1.2-1 were removed in interest of making the model
+         tarball file smaller. If you're interested in those models,
+         download the v1.1.2-1 file which includes them.
+
+1.1.2-1: [Jan 2021]: 56 total models (same set as 1.1-1) plus
+         MW422255-NCC_045512. NOTE that NC_045512-d28254 and
+         NC_045512-T27915 the two models added in 1.1.2-1 are not
+         included in this model library. The new model exists in 
+         both 'NC_045512.cm' and 'corona.cm.
+
+         MW422255-NCC_045512: identical to sequence MW422255 except
+         for the following changes:
+
+         - the model was extended past the 5' and 3' ends of MW422255
+           to include the 5' and 3' ends of NC_045512. 
+
+         - the 8 Ns in MW422255 were replaced with the NC_045512
+           nucleotide at the corresponding position.
+
+1.1-1:   [Apr 2020]: 55 total models (same set as 1.0.2dev-{5,4,3})
+         - updates blast database files to blast db format 5 for use 
+           with updated blast version (v2.10.0+); all previous model
+           files included blast db format 4 (v.2.9.0+)
+         - adds corona.hmm and NC_045512.hmm file for hmmer-based
+           protein validation
+         - NO CHANGES TO MODELS THEMSELVES (corona.cm, NC_045512.cm
+           corona.minfo and NC_045512.minfo unchanged)
+
+vadr-models-55-1.0.2-dev-5: [Apr 2020]:
+         - adds blastn nucleotide databases (e.g. corona.fa.*)
+           for use with v-annotate.pl -s option.
+         - renames vadr.NC_045512.stem_loops.{cm*,minfo} to
+           NC_045512.{cm*,minfo}
+         - renames vadr.corona.NC_045512.stem_loops.{cm*,minfo} to
+           corona.{cm*,minfo}
+         - removes vadr.NC_045512.{cm*,minfo} (these models lacked
+           stem_loop info for NC_045512)
+         - removes vadr.corona.{cm*,minfo} (these models lacked
+           stem_loop info for NC_045512)
+         - NO CHANGES TO RENAMED MODELS THEMSELVES other than renaming
+           them
+
+vadr-models-55-1.0.2-dev-4: [Apr 2020]:
+         - only differences between this set of models and
+           vadr-models-corona-55-1.0.2dev-3 is the four files with the
+           .minfo suffix. Those four files have been changed *only* as
+           follows: 
+           * 'orf1ab' (v3) replaced with 'ORF1ab' (v4) 
+           * 'orf1a' (v3) replaced with 'ORF1a' (v4)
+           These changes reflect updates to the NC_045512.2 RefSeq
+           annotation.
+
+vadr-models-corona-55-1.0.2-dev-3 [Mar 2020]:
+         - only difference between this set of models and
+           vadr-models-corona-55-1.0.2dev-2 is addition of mat_peptide
+           features for orf1a not currently in the YP_009725295
+           protein linked from the NC_045512 RefSeq.
+
+====================================================
+contact: eric.nawrocki@nih.gov

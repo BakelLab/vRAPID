@@ -1,0 +1,495 @@
+LOCUS       HA                      1701 bp    DNA     linear       06-DEC-2022
+DEFINITION  Genus species strain strain.
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Genus species
+  ORGANISM  Genus species
+            Unclassified.
+COMMENT     Annotated using prokka 1.14.6 from
+            https://github.com/tseemann/prokka.
+FEATURES             Location/Qualifiers
+     source          1..1701
+                     /organism="Genus species"
+                     /mol_type="genomic DNA"
+                     /strain="strain"
+     CDS             1..1701
+                     /locus_tag="MLJOJKHI_00001"
+                     /inference="ab initio prediction:Prodigal:002006"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /translation="MKAILVVLLYTFATANADTLCIGYHANNSTDTVDTVLEKNVTVT
+                     HSVNLLEDKHNGKLCNTDLGAPLELRDCKIEAVIYGNPKCDIHLKDQGWSYIVERPSA
+                     PEGMCYPGSVENLEELRFVFSSAASYKRIRLFDYSRWNVTRSGTSKACNASTGGQSFY
+                     RSINWLTKKKPDTYDFNEGTYINNEDGDIIFLWGIHHPPDAKEQTTLYKNANTLSSVT
+                     TNTINRSFQPNIGPRPLVRGQQGRMDYYWGILKRGETLKIRTNGNLIAPEFGYLLKGE
+                     SHGRIIQNEDIPIGSCNTTCQTPKGAINTSLPFQNIHPITIGKCPKYVKSTKLRLATG
+                     LRNIPSIQSRGLFGAIAGFIEGGWTGMVDGWYGYHHQNEQGSGYAADLKSTQNAIDEI
+                     TNKVNSVIEKMNTQFTAVGKEFNHLEKRIENLNKKVDDGFLDIWTYNAELLVLLENER
+                     TLDYHDSNVKNLYEKVRSQLKNNAKEIGNGCFEFYHKCDNTCMESVKNGTYDYPKYSE
+                     EAKLNREEIDGVKLESTRIYQILAIYSTVASSLVLVVSLGAISFWMCSNGSLQCRICI
+                     "
+ORIGIN      
+        1 atgaaggcaa tactagtagt tctgctatat acatttgcaa ccgcaaatgc agacacatta
+       61 tgtataggtt atcatgcgaa caattcaaca gacactgtag acacagtact agaaaagaat
+      121 gtaacagtaa cacactctgt taaccttcta gaagacaagc ataacgggaa actatgcaat
+      181 actgatttgg gtgctccact agagttgcgt gattgcaaga ttgaggcggt gatctatggg
+      241 aacccaaaat gtgacatcca cttgaaagac caaggttggt catacatagt ggagagaccc
+      301 agtgcaccag aggggatgtg ctaccctgga tcagtggaga atctcgaaga gttgaggttt
+      361 gttttctcca gtgctgcttc ctacaaaagg ataagattgt ttgattactc cagatggaat
+      421 gttaccagat ctgggacaag caaggcatgc aatgcttcaa caggaggcca atctttctat
+      481 cggagcatca attggctaac taaaaagaaa cccgacacct atgacttcaa tgaggggact
+      541 tatatcaata atgaagatgg ggacataatt ttcttatggg ggattcatca cccaccggat
+      601 gcaaaagagc aaacaacact gtacaagaat gcaaatactt tgagtagtgt tactaccaac
+      661 actataaaca ggagcttcca acccaatatc gggcccaggc cactggtgag agggcaacaa
+      721 gggcggatgg actattattg gggcattttg aagaggggag aaactttaaa aattagaacc
+      781 aatgggaacc tgatcgcgcc tgaattcggt tatctgctca aaggggagag ccatggcaga
+      841 ataattcaaa atgaggacat accaattggg agttgtaata caacttgtca aacacccaag
+      901 ggtgctataa acaccagcct cccatttcag aatatacatc cgatcacaat tggaaaatgt
+      961 ccaaaatatg tgaaaagcac aaaattgaga ctggccacag gattgaggaa tatcccgtct
+     1021 attcaatcta gaggcctatt tggggccatt gccggtttca ttgaaggggg gtggacaggg
+     1081 atggtagatg gatggtacgg ttatcaccat caaaatgagc aggggtcagg atatgcagcc
+     1141 gacctgaaga gcacacagaa tgccattgac gagattacta acaaagtaaa ttctgttatt
+     1201 gaaaagatga atacacagtt cacagcagta ggtaaagagt tcaaccacct ggaaaaaaga
+     1261 atagagaatt taaataaaaa agttgatgat ggtttcctgg acatttggac ttacaatgcc
+     1321 gaactgttgg ttctattgga aaatgaaaga actttggact accacgattc aaatgtgaag
+     1381 aacttatatg aaaaggtaag aagccagcta aaaaacaatg ccaaggaaat tggaaacggc
+     1441 tgctttgaat tttaccacaa atgcgataac acgtgcatgg aaagtgtcaa aaatgggact
+     1501 tatgactacc caaaatactc agaggaagca aaattaaaca gagaagaaat agatggggta
+     1561 aagctggaat caacaaggat ttaccagatt ttggcgatct attcaactgt cgccagttca
+     1621 ttggtactgg tagtctccct gggggcaatc agtttctgga tgtgctctaa tgggtctcta
+     1681 cagtgtagaa tatgtattta a
+//
+LOCUS       NA                      1413 bp    DNA     linear       06-DEC-2022
+DEFINITION  Genus species strain strain.
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Genus species
+  ORGANISM  Genus species
+            Unclassified.
+COMMENT     Annotated using prokka 1.14.6 from
+            https://github.com/tseemann/prokka.
+FEATURES             Location/Qualifiers
+     source          1..1413
+                     /organism="Genus species"
+                     /mol_type="genomic DNA"
+                     /strain="strain"
+     CDS             21..1385
+                     /locus_tag="MLJOJKHI_00002"
+                     /inference="ab initio prediction:Prodigal:002006"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /translation="MNPNQKIITIGSICLVVGLISLILQIGNIISIWISHSIQTGSQN
+                     HTGICNQNIITYKNSTWVKDTTSVILTGNSSLCPIRGWAIYSKDNSIRIGSKGDVFVI
+                     REPFISCSHLECRTFFLTQGALLNDRHSNGTVKDRSPYRALMSCPVGEAPSPYNSRFE
+                     SVAWSASACHDGMGWLTIGISGPDNGAVAVLKYNGIITETIKSWRKKILRTQESECAC
+                     VNGSCFTIMTDGPSDGLASYKIFKIEKGKVTKSIELNAPNSHYEECSCYPDTGKVMCV
+                     CRDNWHGSNRPWVSFDQNLDYQIGYICSGVFGDNPRPKDGTGSCGPVYVDGANGVKGF
+                     SYRYGNGVWIGRTKSHSSRHGFEMIWDPNGWTETDSKFSVRQDVVAMTDWSGYSGSFV
+                     QHPELTGLDCIRPCFWVELIRGRPKEKTIWTSASSISFCGVNSDTVDWSWPDGAELPF
+                     TIDK"
+ORIGIN      
+        1 agcgaaagca ggggtttaaa atgaatccaa atcagaaaat aataaccatt ggatcaatct
+       61 gtctggtagt cggactaatt agcctaatat tgcaaatagg gaatataatc tcaatatgga
+      121 ttagccattc aattcaaact ggaagtcaaa accatactgg aatatgcaac caaaacatca
+      181 ttacctataa aaatagcacc tgggtaaagg acacaacttc agtgatatta accggcaatt
+      241 catctctttg tcccatccgt gggtgggcta tatacagcaa agacaatagc ataagaattg
+      301 gttccaaagg agacgttttt gtcataagag agccctttat ttcatgttct cacttggaat
+      361 gcaggacctt ttttctgacc caaggtgcct tactgaatga caggcattca aatgggactg
+      421 ttaaggacag aagcccttat agggccttaa tgagctgccc tgtcggtgaa gctccgtccc
+      481 cgtacaattc aagatttgaa tcggttgctt ggtcagcaag tgcatgtcat gatggcatgg
+      541 gctggctaac aatcggaatt tcaggtccag ataatggagc agtggctgta ttaaaataca
+      601 acggcataat aactgaaacc ataaaaagtt ggaggaagaa aatattgagg acacaagagt
+      661 ctgaatgtgc ctgtgtaaat ggttcatgtt ttactataat gactgatggc ccgagtgatg
+      721 ggctggcctc gtacaaaatt ttcaagatcg aaaaggggaa ggttactaaa tcaatagagt
+      781 tgaatgcacc taattctcac tatgaggaat gttcctgtta ccctgatacc ggcaaagtga
+      841 tgtgtgtgtg cagagacaat tggcatggtt cgaaccggcc atgggtgtct ttcgatcaaa
+      901 acctggatta tcaaatagga tacatctgca gtggggtttt cggtgacaac ccgcgtccca
+      961 aagatggaac aggcagctgt ggtccagtgt atgttgatgg agcaaacgga gtaaagggat
+     1021 tttcatatag gtatggtaat ggtgtttgga taggaaggac caaaagtcac agttccagac
+     1081 atgggtttga gatgatttgg gatcctaatg gatggacaga gactgatagt aagttctctg
+     1141 tgaggcaaga tgttgtggca atgactgatt ggtcagggta tagcgggagt ttcgttcaac
+     1201 atcctgagct aacagggcta gactgtataa ggccgtgctt ctgggttgaa ttaatcaggg
+     1261 gacgacctaa agaaaaaaca atctggacta gtgcgagcag catttctttt tgtggcgtga
+     1321 atagtgatac tgtagattgg tcttggccag acggtgctga gttgccattc accattgaca
+     1381 agtagtctgt tcaaaaaact ccttgtttct act
+//
+LOCUS       PB1                     2341 bp    DNA     linear       06-DEC-2022
+DEFINITION  Genus species strain strain.
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Genus species
+  ORGANISM  Genus species
+            Unclassified.
+COMMENT     Annotated using prokka 1.14.6 from
+            https://github.com/tseemann/prokka.
+FEATURES             Location/Qualifiers
+     source          1..2341
+                     /organism="Genus species"
+                     /mol_type="genomic DNA"
+                     /strain="strain"
+     CDS             25..2298
+                     /locus_tag="MLJOJKHI_00003"
+                     /inference="ab initio prediction:Prodigal:002006"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /translation="MDVNPTLLFLKVPAQNAISTTFPYTGDPPYSHGTGTGYTMDTVN
+                     RTHQYSEKGRWTTNTETGAPQLNPIDGPLPEDNEPSGYAQTDCVLEAMAFLEESHPGI
+                     FENSCIETMEVVQQTRVDKLTQGRQTYDWTLNRNQPAATALANTIEVFRSNGLTANES
+                     GRLIDFLKDVMESMKKEEMGITTHFQRKRRVRDNMTKKMITQRTIGKKKQRLNKRSYL
+                     IRALTLNTMTKDAERGKLKRRAIATPGMQIRGFVYFVETLARSICEKLEQSGLPVGGN
+                     EKKAKLANVVRKMMTNSQDTELSFTITGDNTKWNENQNPRMFLAMITYMTRNQPEWFR
+                     NVLSIAPIMFSNKMARLGKGYMFESKSMKLRTQIPAEMLASIDLKYFNDSTRKKIEKI
+                     RPLLIEGTASLSPGMMMGMFNMLSTVLGVSILNLGQKRYTKTTYWWDGLQSSDDFALI
+                     VNAPNHEGIQAGVDRFYRTCKLLGINMSKKKSYINRTGTFEFTSFFYRYGFVANFSME
+                     LPSFGVSGINESADMSIGVTVIKNNMINNDLGPATAQMALQLFIKDYRYTYRCHRGDT
+                     QIQTRRSFEIKKLWEQTRSKAGLLVSDGGPNLYNIRNLHIPEVCLKWELMDEDYQGRL
+                     CNPLNPFVSHKEIESMNNAVMMPAHGPAKNMEYDAVATTHSWIPKRNRSILNTSQRGV
+                     LEDEQMYQRCCNLFEKFFPSSSYRRPVGISSMVEAMVSRARIDARIDFESGRIKKEEF
+                     TEIMKICSTIEELRRQK"
+ORIGIN      
+        1 agcgaaagca ggcaaaccat ttgaatggat gtcaatccga ccttactttt cttaaaagtg
+       61 ccagcacaaa atgctataag cacaactttc ccttatactg gagaccctcc ttacagccat
+      121 gggacaggaa caggatacac catggatact gtcaacagga cacatcagta ctcagaaaag
+      181 ggaagatgga caacaaacac cgaaactgga gcaccgcaac tcaacccgat tgatgggcca
+      241 ctgccagaag acaatgaacc aagtggttat gcccaaacag attgtgtatt ggaagcaatg
+      301 gctttccttg aggaatccca tcctggtatt tttgaaaact cgtgtattga aacgatggag
+      361 gttgttcagc aaacacgagt agacaagctg acacaaggcc gacagaccta tgactggact
+      421 ctaaatagaa accaacctgc tgcaacagca ttggccaaca caatagaagt gttcagatca
+      481 aatggcctca cggccaatga gtctggaagg ctcatagact tccttaagga tgtaatggag
+      541 tcaatgaaaa aagaagaaat ggggatcaca actcattttc agagaaagag acgggtgaga
+      601 gacaatatga ctaagaaaat gataacacag agaacaatag gtaaaaagaa gcagagattg
+      661 aacaaaagga gttatctaat tagagcattg accctgaaca caatgaccaa agatgctgag
+      721 agagggaagc taaaacggag agcaattgca accccaggga tgcaaataag ggggtttgta
+      781 tactttgttg agacactggc aaggagtata tgtgagaaac ttgaacaatc agggttgcca
+      841 gttggaggca atgagaagaa agcaaagttg gcaaatgttg taaggaagat gatgaccaat
+      901 tctcaggaca ccgaactttc tttcaccatc actggagata acaccaaatg gaacgaaaat
+      961 cagaatcctc ggatgttttt ggccatgatc acatatatga caagaaatca gcccgaatgg
+     1021 ttcagaaatg ttctaagtat tgctccaata atgttctcaa acaaaatggc gagactggga
+     1081 aaagggtata tgtttgagag caagagtatg aaacttagaa ctcaaatacc tgcagaaatg
+     1141 ctagcaagca tcgatttgaa atatttcaat gattcaacaa gaaagaagat tgaaaaaatc
+     1201 cgaccgctct taatagaggg gactgcatca ttgagccctg gaatgatgat gggcatgttc
+     1261 aatatgttaa gcactgtatt aggcgtctcc atcctgaatc ttggacaaaa gagatacacc
+     1321 aagactactt actggtggga tggtcttcaa tcctctgacg attttgctct gattgtgaat
+     1381 gcacccaatc atgaagggat tcaagccgga gtcgacaggt tttatcgaac ctgtaagcta
+     1441 cttggaatca atatgagcaa gaaaaagtct tacataaaca gaacaggtac atttgaattc
+     1501 acaagttttt tctatcgtta tgggtttgtt gccaatttca gcatggagct ccccagtttt
+     1561 ggggtgtctg ggatcaacga gtcagcggac atgagtattg gagttactgt catcaaaaac
+     1621 aatatgataa acaatgatct tggtccagca acagctcaaa tggcccttca gttgttcatc
+     1681 aaagattaca ggtacacgta ccgatgccat agaggtgaca cacaaataca aacccgaaga
+     1741 tcatttgaaa taaagaaact gtgggagcaa acccgttcca aagctggact gctggtctcc
+     1801 gacggaggcc caaatttata caacattaga aatctccaca ttcctgaagt ctgcctaaaa
+     1861 tgggaattga tggatgagga ttaccagggg cgtttatgca acccactgaa cccatttgtc
+     1921 agccataaag aaattgaatc aatgaacaat gcagtgatga tgccagcaca tggtccagcc
+     1981 aaaaacatgg agtatgatgc tgttgcaaca acacactcct ggatccccaa aagaaatcga
+     2041 tccatcttga atacaagtca aagaggagta cttgaagatg aacaaatgta ccaaaggtgc
+     2101 tgcaatttat ttgaaaaatt cttccccagc agttcataca gaagaccagt cgggatatcc
+     2161 agtatggtgg aggctatggt ttccagagcc cgaattgatg cacggattga tttcgaatct
+     2221 ggaaggataa agaaagaaga gttcactgag atcatgaaga tctgttccac cattgaagag
+     2281 ctcagacggc aaaaatagtg aatttagctt gtccttcatg aaaaaatgcc ttgtttctac
+     2341 t
+//
+LOCUS       PB2                     2341 bp    DNA     linear       06-DEC-2022
+DEFINITION  Genus species strain strain.
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Genus species
+  ORGANISM  Genus species
+            Unclassified.
+COMMENT     Annotated using prokka 1.14.6 from
+            https://github.com/tseemann/prokka.
+FEATURES             Location/Qualifiers
+     source          1..2341
+                     /organism="Genus species"
+                     /mol_type="genomic DNA"
+                     /strain="strain"
+     CDS             28..2307
+                     /locus_tag="MLJOJKHI_00004"
+                     /inference="ab initio prediction:Prodigal:002006"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /translation="MERIKELRNLMSQSRTREILTKTTVDHMAIIKKYTSGRQEKNPA
+                     LRMKWMMAMKYPITADKRITEMIPERNEQGQTLWSKMNDAGSDRVMVSPLAVTWWNRN
+                     GPITNTVHYPKIYKTYFERVERLKHGTFGPVHFRNQVKIRRRVDINPGHADLSAKEAQ
+                     DVIMEVVFPNEVGARILTSESQLTITKEKKEELQDCKISPLMVAYMLERELVRKTRFL
+                     PVAGGTSSVYIEVLHLTQGTCWEQMYTPGGEVRNDDVDQSLIIAARNIVRRAAVSADP
+                     LASLLEMCHSTQIGGIRMVDILRQNPTEEQAVDICKAAMGLRISSSFSFGGFTFKRTS
+                     GSSVKREEEVLTGNLQTLKIRVHEGYEEFTMVGRRATAILRKATRRLIQLIVSGRDEQ
+                     SIAEAIIVAMVFSQEDCMIKAVRGDLNFVNRANQRLNPMHQLLRHFQKDAKVLFQNWG
+                     VEPIDNVMGMIGILPDMTPSIEMSMRGVRISKMGVDEYSSTERVVVSIDRFLRIRDQR
+                     GNVLLSPEEVSETQGTEKLTITYSSSMMWEINGPESVLVNTYQWIIRNWETVKIQWSQ
+                     NPTMLYNKMEFEPFQSLVPKAIRGQYSGFVRTLFQQMRDVLGTFDTAQIIKLLPFAAA
+                     PPKQSRMQFSSFTVNVRGSGMRILVRGNSPVFNYNKATKRLTVLGKDAGTLTEDPDEG
+                     TAGVESAVLRGFLILGKEDKRYGPALSINELSNLAKGEKANVLIGQGDVVLVMKRKRD
+                     SSILTDSQTATKRIRMAIN"
+ORIGIN      
+        1 agcgaaagca ggtcaattat attcaatatg gaaagaataa aagaactaag aaatctaatg
+       61 tcgcagtctc gcacccgcga gatactcaca aaaaccaccg tggaccatat ggccataatc
+      121 aagaagtaca catcaggaag acaggagaag aacccagcac ttaggatgaa atggatgatg
+      181 gcaatgaaat atccaattac agcagacaag aggataacgg aaatgattcc tgagagaaat
+      241 gagcaaggac aaactttatg gagtaaaatg aatgatgcag gatcagaccg agtgatggta
+      301 tcacctctgg ctgtgacatg gtggaatagg aatggaccaa taacaaatac agttcattat
+      361 ccaaaaatct acaaaactta ttttgaaaga gtcgaaaggc taaagcatgg aacctttggc
+      421 cctgtccatt ttagaaacca agtcaaaata cgtcggagag ttgacataaa tcctggtcat
+      481 gcagatctca gtgccaagga ggcacaggat gtaatcatgg aagttgtttt ccctaacgaa
+      541 gtgggagcca ggatactaac atcggaatcg caactaacga taaccaaaga gaagaaagaa
+      601 gaactccagg attgcaaaat ttctcctttg atggttgcat acatgttgga gagagaactg
+      661 gtccgcaaaa cgagattcct cccagtggct ggtggaacaa gcagtgtgta cattgaagtg
+      721 ttgcatttga ctcaaggaac atgctgggaa cagatgtata ctccaggagg ggaagtgagg
+      781 aatgatgatg ttgatcaaag cttgattatt gctgctagga acatagtgag aagagctgca
+      841 gtatcagcag atccactagc atctttattg gagatgtgcc acagcacaca gattggtgga
+      901 attaggatgg tagacatcct taggcagaac ccaacagaag agcaagccgt ggatatatgc
+      961 aaggctgcaa tgggactgag aattagctca tccttcagtt ttggtggatt cacatttaag
+     1021 agaacaagcg gatcatcagt caagagagag gaagaggtgc ttacgggcaa tcttcaaaca
+     1081 ttgaagataa gagtgcatga gggatatgaa gagttcacaa tggttgggag aagagcaaca
+     1141 gccatactca gaaaagcaac caggagattg attcagctga tagtgagtgg gagagacgaa
+     1201 cagtcgattg ccgaagcaat aattgtggcc atggtatttt cacaagagga ttgtatgata
+     1261 aaagcagtca gaggtgatct gaatttcgtc aatagggcga atcagcgatt gaatcctatg
+     1321 catcaacttt taagacattt tcagaaggat gcgaaagtgc tttttcaaaa ttggggagtt
+     1381 gaacctatcg acaatgtgat gggaatgatt gggatattgc cagacatgac tccaagcatc
+     1441 gagatgtcaa tgagaggagt gagaatcagc aaaatgggtg tagatgagta ctccagcacg
+     1501 gagagggtag tggtgagcat tgaccgtttt ttgagaatcc gggaccaacg aggaaatgta
+     1561 ctactgtctc ccgaggaggt cagtgaaaca cagggaacag agaaactgac aataacttac
+     1621 tcatcgtcaa tgatgtggga gattaatggt cctgaatcag tgttggtcaa tacctatcaa
+     1681 tggatcatca gaaactggga aactgttaaa attcagtggt cccagaaccc tacaatgcta
+     1741 tacaataaaa tggaatttga accatttcag tctttagtac ctaaggccat tagaggccaa
+     1801 tacagtgggt ttgtaagaac tctgttccaa caaatgaggg atgtgcttgg gacatttgat
+     1861 accgcacaga taataaaact tcttcccttc gcagccgctc caccaaagca aagtagaatg
+     1921 cagttctcct catttactgt gaatgtgagg ggatcaggaa tgagaatact tgtaaggggc
+     1981 aattctcctg tattcaacta taacaaggcc acgaagagac tcacagttct cggaaaggat
+     2041 gctggcactt taactgaaga cccagatgaa ggcacagctg gagtggagtc cgctgttctg
+     2101 aggggattcc tcattctggg caaagaagac aagagatatg ggccagcact aagcatcaat
+     2161 gaactgagca accttgcgaa aggagagaag gctaatgtgc taattgggca aggagacgtg
+     2221 gtgttggtaa tgaaacggaa acgggactct agcatactta ctgacagcca gacagcgacc
+     2281 aaaagaattc ggatggccat caattagtgt cgaatagttt aaaaacgacc ttgtttctac
+     2341 t
+//
+LOCUS       PA                      2233 bp    DNA     linear       06-DEC-2022
+DEFINITION  Genus species strain strain.
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Genus species
+  ORGANISM  Genus species
+            Unclassified.
+COMMENT     Annotated using prokka 1.14.6 from
+            https://github.com/tseemann/prokka.
+FEATURES             Location/Qualifiers
+     source          1..2233
+                     /organism="Genus species"
+                     /mol_type="genomic DNA"
+                     /strain="strain"
+     CDS             25..2175
+                     /locus_tag="MLJOJKHI_00005"
+                     /inference="ab initio prediction:Prodigal:002006"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /translation="MEDFVRQCFNPMIVELAEKTMKEYGEDLKIETNKFAAICTHLEV
+                     CFMYSDFHFINEQGESIIVELGDPNALLKHRFEIIEGRDRTMAWTVVNSICNTTGAEK
+                     PKFLPDLYDYKENRFIEIGVTRREVHIYYLEKANKIKSEKTHIHIFSFTGEEMATKAD
+                     YTLDEESRARIKTRLFTIRQEMASRGLWDSFRQSERGEETIEERFEITGTMRKLADQS
+                     LPPNFSSLENFRAYVDGFEPNGYIEGKLSQMSKEVNARIEPFLKTTPRPLRLPNGPPC
+                     SQRSKFLLMDALKLSIEDPSHEGEGIPLYDAIKCMRTFFGWKEPNVVKPHEKGINPNY
+                     LLSWKQVLAELQDIENEEKIPKTKNMKKTSQLKWALGENMAPEKVDFDDCKDVGDLKQ
+                     YDSDEPELRSLASWIQNEFNKACELTDSSWIELDEIGEDVAPIEHIASMRRNYFTSEV
+                     SHCRATEYIMKGVYINTALLNASCAAMDDFQLIPMISKCRTKEGRRKTNLYGFIIKGR
+                     SHLRNDTDVVNFVSMEFSLTDPRLEPHKWEKYCVLEIGDMLIRSAIGQVSRPMFLYVR
+                     TNGTSKIKMKWGMEMRRCLLQSLQQIESMIEAESSVKEKDMTKEFFENKSETWPIGES
+                     PKGVEESSIGKVCRTLLAKSVFNSLYASPQLEGFSAESRKLLLIVQALRDNLEPGTFD
+                     LGGLYEAIEECLINDPWVLLNASWFNSFLTHALS"
+ORIGIN      
+        1 agcgaaagca ggtactgatc caaaatggaa gattttgtgc gacaatgctt caatccgatg
+       61 attgtcgagc ttgcggaaaa aacaatgaaa gagtatgggg aggacctgaa aatcgaaaca
+      121 aacaaatttg cagcaatatg cactcacttg gaagtatgct tcatgtattc agattttcac
+      181 ttcatcaatg agcaaggcga gtcaataatc gtagaacttg gtgatccaaa tgcacttttg
+      241 aagcacagat ttgaaataat cgagggaaga gatcgcacaa tggcctggac agtagtaaac
+      301 agtatttgca acactacagg ggctgagaaa ccaaagtttc taccagattt gtatgattac
+      361 aaggagaata gattcatcga aattggagta acaaggagag aagttcacat atactatctg
+      421 gaaaaggcca ataaaattaa atctgagaaa acacacatcc acattttctc gttcactggg
+      481 gaagaaatgg ccacaaaggc agactacact ctcgatgaag aaagcagggc taggatcaaa
+      541 accagactat tcaccataag acaagaaatg gccagcagag gcctctggga ttcctttcgt
+      601 cagtccgaga gaggagaaga gacaattgaa gaaaggtttg aaatcacagg aacaatgcgc
+      661 aagcttgccg accaaagtct cccgccgaac ttctccagcc ttgaaaattt tagagcctat
+      721 gtggatggat tcgaaccgaa cggctacatt gagggcaagc tgtctcaaat gtccaaagaa
+      781 gtaaatgcta gaattgaacc ttttttgaaa acaacaccac gaccacttag acttccgaat
+      841 gggcctccct gttctcagcg gtccaaattc ctgctgatgg atgccttaaa attaagcatt
+      901 gaggacccaa gtcatgaagg agagggaata ccgctatatg atgcaatcaa atgcatgaga
+      961 acattctttg gatggaagga acccaatgtt gttaaaccac acgaaaaggg aataaatcca
+     1021 aattatcttc tgtcatggaa gcaagtactg gcagaactgc aggacattga gaatgaggag
+     1081 aaaattccaa agactaaaaa tatgaagaaa acaagtcagc taaagtgggc acttggtgag
+     1141 aacatggcac cagaaaaggt agactttgac gactgtaaag atgtaggtga tttgaagcaa
+     1201 tatgatagtg atgaaccaga attgaggtcg ctagcaagtt ggattcagaa tgagtttaac
+     1261 aaggcatgcg aactgacaga ttcaagctgg atagagctcg atgagattgg agaagatgtg
+     1321 gctccaattg aacacattgc aagcatgaga aggaattatt tcacatcaga ggtgtctcac
+     1381 tgcagagcca cagaatacat aatgaagggg gtgtacatca atactgcctt gcttaatgca
+     1441 tcttgtgcag caatggatga tttccaatta attccaatga taagcaagtg tagaactaag
+     1501 gagggaaggc gaaagaccaa cttgtatggt ttcatcataa aaggaagatc ccacttaagg
+     1561 aatgacaccg acgtggtaaa ctttgtgagc atggagtttt ctctcactga cccaagactt
+     1621 gaaccacata aatgggagaa gtactgtgtt cttgagatag gagatatgct tataagaagt
+     1681 gccataggcc aggtttcaag gcccatgttc ttgtatgtga gaacaaatgg aacctcaaaa
+     1741 attaaaatga aatggggaat ggagatgagg cgttgcctcc tccagtcact tcaacaaatt
+     1801 gagagtatga ttgaagctga gtcctctgtc aaagagaaag acatgaccaa agagttcttt
+     1861 gagaacaaat cagaaacatg gcccattgga gagtccccca aaggagtgga ggaaagttcc
+     1921 attgggaagg tctgcaggac tttattagca aagtcggtat tcaacagctt gtatgcatct
+     1981 ccacaactag aaggattttc agctgaatca agaaaactgc ttcttatcgt tcaggctctt
+     2041 agggacaacc ttgaacctgg gacctttgat cttggggggc tatatgaagc aattgaggag
+     2101 tgcctgatta atgatccctg ggttttgctt aatgcttctt ggttcaactc cttccttaca
+     2161 catgcattga gttagttgtg gcagtgctac tatttgctat ccatactgtc caaaaaagta
+     2221 ccttgtttct act
+//
+LOCUS       NP                      1565 bp    DNA     linear       06-DEC-2022
+DEFINITION  Genus species strain strain.
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Genus species
+  ORGANISM  Genus species
+            Unclassified.
+COMMENT     Annotated using prokka 1.14.6 from
+            https://github.com/tseemann/prokka.
+FEATURES             Location/Qualifiers
+     source          1..1565
+                     /organism="Genus species"
+                     /mol_type="genomic DNA"
+                     /strain="strain"
+     CDS             46..1542
+                     /locus_tag="MLJOJKHI_00006"
+                     /inference="ab initio prediction:Prodigal:002006"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /translation="MASQGTKRSYEQMETDGERQNATEIRASVGKMIGGIGRFYIQMC
+                     TELKLSDYEGRLIQNSLTIERMVLSAFDERRNKYLEEHPSAGKDPKKTGGPIYRRVNG
+                     KWMRELILYDKEEIRRIWRQANNGDDATAGLTHMMIWHSNLNDATYQRTRALVRTGMD
+                     PRMCSLMQGSTLPRRSGAAGAAVKGVGTMVMELVRMIKRGINDRNFWRGENGRKTRIA
+                     YERMCNILKGKFQTAAQKAMMDQVRESRNPGNAEFEDLTFLARSALILRGSVAHKSCL
+                     PACVYGPAVASGYDFEREGYSLVGIDPFRLLQNSQVYSLIRPNENPAHKSQLVWMACH
+                     SAAFEDLRVLSFIKGTKVLPRGKLSTRGVQIASNENMETMESSTLELRSRYWAIRTRS
+                     GGNTNQQRASAGQISIQPTFSVQRNLPFDRTTIMAAFNGNTEGRTSDMRTEIIRMMES
+                     ARPEDVSFQGRGVFELSDEKAASPIVPSFDMSNEGSYFFGDNAEEYDN"
+ORIGIN      
+        1 agcaaaagca gggtagataa tcactcactg agtgacatca aaatcatggc gtcccaaggc
+       61 accaaacggt cttacgaaca gatggagact gatggagaac gccagaatgc cactgaaatc
+      121 agagcatccg tcggaaaaat gattggtgga attggacgat tctacatcca aatgtgcacc
+      181 gaactcaaac tcagtgatta tgagggacgg ttgatccaaa acagcttaac aatagagaga
+      241 atggtgctct ctgcttttga cgaaaggaga aataaatacc tggaagaaca tcccagtgcg
+      301 gggaaagatc ctaagaaaac tggaggacct atatacagga gagtaaacgg aaagtggatg
+      361 agagaactca tcctttatga caaagaagaa ataaggcgaa tctggcgcca agctaataat
+      421 ggtgacgatg caacggctgg tctgactcac atgatgatct ggcattccaa tttgaatgat
+      481 gcaacttatc agaggacaag agctcttgtt cgcaccggaa tggatcccag gatgtgctct
+      541 ctgatgcaag gttcaactct ccctaggagg tctggagccg caggtgctgc agtcaaagga
+      601 gttggaacaa tggtgatgga attggtcagg atgatcaaac gtgggatcaa tgatcggaac
+      661 ttctggaggg gtgagaatgg acgaaaaaca agaattgctt atgaaagaat gtgcaacatt
+      721 ctcaaaggga aatttcaaac tgctgcacaa aaagcaatga tggatcaagt gagagagagc
+      781 cggaacccag ggaatgctga gttcgaagat ctcacttttc tagcacggtc tgcactcata
+      841 ttgagagggt cggttgctca caagtcctgc ctgcctgcct gtgtgtatgg acctgccgta
+      901 gccagtgggt acgactttga aagagaggga tactctctag tcggaataga ccctttcaga
+      961 ctgcttcaaa acagccaagt gtacagccta atcagaccaa atgagaatcc agcacacaag
+     1021 agtcaactgg tgtggatggc atgccattct gccgcatttg aagatctaag agtattaagc
+     1081 ttcatcaaag ggacgaaggt gctcccaaga gggaagcttt ccactagagg agttcaaatt
+     1141 gcttccaatg aaaatatgga gactatggaa tcaagtacac ttgaactgag aagcaggtac
+     1201 tgggccataa ggaccagaag tggaggaaac accaatcaac agagggcatc tgcgggccaa
+     1261 atcagcatac aacctacgtt ctcagtacag agaaatctcc cttttgacag aacaaccatt
+     1321 atggcagcat tcaatgggaa tacagaggga agaacatctg acatgaggac cgaaatcata
+     1381 aggatgatgg aaagtgcaag accagaagat gtgtctttcc aggggcgggg agtcttcgag
+     1441 ctctcggacg aaaaggcagc gagcccgatc gtgccttcct ttgacatgag taatgaagga
+     1501 tcttatttct tcggagacaa tgcagaggag tacgacaatt aaagaaaaat acccttgttt
+     1561 ctact
+//
+LOCUS       NS                       890 bp    DNA     linear       06-DEC-2022
+DEFINITION  Genus species strain strain.
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Genus species
+  ORGANISM  Genus species
+            Unclassified.
+COMMENT     Annotated using prokka 1.14.6 from
+            https://github.com/tseemann/prokka.
+FEATURES             Location/Qualifiers
+     source          1..890
+                     /organism="Genus species"
+                     /mol_type="genomic DNA"
+                     /strain="strain"
+     CDS             27..719
+                     /locus_tag="MLJOJKHI_00007"
+                     /inference="ab initio prediction:Prodigal:002006"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /translation="MDPNTVSSFQVDCFLWHVRKRVADQELGDAPFLDRLRRDQKSLR
+                     GRGSTLGLDIETATRAGKQIVERILKEESDEALKMTMASVPASRYLTDMTLEEMSRDW
+                     SMLIPKQKVAGPLCIRMDQAIMDKNIILKANFSVIFDRLETLILLRAFTEEGAIVGEI
+                     SPLPSLPGHTAEDVKNAVGVLIGGLEWNDNTVRVSETLQRFAWRSSNENGRPPLTPKQ
+                     KREMAGTIRSEV"
+ORIGIN      
+        1 agcaaaagca gggtgacaaa gacataatgg atccaaacac tgtgtcaagc tttcaggtag
+       61 attgctttct ttggcatgtc cgcaaacgag ttgcagacca agaactaggt gatgccccat
+      121 tccttgatcg gcttcgccga gatcagaaat ccctaagagg aaggggcagc accctcggtc
+      181 tggacatcga gacagccaca cgtgctggaa agcagatagt ggagcggatt ctgaaagaag
+      241 aatccgatga ggcacttaaa atgaccatgg cctctgtacc tgcgtcgcgt tacctaactg
+      301 acatgactct tgaggaaatg tcaagggact ggtccatgct catacccaag cagaaagtgg
+      361 caggccctct ttgtatcaga atggaccagg cgatcatgga taagaacatc atactgaaag
+      421 cgaacttcag tgtgattttt gaccggctgg agactctaat attgctaagg gctttcaccg
+      481 aagagggagc aattgttggc gaaatttcac cattgccttc tcttccagga catactgctg
+      541 aggatgtcaa aaatgcagtt ggagtcctca tcgggggact tgaatggaat gataacacag
+      601 ttcgagtctc tgaaactcta cagagattcg cttggagaag cagtaatgag aatgggagac
+      661 ctccactcac tccaaaacag aaacgagaaa tggcgggaac aattaggtca gaagtttgaa
+      721 gaaataagat ggttgattga agaagtgaga cacaaactga agataacaga gaatagtttt
+      781 gagcaaataa catttatgca agccttacat ctattgcttg aagtggagca agagataaga
+      841 actttctcgt ttcagcttat ttaataataa aaaacaccct tgtttctact
+//
+LOCUS       M                       1027 bp    DNA     linear       06-DEC-2022
+DEFINITION  Genus species strain strain.
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Genus species
+  ORGANISM  Genus species
+            Unclassified.
+COMMENT     Annotated using prokka 1.14.6 from
+            https://github.com/tseemann/prokka.
+FEATURES             Location/Qualifiers
+     source          1..1027
+                     /organism="Genus species"
+                     /mol_type="genomic DNA"
+                     /strain="strain"
+     CDS             26..784
+                     /locus_tag="MLJOJKHI_00008"
+                     /inference="ab initio prediction:Prodigal:002006"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /translation="MSLLTEVETYVLSIIPSGPLKAEIAQRLEDVFAGKNTDLEVLME
+                     WLKTRPILSPLTKGILGFVFTLTVPSERGLQRRRFVQNALNGNGDPNNMDKAVKLYRK
+                     LKREITFHGAKEISLSYSAGALASCMGLIYNRMGAVTTEVAFGLVCATCEQIADSQHR
+                     SHRQMVTTTNPLIRHENRMVLASTTAKAMEQMAGSSEQAAEAMEVASQARQMVQAMRT
+                     IGTHPSSSAGLKNDLLENLQAYQKRMGVQMQRFK"
+ORIGIN      
+        1 agcgaaagca ggtagatatt gaaagatgag tcttctaacc gaggtcgaaa cgtacgtact
+       61 ctctatcatc ccgtcaggcc ccctcaaagc cgagatcgca cagagacttg aagatgtctt
+      121 tgcagggaag aacactgatc ttgaggttct catggaatgg ctaaagacaa gaccaatcct
+      181 gtcacctctg actaagggga ttttaggatt tgtgttcacg ctcaccgtgc ccagtgagcg
+      241 aggactgcag cgtagacgct ttgtccaaaa tgcccttaat gggaacgggg atccaaataa
+      301 catggacaaa gcagttaaac tgtataggaa gctcaagagg gagataacat tccatggggc
+      361 caaagaaatc tcactcagtt attctgctgg tgcacttgcc agttgtatgg gcctcatata
+      421 caacaggatg ggggctgtga ccactgaagt ggcatttggc ctggtatgtg caacctgtga
+      481 acagattgct gactcccagc atcggtctca taggcaaatg gtgacaacaa ccaatccact
+      541 aatcagacat gagaacagaa tggttttagc cagcactaca gctaaggcta tggagcaaat
+      601 ggctggatcg agtgagcaag cagcagaggc catggaggtt gctagtcagg ctagacaaat
+      661 ggtgcaagcg atgagaacca ttgggactca tcctagctcc agtgctggtc tgaaaaatga
+      721 tcttcttgaa aatttgcagg cctatcagaa acgaatgggg gtgcagatgc aacggttcaa
+      781 gtgatcctct cgctattgcc gcaaatatca ttgggatctt gcacttgaca ttgtggattc
+      841 ttgatcgtct ttttttcaaa tgcatttacc gtcgctttaa atacggactg aaaggagggc
+      901 cttctacgga aggagtgcca aagtctatga gggaagaata tcgaaaggaa cagcagagtg
+      961 ctgtggatgc tgacgatggt cattttgtca gcatagagct ggagtaaaaa actaccttgt
+     1021 ttctact
+//

@@ -1,0 +1,13 @@
+# emacs tmp files
+*~
+# Uncompressed cm and hmm files and index files
+*.cm
+*.cm.i1f
+*.cm.i1i
+*.cm.i1m
+*.cm.i1p
+*.hmm
+*.hmm.h3f
+*.hmm.h3i
+*.hmm.h3m
+*.hmm.h3p
