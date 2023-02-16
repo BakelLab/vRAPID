@@ -78,6 +78,8 @@ alt.ratio  = alt.ratio[complete.cases(alt.ratio),];
 alt.bases  = apply(alt.ratio, 1, function(x, thr, bases){paste(as.character(bases[x>=thr & x<0.5]), collapse="/")}, opt$varthr, names(alt.ratio))
 
 # Annotate only variants present in both forward and reverse reads
+set.var[is.na(set.var)] <- FALSE
+
 if (any(set.var)) {
   keep.vars = c()
   if (length(alt.bases)){
@@ -104,6 +106,13 @@ if (any(set.var)) {
                       if (all(all.bases %in% b)){
                           alt.bases[[i]] = i 
                       } else {
+                          print(all.bases)
+                        print("all.bases[!all.bases %in% b]")
+                        print(b)
+                        print(all.bases %in% b)
+                        print(all.bases[!all.bases %in% b])
+                        print(alt.bases)
+                          #################THIS THROWS ERROR BC IT RETURNS 2. LOOP? IF ALL?)######
                           alt.bases[[i]] = all.bases[!all.bases %in% b]
             }
           }
@@ -198,10 +207,9 @@ tryCatch( {
     text.y[text.y>0.49] = 0.49;
     text(text.x, text.y, variants[,3], cex=0.7);
   }
-},
-error=function(e){ # Just print exception message
-  message("\n### An error occurred during plotting: possibly because no minor variants were found\n\n");
-  print(e);
+}, error=function(e){ # Just print exception message
+    message("\n### An error occurred during plotting: possibly because no minor variants were found\n\n");
+    print(e);
   #save.image(file = "error.RData");
 }
 );
