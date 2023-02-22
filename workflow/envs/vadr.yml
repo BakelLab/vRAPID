@@ -1,0 +1,13 @@
+name: vadr
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - seqkit
+  - biopython
+  - pandas
+  - mysql
+  - mysql-connector-python
+  - vadr
+  - requests
