@@ -60,7 +60,7 @@ if __name__ == "__main__":
 
     # Destination path
     # file path setup for PDB
-    destination = '/sc/arion/projects/CRIPT/crip_surveillance/www/crip-run-QC'
+    destination = '/sc/arion/projects/CRIPT/crip_surveillance/www/crip-run-qc'
 
     # Destination names
     BAMQCdest = destination + "/" + xt
