@@ -26,10 +26,26 @@ rule all:
       data_release_report = expand("{runid}_data_release.txt", runid=run_id)
       
 
+
+rule file_rename:
+   message: "Rename input file for consistency"
+   input:
+      sample_folder = ("{sample}/{sample}")
+   output:
+      renamed_file = directory(("{sample}/01_fastqs"))
+   log:
+      rename = "logs/01_{sample}.aseembly.snakemake.log"
+   shell:
+      """
+      mv {input.sample_folder} {output.renamed_file} > {log.rename} 2>&1
+      """
+
+
 rule assemble:
    message: "Assembling viral genome"
    input:
-      sample_folder = ("{sample}")
+      sample_folder = ("{sample}"),
+      renamed_file = ("{sample}/01_fastqs")
    params:
       repo_dir = os.environ.get("GIT_REPODIR"),
       pipeline = os.path.join(workflow.basedir, "../scripts/run_pipeline.py"),
@@ -43,14 +59,17 @@ rule assemble:
       bamfile = ("{sample}/02_assembly/{sample}_ref.bam")
    conda:
       "envs/env.yml"
+   log:
+      assembly = "logs/02_{sample}.aseembly.snakemake.log"
    shell:
       """
       if [ -d {input.sample_folder}/bams ]; then
-	     python {params.pipeline} -rd {params.repo_dir} -b {input.sample_folder}
+	     python {params.pipeline} -rd {params.repo_dir} -b {input.sample_folder} > {log.assembly} 2>&1
 	  else
-         python {params.pipeline} -rd {params.repo_dir} -i {input.sample_folder} -s {input.sample_folder} -r1 _R1_001.fastq.gz -r2 _R2_001.fastq.gz -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -g {params.genbankfile} -l {params.length}
+         python {params.pipeline} -rd {params.repo_dir} -i {input.sample_folder} -s {input.sample_folder} -r1 _R1_001.fastq.gz -r2 _R2_001.fastq.gz -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -g {params.genbankfile} -l {params.length} > {log.assembly} 2>&1
       fi
 	  """
+
 
 rule variant_analysis:
    message: "Perform intra host variant analysis on virus library"
@@ -67,21 +86,23 @@ rule variant_analysis:
       pileup_file=('{sample}/04_variants/pileup')
    conda:
       "envs/env.yml"
+   log:
+      varanalysis = "logs/04_{sample}.variantanalysis.snakemake.log"
    shell:
       """
       if [ -d {input.sample_folder}/bams ]; then
-         python {params.var_analysis} -rd {params.repo_dir} -b {input.sample_folder}
+         python {params.var_analysis} -rd {params.repo_dir} -b {input.sample_folder} > {log.varanalysis} 2>&1
       else
-         python {params.var_analysis} -rd {params.repo_dir} -i {input.sample_folder} -r {params.reference} -ps_2 {params.ps_2kb} -ps_1_5 {params.ps_1_5kb}
+         python {params.var_analysis} -rd {params.repo_dir} -i {input.sample_folder} -r {params.reference} -ps_2 {params.ps_2kb} -ps_1_5 {params.ps_1_5kb} > {log.varanalysis} 2>&1
 	  fi
       """
+      
       
 rule QC_analysis:
    message: "Perform QC analysis of the virus library"
    input:
       sample_folder = ("{sample}"),
-      pileup_file = ('{sample}/04_variants/pileup'),
-      
+      pileup_file = ('{sample}/04_variants/pileup')
    params:
       repo_dir=os.environ.get("GIT_REPODIR"),
       run_ID=os.environ.get("RUN_ID"),
@@ -90,36 +111,48 @@ rule QC_analysis:
       forward_primer = os.path.join(workflow.basedir, "../db/", config["forward_primer"]),
       reverse_primer = os.path.join(workflow.basedir, "../db/", config["reverse_primer"]),
       virus = config["virus"],
+      breakdown = os.path.join(workflow.basedir, "../scripts/taxanomic_breakdown.R"),
+      plotcoverage = os.path.join(workflow.basedir, "../scripts/plot-coverage-report.R")
    output:
       qc_file = ('{sample}/03_qualityControl/{sample}_quality_control.pdf'),
       kraken = ("{sample}/03_qualityControl/{sample}_kraken_report.out")		
    conda:
       "envs/env.yml"
+   log:
+      QC = "logs/03_{sample}.QC.snakemake.log"
    shell:
       """
       if [ -d {input.sample_folder}/bams ]; then
-         python {params.QC} -rd {params.repo_dir} -b {input.sample_folder} -kdb /sc/arion/projects/PVI/db/minikraken_8GB_20200312
+         python {params.QC} -rd {params.repo_dir} -b {input.sample_folder} -kdb /sc/arion/projects/PVI/db/minikraken_8GB_20200312 > {log.QC} 2>&1
       else
-         python {params.QC} -rd {params.repo_dir} -i {input.sample_folder} -kdb /sc/arion/projects/PVI/db/minikraken_8GB_20200312 -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -v {params.virus}
+         python {params.QC} -rd {params.repo_dir} -i {input.sample_folder} -kdb /sc/arion/projects/PVI/db/minikraken_8GB_20200312 -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -v {params.virus} -pc {params.plotcoverage} -tb {params.breakdown} > {log.QC} 2>&1
       fi
       """
-
-rule file_rename:
-   message: "Rename input file for consistency"
+		    
+rule run_genome_annotation:
+   message: "Preform genome annotation if applicable"
    input:
-      sample_folder = ("{sample}/{sample}"),
-      qc_file = ('{sample}/03_qualityControl/{sample}_quality_control.pdf')
+      consensus_fasta_file = ('{sample}/02_assembly/{sample}.fasta'),
+      qc_file = ('{sample}/03_qualityControl/{sample}_quality_control.pdf'),
+   params:
+      virus = config["virus"],
+      annotation_script = os.path.join(workflow.basedir, "../scripts/run-genome-annotation.py")
    output:
-      renamed_file = directory(("{sample}/01_fastqs")),
+      annotation_out = ("{sample}/02_assembly/{sample}_genome_annotation.txt"),
+   conda:
+      "envs/vadr.yml"
+   log:
+      annotation = "logs/06_{sample}.annotation.snakemake.log"
    shell:
       """
-      mv {input.sample_folder} {output.renamed_file}
+	  python {params.annotation_script} -i {input.consensus_fasta_file} -v {params.virus} > {log.annotation} 2>&1
       """
-		    
+
+
 rule push_data_pathogendb:
    message: "Push genome assembly data to pathogenDB"
    input:
-      renamed_file = ("{sample}/01_fastqs")
+      annotation_out = ("{sample}/02_assembly/{sample}_genome_annotation.txt")
    params:
       sample_folder = ("{sample}"),
       sample_name = ("{sample}"),
@@ -130,88 +163,74 @@ rule push_data_pathogendb:
       length=config["length"],
       virus=config["ref_fasta_headers"]
    output:
-      pdb_upload_check = ("{sample}/06_status/pdb_upload_complete.txt")
+      pdb_upload_check = ("{sample}/05_status/pdb_upload_complete.txt")
    conda:
       "envs/env.yml"
+   log:
+      PDBPush = "logs/05_{sample}.PDBPush.snakemake.log"
    shell:
       """
-      python {params.pdbpush} -s {params.sample_name} -r {params.run_ID} -d {params.project_ID} -p {params.path} -l {params.length} -v {params.virus}
+      python {params.pdbpush} -s {params.sample_name} -r {params.run_ID} -d {params.project_ID} -p {params.path} -l {params.length} -v {params.virus} > {log.PDBPush} 2>&1
       touch {output.pdb_upload_check}
       """
+
 
 rule run_QualiMap_sample:
    message: "Run Qualimap for each sample" 
    input:
       bam = expand("{sample}/02_assembly/{sample}_ref.bam", sample=sampleids),
       qc_file = expand('{sample}/03_qualityControl/{sample}_quality_control.pdf', sample=sampleids),
-      pdb_upload_check = expand("{sample}/06_status/pdb_upload_complete.txt", sample=sampleids)
+      pdb_upload_check = expand("{sample}/05_status/pdb_upload_complete.txt", sample=sampleids)
       
    output:
       qualimap_dirs = ("multi_bamqc/multisampleBamQcReport.html")
+   log:
+      qualimap = "logs/07_qualimap.snakemake.log"
    shell:
       """
-      
       module load qualimap
-      qualimap multi-bamqc -d multibamqc_input.txt -r
+      qualimap multi-bamqc -d multibamqc_input.txt -r > {log.qualimap} 2>&1
       """
+
 
 rule multiqc:
    message: "Generate MultiQC Report for the run"
    input:
       qualimap_all_report = ("multi_bamqc/multisampleBamQcReport.html")
    output:
-      mqc_status = ("multiqc_report.html"),
+      mqc_file = ("multiqc_report.html"),
    conda:
       "envs/env.yml"
+   log:
+      multiqc = "logs/08_multiqc.snakemake.log"
    shell:
       """
-      multiqc .
+      multiqc . > {log.multiqc} 2>&1
       """ 
 
-rule run_VADR:
-   message: "Preform genome annotation using VADR"
+
+rule push_QC_report:
+   message: "Push the MultiQC Report to PDB"
    input:
-      consensus_fasta_file=('{sample}/02_assembly/{sample}.fasta'),
-      mqc_status = ("multiqc_report.html"),
+      mqc_file = ("multiqc_report.html"),
    params:
-      models = "/hpc/packages/minerva-centos7/vadr/1.3/",
-      current_sample = "{sample}",
+      push_script = os.path.join(workflow.basedir, "../scripts/move_QC_PDB.py"),
    output:
-      trimmedfasta = ("{sample}/05_VADR/{sample}_trimmed_fasta.fasta"),
-      vadr_out = directory("{sample}/05_VADR/annotation"),
+      moved_files = "file_movement_message.txt"
+   conda:
+      "envs/env.yml"
+   log:
+      pushQC = "logs/09_qcpush.snakemake.log"
    shell:
       """
-      module load vadr/1.3
-      export VADRMODELDIR=$VADRMODELDIR-sarscov2-1.3-1
-      export VADRSCRIPTSDIR="/hpc/users/khaliz03/opt/vadr/"
-      if [[ $(wc -l < {input.consensus_fasta_file}) -gt 1 ]]; then
-         $VADRSCRIPTSDIR/miniscripts/fasta-trim-terminal-ambigs.pl --minlen 50 --maxlen 30000 {input.consensus_fasta_file} > {output.trimmedfasta}
-         $VADRSCRIPTSDIR/v-annotate.pl --split --cpu 8 --glsearch -s -r --nomisc --mkey sarscov2 --lowsim5seq 6 --lowsim3seq 6 --alt_fail lowscore,insertnn,deletinn --mdir $VADRMODELDIR {output.trimmedfasta} {output.vadr_out} --noseqnamemax
-      else
-         touch {output.trimmedfasta}
-         mkdir -p {output.vadr_out}
-         echo "{params.current_sample} failed VADR genome annotation." > {output.vadr_out}/annotation.vadr.fail.list
-      fi
+      python {params.push_script} > {log.pushQC} 2>&1
       """
 
-rule check_VADR_output:
-   message: "Create empty output file if VADR directory is empty"
-   input:
-      vadr_out = expand("{sample}/05_VADR/annotation", sample=sampleids),
-   params:
-      vadr_fail = expand("{sample}/05_VADR/annotation/annotation.vadr.fail.list", sample=sampleids)
-   output:
-      vadr_report = expand("{runid}_VADR_fail.txt", runid = run_id)
-   shell:
-      """
-      cat {params.vadr_fail} > {output.vadr_report}
-      """
-      
 
 rule version_check:
    message: "Generate version report for the run"
    input:
-      vadr_report = "multiqc_report.html"
+      moved_files = "file_movement_message.txt"
    params:
       run_ID = expand("{runid}", runid=run_id),
       reference = config["reference"],
@@ -222,6 +241,8 @@ rule version_check:
       version_report = expand("{runid}_software_version.txt", runid=run_id)
    conda:
       "envs/env.yml"
+   log:
+      versioncheck = "logs/10_versioncheck.snakemake.log"
    shell:
       """
       echo "{params.run_ID} was run using the following versions \n" > {output.version_report}
@@ -262,8 +283,9 @@ rule version_check:
 	  conda list | grep "picard" &>> {output.version_report}
 	  
 	  echo "\n {params.run_ID} was aligned against the following reference: \n {params.reference} \n Using the following genabnk file: \n {params.genbankfile} \n " &>> {output.version_report}
-	  echo "\n primer sets used were: \n (1) {params.ps1} \n (2) {params.ps2}" &>> {output.version_report}
+	  echo "\n primer sets used were: \n (1) {params.ps1} \n (2) {params.ps2}" &>> {output.version_report} > {log.versioncheck} 2>&1
       """
+
 
 rule clean_up:
    message: "Remove intermediatary output"
@@ -277,9 +299,11 @@ rule clean_up:
       samples_run = config["samples"]
    conda:
       "envs/env.yml"
+   log:
+      cleanup = "logs/11_cleanup.snakemake.log"
    shell:
       """
-      python {params.cleanup} -p {params.samples_run}
+      python {params.cleanup} -p {params.samples_run} > {log.cleanup} 2>&1
       touch {output.cleanup_report}
       """
     
@@ -295,9 +319,11 @@ rule run_report:
       report_script = os.path.join(workflow.basedir, "../scripts/generate_run_report.R"),
    conda:
       "envs/env.yml"
+   log:
+      reporting = "logs/12_reporting.snakemake.log"
    shell:
       """
-      Rscript {params.report_script} {params.runid}
+      Rscript {params.report_script} {params.runid} > {log.reporting} 2>&1
       """
       
   
@@ -315,9 +341,11 @@ rule data_release_prep:
       virus = config["virus"]
    conda:
       "envs/env.yml"
+   log:
+      datarelease = "logs/13_datarelease.snakemake.log"
    shell:
       """
-      python {params.status_script} -p {params.sample_mapping} -r {params.runid} -v {params.virus} -f {params.ref_header}
+      python {params.status_script} -p {params.sample_mapping} -r {params.runid} -v {params.virus} -f {params.ref_header} > {log.datarelease} 2>&1
       touch {output.data_release_report}
       """
             
