@@ -306,50 +306,14 @@ def create_plots(sample_folder, amplified, threads, read1_suffix, read2_suffix, 
                             o.write("median coverage: 0\n")
                             
     subprocess.Popen("samtools bam2fq -f 4 -@ %s %s/02_assembly/%s_ref.bam | gzip > %s/%s_kraken_input.fastq.gz" % (threads, sample_folder, sample, qc_dir, sample), shell=True).wait()
-
-    subprocess.Popen("kraken2 --db %s --quick --report %s/%s_kraken_report.out --threads %s --output %s/%s_kraken --paired %s/%s/%s_*_R1_001.fastq.gz %s/%s/%s_*_R2_001.fastq.gz" % (krakendb, qc_dir, sample, threads, qc_dir, sample, sample, sample, sample, sample, sample, sample), shell=True).wait()
-
+    subprocess.Popen("kraken2 --db %s --quick --report %s/%s_kraken_report.out --threads %s --output %s/%s_kraken --paired %s/%s/%s_*_R1_001.fastq.gz %s/%s/%s_*_R2_001.fastq.gz" % (krakendb, qc_dir, sample, threads, qc_dir, sample, sample, "01_fastqs", sample, sample, "01_fastqs", sample), shell=True).wait()
     subprocess.Popen("samtools flagstat  %s/02_assembly/%s_ref.bam > %s/%s_refbam.flagstat" % (sample_folder, sample, qc_dir, sample), shell=True).wait()
     
- #   with open("%s/%s_refbam.flagstat" % (qc_dir, sample)) as f:
- #       total_reads = int(f.readline().split()[0])
- #       f.readline()
- #       f.readline()
- #       f.readline()
- #       mapped_reads = int(f.readline().split()[0])
- #   chart = []
- #   chart.append((mapped_reads, "%s_mapped" % args.virus))
- #   other = 0
- #   with open("%s/%s_kraken_report.out" % (qc_dir, sample)) as f:
- #       for line in f:
- #           read_count = int(line.split()[2])
- #           classification = line.split()[5:]
- #           classification = ' '.join(classification)
- #           if classification == "Severe acute respiratory syndrome coronavirus 2":
- #               classification = "SARS-CoV-2"
- #           if read_count / total_reads > 0.01:
- #               chart.append((read_count, classification))
- #           else:
- #               other += read_count
- #   chart.append((other, "other"))
- #   fig, ax = plt.subplots()
- #   sizes = []
- #   labels = []
- #   explode = []
- #   for i in chart:
- #       sizes.append(i[0]/total_reads*100)
- #       labels.append(i[1])
- #       explode.append(0)
- #   explode[0] = 0.1
- #   ax.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', startangle=90)
- #   ax.axis('equal')
- #   fig.suptitle("kraken assignment", fontsize=10)
- #   plt.savefig(pp, dpi=300)
     pp.close()
 
-    subprocess.call("~/opt/rap/scripts/taxanomic_breakdown.R -k %s/%s_kraken_report.out -o %s/taxanomic.pdf" % (qc_dir, sample, qc_dir), shell=True)
+    subprocess.call("%s -k %s/%s_kraken_report.out -o %s/taxanomic.pdf" % (args.taxanomic_breakdown, qc_dir, sample, qc_dir), shell=True)
     for chrs in chromosomes:
-        subprocess.call("~/opt/rap/scripts/plot-coverage-report.R -i %s/04_variants/%s_variable_bases.tsv -o %s/%s_var.pdf" % (sample, chrs, qc_dir, chrs), shell=True)
+        subprocess.call("%s -i %s/04_variants/%s.%s_variable_bases.tsv -o %s/%s_var.pdf" % (args.plot_coverage, sample, sample, chrs, qc_dir, chrs), shell=True)
         subprocess.Popen("pdfunite %s/taxanomic.pdf %s/%s_quality_control2.pdf %s/%s_var.pdf %s/%s_quality_control.pdf" % (qc_dir, qc_dir, sample, qc_dir, chrs, qc_dir, sample), shell=True).wait()
     subprocess.Popen("rm %s/%s_quality_control2.pdf" % (qc_dir, sample), shell=True).wait()
     subprocess.Popen("rm %s/taxanomic.pdf" % (qc_dir), shell=True).wait()
@@ -531,6 +495,8 @@ parser.add_argument('-r', '--reference', action='store', default="COVID.fa", hel
 parser.add_argument('-pf', '--forward_primer', action='store', default="SARS-CoV-2_primers_5prime_NI.fa", help='forward primer')
 parser.add_argument('-pr', '--reverse_primer', action='store', default="SARS-CoV-2_primers_3prime_NI.fa", help='reverse primer')
 parser.add_argument('-v', '--virus', action='store', default="SARS-CoV-2", help='virus/lineage: SARS-CoV-2, 229E, OC43, NL63, HKU1, Monkeypox')
+parser.add_argument('-pc', '--plot_coverage', action='store', default="SARS-CoV-2", help='path to plotting coverage script')
+parser.add_argument('-tb', '--taxanomic_breakdown', action='store', help='path to taxanomic breakdown script')
 
 args = parser.parse_args()
 if not args.thermo_folder is None:
