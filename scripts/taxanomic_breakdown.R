@@ -52,8 +52,10 @@ library(dplyr);
 pdf(file=opt$output);
 
 # Make kraken plots
-kraken_table <- read.delim(opt$krakeninput, header = FALSE, sep = "\t", stringsAsFactors = F);
-
+kraken_table <- try(read.delim(opt$krakeninput, header = FALSE, sep = "\t", stringsAsFactors = F))
+if(inherits(kraken_table, "try-error")){
+    print("Kraken report input is empty!")}
+    
 var_nam <- unlist(kraken_table[6]);
 var_per <- unlist(kraken_table[1]);
 
