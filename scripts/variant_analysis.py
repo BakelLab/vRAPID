@@ -10,7 +10,7 @@ def run_variant_analysis(args):
     repo_dir = args.repo_dir
     bam = "%s/02_assembly/%s_ref.bam" % (sample_folder, sample)
     ref_fasta = "%s" % args.reference
-    subprocess.Popen("samtools mpileup -f %s %s > %s/pileup" % (ref_fasta, bam, outdir), shell=True).wait()
+    subprocess.Popen("samtools mpileup -f %s %s | gzip > %s/pileup" % (ref_fasta, bam, outdir), shell=True).wait()
     modlist = ['A', 'T', 'C', 'G', 'a', 't', 'c', 'g', 'n', 'I', 'D']
     
     chromosomes = []
@@ -44,7 +44,7 @@ def run_variant_analysis(args):
                 start, end = int(start), int(end)
                 for i in range(min([start, end]), max(start,end)):
                     primer_positions.add(i)
-        with open("%s/%s_pileup" % (outdir, chrs)) as f, open("%s/%s_variable_bases.tsv" % (outdir, chrs), "w") as out:
+        with open("%s/%s_pileup" % (outdir, chrs)) as f, open("%s/%s.%s_variable_bases.tsv" % (outdir, sample, chrs), "w") as out:
             out.write("reference\tposition\tflagged\tin_primer\treference_base\tpilon_base\tdepth\treference_base_fraction\tforward_depth"
                     "\tforward_fraction\treverse_detph\treverse_fraction\tA\tT\tC\tG\ta\tt\tc\tg\tn\tinsertion\tdeletion\n")
             for line in f:
