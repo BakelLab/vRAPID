@@ -78,6 +78,8 @@ alt.ratio  = alt.ratio[complete.cases(alt.ratio),];
 alt.bases  = apply(alt.ratio, 1, function(x, thr, bases){paste(as.character(bases[x>=thr & x<0.5]), collapse="/")}, opt$varthr, names(alt.ratio))
 
 # Annotate only variants present in both forward and reverse reads
+
+# Prevent NAs in empty samples
 set.var[is.na(set.var)] <- FALSE
 
 if (any(set.var)) {
@@ -87,7 +89,7 @@ if (any(set.var)) {
       base = alt.bases[[i]]
       row = as.numeric(names(alt.bases)[i])
       base = unlist(strsplit(base,"/"))
-      print(base)
+
       
     }
       # check that base is not the same as pilon base
@@ -106,14 +108,17 @@ if (any(set.var)) {
                       if (all(all.bases %in% b)){
                           alt.bases[[i]] = i 
                       } else {
-                          print(all.bases)
-                        print("all.bases[!all.bases %in% b]")
-                        print(b)
-                        print(all.bases %in% b)
-                        print(all.bases[!all.bases %in% b])
-                        print(alt.bases)
+                        for(x in all.bases[! all.bases %in% b]){
+                          if(x %in% b){
+                            alt.bases[[i]] = i
+                          } else{
+                            alt.bases[[i]] = x
+                          }
+                        
+                          
+                        }
                           #################THIS THROWS ERROR BC IT RETURNS 2. LOOP? IF ALL?)######
-                          alt.bases[[i]] = all.bases[!all.bases %in% b]
+                          #alt.bases[[i]] = all.bases[!all.bases %in% b]
             }
           }
           
