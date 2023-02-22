@@ -9,6 +9,8 @@ import pandas as pd
 import shutil
 import glob
 from argparse import ArgumentParser
+import subprocess
+import gzip
 
 ##########
 # FILES #
@@ -25,16 +27,25 @@ test = mappings.set_index('Sample_ID')
 
 samples = mappings["Sample_ID"].tolist()
 
-extensions = ('_pilon.changes', '_pilon.fasta', '_pilon.vcf', '_pilonPilon.bed', '.fasta', '.1.log', 'prokka', 'reads.1.fq.gz', 'reads.2.fq.gz', 'shovill', '_insert_size_histogram.pdf', '_insert_size_metrics.txt', '_marked_dup_metrics.txt', '_marked_duplicates.bam', '_picard_output.txt', '_ref_stats', '_ref.bam', '_ref.bam.bai')
+extensions = ('_pilon.changes', '_pilon.fasta', '_pilon.vcf', '_pilonPilon.bed', '.fasta', '.1.log', 'prokka', 'reads.1.fq.gz', 'reads.2.fq.gz', 'shovill', '_ref_stats', '_ref.bam', '_ref.bam.bai')
 
 
 
 try:
     for s in samples:
-        s=s+'/02_assembly/'
-        for f in list(os.listdir(s)):
+        assembly=s+'/02_assembly/'
+        for f in list(os.listdir(assembly)):
             if not f.endswith(extensions):
-                os.remove(s+f)
-
+                os.remove(assembly+f)
+        var=s+"/04_variants"
+        for f in list(os.listdir(var)):
+            if f.endswith("pileup"):
+                v = var+"/"+f
+                vgz = var+"/"+f+".gz"
+                with open(v, 'rb') as f_in:
+                    with gzip.open(vgz, 'wb') as f_out:
+                        shutil.copyfileobj(f_in, f_out)
+                os.remove(v)
+            
 except OSError as e:
 	print(e)
