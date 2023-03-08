@@ -136,6 +136,9 @@ if (any(set.var)) {
 }
 
 # Open plot file
+header <- unlist(lapply(strsplit(opt$output, "_", fixed = TRUE),function(x) x[3]))
+header <- unlist(lapply(strsplit(header, "/", fixed = TRUE),function(x) x[2]))
+
 pdf(file=paste(opt$output));
 tryCatch( { 
   
@@ -156,7 +159,7 @@ tryCatch( {
   }else{
     ylim = c(0, max(y.cov));
   }
-  plot(x.cov,y.cov, type="n",xlab="Position (bp)", ylab="Base coverage (x 1000)", ylim=ylim, main='Intra-host variance plot');
+  plot(x.cov,y.cov, type="n",xlab="Position (bp)", ylab="Base coverage (x 1000)", ylim=ylim, main=paste0(header,': Intra-host variance plot'));
   if(opt$lowcov){
     lowcov = x.cov[y.cov<opt$lowcov]
     lines(lowcov,rep(ylim[2],length(lowcov)),type="h", col=rgb(229/255,229/255,229/255));
