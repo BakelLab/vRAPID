@@ -178,7 +178,7 @@ def create_plots(sample_folder, amplified, threads, read1_suffix, read2_suffix, 
                 count += 1
         if count == 1:
             for i in os.listdir(repo_dir + '/db'):
-                if i.startswith("%s" % args.virus) and i.endswith(".csv"):
+                if i.startswith("%s" % args.virus) and i.endswith(".tsv"):
                     with open(os.path.join(repo_dir, 'db', i)) as f:
                         labels = []
                         vals = []
@@ -247,7 +247,7 @@ def create_plots(sample_folder, amplified, threads, read1_suffix, read2_suffix, 
                     
                     plt.savefig(pp, dpi=300)
                     for i in os.listdir(repo_dir + '/db'):
-                        if i.startswith("%s" % args.virus) and i.endswith(".csv"):
+                        if i.startswith("%s" % args.virus) and i.endswith(".tsv"):
                             with open(os.path.join(repo_dir, 'db', i)) as f:
                                 labels = []
                                 vals = []
@@ -311,169 +311,14 @@ def create_plots(sample_folder, amplified, threads, read1_suffix, read2_suffix, 
     
     pp.close()
 
-    subprocess.call("%s -k %s/%s_kraken_report.out -o %s/taxanomic.pdf" % (args.taxanomic_breakdown, qc_dir, sample, qc_dir), shell=True)
+    subprocess.Popen("%s -k %s/%s_kraken_report.out -o %s/taxanomic.pdf" % (args.taxanomic_breakdown, qc_dir, sample, qc_dir), shell=True).wait()
     for chrs in chromosomes:
-        subprocess.call("%s -i %s/04_variants/%s.%s_variable_bases.tsv -o %s/%s_var.pdf" % (args.plot_coverage, sample, sample, chrs, qc_dir, chrs), shell=True)
-        subprocess.Popen("pdfunite %s/taxanomic.pdf %s/%s_quality_control2.pdf %s/%s_var.pdf %s/%s_quality_control.pdf" % (qc_dir, qc_dir, sample, qc_dir, chrs, qc_dir, sample), shell=True).wait()
+        subprocess.Popen("%s -i %s/04_variants/%s.%s_variable_bases.tsv -o %s/%s_var.pdf" % (args.plot_coverage, sample, sample, chrs, qc_dir, chrs), shell=True).wait()
+        subprocess.Popen("pdfunite %s/taxanomic.pdf %s/%s_quality_control2.pdf %s/*_var.pdf %s/%s_quality_control.pdf" % (qc_dir, qc_dir, sample, qc_dir, qc_dir, sample), shell=True).wait()
     subprocess.Popen("rm %s/%s_quality_control2.pdf" % (qc_dir, sample), shell=True).wait()
     subprocess.Popen("rm %s/taxanomic.pdf" % (qc_dir), shell=True).wait()
     for chrs in chromosomes:
         subprocess.Popen("rm %s/%s_var.pdf" % (qc_dir, chrs), shell=True).wait()
-
-
-def create_plots_thermo(sample_folder, amplified, threads, krakendb):
-    repo_dir = args.repo_dir
-    sample = os.path.basename(sample_folder.rstrip('/'))
-    qc_dir = sample_folder + '/QC'
-    if not os.path.exists(qc_dir):
-        os.makedirs(qc_dir)
-    count = 0
-    pp = PdfPages('%s/%s_quality_control2.pdf' % (qc_dir, sample))
-
-    # main coverage bit
-    subprocess.Popen("samtools depth -aa %s/02_assembly/ref_mapq80.bam > %s/%s_coverage.txt" % (sample_folder, qc_dir, sample),
-                     shell=True).wait()
-    with open("%s/%s_coverage.txt" % (qc_dir, sample)) as f:
-        cov1, cov2 = [], []
-        for line in f:
-            cov = int(line.split()[2])
-            cov1.append(cov)
-            cov2.append(min([100, cov]))
-    fig, axs = plt.subplots(2, sharex=True, gridspec_kw={'hspace': 0})
-    axs[0].plot(cov1)
-    axs[1].plot(cov2)
-    sample = os.path.basename(sample_folder.rstrip('/'))
-    ns = 0
-    length = 0
-    with open(sample_folder + '/02_assembly/' + sample + '.fasta') as f:
-        for line in f:
-            if not line.startswith('>'):
-                length += len(line.rstrip())
-                ns += line.lower().count('n')
-    fig.suptitle("all reads\nconsensus %d bp long\n%d Ns" % (length, ns), fontsize=10)
-    with open('%s/%s_report.txt' % (qc_dir, sample), 'w') as o:
-        o.write('== all reads ==\n')
-        o.write("length: %d\n" % length)
-        o.write("Ns: %d\n" % ns)
-        o.write("max coverage: %d\n" % max(cov1))
-        o.write("median coverage: %d\n" % statistics.median(cov1))
-    for ax in axs.flat:
-        ax.set(xlabel='position', ylabel='coverage')
-
-    for ax in axs.flat:
-        ax.label_outer()
-    plt.savefig(pp, dpi=300)
-    with open("%s/04_variants/pileup" % sample_folder) as f:
-        count_dict = {'a': [], 't': [], 'c': [], 'g': [],'n': [], 'I': [], 'D': []}
-        positions = []
-        for line in f:
-            ref, pos, refbase, cov, seq, qual = line.split()
-            seq = seq.lower()
-            refbase = refbase.lower()
-            counts = {'a':0, 't':0, 'c':0, 'g':0, 'n':0, 'I':0, 'D':0}
-            depth = 0
-            seq = list(seq)
-            getdel = False
-            getins = False
-            while seq != []:
-                x = seq.pop(0)
-                mod = None
-                if x == '.' or x == ',':
-                    mod = refbase
-                elif x == '+':
-                    getins = True
-                    digit = ''
-                elif x == '-':
-                    getdel = True
-                    digit = ''
-                elif x.isdigit() and (getdel or getins):
-                    digit += x
-                elif getdel:
-                    for j in range(int(digit) -1):
-                        seq.pop(0)
-                    mod = 'D'
-                    getdel = False
-                elif getins:
-                    for j in range(int(digit) -1):
-                        seq.pop(0)
-                    mod = 'I'
-                    getins = False
-                elif x == '^':
-                    seq.pop(0)
-                elif x in ['a', 't', 'c', 'g']:
-                    mod = x
-                elif x in ['$', '*']:
-                    pass
-                else:
-                    sys.exit("Base not recognised " + x)
-                if not mod is None:
-                    counts[mod] += 1
-                    depth += 1
-            if  refbase == 'n':
-                continue
-            if depth >= 10 and counts[refbase] /depth <= 0.85:
-                for i in counts:
-                    count_dict[i].append(round(counts[i] /depth,2))
-                positions.append(pos + ' (' + refbase + ')\n['+str(depth)+']')
-
-    fig, ax = plt.subplots()
-    #count_dict=sorted(count_dict.items(), key=operator.itemgetter(1)).reverse()
-    print(count_dict)
-    prev_key='start'
-    for i in count_dict:
-        if prev_key=='start':
-            bottom_val=[0]*len(positions)
-        else:
-            bottom_val=[x + y for x, y in zip(bottom_val, count_dict[prev_key])]
-        ax.bar(positions, count_dict[i],0.5, label=i,bottom=bottom_val)
-        prev_key=i
-
-
-    ax.set_ylabel('Proportions')
-    ax.set_title('Variants from reference')
-    ax.set_xlabel('Position (ref. base)\n[read count]')
-    plt.xticks(rotation=90)
-    ax.legend()
-    fig.subplots_adjust(bottom=0.3)
-    plt.savefig(pp, dpi=300)
-
-    subprocess.Popen("samtools bam2fq -f 4 -@ %s %s/02_assembly/%s_ref.REF_%s.bam | gzip > %s/%s_kraken_input.fastq.gz" % (threads, sample_folder, sample, chrs, qc_dir, chrs), shell=True).wait()
-    subprocess.Popen("kraken2 --db %s --quick --report %s/%s_kraken_report.out --threads %s --output %s/%s_kraken %s/%s_kraken_input.fastq.gz" %
-                     (krakendb, qc_dir, chrs, threads, qc_dir, chrs, qc_dir, chrs), shell=True).wait()
-    subprocess.Popen("samtools flagstat  %s/02_assembly/%s_ref.REF_%s.bam > %s/%s_refbam.flagstat" % (sample_folder, sample, chrs, qc_dir, chrs), shell=True).wait()
-    with open("%s/%s_refbam.flagstat" % (qc_dir, chrs)) as f:
-        total_reads = int(f.readline().split()[0])
-        f.readline()
-        f.readline()
-        f.readline()
-        mapped_reads = int(f.readline().split()[0])
-    chart = []
-    chart.append((mapped_reads, "%s" % args.virus))
-    other = 0
-    with open("%s/%s_kraken_report.out" % (qc_dir, sample)) as f:
-        for line in f:
-            read_count = int(line.split()[2])
-            classification = line.split()[5:]
-            classification = "-".join(classification)
-            if read_count / total_reads > 0.01:
-                chart.append((read_count, classification))
-            else:
-                other += read_count
-    chart.append((other, "other"))
-    fig, ax = plt.subplots()
-    sizes = []
-    labels = []
-    explode = []
-    for i in chart:
-        sizes.append(i[0]/total_reads*100)
-        labels.append(i[1])
-        explode.append(0)
-    explode[0] = 0.1
-    ax.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', startangle=90)
-    ax.axis('equal')
-    fig.suptitle("kraken assignment", fontsize=10)
-    plt.savefig(pp, dpi=300)
-    pp.close()
 
 
 __version__ = "0.1.1"
@@ -485,7 +330,6 @@ parser = argparse.ArgumentParser(prog='COVID pipeline QC', formatter_class=argpa
 
 parser.add_argument('-rd', '--repo_dir', action='store', help='path to repo dir')
 parser.add_argument('-i', '--illumina_folder', action='store', help='Sample folder created by process_run.py')
-parser.add_argument('-b', '--thermo_folder', action='store', help='Sample folder created by process_run.py')
 parser.add_argument('-a', '--not_amplified', action='store_true', help="Skip cutadapt")
 parser.add_argument('-t', '--threads', action='store', default="12", help='number of threads to use')
 parser.add_argument('-r1', '--read1_suffix', action='store', default="_1.fastq.gz", help='suffix for finding read 1')
@@ -494,12 +338,11 @@ parser.add_argument('-kdb', '--kraken_db', action='store', default="/sc/arion/pr
 parser.add_argument('-r', '--reference', action='store', default="COVID.fa", help='reference genome for assembly')
 parser.add_argument('-pf', '--forward_primer', action='store', default="SARS-CoV-2_primers_5prime_NI.fa", help='forward primer')
 parser.add_argument('-pr', '--reverse_primer', action='store', default="SARS-CoV-2_primers_3prime_NI.fa", help='reverse primer')
-parser.add_argument('-v', '--virus', action='store', default="SARS-CoV-2", help='virus/lineage: SARS-CoV-2, 229E, OC43, NL63, HKU1, Monkeypox')
+parser.add_argument('-v', '--virus', action='store', default="SARS-CoV-2", help='virus/lineage: SARS-CoV-2, sCoV, MPOX, Influenza-A, Influenza-B')
 parser.add_argument('-pc', '--plot_coverage', action='store', default="SARS-CoV-2", help='path to plotting coverage script')
 parser.add_argument('-tb', '--taxanomic_breakdown', action='store', help='path to taxanomic breakdown script')
 
 args = parser.parse_args()
-if not args.thermo_folder is None:
-    create_plots_thermo(args.thermo_folder, not args.not_amplified, args.threads, args.kraken_db)
-elif not args.illumina_folder is None:
+
+if not args.illumina_folder is None:
     create_plots(args.illumina_folder, not args.not_amplified, args.threads, args.read1_suffix, args.read2_suffix, args.kraken_db)
