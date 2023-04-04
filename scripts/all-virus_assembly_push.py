@@ -2,8 +2,8 @@
 
 """
 Written by: Adriana van de Guchte
-Last Update: 3/28/2023
-Version: 1.0
+Last Update: 4/4/2023
+Version: 1.1
 Purpose: Push viral assemblies to PDB
 
 """
@@ -128,6 +128,7 @@ def parse_cds(input_file):
 # function for handling kraken report
 def process_kraken(kraken_path):
     return_dict = {}
+    return_dict['kraken_total'] = 0
     return_dict['bacteria_reads'] = 0
     return_dict['eukaryote_reads']=0
     return_dict['virus_reads']=0
@@ -137,6 +138,8 @@ def process_kraken(kraken_path):
         for line in f:
             read_count_clade = int(line.split()[1])
             classification = line.split()[5]
+            if classification=='root':
+                return_dict['kraken_total']=read_count_clade
             if classification=='Bacteria':
                 return_dict['bacteria_reads']=read_count_clade
             if classification=='Eukaryota':
@@ -153,15 +156,13 @@ def process_kraken(kraken_path):
 def process_percentages(kraken_dict,data_dict):
     return_dict = {}
     try:
-            return_dict['bacteria_per'] = round((kraken_dict['bacteria_reads']/data_dict['flagstat']['total_reads'])*100,2)
-            return_dict['viral_per'] = round((kraken_dict['virus_reads']+data_dict['flagstat']['mapped_reads']/data_dict['flagstat']['total_reads'])*100,2)
-            if return_dict['viral_per'] > 100:
-                return_dict['viral_per'] = .99
-            return_dict['eukaryote_per'] = round((kraken_dict['eukaryote_reads']/data_dict['flagstat']['total_reads'])*100,2)
+            return_dict['bacteria_per'] = round((kraken_dict['bacteria_reads']/kraken_dict['kraken_total'])*100,2)
+            return_dict['viral_per'] = round((kraken_dict['virus_reads']/kraken_dict['kraken_total'])*100,2)
+            return_dict['eukaryote_per'] = round((kraken_dict['eukaryote_reads']/kraken_dict['kraken_total'])*100,2)
             return_dict['mapped_per'] = round((data_dict['flagstat']['mapped_reads']/data_dict['flagstat']['total_reads'])*100,2)
             return_dict['short_unmapped_per'] = round(100-return_dict['mapped_per'],2)
-            return_dict['fungi_per'] = round((kraken_dict['fungi_reads']/data_dict['flagstat']['total_reads'])*100,2)
-            return_dict['archaea_per'] = round((kraken_dict['archaea_reads']/data_dict['flagstat']['total_reads'])*100,2)
+            return_dict['fungi_per'] = round((kraken_dict['fungi_reads']/kraken_dict['kraken_total'])*100,2)
+            return_dict['archaea_per'] = round((kraken_dict['archaea_reads']/kraken_dict['kraken_total'])*100,2)
     except ZeroDivisionError:
             return_dict['bacteria_per'] = 0
             return_dict['viral_per'] = 0
@@ -171,6 +172,7 @@ def process_percentages(kraken_dict,data_dict):
             return_dict['fungi_per'] = 0
             return_dict['archaea_per'] = 0
     return return_dict
+            
             
 # function to handle variable bases tsv
 def var_count(sample,multi,headers,variant_dir):
