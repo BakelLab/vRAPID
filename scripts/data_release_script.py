@@ -46,22 +46,22 @@ for i in samples:
         collablist.append(collab)
 
 
-for collab in collablist:
-    name_of_file = args.runid+"_"+collab+".tar.gz"
-    tar_file = tarfile.open(name_of_file,"w:gz")
-    for i in samples:
-        tar_file.add(i+"/02_assembly/"+i+".fasta")
-        tar_file.add(i+"/02_assembly/reads.1.fq.gz")
-        tar_file.add(i+"/02_assembly/reads.2.fq.gz")
-        tar_file.add(i+"/02_assembly/"+i+"_ref.bam")
-        tar_file.add(i+"/02_assembly/"+i+"_ref.bam.bai")
-        tar_file.add(i+"/03_qualityControl/"+i+"_quality_control.pdf")
-        for v in fasta_headers:
-            tar_file.add(i+"/04_variants/"+v+"_variable_bases.tsv")
-        fastqs = i+"/01_fastqs/"
-        for fastq in os.listdir(fastqs):
-            if fastq.endswith(".fastq.gz"):
-                tar_file.add(i+"/01_fastqs/"+fastq)
+#for collab in collablist:
+#    name_of_file = args.runid+"_"+collab+".tar.gz"
+#    tar_file = tarfile.open(name_of_file,"w:gz")
+#    for i in samples:
+#        tar_file.add(i+"/02_assembly/"+i+".fasta")
+#        tar_file.add(i+"/02_assembly/reads.1.fq.gz")
+#        tar_file.add(i+"/02_assembly/reads.2.fq.gz")
+#        tar_file.add(i+"/02_assembly/"+i+"_ref.bam")
+#        tar_file.add(i+"/02_assembly/"+i+"_ref.bam.bai")
+#        tar_file.add(i+"/03_qualityControl/"+i+"_quality_control.pdf")
+#        for v in fasta_headers:
+#            tar_file.add(i+"/04_variants/"+i+"."+v+"_variable_bases.tsv")
+#        fastqs = i+"/01_fastqs/"
+#        for fastq in os.listdir(fastqs):
+#            if fastq.endswith(".fastq.gz"):
+#                tar_file.add(i+"/01_fastqs/"+fastq)
 
 try:
     # build connection to DB, turn off autocommit, set cursor
@@ -69,24 +69,26 @@ try:
     db.autocommit = False
     cur = db.cursor()
     # build query
-    query = "SELECT Sample_Systematic_ID, Sample_Name, Strain_Name, Flu_Type, Expected_Subtype, assembly_status, Assembly_quality, Total_reads, Uniq_mapped_read_percent, coronavirus_percent, IAV_percent, IBV_percent, Eukaryota_percent, Bacteria_percent, Variant_pos_sum_15pct, Sequencing_method, Sequencing_region FROM `tCEIRS_assemblies` assemblies JOIN tCEIRS_Extracts extracts ON assemblies.Extract_ID = extracts.Extract_ID JOIN tCEIRS_Isolates isolates on extracts.Isolate_ID = isolates.Isolate_ID WHERE assemblies.assembly_run = %s AND isolates.Flu_Type = %s AND extracts.Sample_Systematic_ID LIKE %s"
+    query = "SELECT Sample_Systematic_ID, Sample_Name, Strain_Name, Flu_Type, Expected_Subtype, assembly_status, Assembly_quality, Total_reads, Uniq_mapped_read_percent, Coverage_10, Coverage_100, Viral_percent, Archaea_percent, Fungi_percent, Eukaryota_percent, Bacteria_percent, Variant_pos_sum_15pct, Sequencing_method, Sequencing_region FROM `tCEIRS_assemblies` assemblies JOIN tCEIRS_Extracts extracts ON assemblies.Extract_ID = extracts.Extract_ID JOIN tCEIRS_Isolates isolates on extracts.Isolate_ID = isolates.Isolate_ID WHERE assemblies.assembly_run = %s AND isolates.Flu_Type = %s AND extracts.Sample_Systematic_ID LIKE %s"
     # loop through collab list
     for collab in collablist:
-        for s in samples:
-            for v in virus:
-                # setup query variables
-                condition = (run,v,s+'%')
-                cur.execute(query,condition)
-                result=cur.fetchall()
-                # writes results to csv per collab
-                with open(run + '_' + collab + '_assemblies.csv', 'w') as fp:
-                    myFile = csv.writer(fp, lineterminator='\n')
-                    headers = ('Sample_Systematic_ID', 'Sample_Name', 'Strain_Name', 'Flu_Type','Expected_Subtype','assembly_status','Assembly_quality','Total_reads','Uniq_mapped_read_percent','coronavirus_percent','IAV_percent','IBV_percent','Eukaryota_percent','Bacteria_percent','Variant_pos_sum_15pct','Sequencing_method','Sequencing_region')
-                    myFile.writerow(headers)
+        with open(run + '_' + collab + '_assemblies.csv', 'w') as fp:
+            myFile = csv.writer(fp, lineterminator='\n')
+            headers = ('Sample_Systematic_ID', 'Sample_Name', 'Strain_Name', 'Flu_Type','Expected_Subtype','assembly_status','Assembly_quality','Total_reads','Uniq_mapped_read_percent','Coverage_10','Coverage_100','Viral_percent', 'Archaea_percent', 'Fungi_percent', 'Eukaryota_percent','Bacteria_percent','Variant_pos_sum_15pct','Sequencing_method','Sequencing_region')
+            myFile.writerow(headers)
+            for s in samples:
+                for v in virus:
+                    # setup query variables
+                    condition = (run,v,s+'%')
+                    cur.execute(query,condition)
+                    result=cur.fetchall()                
                     myFile.writerows(result)
 # print db errors
 except mysql.connector.Error as e:
         print("Database Error: {}".format(e))
+        
+except Exception as e:
+        print("Error: {}".format(e))       
 
 # close connection
 finally:
@@ -96,4 +98,4 @@ finally:
 
 
 
-tar_file.close()
+#tar_file.close()
