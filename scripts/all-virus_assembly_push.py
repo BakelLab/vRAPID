@@ -2,8 +2,8 @@
 
 """
 Written by: Adriana van de Guchte
-Last Update: 4/4/2023
-Version: 1.1
+Last Update: 4/10/2023
+Version: 1.2
 Purpose: Push viral assemblies to PDB
 
 """
@@ -509,6 +509,7 @@ if __name__ == "__main__":
     parser.add_argument('-s', '--ins', help='systematic sample name', required=True)
     parser.add_argument('-r', '--inr', help='run id', required=True)
     parser.add_argument('-c', '--inc', help='path to config file', required=True)
+    parser.add_argument('-p', '--altpath', help='alternate file path for samples', required=False)
 
     args = parser.parse_args()
 
@@ -526,6 +527,10 @@ if __name__ == "__main__":
     length = config_data['length']
     headers = config_data['ref_fasta_headers']
     base_dir = config_data['path']
+
+    # overwrites base directory with alternate if one is provided as an argument
+    if args.altpath:
+        base_dir=args.altpath
 
     # begin logging
     logpath = os.path.join(sample,'05_status',sample+'.assembly-push.log')
@@ -768,13 +773,13 @@ if __name__ == "__main__":
         
         
     # assign processed fastas to appropriate dictionary key
-    for segment in fastas['sequences']:
-        if segment in data_dict['sequences']['primary']:
-            try:
+    try:
+        for segment in fastas['sequences']:
+            if segment in data_dict['sequences']['primary']:
                 data_dict['sequences']['primary'][segment]  = fastas['sequences'][segment]
                 logging.info(f'Fasta assignment run successfully.')
-            except Exception as e:
-                logging.exception(f'Error in fasta assignment: %s', e)
+    except Exception as e:
+        logging.exception(f'Error in fasta assignment: %s', e)
 
     # assign processed cds and protein segments to appropriate dict location
     if virus == 'IAV' or virus == 'IBV':
@@ -1021,7 +1026,7 @@ if __name__ == "__main__":
             logging.info('Database connection closed.')
 
 # system exit for improper arguments
-if len(sys.argv)!=7:
+if len(sys.argv)!=7|len(sys.argv)!=9:
    print(usage())
    sys.exit(0)
             
