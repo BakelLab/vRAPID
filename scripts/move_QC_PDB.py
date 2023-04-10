@@ -2,10 +2,10 @@
 
 """
 Written by: Adriana van de Guchte
-Last Update: 2/2/2023
-Version: 1.0
+Last Update: 4/4/2023
+Version: 1.1
 Purpose: Move MultiQC and BamQC files from Minerva into PDB holding dir and setup folder system.
-Last Update: Initial build.
+Last Update: TD# now an arg.
 
 """
 
@@ -38,17 +38,19 @@ if __name__ == "__main__":
 
     def usage(code="0"):
         print("error: " + str(code))
-        print("\n\tusage: move_QC_PDB.py")
+        print("\n\tusage: move_QC_PDB.py -r <run_id>")
         sys.exit(0)
 
     parser = ArgumentParser(description="Move files from Minerva to PDB")
+    parser.add_argument('-r', '--inr', help='run id', required=True)
+    args = parser.parse_args()
     
     # # collect TD# from directory name
     directory = os.getcwd()
 
     # find corresponding xt number
     # split directory by / delimiter and take [-1] item as the TD#
-    td = (directory.split("/")[-1],)
+    td = (args.inr,)
     # build and execute query to collect XT number from DB based on TD#
     query = "SELECT `Sequence_Plate_ID` FROM `tIlluminaCoreSubmissions` WHERE `Sequence_Run_ID` = %s"
     cur.execute(query, td)
@@ -94,3 +96,7 @@ if __name__ == "__main__":
         f.write("Error occurred while copying file. {}".format(e))
         f.close()
 
+# system exit for improper arguments
+if len(sys.argv)!=3:
+   print(usage())
+   sys.exit(0)
