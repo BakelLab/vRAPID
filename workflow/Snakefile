@@ -24,8 +24,6 @@ run_id=os.environ.get("RUN_ID").split('=')[1]
 rule all:
    input:
       data_release_report = expand("{runid}_data_release.txt", runid=run_id)
-      
-
 
 rule file_rename:
    message: "Rename input file for consistency"
@@ -53,7 +51,8 @@ rule assemble:
       forward_primer = os.path.join(workflow.basedir, "../db/", config["forward_primer"]),
       reverse_primer = os.path.join(workflow.basedir, "../db/", config["reverse_primer"]),
       genbankfile = os.path.join(workflow.basedir, "../db/", config["genbank"]),
-      length = config["length"]
+      length = config["length"],
+      ref_headers = config["ref_fasta_headers"]
    output:
       consensus_fasta_file=('{sample}/02_assembly/{sample}.fasta'),
       bamfile = ("{sample}/02_assembly/{sample}_ref.bam")
@@ -63,11 +62,7 @@ rule assemble:
       assembly = "logs/02_{sample}.aseembly.snakemake.log"
    shell:
       """
-      if [ -d {input.sample_folder}/bams ]; then
-	     python {params.pipeline} -rd {params.repo_dir} -b {input.sample_folder} > {log.assembly} 2>&1
-	  else
-         python {params.pipeline} -rd {params.repo_dir} -i {input.sample_folder} -s {input.sample_folder} -r1 _R1_001.fastq.gz -r2 _R2_001.fastq.gz -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -g {params.genbankfile} -l {params.length} > {log.assembly} 2>&1
-      fi
+      python {params.pipeline} -rd {params.repo_dir} -i {input.sample_folder} -s {input.sample_folder} -r1 _R1_001.fastq.gz -r2 _R2_001.fastq.gz -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -g {params.genbankfile} -l {params.length} -headers {params.ref_headers} > {log.assembly} 2>&1
 	  """
 
 
@@ -90,11 +85,7 @@ rule variant_analysis:
       varanalysis = "logs/04_{sample}.variantanalysis.snakemake.log"
    shell:
       """
-      if [ -d {input.sample_folder}/bams ]; then
-         python {params.var_analysis} -rd {params.repo_dir} -b {input.sample_folder} > {log.varanalysis} 2>&1
-      else
-         python {params.var_analysis} -rd {params.repo_dir} -i {input.sample_folder} -r {params.reference} -ps_2 {params.ps_2kb} -ps_1_5 {params.ps_1_5kb} > {log.varanalysis} 2>&1
-	  fi
+      python {params.var_analysis} -rd {params.repo_dir} -i {input.sample_folder} -r {params.reference} -ps_2 {params.ps_2kb} -ps_1_5 {params.ps_1_5kb} > {log.varanalysis} 2>&1
       """
       
       
@@ -122,11 +113,7 @@ rule QC_analysis:
       QC = "logs/03_{sample}.QC.snakemake.log"
    shell:
       """
-      if [ -d {input.sample_folder}/bams ]; then
-         python {params.QC} -rd {params.repo_dir} -b {input.sample_folder} -kdb /sc/arion/projects/PVI/db/minikraken_8GB_20200312 > {log.QC} 2>&1
-      else
-         python {params.QC} -rd {params.repo_dir} -i {input.sample_folder} -kdb /sc/arion/projects/PVI/db/minikraken_8GB_20200312 -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -v {params.virus} -pc {params.plotcoverage} -tb {params.breakdown} > {log.QC} 2>&1
-      fi
+      python {params.QC} -rd {params.repo_dir} -i {input.sample_folder} -kdb /sc/arion/projects/PVI/db/minikraken_8GB_20200312 -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -v {params.virus} -pc {params.plotcoverage} -tb {params.breakdown} > {log.QC} 2>&1
       """
 		    
 rule run_genome_annotation:
@@ -154,14 +141,10 @@ rule push_data_pathogendb:
    input:
       annotation_out = ("{sample}/02_assembly/{sample}_genome_annotation.txt")
    params:
-      sample_folder = ("{sample}"),
       sample_name = ("{sample}"),
       run_ID=os.environ.get("RUN_ID").split('=')[1],
-      project_ID=config["project"],
-      pdbpush=os.path.join(workflow.basedir, "../scripts/assembly_push_pdb.py"),
-      path=config["path"],
-      length=config["length"],
-      virus=config["ref_fasta_headers"]
+      pdbpush=os.path.join(workflow.basedir, "../scripts/all-virus_assembly_push.py"),
+      config=os.path.join(workflow.basedir, "../config/config.yaml")
    output:
       pdb_upload_check = ("{sample}/05_status/pdb_upload_complete.txt")
    conda:
@@ -170,7 +153,7 @@ rule push_data_pathogendb:
       PDBPush = "logs/05_{sample}.PDBPush.snakemake.log"
    shell:
       """
-      python {params.pdbpush} -s {params.sample_name} -r {params.run_ID} -d {params.project_ID} -p {params.path} -l {params.length} -v {params.virus} > {log.PDBPush} 2>&1
+      python {params.pdbpush} -s {params.sample_name} -r {params.run_ID} -c {params.config} > {log.PDBPush} 2>&1
       touch {output.pdb_upload_check}
       """
 
@@ -215,6 +198,7 @@ rule push_QC_report:
       mqc_file = ("multiqc_report.html"),
    params:
       push_script = os.path.join(workflow.basedir, "../scripts/move_QC_PDB.py"),
+      run_ID = expand("{runid}", runid=run_id)
    output:
       moved_files = "file_movement_message.txt"
    conda:
@@ -223,7 +207,7 @@ rule push_QC_report:
       pushQC = "logs/09_qcpush.snakemake.log"
    shell:
       """
-      python {params.push_script} > {log.pushQC} 2>&1
+      python {params.push_script} -r {params.run_ID} > {log.pushQC} 2>&1
       """
 
 
