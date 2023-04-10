@@ -114,7 +114,7 @@ if __name__ == "__main__":
     # Set up variables from command line input
     fasta = args.input
     sample = args.input.split(".")[0].split("/")[2]
-    output = args.input.split(".")[0] + "_trimmed.fasta"
+    output = args.input.split(".")[0] + "_trimmed.fa"
     status = args.input.split(".")[0] + "_genome_annotation.txt"
     
     # If the virus is SARS-CoV-2, run genome annotation using VADR
@@ -160,6 +160,7 @@ if __name__ == "__main__":
                     submission_retries -= 1
             if sJobID:
                 print("Job submitted successfully with job ID:", sJobID)
+                print(sJobID)
                 sResultTable = curl_download(sJobID, 'tbl', sProxy, nRetries)
                 sResultCDS = curl_download(sJobID, 'ffn', sProxy, nRetries)
                 if sResultTable and sResultCDS:
@@ -203,39 +204,42 @@ if __name__ == "__main__":
         n_serotype_count = 0
         s_serotype = ""
         s_input_file = sOutputPrefix+".features_table.txt"
-        with open(s_input_file, 'r') as f:
-            if args.virus == "Influenza-A":
-                print(args.virus)
-                for line in f:
-                    if line.strip() == '' or line.startswith('#'):
-                        continue
-                    if 'INFO: Serotype: ' in line:
-                        serotype = line.split('INFO: Serotype: ')[1]
-                        h_key = serotype[0]
-                        h_value = int(serotype[1:])
-                        if h_key in h_serotype:
-                            h_serotype[h_key].append(h_value)
-                        else:
-                            h_serotype[h_key] = [h_value]
-                        n_serotype_count += 1
+        try:
+            with open(s_input_file, 'r') as f:
+                if args.virus == "Influenza-A":
+                    print(args.virus)
+                    for line in f:
+                        if line.strip() == '' or line.startswith('#'):
+                            continue
+                        if 'INFO: Serotype: ' in line:
+                            serotype = line.split('INFO: Serotype: ')[1]
+                            h_key = serotype[0]
+                            h_value = int(serotype[1:])
+                            if h_key in h_serotype:
+                                h_serotype[h_key].append(h_value)
+                            else:
+                                h_serotype[h_key] = [h_value]
+                            n_serotype_count += 1
         
-                if n_serotype_count > 2:
-                    s_serotype = "Mixed"
-                else:
-                    s_h = h_serotype.get("H", ["x"])[0]
-                    s_n = h_serotype.get("N", ["x"])[0]
-                    s_serotype = f"H{s_h}N{s_n}"
+                    if n_serotype_count > 2:
+                        s_serotype = "Mixed"
+                    else:
+                        s_h = h_serotype.get("H", ["x"])[0]
+                        s_n = h_serotype.get("N", ["x"])[0]
+                        s_serotype = f"H{s_h}N{s_n}"
             
-            if args.virus == "Influenza-B":
-                for line in f:
-                    if ">Feature HA" in line:
-                        line = line.rstrip().lower().replace(" ", "|").split("|")
-                        s_serotype = line[1]
-                        if s_serotype == "ha" or s_serotype == "NA":
-                            s_serotype = "NA"
-                        else:
-                            s_serotype = s_serotype.upper()
-
+                if args.virus == "Influenza-B":
+                    for line in f:
+                        if ">Feature HA" in line:
+                            line = line.rstrip().lower().replace(" ", "|").split("|")
+                            s_serotype = line[1]
+                            if s_serotype == "ha" or s_serotype == "NA":
+                                s_serotype = "NA"
+                            else:
+                                s_serotype = s_serotype.upper()
+        except FileNotFoundError:
+            with open(s_input_file, 'w') as f:
+                f.write("Error with genome annotation!")
         with open("{}_subtype.txt".format(sOutputPrefix), 'w') as f, open(status, "w") as g:
             f.write(f"{sOutputPrefix}\t{s_serotype}\n")
             g.write("Genome annotation using IRD for "+sample+" is complete!")

@@ -75,8 +75,8 @@ def run_illumina(args):
                 chromosomes.append(line.strip()[1:])
                 fastafiles.append(line.strip()[1:]+".fasta")
     for chrs in chromosomes:
-        subprocess.Popen("pilon --fix bases --changes --vcf --threads %s --mindepth 50 --genome %s --frags %s/%s_ref.bam --tracks --output %s/%s_pilon --targets %s"
-                % (args.threads, args.reference, working_dir, sample, working_dir, chrs, chrs), shell=True).wait()
+        print(chrs)
+        subprocess.Popen("pilon --fix bases --changes --vcf --mindepth 50 --genome %s --frags %s/%s_ref.bam --tracks --output %s/%s_pilon --targets %s" % (args.reference, working_dir, sample, working_dir, chrs, chrs), shell=True).wait()
         with open('%s/%s_pilon.fasta' % (working_dir, chrs), 'r') as f:
             seq = ''
             for line in f:
