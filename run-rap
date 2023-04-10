@@ -49,15 +49,18 @@ export JOB_NCPUS
 
 # Process command line arguments
 RUN_ID=""
+RUN_PATH=""
 DEBUG=""
 
-while getopts "i:D" opt; do
+while getopts "i:p:D" opt; do
    case $opt in
    
    i) RUN_ID="run_id=$OPTARG"
       ;;
       
-   D)
+  p) RUN_PATH="path=$OPTARG"
+      ;; 
+  D)
       DEBUG="-p -n"
       ;;
    *)
@@ -73,11 +76,13 @@ if [ -z "$RUN_ID" ];
 then
   cat << EOF
 
-   Usage: run-covid-assembly [ -D ] -i <run-id>
+   Usage: run-rap [ -D ] -i <run-id> -p <run-path>
 
    Arguments:
     -i <string>
       Run identifier
+    -p <string>
+      Path to the Run directory
     -D 
       Run pipeline in debug mode to show the commands that will be executed.
     -help
@@ -102,7 +107,7 @@ then
    timestamp="${timestamp}_lsf${LSB_JOBID}"
 fi
 echo "## Starting SARS-CoV-2 assembly with the following parameters:"               > pipeline_${timestamp}.log
-echo "   ${RUN_ID} "  >> pipeline_${timestamp}.log
+echo "   ${RUN_ID} ${RUN_PATH} "  >> pipeline_${timestamp}.log
 
 # Generate a random name for the jobs
 JOBNAME=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 5 | head -n 1)
@@ -130,6 +135,7 @@ module load proxies
 # Add the bin folder with any external scripts that may be called from the pipeline to the path
 export PATH="$GIT_REPODIR/bin/:$PATH"
 export RUN_ID
+export RUN_PATH
 
 ############################
 # START SNAKEMAKE PIPELINE #
@@ -144,7 +150,7 @@ cmd="snakemake \
     --conda-prefix   ${CONDA_WORKDIR} \
     --snakefile      ${GIT_REPODIR}/workflow/Snakefile \
     --cores          ${JOB_NCPUS} \
-    --config         ${RUN_ID}"
+    --config         ${RUN_ID} ${RUN_PATH}"
 
 # Make sure the exact command that was run ends up in the pipeline log
 echo -e "\n## Run command\n$cmd\n\n## Pipeline output" >> pipeline_${timestamp}.log
@@ -154,7 +160,7 @@ $cmd >>  pipeline_${timestamp}.log 2>&1
 
 # Check if the pipeline completed without errors
 if [ $? -eq 0 ]
-then
+ then
    sleep 5
    echo -e "\n#######################################\n# COVID PIPELINE ENDED SUCCESSFULLY #\n#######################################\n" >> pipeline_${timestamp}.log;
 else
