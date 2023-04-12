@@ -16,7 +16,7 @@ import gzip
 # FILES #
 #########
 
-parser = ArgumentParser(description="Parse lineage assignments and versions from lineage tables")
+parser = ArgumentParser(description="Clean up after pipeline is done")
 parser.add_argument('-p', '--inpcsv', help='File containing samples in the run in csv format', required=True)
 args = parser.parse_args()
 
@@ -27,7 +27,7 @@ test = mappings.set_index('Sample_ID')
 
 samples = mappings["Sample_ID"].tolist()
 
-extensions = ('_pilon.changes', '_pilon.fasta', '_pilon.vcf', '_pilonPilon.bed', '.fasta', '.1.log', 'prokka', 'reads.1.fq.gz', 'reads.2.fq.gz', 'shovill', '_ref_stats', '_ref.bam', '_ref.bam.bai')
+extensions = ('_pilon.changes', '_pilon.fasta', '_pilon.vcf', '_pilonPilon.bed', '.fasta', '.1.log', 'prokka', 'reads.1.fq.gz', 'reads.2.fq.gz', 'shovill', '_ref_stats', '_ref.bam', '_ref.bam.bai', '_annotation')
 
 
 
