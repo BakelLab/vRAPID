@@ -18,7 +18,7 @@ This script is the second step for the vRAPID pipeline for the Bakel Lab. It use
 
 The script can be found in the `Snakefile` found in the `workflow` directory, under the `variant_analysis` rule. All necessary input, parameters, output, and log files are defined under that rule. Note that the snakemake rule also outputs a log file for each sample. Snakemake's log files can always be found in the `log` directory, and identified per sample in the following format:
 
-`02_<sample-name>.aseembly.snakemake.log`
+`02_<sample-name>.variantanalysis.snakemake.log`
 
 #### Directory structure
 
