@@ -2,9 +2,9 @@
 
 A reference-based pipeline for the assembly, consensus calling and annotation of viral pathogens.
 
-vRAPID is dependent on folder structures and naming schemes used by the genomics sequencing core at the Icahn School of Medicine at Mount Sinai.
+vRAPID is dependent on folder structures and naming schemes used by the Pathogen Surveillance Program at the Icahn School of Medicine at Mount Sinai.
 
-vRAPID is an expansion of the [previous pipeline](https://github.com/mjsull/COVID_pipe) used by the Bakel Lab that was written by Mitchell Sullivan. 
+vRAPID is an expansion of the [previous pipeline](https://github.com/mjsull/COVID_pipe) that was written by Mitchell Sullivan in the Bakel Lab. 
 
 #### Installing snakemake on Minerva
 
