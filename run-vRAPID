@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 04.06.2022 16:58:07 EDT
+# 04.12.2023 11:17:27 EDT
 
 ########################################
 # DEFINE GLOBAL ENVIRONMENT PARAMETERS #
@@ -15,7 +15,7 @@
 # Set path to parent dir for conda environment work directory and git repositories
 # Also pick up on the number of CPUs defined in jobstatus
 CONDA_WORKDIR="${CONDA_WORKDIR:=/sc/arion/work/$USER/snakemake}"
-GIT_REPODIR="${GIT_REPODIR:=$HOME/opt/rap}"
+GIT_REPODIR="${GIT_REPODIR:=$HOME/opt/vRAPID}"
 JOB_NCPUS="${JOB_NCPUS:=16}"
 
 # Make sure the repository exists and has a Snakefile at the expected location
@@ -76,7 +76,7 @@ if [ -z "$RUN_ID" ];
 then
   cat << EOF
 
-   Usage: run-rap [ -D ] -i <run-id> -p <run-path>
+   Usage: run-vRAPID [ -D ] -i <run-id> -p <run-path>
 
    Arguments:
     -i <string>
@@ -106,7 +106,7 @@ if [ -n "$LSB_JOBID" ]
 then
    timestamp="${timestamp}_lsf${LSB_JOBID}"
 fi
-echo "## Starting SARS-CoV-2 assembly with the following parameters:"               > pipeline_${timestamp}.log
+echo "## Starting vRAPID assembly with the following parameters:"               > pipeline_${timestamp}.log
 echo "   ${RUN_ID} ${RUN_PATH} "  >> pipeline_${timestamp}.log
 
 # Generate a random name for the jobs
@@ -129,8 +129,8 @@ source activate snakemake
 # module to set the http_proxy and https_proxy environment variables. Finally,
 # we need the singularity module as installed on the cluster to enable user environments.
 # This then provide support for e.g. docker containers.
-module load singularity/3.6.4
-module load proxies
+#module load singularity/3.6.4
+#module load proxies
 
 # Add the bin folder with any external scripts that may be called from the pipeline to the path
 export PATH="$GIT_REPODIR/bin/:$PATH"
@@ -162,8 +162,8 @@ $cmd >>  pipeline_${timestamp}.log 2>&1
 if [ $? -eq 0 ]
  then
    sleep 5
-   echo -e "\n#######################################\n# COVID PIPELINE ENDED SUCCESSFULLY #\n#######################################\n" >> pipeline_${timestamp}.log;
+   echo -e "\n#######################################\n# vRAPID PIPELINE ENDED SUCCESSFULLY #\n#######################################\n" >> pipeline_${timestamp}.log;
 else
    sleep 5
-   echo -e "\n#######################################\n# COVID PIPELINE ENDED WITH ERRORS #\n#######################################\n" >> pipeline_${timestamp}.log;
+   echo -e "\n#######################################\n# vRAPID PIPELINE ENDED WITH ERRORS #\n#######################################\n" >> pipeline_${timestamp}.log;
 fi
