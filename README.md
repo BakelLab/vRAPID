@@ -46,35 +46,35 @@ This script queries to PathogenDB, separating the samples into subdirectories ba
 ├── <virus1>
 │   ├── <expect_subtype>
 │   │   ├── <collaborator_ID1>
-│   │		│		├── <sample_ID1>
-│   │		│		│		├── <sample_ID1>_1.fastq.gz
-│   │		│		│		├── <sample_ID1>_2.fastq.gz
-│   │		│		├── <sample_ID2>
-│   │		│		│		├── <sample_ID2>_1.fastq.gz
-│   │		│		│		├── <sample_ID2>_2.fastq.gz
+│   │	│	├── <sample_ID1>
+│   │	│	│		├── <sample_ID1>_1.fastq.gz
+│   │	│	│		├── <sample_ID1>_2.fastq.gz
+│   │	│	├── <sample_ID2>
+│   │	│	│		├── <sample_ID2>_1.fastq.gz
+│   │	│	│		├── <sample_ID2>_2.fastq.gz
 │   │   ├── <collaborator_ID2>
-│   │		│		├── <sample_ID1>
-│   │		│		│		├── <sample_ID1>_1.fastq.gz
-│   │		│		│		├── <sample_ID1>_2.fastq.gz
-│   │		│		├── <sample_ID2>
-│   │		│		│		├── <sample_ID2>_1.fastq.gz
-│   │		│		│		├── <sample_ID2>_2.fastq.gz
+│   │	│	├── <sample_ID1>
+│   │	│	│	├── <sample_ID1>_1.fastq.gz
+│   │	│	│	├── <sample_ID1>_2.fastq.gz
+│   │	│	├── <sample_ID2>
+│   │	│	│	├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>_2.fastq.gz
 ├── <virus2>
 │   ├── <expect_subtype>
 │   │   ├── <collaborator_ID1>
-│   │		│		├── <sample_ID1>
-│   │		│		│		├── <sample_ID1>_1.fastq.gz
-│   │		│		│		├── <sample_ID1>_2.fastq.gz
-│   │		│		├── <sample_ID2>
-│   │		│		│		├── <sample_ID2>_1.fastq.gz
-│   │		│		│		├── <sample_ID2>_2.fastq.gz
+│   │	│	├── <sample_ID1>
+│   │	│	│	├── <sample_ID1>_1.fastq.gz
+│   │	│	│	├── <sample_ID1>_2.fastq.gz
+│   │	│	├── <sample_ID2>
+│   │	│	│	├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>_2.fastq.gz
 │   │   ├── <collaborator_ID2>
-│   │		│		├── <sample_ID1>
-│   │		│		│		├── <sample_ID1>_1.fastq.gz
-│   │		│		│		├── <sample_ID1>_2.fastq.gz
-│   │		│		├── <sample_ID2>
-│   │		│		│		├── <sample_ID2>_1.fastq.gz
-│   │		│		│		├── <sample_ID2>_2.fastq.gz
+│   │	│	├── <sample_ID1>
+│   │	│	│	├── <sample_ID1>_1.fastq.gz
+│   │	│	│	├── <sample_ID1>_2.fastq.gz
+│   │	│	├── <sample_ID2>
+│   │	│	│	├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>_2.fastq.gz
 
 ```
 
@@ -109,43 +109,43 @@ The final structure should be as follows:
 ├── <virus1>
 │   ├── <expect_subtype>
 │   │   ├── <collaborator_ID1>
-│   │		│		├── samples.csv
-│   │		│		├── multibamqc_input.txt
-│   │		│		├── <sample_ID1>
-│   │		│		│		├── <sample_ID1>_1.fastq.gz
-│   │		│		│		├── <sample_ID1>_2.fastq.gz
-│   │		│		├── <sample_ID2>
-│   │		│		│		├── <sample_ID2>_1.fastq.gz
-│   │		│		│		├── <sample_ID2>_2.fastq.gz
+│   │	│	├── samples.csv
+│   │	│	├── multibamqc_input.txt
+│   │	│	├── <sample_ID1>
+│   │	│	│	├── <sample_ID1>_1.fastq.gz
+│   │	│	│	├── <sample_ID1>_2.fastq.gz
+│   │	│	├── <sample_ID2>
+│   │	│	│	├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>_2.fastq.gz
 │   │   ├── <collaborator_ID2>
-│   │		│		├── samples.csv
-│   │		│		├── multibamqc_input.txt
-│   │		│		├── <sample_ID1>
-│   │		│		│		├── <sample_ID1>_1.fastq.gz
-│   │		│		│		├── <sample_ID1>_2.fastq.gz
-│   │		│		├── <sample_ID2>
-│   │		│		│		├── <sample_ID2>_1.fastq.gz
-│   │		│		│		├── <sample_ID2>_2.fastq.gz
+│   │	│	├── samples.csv
+│   │	│	├── multibamqc_input.txt
+│   │	│	├── <sample_ID1>
+│   │	│	│	├── <sample_ID1>_1.fastq.gz
+│   │	│	│	├── <sample_ID1>_2.fastq.gz
+│   │	│	├── <sample_ID2>
+│   │	│	│	├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>_2.fastq.gz
 ├── <virus2>
 │   ├── <expect_subtype>
 │   │   ├── <collaborator_ID1>
-│   │		│		├── samples.csv
-│   │		│		├── multibamqc_input.txt
-│   │		│		├── <sample_ID1>
-│   │		│		│		├── <sample_ID1>_1.fastq.gz
-│   │		│		│		├── <sample_ID1>_2.fastq.gz
-│   │		│		├── <sample_ID2>
-│   │		│		│		├── <sample_ID2>_1.fastq.gz
-│   │		│		│		├── <sample_ID2>_2.fastq.gz
+│   │	│	├── samples.csv
+│   │	│	├── multibamqc_input.txt
+│   │	│	├── <sample_ID1>
+│   │	│	│	├── <sample_ID1>_1.fastq.gz
+│   │	│	│	├── <sample_ID1>_2.fastq.gz
+│   │	│	├── <sample_ID2>
+│   │	│	│	├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>_2.fastq.gz
 │   │   ├── <collaborator_ID2>
-│   │		│		├── samples.csv
-│   │		│		├── multibamqc_input.txt
-│   │		│		├── <sample_ID1>
-│   │		│		│		├── <sample_ID1>_1.fastq.gz
-│   │		│		│		├── <sample_ID1>_2.fastq.gz
-│   │		│		├── <sample_ID2>
-│   │		│		│		├── <sample_ID2>_1.fastq.gz
-│   │		│		│		├── <sample_ID2>_2.fastq.gz
+│   │	│	├── samples.csv
+│   │	│	├── multibamqc_input.txt
+│   │	│	├── <sample_ID1>
+│   │	│	│	├── <sample_ID1>_1.fastq.gz
+│   │	│	│	├── <sample_ID1>_2.fastq.gz
+│   │	│	├── <sample_ID2>
+│   │	│	│	├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>_2.fastq.gz
 ```
 
 Lastly, to successfully run the pipeline, depending on the virus, the `config.yaml` file within the pipeline repository might need to be edited. The following fields are required within the file:
@@ -180,25 +180,25 @@ Once the pipeline has completed, the following output files are created:
 ├── <virus1>
 │   ├── <expect_subtype>
 │   │   ├── <collaborator_ID1>
-│   │		│		├── samples.csv
-│   │		│		├── multibamqc_input.txt
-│   │		│		├── pipeline.log
-│   │		│		├── file_movement_message.txt
-│   │		│		├── <Run-ID>_cleaned.txt
-│   │		│		├── <Run-ID>_data_release.txt
-│   │		│		├── <Run-ID>_software_version.txt
-│   │		│		├── <Run-ID>_<collaborator-ID>_assemblies.csv
-│   │		│		├── <Run-ID>_<collaborator-ID>.tar.gz
-│   │		│		├── logs
-│   │		│		├── multi_bamqc
-│   │		│		├── multiqc_report.html
-│   │		│		├── <sample_ID>
-│   │		│		│		├── 01_fastqs
-│   │		│		│		│		├── <sample_ID>_1.fastq.gz
-│   │		│		│		│		├── <sample_ID>_2.fastq.gz
-│   │		│		│		├── 02_assembly
-│   │		│		│		├── 03_qualityControl
-│   │		│		│		├── 04_variants
-│   │		│		│		├── 05_status
+│   │	│	├── samples.csv
+│   │	│	├── multibamqc_input.txt
+│   │	│	├── pipeline.log
+│   │	│	├── file_movement_message.txt
+│   │	│	├── <Run-ID>_cleaned.txt
+│   │	│	├── <Run-ID>_data_release.txt
+│   │	│	├── <Run-ID>_software_version.txt
+│   │	│	├── <Run-ID>_<collaborator-ID>_assemblies.csv
+│   │	│	├── <Run-ID>_<collaborator-ID>.tar.gz
+│   │	│	├── logs
+│   │	│	├── multi_bamqc
+│   │	│	├── multiqc_report.html
+│   │	│	├── <sample_ID>
+│   │	│	│	├── 01_fastqs
+│   │	│	│	│	├── <sample_ID>_1.fastq.gz
+│   │	│	│	│	├── <sample_ID>_2.fastq.gz
+│   │	│	│	├── 02_assembly
+│   │	│	│	├── 03_qualityControl
+│   │	│	│	├── 04_variants
+│   │	│	│	├── 05_status
 ```
 
