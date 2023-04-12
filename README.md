@@ -183,9 +183,9 @@ Lastly, to successfully run the pipeline, depending on the virus, the `config.ya
 
 Then once the files are generated, the pipeline can be run using the following command:
 
-`submitjob 12 -c 4 -m 64 -q private -P acc_PVI ~/opt/vRAPID/run-vRAPID-analysis -i <run-ID> -p <path>`
+`submitjob 12 -c 4 -m 64 -q private -P acc_PVI ~/opt/vRAPID/run-vRAPID-analysis -i <run-ID> -p <path> -s <samples-run-csv>`
 
-Note that both the `<run-ID> ` and the `<path>` arguments in the command above are optional. If they are not supplied, then they are pulled from the `config.yaml` file.
+Note that the `<run-ID> `, `<path>`, and `<samples-run-csv>` arguments in the command above are optional. If they are not supplied, then they are pulled from the `config.yaml` file.
 
 #### vRAPID output
 
