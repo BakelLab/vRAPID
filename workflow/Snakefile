@@ -15,7 +15,8 @@ min_version("6.8")
 configfile: workflow.source_path("../config/config.yaml")
 mappings = pd.read_csv(config["samples"])
 sampleids = mappings["Sample_ID"].tolist()
-run_id=os.environ.get("RUN_ID").split('=')[1]
+#run_id=os.environ.get("RUN_ID").split('=')[1]
+#run_id = config["run_id"]
 
 #########
 # RULES #
@@ -23,7 +24,7 @@ run_id=os.environ.get("RUN_ID").split('=')[1]
 
 rule all:
    input:
-      data_release_report = expand("{runid}_data_release.txt", runid=run_id)
+      run_report = expand("{runid}_run_report.csv", runid=config["run_id"])
 
 rule file_rename:
    message: "Rename input file for consistency"
@@ -46,7 +47,7 @@ rule assemble:
       renamed_file = ("{sample}/01_fastqs")
    params:
       repo_dir = os.environ.get("GIT_REPODIR"),
-      pipeline = os.path.join(workflow.basedir, "../scripts/run_pipeline.py"),
+      pipeline = os.path.join(workflow.basedir, "../workflow/scripts/run_pipeline.py"),
       reference = os.path.join(workflow.basedir, "../db/", config["reference"]),
       forward_primer = os.path.join(workflow.basedir, "../db/", config["forward_primer"]),
       reverse_primer = os.path.join(workflow.basedir, "../db/", config["reverse_primer"]),
@@ -73,7 +74,7 @@ rule variant_analysis:
       consensus_fasta_file = ('{sample}/02_assembly/{sample}.fasta')
    params:
       repo_dir=os.environ.get("GIT_REPODIR"),
-      var_analysis=os.path.join(workflow.basedir, "../scripts/variant_analysis.py"),
+      var_analysis=os.path.join(workflow.basedir, "../workflow/scripts/variant_analysis.py"),
       reference = os.path.join(workflow.basedir, "../db/", config["reference"]),
       ps_2kb = os.path.join(workflow.basedir, "../db/", config["primer_set_2kb"]),
       ps_1_5kb = os.path.join(workflow.basedir, "../db/", config["primer_set_1_5kb"]),
@@ -96,14 +97,15 @@ rule QC_analysis:
       pileup_file = ('{sample}/04_variants/pileup')
    params:
       repo_dir=os.environ.get("GIT_REPODIR"),
-      run_ID=os.environ.get("RUN_ID"),
-      QC=os.path.join(workflow.basedir, "../scripts/run_QC.py"),
+      run_ID = config["run_id"],
+      #run_ID=os.environ.get("RUN_ID"),
+      QC=os.path.join(workflow.basedir, "../workflow/scripts/run_QC.py"),
       reference = os.path.join(workflow.basedir, "../db/", config["reference"]),
       forward_primer = os.path.join(workflow.basedir, "../db/", config["forward_primer"]),
       reverse_primer = os.path.join(workflow.basedir, "../db/", config["reverse_primer"]),
       virus = config["virus"],
-      breakdown = os.path.join(workflow.basedir, "../scripts/taxanomic_breakdown.R"),
-      plotcoverage = os.path.join(workflow.basedir, "../scripts/plot-coverage-report.R")
+      breakdown = os.path.join(workflow.basedir, "../workflow/scripts/taxanomic_breakdown.R"),
+      plotcoverage = os.path.join(workflow.basedir, "../workflow/scripts/plot-coverage-report.R")
    output:
       qc_file = ('{sample}/03_qualityControl/{sample}_quality_control.pdf'),
       kraken = ("{sample}/03_qualityControl/{sample}_kraken_report.out")		
@@ -123,7 +125,7 @@ rule run_genome_annotation:
       qc_file = ('{sample}/03_qualityControl/{sample}_quality_control.pdf'),
    params:
       virus = config["virus"],
-      annotation_script = os.path.join(workflow.basedir, "../scripts/run-genome-annotation.py")
+      annotation_script = os.path.join(workflow.basedir, "../workflow/scripts/run-genome-annotation.py")
    output:
       annotation_out = ("{sample}/02_assembly/{sample}_genome_annotation.txt"),
    conda:
@@ -142,8 +144,9 @@ rule push_data_pathogendb:
       annotation_out = ("{sample}/02_assembly/{sample}_genome_annotation.txt")
    params:
       sample_name = ("{sample}"),
-      run_ID=os.environ.get("RUN_ID").split('=')[1],
-      pdbpush=os.path.join(workflow.basedir, "../scripts/all-virus_assembly_push.py"),
+      run_ID = config["run_id"],
+      #run_ID=os.environ.get("RUN_ID").split('=')[1],
+      pdbpush=os.path.join(workflow.basedir, "../workflow/scripts/all-virus_assembly_push.py"),
       config=os.path.join(workflow.basedir, "../config/config.yaml")
    output:
       pdb_upload_check = ("{sample}/05_status/pdb_upload_complete.txt")
@@ -197,8 +200,8 @@ rule push_QC_report:
    input:
       mqc_file = ("multiqc_report.html"),
    params:
-      push_script = os.path.join(workflow.basedir, "../scripts/move_QC_PDB.py"),
-      run_ID = expand("{runid}", runid=run_id)
+      push_script = os.path.join(workflow.basedir, "../workflow/scripts/move_QC_PDB.py"),
+      run_ID = expand("{runid}", runid=config["run_id"])
    output:
       moved_files = "file_movement_message.txt"
    conda:
@@ -216,13 +219,14 @@ rule version_check:
    input:
       moved_files = "file_movement_message.txt"
    params:
-      run_ID = expand("{runid}", runid=run_id),
+      run_ID = config["run_id"],
+      #run_ID = expand("{runid}", runid=run_id),
       reference = config["reference"],
       genbankfile = config["genbank"],
       ps1 = config["primer_set_1_5kb"],
       ps2 = config["primer_set_2kb"]
    output:
-      version_report = expand("{runid}_software_version.txt", runid=run_id)
+      version_report = expand("{runid}_software_version.txt", runid=config["run_id"])
    conda:
       "envs/env.yml"
    log:
@@ -274,12 +278,12 @@ rule version_check:
 rule clean_up:
    message: "Remove intermediatary output"
    input:
-      version_report = expand("{runid}_software_version.txt", runid=run_id)
+      version_report = expand("{runid}_software_version.txt", runid=config["run_id"])
    output:
-      cleanup_report = expand("{runid}_cleaned.txt", runid=run_id)
+      cleanup_report = expand("{runid}_cleaned.txt", runid=config["run_id"])
    params:
       sample_ids = expand("{sample}", sample=sampleids),
-      cleanup = os.path.join(workflow.basedir, "../scripts/cleanup.py"),
+      cleanup = os.path.join(workflow.basedir, "../workflow/scripts/cleanup.py"),
       samples_run = config["samples"]
    conda:
       "envs/env.yml"
@@ -295,31 +299,31 @@ rule clean_up:
 rule run_report:
    message: "Generate run summary report"
    input:
-      cleanup_report = expand("{runid}_cleaned.txt", runid=run_id)
+      cleanup_report = expand("{runid}_cleaned.txt", runid=config["run_id"])
    output:
-      run_report = expand("{runid}_run_report.csv", runid=run_id)
+      run_report = expand("{runid}_run_report.csv", runid=config["run_id"])
    params:
-      runid = run_id,
-      report_script = os.path.join(workflow.basedir, "../scripts/generate_run_report.R"),
+      run_ID = config["run_id"],
+      report_script = os.path.join(workflow.basedir, "../workflow/scripts/generate_run_report.R"),
    conda:
       "envs/env.yml"
    log:
       reporting = "logs/12_reporting.snakemake.log"
    shell:
       """
-      Rscript {params.report_script} {params.runid} > {log.reporting} 2>&1
+      Rscript {params.report_script} {params.run_ID} > {log.reporting} 2>&1
       """
       
   
 rule data_release_prep:
    message: "Create Data Release files"
    input:
-      cleanup_report = expand("{runid}_cleaned.txt", runid=run_id)
+      cleanup_report = expand("{runid}_cleaned.txt", runid=config["run_id"])
    output:
-      data_release_report = expand("{runid}_data_release.txt", runid=run_id)
+      data_release_report = expand("{runid}_data_release.txt", runid=config["run_id"])
    params:
-      runid = run_id,
-      status_script = os.path.join(workflow.basedir, "../scripts/data_release_script.py"),
+      run_ID = config["run_id"],
+      status_script = os.path.join(workflow.basedir, "../workflow/scripts/data_release_script.py"),
       sample_mapping = config["samples"],
       ref_header = config["ref_fasta_headers"],
       virus = config["virus"]
@@ -329,7 +333,7 @@ rule data_release_prep:
       datarelease = "logs/13_datarelease.snakemake.log"
    shell:
       """
-      python {params.status_script} -p {params.sample_mapping} -r {params.runid} -v {params.virus} -f {params.ref_header} > {log.datarelease} 2>&1
+      python {params.status_script} -p {params.sample_mapping} -r {params.run_ID} -v {params.virus} -f {params.ref_header} > {log.datarelease} 2>&1
       touch {output.data_release_report}
       """
             
