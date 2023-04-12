@@ -180,7 +180,6 @@ parser.add_argument('-rd', '--repo_dir', action='store', help='path to repo dir'
 parser.add_argument('-i', '--sample_folder', action='store', help='Sample folder created by process_run.py')
 parser.add_argument('-o', '--working_dir', action='store', default="temp", help='working directory (only for CCS reads)')
 parser.add_argument('-t', '--threads', action='store', default="4", help='number of threads to use')
-parser.add_argument('-s', '--sample', action='store', help='sample name')
 parser.add_argument('-v', '--version', action='store_true', help="print version and exit")
 parser.add_argument('-a', '--not_amplified', action='store_true', help="Skip cutadapt and assembly")
 parser.add_argument('-r1', '--read1_suffix', action='store', default="R1_001.fastq.gz", help='suffix for finding read 1')
