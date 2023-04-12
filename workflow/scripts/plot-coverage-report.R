@@ -117,8 +117,6 @@ if (any(set.var)) {
                         
                           
                         }
-                          #################THIS THROWS ERROR BC IT RETURNS 2. LOOP? IF ALL?)######
-                          #alt.bases[[i]] = all.bases[!all.bases %in% b]
             }
           }
           
