@@ -48,20 +48,23 @@ for i in samples:
 for collab in collablist:
     name_of_file = args.runid+"_"+collab+".tar.gz"
     tar_file = tarfile.open(name_of_file,"w:gz")
-    for i in samples:
-        tar_file.add(i+"/02_assembly/"+i+".fasta")
-        tar_file.add(i+"/02_assembly/reads.1.fq.gz")
-        tar_file.add(i+"/02_assembly/reads.2.fq.gz")
-        tar_file.add(i+"/02_assembly/"+i+"_ref.bam")
-        tar_file.add(i+"/02_assembly/"+i+"_ref.bam.bai")
-        tar_file.add(i+"/03_qualityControl/"+i+"_quality_control.pdf")
-        for v in fasta_headers:
-            tar_file.add(i+"/04_variants/"+i+"."+v+"_variable_bases.tsv")
-        fastqs = i+"/01_fastqs/"
-        for fastq in os.listdir(fastqs):
-            if fastq.endswith(".fastq.gz"):
-                tar_file.add(i+"/01_fastqs/"+fastq)
-
+    if collab == "VS":
+        tar_file.close()
+    else:
+        for i in samples:
+            tar_file.add(i+"/02_assembly/"+i+".fasta")
+            tar_file.add(i+"/02_assembly/reads.1.fq.gz")
+            tar_file.add(i+"/02_assembly/reads.2.fq.gz")
+            tar_file.add(i+"/02_assembly/"+i+"_ref.bam")
+            tar_file.add(i+"/02_assembly/"+i+"_ref.bam.bai")
+            tar_file.add(i+"/03_qualityControl/"+i+"_quality_control.pdf")
+            for v in fasta_headers:
+                tar_file.add(i+"/04_variants/"+i+"."+v+"_variable_bases.tsv")
+            fastqs = i+"/01_fastqs/"
+            for fastq in os.listdir(fastqs):
+                if fastq.endswith(".fastq.gz"):
+                    tar_file.add(i+"/01_fastqs/"+fastq)
+        tar_file.close()
 try:
     # build connection to DB, turn off autocommit, set cursor
     db = mysql.connector.connect(host=host,user=user,password=password,database=database)
@@ -97,4 +100,4 @@ finally:
 
 
 
-tar_file.close()
+#tar_file.close()
