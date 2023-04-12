@@ -6,7 +6,7 @@ This script was built to take in Illumina paired end FASTQ files and to assemble
 
 ### Purpose
 
-This script is the first step for the vRAPID pipeline for the Bakel Lab. It trims the reads using `cutadapt`, before running the command line version of `FASTQC` on the `cutadapt` output, then aligining the reads against the reference genome using `minimap2`. The script then uses `pilon` to imporve the assembly quality. Lastly, `prokka` is used for a rapid annotation.
+This script is the first step for the vRAPID pipeline for the Bakel Lab. It trims the reads using `cutadapt`, before running the command line version of `FASTQC` on the `cutadapt` output, then aligining the reads against the reference genome using `minimap2`. The script then uses `pilon` to imporve the assembly quality. Lastly, `prokka` is used for a rapid annotation and `shovill` is used for a rapid assembly.
 
 ## Script Usage
 

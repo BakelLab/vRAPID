@@ -2,7 +2,7 @@
 
 ## Background
 
-This script was built to remove intermedatery output once all steps have been successfully completed.
+This script was built to remove intermedatery output once all significant steps have been successfully completed.
 
 ### Purpose
 
@@ -12,7 +12,7 @@ This script is the ninth step for the vRAPID pipeline for the Bakel Lab. It **mu
 
 ### Execution
 
-`cleanup.py -p <samples.csv>`
+`cleanup.py -p <samples-run-csv-file>`
 
 #### Snakemake
 

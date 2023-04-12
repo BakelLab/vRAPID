@@ -50,9 +50,10 @@ export JOB_NCPUS
 # Process command line arguments
 RUN_ID=""
 RUN_PATH=""
+SAMPLES=""
 DEBUG=""
 
-while getopts "i:p:D" opt; do
+while getopts "i:p:s:D" opt; do
    case $opt in
    
    i) RUN_ID="run_id=$OPTARG"
@@ -60,6 +61,8 @@ while getopts "i:p:D" opt; do
       
   p) RUN_PATH="path=$OPTARG"
       ;; 
+  s) SAMPLES="samples=$OPTARG"
+      ;;
   D)
       DEBUG="-p -n"
       ;;
@@ -76,13 +79,15 @@ if [ -z "$RUN_ID" ];
 then
   cat << EOF
 
-   Usage: run-vRAPID [ -D ] -i <run-id> -p <run-path>
+   Usage: run-vRAPID [ -D ] -i <run-id> -p <run-path> -s <samples-in-run.csv>
 
    Arguments:
     -i <string>
       Run identifier
     -p <string>
       Path to the Run directory
+    -s <string>
+      File containing samples to be processed. Column name must be "Sample_ID"
     -D 
       Run pipeline in debug mode to show the commands that will be executed.
     -help
@@ -107,7 +112,7 @@ then
    timestamp="${timestamp}_lsf${LSB_JOBID}"
 fi
 echo "## Starting vRAPID assembly with the following parameters:"               > pipeline_${timestamp}.log
-echo "   ${RUN_ID} ${RUN_PATH} "  >> pipeline_${timestamp}.log
+echo "   ${RUN_ID} ${RUN_PATH} ${SAMPLES} "  >> pipeline_${timestamp}.log
 
 # Generate a random name for the jobs
 JOBNAME=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 5 | head -n 1)
@@ -128,6 +133,7 @@ source activate snakemake
 export PATH="$GIT_REPODIR/bin/:$PATH"
 export RUN_ID
 export RUN_PATH
+export SAMPLES
 
 ############################
 # START SNAKEMAKE PIPELINE #
@@ -142,7 +148,7 @@ cmd="snakemake \
     --conda-prefix   ${CONDA_WORKDIR} \
     --snakefile      ${GIT_REPODIR}/workflow/Snakefile \
     --cores          ${JOB_NCPUS} \
-    --config         ${RUN_ID} ${RUN_PATH}"
+    --config         ${RUN_ID} ${RUN_PATH} ${SAMPLES}"
 
 # Make sure the exact command that was run ends up in the pipeline log
 echo -e "\n## Run command\n$cmd\n\n## Pipeline output" >> pipeline_${timestamp}.log

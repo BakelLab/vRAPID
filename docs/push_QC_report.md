@@ -10,7 +10,7 @@ This script is the seventh step for the vRAPID pipeline for the Bakel Lab. It **
 
  `run_QualiMap_sample`: provides a final `html` report of the grouped coverage across the genome for all samples.
 
-`run_multiqc`: combines the results from the various bioinformatics analyses done in the previous rules for all samples in a single report.
+`run_multiqc`: combines the results from the various bioinformatics analyses done in the previous rules for all samples in a single `html` report.
 
 ## Script Usage
 

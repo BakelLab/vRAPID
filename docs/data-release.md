@@ -12,7 +12,7 @@ This script is the last step for the vRAPID pipeline for the Bakel Lab. It queri
 
 ### Execution
 
-`data-release.py -p <samples.csv> -r <Run-ID> -v <virus-type> -f <reference-FASTA-header>`
+`data-release.py -p <samples-run-csv-file> -r <Run-ID> -v <virus-type> -f <reference-FASTA-header>`
 
 #### Snakemake
 
