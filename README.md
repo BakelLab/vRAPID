@@ -47,7 +47,7 @@ This script queries to PathogenDB, separating the samples into subdirectories ba
 │   ├── <expect_subtype>
 │   │   ├── <collaborator_ID1>
 │   │	│	├── <sample_ID1>
-│   │	│	│	├── <sample_ID1>
+│   │	│	│├── <sample_ID1>
 │   │	│	│   │	├── <sample_ID1>_1.fastq.gz
 │   │	│	│   │	├── <sample_ID1>_2.fastq.gz
 │   │	│	├── <sample_ID2>
