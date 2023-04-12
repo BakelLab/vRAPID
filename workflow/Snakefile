@@ -61,7 +61,7 @@ rule assemble:
       assembly = "logs/02_{sample}.aseembly.snakemake.log"
    shell:
       """
-      python {params.pipeline} -rd {params.repo_dir} -i {input.sample_folder} -s {input.sample_folder} -r1 _R1_001.fastq.gz -r2 _R2_001.fastq.gz -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -g {params.genbankfile} -l {params.length} -headers {params.ref_headers} > {log.assembly} 2>&1
+      python {params.pipeline} -rd {params.repo_dir} -i {input.sample_folder} -r1 _R1_001.fastq.gz -r2 _R2_001.fastq.gz -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -g {params.genbankfile} -l {params.length} -headers {params.ref_headers} > {log.assembly} 2>&1
 	  """
 
 
