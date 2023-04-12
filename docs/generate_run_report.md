@@ -12,7 +12,7 @@ This script is the tenth step for the vRAPID pipeline for the Bakel Lab. It **mu
 
 ### Execution
 
-`generate-run-report.R <run-ID>`
+`generate-run-report.R <Run-ID>`
 
 #### Snakemake
 
@@ -22,7 +22,7 @@ The script can be found in the `Snakefile` found in the `workflow` directory, un
 
 ### Output
 
-The script will create the a comma-separated summary file with the columns listed above, `<Run-ID>_run_report.csv`, upon compeletion.
+The script will create a comma-separated summary file, `<Run-ID>_run_report.csv`, with the columns listed above, upon compeletion.
 
  ```bash
 <Run-ID>
