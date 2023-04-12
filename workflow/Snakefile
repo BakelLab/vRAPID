@@ -15,8 +15,6 @@ min_version("6.8")
 configfile: workflow.source_path("../config/config.yaml")
 mappings = pd.read_csv(config["samples"])
 sampleids = mappings["Sample_ID"].tolist()
-#run_id=os.environ.get("RUN_ID").split('=')[1]
-#run_id = config["run_id"]
 
 #########
 # RULES #
@@ -98,7 +96,6 @@ rule QC_analysis:
    params:
       repo_dir=os.environ.get("GIT_REPODIR"),
       run_ID = config["run_id"],
-      #run_ID=os.environ.get("RUN_ID"),
       QC=os.path.join(workflow.basedir, "../workflow/scripts/run_QC.py"),
       reference = os.path.join(workflow.basedir, "../db/", config["reference"]),
       forward_primer = os.path.join(workflow.basedir, "../db/", config["forward_primer"]),
@@ -145,7 +142,6 @@ rule push_data_pathogendb:
    params:
       sample_name = ("{sample}"),
       run_ID = config["run_id"],
-      #run_ID=os.environ.get("RUN_ID").split('=')[1],
       pdbpush=os.path.join(workflow.basedir, "../workflow/scripts/all-virus_assembly_push.py"),
       config=os.path.join(workflow.basedir, "../config/config.yaml")
    output:
@@ -220,7 +216,6 @@ rule version_check:
       moved_files = "file_movement_message.txt"
    params:
       run_ID = config["run_id"],
-      #run_ID = expand("{runid}", runid=run_id),
       reference = config["reference"],
       genbankfile = config["genbank"],
       ps1 = config["primer_set_1_5kb"],
