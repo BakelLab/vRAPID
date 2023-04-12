@@ -47,42 +47,42 @@ This script queries to PathogenDB, separating the samples into subdirectories ba
 │   ├── <expect_subtype>
 │   │   ├── <collaborator_ID1>
 │   │	│	├── <sample_ID1>
-│   │	│	│		├── <sample_ID1>
-│   │	│	│   │		├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID1>_2.fastq.gz
+│   │	│	│	├── <sample_ID1>
+│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
 │   │	│	├── <sample_ID2>
-│   │	│	│		├── <sample_ID2>
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 │   │   ├── <collaborator_ID2>
 │   │	│	├── <sample_ID1>
-│   │	│	│		├── <sample_ID1>
-│   │	│	│   │		├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID1>_2.fastq.gz
+│   │	│	│	├── <sample_ID1>
+│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
 │   │	│	├── <sample_ID2>
-│   │	│	│		├── <sample_ID2>
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 ├── <virus2>
 │   ├── <expect_subtype>
 │   │   ├── <collaborator_ID1>
 │   │	│	├── <sample_ID1>
-│   │	│	│		├── <sample_ID1>
-│   │	│	│   │		├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID1>_2.fastq.gz
+│   │	│	│	├── <sample_ID1>
+│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
 │   │	│	├── <sample_ID2>
-│   │	│	│		├── <sample_ID2>
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 │   │   ├── <collaborator_ID2>
 │   │	│	├── <sample_ID1>
-│   │	│	│		├── <sample_ID1>
-│   │	│	│   │		├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID1>_2.fastq.gz
+│   │	│	│	├── <sample_ID1>
+│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
 │   │	│	├── <sample_ID2>
-│   │	│	│		├── <sample_ID2>
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 
 ```
 
@@ -120,48 +120,48 @@ The final structure should be as follows:
 │   │	│	├── samples.csv
 │   │	│	├── multibamqc_input.txt
 │   │	│	├── <sample_ID1>
-│   │	│	│		├── <sample_ID1>
-│   │	│	│   │		├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID1>_2.fastq.gz
+│   │	│	│	├── <sample_ID1>
+│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
 │   │	│	├── <sample_ID2>
-│   │	│	│		├── <sample_ID2>
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 │   │   ├── <collaborator_ID2>
 │   │	│	├── samples.csv
 │   │	│	├── multibamqc_input.txt
 │   │	│	├── <sample_ID1>
-│   │	│	│		├── <sample_ID1>
-│   │	│	│   │		├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID1>_2.fastq.gz
+│   │	│	│	├── <sample_ID1>
+│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
 │   │	│	├── <sample_ID2>
-│   │	│	│		├── <sample_ID2>
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 ├── <virus2>
 │   ├── <expect_subtype>
 │   │   ├── <collaborator_ID1>
 │   │	│	├── samples.csv
 │   │	│	├── multibamqc_input.txt
 │   │	│	├── <sample_ID1>
-│   │	│	│		├── <sample_ID1>
-│   │	│	│   │		├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID1>_2.fastq.gz
+│   │	│	│	├── <sample_ID1>
+│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
 │   │	│	├── <sample_ID2>
-│   │	│	│		├── <sample_ID2>
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 │   │   ├── <collaborator_ID2>
 │   │	│	├── samples.csv
 │   │	│	├── multibamqc_input.txt
 │   │	│	├── <sample_ID1>
-│   │	│	│		├── <sample_ID1>
-│   │	│	│   │		├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID1>_2.fastq.gz
+│   │	│	│	├── <sample_ID1>
+│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
 │   │	│	├── <sample_ID2>
-│   │	│	│		├── <sample_ID2>
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │		├── <sample_ID2>_1.fastq.gz
+│   │	│	│	├── <sample_ID2>
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
+│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 ```
 
 Lastly, to successfully run the pipeline, depending on the virus, the `config.yaml` file within the pipeline repository might need to be edited. The following fields are required within the file:
