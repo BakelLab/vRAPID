@@ -6,7 +6,7 @@ This script was built to take in the `bam` file and to preform quality control a
 
 ### Purpose
 
-This script is the third step for the vRAPID pipeline for the Bakel Lab. It uses `bamtools` to split the input file, before running `picard`. Then, using `samtools depth`, the coverage information is obtained. Then `kraken2` is used on a subsampled FASTQ files, outputting the `kraken_report.out`. Lastly, it calls on two other scripts, [`taxanomic_breakdown.R`] and [`plot-coverage-report.R`], before outputting the final `qualityControl.pdf` for each sample.
+This script is the third step for the vRAPID pipeline for the Bakel Lab. It uses `bamtools` to split the input file, before running `picard`. Then, using `samtools depth`, the coverage information is obtained. Then `kraken2` is used on a subsampled FASTQ files, outputting the `kraken_report.out`. Lastly, it calls on two other scripts, `taxanomic_breakdown.R` and `plot-coverage-report.R` (see below for more information), before outputting the final `qualityControl.pdf` for each sample.
 
 ## Script Usage
 
