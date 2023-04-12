@@ -151,7 +151,7 @@ def run_variant_analysis(args):
 
 
 __version__ = "0.1.1"
-parser = argparse.ArgumentParser(prog='COVID variant pipeline', formatter_class=argparse.RawDescriptionHelpFormatter,
+parser = argparse.ArgumentParser(prog='vRAPID variant pipeline', formatter_class=argparse.RawDescriptionHelpFormatter,
                                 description='QC for the assembly, mapping, base calling of viruses\n' \
                                             'Version: %s\n'
                                             'License: GPLv3\n'

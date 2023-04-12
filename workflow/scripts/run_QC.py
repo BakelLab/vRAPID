@@ -144,8 +144,6 @@ def create_plots(sample_folder, amplified, threads, read1_suffix, read2_suffix, 
                         count_dict[i].append(round(counts[i] /depth,2))
                     positions.append(pos + ' (' + refbase + ')\n['+str(depth)+']')
         fig, ax = plt.subplots()
-    	#count_dict=sorted(count_dict.items(), key=operator.itemgetter(1)).reverse()
-        print(count_dict)
         prev_key='start'
         for i in count_dict:
             if prev_key=='start':
@@ -322,7 +320,7 @@ def create_plots(sample_folder, amplified, threads, read1_suffix, read2_suffix, 
 
 
 __version__ = "0.1.1"
-parser = argparse.ArgumentParser(prog='COVID pipeline QC', formatter_class=argparse.RawDescriptionHelpFormatter,
+parser = argparse.ArgumentParser(prog='vRAPID pipeline QC', formatter_class=argparse.RawDescriptionHelpFormatter,
                                 description='QC for the assembly, mapping, base calling of viruses\n' \
                                             'Version: %s\n'
                                             'License: GPLv3\n'

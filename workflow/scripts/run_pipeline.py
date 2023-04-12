@@ -162,19 +162,19 @@ def run_illumina(args):
     
 
 __version__ = "0.1.1"
-parser = argparse.ArgumentParser(prog='COVID pipeline', formatter_class=argparse.RawDescriptionHelpFormatter,
+parser = argparse.ArgumentParser(prog='vRAPID pipeline', formatter_class=argparse.RawDescriptionHelpFormatter,
                                 description='pipeline for the assembly, mapping, base calling of viruses\n' \
                                             'Version: %s\n'
                                             'License: GPLv3\n'
                                             'USAGE: python -i <sample_folder>'
                                             'Sample folder should look like the following'
-                                            '<sample_folder>\n'
-                                            '└───<reads_15kb_primers>\n'
-                                            '│   │   <read_prefix>_1.fastq.gz\n'
-                                            '│   │   <read_prefix>_2.fastq.gz\n'
-                                            '└───<reads_2kb_primers>\n'
-                                            '    │   <read_prefix>_1.fastq.gz\n'
-                                            '    │   <read_prefix>_2.fastq.gz\n' % __version__)
+                                            '<Run-ID>\n'
+                                            '└───<sample_name1>\n'
+                                            '│   │   <sample_name1>_1.fastq.gz\n'
+                                            '│   │   <sample_name1>_2.fastq.gz\n'
+                                            '└───<sample_name2>\n'
+                                            '    │   <sample_name2>_1.fastq.gz\n'
+                                            '    │   <sample_name2>_2.fastq.gz\n' % __version__)
 
 parser.add_argument('-rd', '--repo_dir', action='store', help='path to repo dir')
 parser.add_argument('-i', '--sample_folder', action='store', help='Sample folder created by process_run.py')
@@ -201,11 +201,7 @@ if args.version:
     sys.exit()
 
 repo_dir = args.repo_dir
-#if not args.ccs_reads is None:
-#    run_ccs(args)
-#elif not args.thermo_fischer is None:
-#    run_thermo(args)
-#elif not args.sample_folder is None:
+
 if not args.sample_folder is None:     
     run_illumina(args)
 else:
