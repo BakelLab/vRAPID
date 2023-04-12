@@ -22,7 +22,7 @@ sampleids = mappings["Sample_ID"].tolist()
 
 rule all:
    input:
-      run_report = expand("{runid}_run_report.csv", runid=config["run_id"])
+      data_release_report = expand("{runid}_data_release.txt", runid=config["run_id"])
 
 rule file_rename:
    message: "Rename input file for consistency"
@@ -318,7 +318,7 @@ rule data_release_prep:
       data_release_report = expand("{runid}_data_release.txt", runid=config["run_id"])
    params:
       run_ID = config["run_id"],
-      status_script = os.path.join(workflow.basedir, "../workflow/scripts/data_release_script.py"),
+      status_script = os.path.join(workflow.basedir, "../workflow/scripts/data-release.py"),
       sample_mapping = config["samples"],
       ref_header = config["ref_fasta_headers"],
       virus = config["virus"]
