@@ -124,14 +124,6 @@ unset R_LIBS
 module load anaconda2
 source activate snakemake
 
-# Additional module load commands. Guppy needs to be pre-installed on the system
-# as it is not available through conda or otherwise. We also need to load the 'proxies'
-# module to set the http_proxy and https_proxy environment variables. Finally,
-# we need the singularity module as installed on the cluster to enable user environments.
-# This then provide support for e.g. docker containers.
-#module load singularity/3.6.4
-#module load proxies
-
 # Add the bin folder with any external scripts that may be called from the pipeline to the path
 export PATH="$GIT_REPODIR/bin/:$PATH"
 export RUN_ID
