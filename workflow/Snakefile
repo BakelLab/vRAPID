@@ -175,7 +175,7 @@ rule run_QualiMap_sample:
       """
 
 
-rule multiqc:
+rule run_multiqc:
    message: "Generate MultiQC Report for the run"
    input:
       qualimap_all_report = ("multi_bamqc/multisampleBamQcReport.html")
