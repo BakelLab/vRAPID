@@ -18,11 +18,11 @@ If an sCoV or an MPX sample is being run through the pipeline, it outputs a file
 
 ### Execution
 
-`run_genome_annotation -i <sample_ID.fasta> -v <virus-type>`
+`run_genome_annotation.py -i <sample_ID.fasta> -v <virus-type>`
 
 #### Snakemake
 
-The script can be found in the `Snakefile` found in the `workflow` directory, under the `QC_analysis` rule. All necessary input, parameters, output, and log files are defined under that rule. Note that the snakemake rule also outputs a log file for each sample. Snakemake's log files can always be found in the `log` directory, and identified per sample in the following format:
+The script can be found in the `Snakefile` found in the `workflow` directory, under the `run_genome_annotation` rule. All necessary input, parameters, output, and log files are defined under that rule. Note that the snakemake rule also outputs a log file for each sample. Snakemake's log files can always be found in the `log` directory, and identified per sample in the following format:
 
 `06_<sample-name>.annotation.snakemake.log`
 
