@@ -6,7 +6,7 @@ vRAPID relies on data structures and naming conventions used by the [Center for 
 
 #### Installing snakemake on Minerva
 
-Install `snakemake` on minerva before running the pipeline, as follows:
+Install `snakemake` on [Minerva](https://labs.icahn.mssm.edu/minervalab/minerva-quick-start/) before running the pipeline, as follows:
 
 ```bash
 module purge all
