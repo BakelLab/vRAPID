@@ -6,6 +6,7 @@ vRAPID relies on data structures and naming conventions used by the [Center for 
 
 
 
+
 #### Prepare the snakemake conda environment
 
 Installation of the required external software packages is largely handled by the pipeline itself, however a conda environment named `snakemake` needs to be present in your environment. We recommend miniconda, which is a free minimal installer for [conda](https://docs.conda.io/en/latest/miniconda.html). Follow the instructions below to start the miniconda installer on Linux. When asked whether the conda environment should automatically be initialized, select 'yes'. Note that Snakemake requires the channel_priority to be set to strict. The post-installation commands to apply this setting are included in the post-installation selection below.
@@ -181,7 +182,7 @@ The final structure should be as follows:
 │   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 ```
 
-Lastly, to successfully run the pipeline, depending on the virus, the `config.yaml` file within the pipeline repository might need to be edited. The following fields are required within the file:
+Lastly, to successfully run the pipeline, depending on the virus, the `config.yaml` file within the pipeline repository might need to be edited. Please note that the current default settings are set for SARS-CoV-2. The following fields are required within the file:
 
 1. **samples**: Name of the file containing a list of the samples being run. Currently set to `samples.csv`.
 2. **run_id:** Run ID name, typically identified as `TD######` from the sequencing core's data release e-mail.
