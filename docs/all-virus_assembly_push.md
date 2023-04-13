@@ -2,11 +2,11 @@
 
 ## Background
 
-This script was built to replace the virus specific assembly push scripts previously used for Influenza, SARS-CoV-2/sCoV/MPX. It was also set up for integration into `snakemake` pipelines. The script is based on a standardized dictionary of values (see below) which is parsed through a series of functions. The standardization of the dictionary allows for more flexibility in handling of viruses with different genome structures (such as segmented vs non-segmented). Database insertions/updates are also handled by function and database commits will only occur if no exceptions are raised. Failed/broken samples run in the script should not cause premature exit, instead any issues will be reported in the output log file and the database will rollback rather than update. 
+This script allows uploading of vRAPID assembly results in the MS-PSP 'pathogenDB' database. The script uses a standardized dictionary of values (see below) which is parsed through a series of functions. The standardization of the dictionary allows for more flexibility in handling of viruses with different genome structures (such as segmented vs non-segmented). Database insertions/updates are also handled by function and database commits will only occur if no exceptions are raised. Issues that arise during sample processing will be reported in the output log file and database updates are only performed when all QC validation is passed for an assembly run. 
 
 ### Purpose
 
-This script is intended to serve as the final individual step in the viral reference-based assembly pipeline for the Bakel Lab. It will parse assembly information, assign scores based on coverage/completeness, upload the information into PathogenDB, and move report files for access on the frontend pathogendb.mssm.edu site. 
+This script is intended to serve as the final individual step in the viral reference-based assembly pipeline for the Bakel Lab. It will parse assembly information, assign scores based on coverage/completeness, and upload genome assemblies and metadata into PathogenDB. 
 
 
 ## Script Usage

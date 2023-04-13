@@ -2,11 +2,11 @@
 
 ## Background
 
-This script was built to remove intermedatery output once all significant steps have been successfully completed.
+This script removes intermediary output files once the vRAPID pipeline has successfully completed.
 
 ### Purpose
 
-This script is the ninth step for the vRAPID pipeline for the Bakel Lab. It **must** be run after the successful completion of all previous steps. The script was designed to remove all intermediatery output from the `02_assmebly` subdirectory of each sample, and to compress the pileup output found in the `04_variants` subdirectory.
+This script is the ninth step for the vRAPID pipeline for the Bakel Lab. It **must** be run after the successful completion of all previous steps. The script was designed to remove all large intermediatery output files from the `02_assembly` subdirectory of each sample and to compress the pileup output found in the `04_variants` subdirectory prior to archival.
 
 ## Script Usage
 
