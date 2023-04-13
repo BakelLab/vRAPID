@@ -162,7 +162,7 @@ The final structure should be as follows:
 │   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 ```
 
-Lastly, to successfully run the pipeline, depending on the virus, the `config.yaml` file within the pipeline repository might need to be edited. The following fields are required within the file:
+Lastly, to successfully run the pipeline, depending on the virus, the `config.yaml` file within the pipeline repository might need to be edited. Please note that the current default settings are set for SARS-CoV-2. The following fields are required within the file:
 
 1. **samples**: Name of the file containing a list of the samples being run. Currently set to `samples.csv`.
 2. **run_id:** Run ID name, typically identified as `TD######` from the sequencing core's data release e-mail.
