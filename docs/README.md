@@ -4,21 +4,41 @@ A reference genome-based pipeline for the assembly, consensus calling and annota
 
 vRAPID relies on data structures and naming conventions used by the [Center for Research on Influenza Pathogenesis and Transmission (CRIPT)](https://www.ceirr-network.org/centers/cript) and the [Mount Sinai Pathogen Surveillance Program (MS-PSP)](https://icahn.mssm.edu/research/genomics/research/microbial-genomics-pathogen-surveillance) at the Icahn School of Medicine at Mount Sinai. vRAPID is an expansion of the [COVID_pipe](https://github.com/mjsull/COVID_pipe) pipeline that was written by Mitchell Sullivan in the Bakel Lab. 
 
-#### Installing snakemake on Minerva
 
-Install `snakemake` on [Minerva](https://labs.icahn.mssm.edu/minervalab/minerva-quick-start/) before running the pipeline, as follows:
 
-```bash
-module purge all
-unset PYTHONPATH
-unset PERL5LIB
-unset R_LIBS
-module load anaconda3
+
+#### Prepare the snakemake conda environment
+
+Installation of the required external software packages is largely handled by the pipeline itself, however a conda environment named `snakemake` needs to be present in your environment. We recommend miniconda, which is a free minimal installer for [conda](https://docs.conda.io/en/latest/miniconda.html). Follow the instructions below to start the miniconda installer on Linux. When asked whether the conda environment should automatically be initialized, select 'yes'. Note that Snakemake requires the channel_priority to be set to strict. The post-installation commands to apply this setting are included in the post-installation selection below.
+
+```
+# Start miniconda installation
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+sh Miniconda3-latest-Linux-x86_64.sh
+
+# Post-installation commands to enforce strict channel_priority (required for Snakemake)
+conda config --set auto_activate_base false
 conda config --set channel_priority strict
-conda create -c conda-forge -c bioconda -n snakemake snakemake=6.8.0 mamba=0.24 tabulate=0.8
 ```
 
-#### Setting up a vRAPID run on Minerva
+On the Mount Sinai 'Minerva' cluster we additionally recommend setting the conda environment `pkgs` and `envs` directories to your `work` folder, which has a much larger storage allocation (100-200 Gb) than the home folders (5 Gb). The conda configuration commands to set the directories are as follows:
+
+```
+mkdir -p /sc/arion/work/$USER/conda/pkgs
+mkdir -p /sc/arion/work/$USER/conda/envs
+conda config --add pkgs_dirs "/sc/arion/work/$USER/conda/pkgs"
+conda config --add envs_dirs "/sc/arion/work/$USER/conda/envs"
+```
+
+After installation and configuration of conda/miniconda, the following 'conda create' command can be used to set up the required 'snakemake' environment.
+
+```
+conda create -c conda-forge -c bioconda -n snakemake 'snakemake=6.8.0' 'mamba=0.24' 'tabulate=0.8'
+```
+
+
+
+#### Running the vRAPID pipeline
 
 The following folder structure should exist in the run directory
 
