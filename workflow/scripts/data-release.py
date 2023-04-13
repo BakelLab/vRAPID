@@ -26,8 +26,8 @@ parser = ArgumentParser(description="Sample names in run")
 
 parser.add_argument('-p', '--inpcsv', help='sample name in run in csv format', required=True)
 parser.add_argument('-r', '--runid', help='TD number of the assembly run name', required=True)
-parser.add_argument('-v', '--virus', nargs='+', help='virus in run', required=True)
-parser.add_argument('-f', '--fastaheaders', nargs='+', help='Headers in reference FASTA file', required=True)
+parser.add_argument('-v', '--virus', nargs='+', default="SARS-CoV-2", help='virus in run', required=True)
+parser.add_argument('-f', '--fastaheaders', nargs='+', default="MN908947", help='Headers in reference FASTA file', required=True)
 args = parser.parse_args()
 
 mappings = pd.read_csv(args.inpcsv)

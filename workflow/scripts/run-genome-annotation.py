@@ -15,7 +15,7 @@ import sys, os
 # Arguments parsing
 parser = argparse.ArgumentParser(description="Annotate FASTA Sequence if applicable")
 parser.add_argument("-i", "--input", required=True, help="Name of fasta file to annotate")
-parser.add_argument("-v", "--virus", required=True, help="Virus to run annotator")
+parser.add_argument("-v", "--virus", required=True, default="SARS-CoV-2", help="Virus to run annotator")
 parser.add_argument("-u", "--url", default="https://www.ncbi.nlm.nih.gov/genomes/FLU/annotation/api/", help="Url for the flu annotation tool. Default: https://www.ncbi.nlm.nih.gov/genomes/FLU/annotation/api/")
 parser.add_argument("-p", "--proxy", default="http://nfs01.chimera.hpc.mssm.edu:3128", help="Web proxy url. Default: http://nfs01.chimera.hpc.mssm.edu:3128")
 parser.add_argument("-r", "--retries", type=int, default=35, help="Number of times to attempt data retrieval. Default: 35")
@@ -119,9 +119,6 @@ if __name__ == "__main__":
     
     # If the virus is SARS-CoV-2, run genome annotation using VADR
     if args.virus == "SARS-CoV-2":
-        #subprocess.Popen("module load vadr/1.3", shell=True).wait()
-        #os.environ["VADRMODELDIR"] = "/hpc/users/khaliz03/opt/rap/db/vadr-models-sarscov2-1.3-1/"
-        #os.environ["VADRSCRIPTSDIR"] = "/hpc/users/khaliz03/opt/vadr"
         vadr_out = args.input.split(".")[0]+"_annotation"
         print(vadr_out)
         

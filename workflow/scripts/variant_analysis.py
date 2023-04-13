@@ -160,9 +160,9 @@ parser = argparse.ArgumentParser(prog='vRAPID variant pipeline', formatter_class
 parser.add_argument('-rd', '--repo_dir', action='store', help='path to repo dir')
 parser.add_argument('-i', '--illumina_folder', action='store', help='Sample folder created by process_run.py')
 parser.add_argument('-m', '--min_ratio', action='store', default=0.9, help='number of threads to use')
-parser.add_argument('-r', '--reference', action='store', default="COVID.fa", help='reference genome for assembly')
-parser.add_argument('-ps_2', '--primer_set_2kb', action='store', default="SARS-CoV-2_primers_2kb_set.tsv", help='2kb primer set')
-parser.add_argument('-ps_1_5', '--primer_set_1_5kb', action='store', default="SARS-CoV-2_primers_1.5kb_set.tsv", help='1.5kb primer set')
+parser.add_argument('-r', '--reference', action='store', default="sars-cov-2/COVID.fa", help='reference genome for assembly')
+parser.add_argument('-ps_2', '--primer_set_2kb', action='store', default="sars-cov-2/SARS-CoV-2_primers_2kb_set.tsv", help='2kb primer set')
+parser.add_argument('-ps_1_5', '--primer_set_1_5kb', action='store', default="sars-cov-2/SARS-CoV-2_primers_1.5kb_set.tsv", help='1.5kb primer set')
 
 args = parser.parse_args()
 
