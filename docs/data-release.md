@@ -16,7 +16,7 @@ This script is the last step for the vRAPID pipeline for the Bakel Lab. It queri
 
 #### Snakemake
 
-The script can be found in the `Snakefile` found in the `workflow` directory, under the `run_genome_annotation` rule. All necessary input, parameters, output, and log files are defined under that rule. Note that the snakemake rule also outputs a log file for each sample. Snakemake's log files can always be found in the `log` directory, and identified per sample in the following format:
+The script can be found in the `Snakefile` found in the `workflow` directory, under the `data_release_prep` rule. All necessary input, parameters, output, and log files are defined under that rule. Note that the snakemake rule also outputs a log file for each sample. Snakemake's log files can always be found in the `log` directory, and identified per sample in the following format:
 
 `13_datarelease.snakemake.log`
 
