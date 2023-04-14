@@ -1,6 +1,6 @@
 ### vRAPID
 
-The Virus Reference-based Assembly Pipeline and IDentification (vRAPID) is a reference genome-based pipeline for the assembly, consensus calling and annotation of viral pathogen genomes.
+The Virus Reference-based Assembly Pipeline and IDentification (vRAPID) tool runs the assembly, consensus calling and annotation of viral pathogen genomes.
 
 vRAPID relies on data structures and naming conventions used by the [Center for Research on Influenza Pathogenesis and Transmission (CRIPT)](https://www.ceirr-network.org/centers/cript) and the [Mount Sinai Pathogen Surveillance Program (MS-PSP)](https://icahn.mssm.edu/research/genomics/research/microbial-genomics-pathogen-surveillance) at the Icahn School of Medicine at Mount Sinai. vRAPID is an expansion of the [COVID_pipe](https://github.com/mjsull/COVID_pipe) pipeline that was written by Mitchell Sullivan in the Bakel Lab. 
 
