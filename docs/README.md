@@ -21,7 +21,7 @@ conda config --set auto_activate_base false
 conda config --set channel_priority strict
 ```
 
-On the Mount Sinai 'Minerva' cluster we additionally recommend setting the conda environment `pkgs` and `envs` directories to your `work` folder, which has a much larger storage allocation (100-200 Gb) than the home folders (5 Gb). The conda configuration commands to set the directories are as follows:
+On the Mount Sinai (Minerva)[https://labs.icahn.mssm.edu/minervalab/minerva-quick-start/] high-performance computer cluster we additionally recommend setting the conda environment `pkgs` and `envs` directories to your `work` folder, which has a much larger storage allocation (100-200 Gb) than the home folders (5 Gb). The conda configuration commands to set the directories are as follows:
 
 ```
 mkdir -p /sc/arion/work/$USER/conda/pkgs
@@ -40,30 +40,13 @@ conda create -c conda-forge -c bioconda -n snakemake 'snakemake=6.8.0' 'mamba=0.
 
 #### Running the vRAPID pipeline
 
-The following folder structure should exist in the run directory
-
-```bash
-<Run-ID>
-└───<sample_ID1>
-│   │   <sample_ID1>_1.fastq.gz
-│   │   <sample_ID1>_2.fastq.gz
-│
-└───<sample_ID2>
-    │   <sample_ID2>_1.fastq.gz
-    │   <sample_ID2>_2.fastq.gz
-```
-
-Then run:
-
-`python ~/opt/vRAPID/workflow/scripts/organize_run_samples.py`
-
-This script queries to PathogenDB, separating the samples into subdirectories based on the virus type, expected subtype, and collaborator ID. If no subtype is expected, then the script separates the samples into a `None` subdirectory. This creates the following directory structure within the run directory:
+The following folder structure should exist in the analysis directory to run the pipeline:
 
 ```bash
 <Run-ID>
 ├── <virus1>
 │   ├── <expect_subtype>
-│   │   ├── <collaborator_ID1>
+│   │   ├── <batch_ID1>
 │   │	│	├── <sample_ID1>
 │   │	│	│   ├── <sample_ID1>
 │   │	│	│   │	├── <sample_ID1>_1.fastq.gz
@@ -72,7 +55,7 @@ This script queries to PathogenDB, separating the samples into subdirectories ba
 │   │	│	│   ├── <sample_ID2>
 │   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 │   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │   ├── <collaborator_ID2>
+│   │   ├── <batch ID2>
 │   │	│	├── <sample_ID1>
 │   │	│	│   ├── <sample_ID1>
 │   │	│	│   │	├── <sample_ID1>_1.fastq.gz
@@ -83,7 +66,7 @@ This script queries to PathogenDB, separating the samples into subdirectories ba
 │   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 ├── <virus2>
 │   ├── <expect_subtype>
-│   │   ├── <collaborator_ID1>
+│   │   ├── <batch_ID1>
 │   │	│	├── <sample_ID1>
 │   │	│	│   ├── <sample_ID1>
 │   │	│	│   │	├── <sample_ID1>_1.fastq.gz
@@ -92,7 +75,7 @@ This script queries to PathogenDB, separating the samples into subdirectories ba
 │   │	│	│   ├── <sample_ID2>
 │   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 │   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │   ├── <collaborator_ID2>
+│   │   ├── <batch_ID2>
 │   │	│	├── <sample_ID1>
 │   │	│	│   ├── <sample_ID1>
 │   │	│	│   │	├── <sample_ID1>_1.fastq.gz
@@ -104,9 +87,9 @@ This script queries to PathogenDB, separating the samples into subdirectories ba
 
 ```
 
-Then within the respective newly created subdirectory, create the following two files:
+Then within each sample's subdirectory, create the following two files:
 
-1. `samples.csv:` with the column name `Sample_ID`, holding a list of the samples within the newly created subdirectory (the new working directory) that are to be run for that virus type and collaborator.
+1. `samples.csv:` with the column name `Sample_ID`, holding a list of the samples within each virus-batch subdirectory (the new working directory).
 2. `multibamqc_input.txt:` a tab-separated file that holds the list of samples from `samples.csv` in the first column, and the path to the bam file in the second column. Note that the bam files will always be outputted to `<sample_ID>/02_assembly/<sample_ID>_ref.bam`. Please note that the `multibamqc_input.txt` file **does not** require column names.
 
 An example of both file structures can be seen below:
@@ -134,7 +117,7 @@ The final structure should be as follows:
 <Run-ID>
 ├── <virus1>
 │   ├── <expect_subtype>
-│   │   ├── <collaborator_ID1>
+│   │   ├── <batch_ID1>
 │   │	│	├── samples.csv
 │   │	│	├── multibamqc_input.txt
 │   │	│	├── <sample_ID1>
@@ -145,7 +128,7 @@ The final structure should be as follows:
 │   │	│	│   ├── <sample_ID2>
 │   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 │   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │   ├── <collaborator_ID2>
+│   │   ├── <batch_ID2>
 │   │	│	├── samples.csv
 │   │	│	├── multibamqc_input.txt
 │   │	│	├── <sample_ID1>
@@ -158,7 +141,7 @@ The final structure should be as follows:
 │   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 ├── <virus2>
 │   ├── <expect_subtype>
-│   │   ├── <collaborator_ID1>
+│   │   ├── <batch_ID1>
 │   │	│	├── samples.csv
 │   │	│	├── multibamqc_input.txt
 │   │	│	├── <sample_ID1>
@@ -169,7 +152,7 @@ The final structure should be as follows:
 │   │	│	│   ├── <sample_ID2>
 │   │	│	│   │	├── <sample_ID2>_1.fastq.gz
 │   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │   ├── <collaborator_ID2>
+│   │   ├── <batch_ID2>
 │   │	│	├── samples.csv
 │   │	│	├── multibamqc_input.txt
 │   │	│	├── <sample_ID1>
@@ -197,6 +180,26 @@ Lastly, to successfully run the pipeline, depending on the virus, the `config.ya
 11. **length:** length of the reference genome(s). For multi-segmented viruses like influenza, this can be a list of lengths, ordered with respect to the FASTA headers.
 12. **ref_fasta_headers:** The name of FASTA header(s) in the reference genome. For multi-segmented viruses like influenza, this can be a list of headers, ordered with respect to the length.
 
+##### *Note for users from the Bakel lab only*
+From a typical data release from the sequencing core the starting directory structure will look as follows: 
+
+```bash
+<Run-ID>
+└───<sample_ID1>
+│   │   <sample_ID1>_1.fastq.gz
+│   │   <sample_ID1>_2.fastq.gz
+│
+└───<sample_ID2>
+    │   <sample_ID2>_1.fastq.gz
+    │   <sample_ID2>_2.fastq.gz
+```
+
+In order to create the required directory structure for the pipeline run:
+
+`python ~/opt/vRAPID/workflow/scripts/organize_run_samples.py`
+
+This script queries to PathogenDB, separating the samples into subdirectories based on the virus type, expected subtype, and batch ID. If no subtype is expected, then the script separates the samples into a `None` subdirectory. This creates the final directory structure within the sequencing run directory as shown before. You can then proceede to generate the `samples.csv` and `multibamqc_input.txt` as previously mentioned.
+
 #### Running vRAPID
 
 Then once the files are generated, the pipeline can be run using the following command:
@@ -213,7 +216,7 @@ Once the pipeline has completed, the following output files are created:
 <Run-ID>
 ├── <virus1>
 │   ├── <expect_subtype>
-│   │   ├── <collaborator_ID1>
+│   │   ├── <batch_ID1>
 │   │	│	├── samples.csv
 │   │	│	├── multibamqc_input.txt
 │   │	│	├── pipeline.log
@@ -221,8 +224,8 @@ Once the pipeline has completed, the following output files are created:
 │   │	│	├── <Run-ID>_cleaned.txt
 │   │	│	├── <Run-ID>_data_release.txt
 │   │	│	├── <Run-ID>_software_version.txt
-│   │	│	├── <Run-ID>_<collaborator-ID>_assemblies.csv
-│   │	│	├── <Run-ID>_<collaborator-ID>.tar.gz
+│   │	│	├── <Run-ID>_<batch-ID>_assemblies.csv
+│   │	│	├── <Run-ID>_<batch-ID>.tar.gz
 │   │	│	├── logs
 │   │	│	├── multi_bamqc
 │   │	│	├── multiqc_report.html
