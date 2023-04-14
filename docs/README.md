@@ -21,7 +21,7 @@ conda config --set auto_activate_base false
 conda config --set channel_priority strict
 ```
 
-On the Mount Sinai (Minerva)[https://labs.icahn.mssm.edu/minervalab/minerva-quick-start/] high-performance computer cluster we additionally recommend setting the conda environment `pkgs` and `envs` directories to your `work` folder, which has a much larger storage allocation (100-200 Gb) than the home folders (5 Gb). The conda configuration commands to set the directories are as follows:
+On the Mount Sinai [Minerva](https://labs.icahn.mssm.edu/minervalab/minerva-quick-start/) high-performance computer cluster we additionally recommend setting the conda environment `pkgs` and `envs` directories to your `work` folder, which has a much larger storage allocation (100-200 Gb) than the home folders (5 Gb). The conda configuration commands to set the directories are as follows:
 
 ```
 mkdir -p /sc/arion/work/$USER/conda/pkgs
