@@ -74,15 +74,9 @@ def process_fasta_file(file_path, segment_headers, multi,virus):
                                                            'name': header}
                         break
     else:
-        if virus == 'sCoV':
-            for header in segment_headers:
-                return_dict['sequences'][header] = {'fasta': str(SeqIO.read(file_path, "fasta").seq.upper()),
-                                                   'type': 'Genome',
-                                                   'name': virus}
-        else:
-            return_dict['sequences']['sequence'] = {'fasta': str(SeqIO.read(file_path, "fasta").seq.upper()),
-                                                   'type': 'Genome',
-                                                   'name': virus}
+        return_dict['sequences']['sequence'] = {'fasta': str(SeqIO.read(file_path, "fasta").seq.upper()),
+                                                'type': 'Genome',
+                                                'name': virus}
     return return_dict
 
 # function for handling the protein sequences
@@ -802,7 +796,7 @@ if __name__ == "__main__":
     # assign subtype
     if virus == 'sCoV':
         try:
-            data_dict['subtype'] = headers[0]
+            data_dict['subtype'] = headers
             logging.info('sCoV subtype assigned successfully.')
         except Exception as e:
             logging.exception(f'Error assining sCoV subtype: %s', e)
