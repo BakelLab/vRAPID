@@ -35,7 +35,8 @@ The script can be found in the `Snakefile` under the `push_data_pathogendb` rule
  'virus': 'SARS-CoV-2',
  'path': '/sc/arion/projects/PVI/{pipeline-dir}/{run-id}/{virus}/{collaborator}',
  'length': '29903',
- 'ref_fasta_headers': 'MN908947'
+ 'ref_fasta_headers': 'MN908947',
+ 'assembly_pipeline': 'traditional'
  }
 ````
 
@@ -45,7 +46,7 @@ The script can be found in the `Snakefile` under the `push_data_pathogendb` rule
 
 #### Directory Structure/File Requirements
 
-Primary/whatever term
+##### Base path
 
 `/sc/arion/projects/PVI/{pipeline}/{run-id}/{virus}/{collaborator}/`
 
@@ -122,6 +123,7 @@ data_dict = {
      'sample': 'FK_49196',
      'extract_id': '49196',
      'assembly_id': 26888,
+     'assembly_pipeline':'Traditional',
      'virus': 'IAV',
      'length': 1000,
      'subtype': 'H15N2',

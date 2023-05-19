@@ -2,9 +2,10 @@
 
 """
 Written by: Adriana van de Guchte
-Last Update: 4/10/2023
-Version: 1.2
+Last Update: 5/19/2023
+Version: 1.21
 Purpose: Push viral assemblies to PDB
+Last Update: Added assembly_pipeline field, source in config file
 
 """
 
@@ -386,10 +387,10 @@ def insert_assembly_table(data_dict,db):
     cur = db.cursor()
 
     # set up base queries
-    query = "INSERT INTO `tCEIRS_assemblies` (`Extract_ID`, `assembly_run`, `assembly_status`, `Total_reads`,`Uniq_mapped_read_percent`,`Short_unmapped_read_percent`,`completeness`,`Viral_percent`,`Archaea_percent`,`Fungi_percent`,`Eukaryota_percent`,`Bacteria_percent`,`Assembly_quality`,`Variant_pos_sum_15pct`, `Sequencing_method`, `Sequencing_region`, `assembly_subtype`, `Coverage_100`,`Coverage_10`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+    query = "INSERT INTO `tCEIRS_assemblies` (`Extract_ID`, `assembly_run`, `assembly_status`, `Total_reads`,`Uniq_mapped_read_percent`,`Short_unmapped_read_percent`,`completeness`,`Viral_percent`,`Archaea_percent`,`Fungi_percent`,`Eukaryota_percent`,`Bacteria_percent`,`Assembly_quality`,`Variant_pos_sum_15pct`, `Sequencing_method`, `Sequencing_region`, `assembly_subtype`, `Coverage_100`,`Coverage_10`,`assembly_pipeline) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
     # build value lists
-    vals = (data_dict['extract_id'], data_dict['run'], data_dict['scores']['status'], data_dict['flagstat']['total_reads'],data_dict['percents']['mapped_per'],data_dict['percents']['short_unmapped_per'],data_dict['scores']['completeness'],data_dict['percents']['viral_per'],data_dict['percents']['archaea_per'],data_dict['percents']['fungi_per'],data_dict['percents']['eukaryote_per'],data_dict['percents']['bacteria_per'],data_dict['scores']['quality'],data_dict['scores']['variable_bases'], 'Illumina', 'Whole Genome', data_dict['subtype'],data_dict['scores']['coverage']['coverage_100'],data_dict['scores']['coverage']['coverage_10'])
+    vals = (data_dict['extract_id'], data_dict['run'], data_dict['scores']['status'], data_dict['flagstat']['total_reads'],data_dict['percents']['mapped_per'],data_dict['percents']['short_unmapped_per'],data_dict['scores']['completeness'],data_dict['percents']['viral_per'],data_dict['percents']['archaea_per'],data_dict['percents']['fungi_per'],data_dict['percents']['eukaryote_per'],data_dict['percents']['bacteria_per'],data_dict['scores']['quality'],data_dict['scores']['variable_bases'], 'Illumina', 'Whole Genome', data_dict['subtype'],data_dict['scores']['coverage']['coverage_100'],data_dict['scores']['coverage']['coverage_10'],data_dict['assembly_pipeline'])
 
     # execute queries
     cur.execute(query,vals)
@@ -404,10 +405,10 @@ def update_assembly_table(data_dict,db):
     cur = db.cursor()
 
     # set up base queries
-    query = "UPDATE `tCEIRS_assemblies` SET `Extract_ID` = %s, `assembly_status` = %s, `Total_reads` = %s,`Uniq_mapped_read_percent` = %s,`Short_unmapped_read_percent` = %s,`completeness` = %s,`Viral_percent` = %s,`Archaea_percent` = %s,`Fungi_percent` = %s,`Eukaryota_percent` = %s,`Bacteria_percent` = %s,`Assembly_quality` = %s,`Variant_pos_sum_15pct` = %s, `Sequencing_method` = %s, `Sequencing_region` = %s, `assembly_subtype` = %s, `Coverage_100` = %s,`Coverage_10` = %s WHERE `assembly_ID` = %s"
+    query = "UPDATE `tCEIRS_assemblies` SET `Extract_ID` = %s, `assembly_status` = %s, `Total_reads` = %s,`Uniq_mapped_read_percent` = %s,`Short_unmapped_read_percent` = %s,`completeness` = %s,`Viral_percent` = %s,`Archaea_percent` = %s,`Fungi_percent` = %s,`Eukaryota_percent` = %s,`Bacteria_percent` = %s,`Assembly_quality` = %s,`Variant_pos_sum_15pct` = %s, `Sequencing_method` = %s, `Sequencing_region` = %s, `assembly_subtype` = %s, `Coverage_100` = %s,`Coverage_10` = %s, `assembly_pipeline` = %s WHERE `assembly_ID` = %s"
 
     # build value lists
-    vals = (data_dict['extract_id'], data_dict['scores']['status'], data_dict['flagstat']['total_reads'],data_dict['percents']['mapped_per'],data_dict['percents']['short_unmapped_per'],data_dict['scores']['completeness'],data_dict['percents']['viral_per'],data_dict['percents']['archaea_per'],data_dict['percents']['fungi_per'],data_dict['percents']['eukaryote_per'],data_dict['percents']['bacteria_per'],data_dict['scores']['quality'],data_dict['scores']['variable_bases'], 'Illumina', 'Whole Genome', data_dict['subtype'],data_dict['scores']['coverage']['coverage_100'],data_dict['scores']['coverage']['coverage_10'],data_dict['assembly_id'])
+    vals = (data_dict['extract_id'], data_dict['scores']['status'], data_dict['flagstat']['total_reads'],data_dict['percents']['mapped_per'],data_dict['percents']['short_unmapped_per'],data_dict['scores']['completeness'],data_dict['percents']['viral_per'],data_dict['percents']['archaea_per'],data_dict['percents']['fungi_per'],data_dict['percents']['eukaryote_per'],data_dict['percents']['bacteria_per'],data_dict['scores']['quality'],data_dict['scores']['variable_bases'], 'Illumina', 'Whole Genome', data_dict['subtype'],data_dict['scores']['coverage']['coverage_100'],data_dict['scores']['coverage']['coverage_10'],data_dict['assembly_pipeline'],data_dict['assembly_id'])
 
     # execute queries
     cur.execute(query,vals)
@@ -521,6 +522,7 @@ if __name__ == "__main__":
     length = config_data['length']
     headers = config_data['ref_fasta_headers']
     base_dir = config_data['path']
+    pipeline = config_data['assembly_pipeline']
 
     # overwrites base directory with alternate if one is provided as an argument
     if args.altpath:
@@ -661,6 +663,7 @@ if __name__ == "__main__":
             'sample': sample,
             'extract_id': sample.split('_')[1],
             'assembly_id': None,
+            'assembly_pipeline':pipeline,
             'virus': virus,
             'length': length,
             'subtype': None,
