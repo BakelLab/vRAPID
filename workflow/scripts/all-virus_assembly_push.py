@@ -644,6 +644,12 @@ if __name__ == "__main__":
                 'completeness':.7,
                 'coverage_10':.7
             },
+            'HMPV':{
+                'variable_bases': 9,
+                'percent': .4,
+                'completeness':.7,
+                'coverage_10':.7
+            },
             'MPX':{
                 'variable_bases': 9,
                 'percent': .4,
