@@ -12,7 +12,7 @@ min_version("6.8")
 # CONFIG #
 ##########
 
-configfile: workflow.source_path("../config/config.yaml")
+configfile: "config.yaml"
 mappings = pd.read_csv(config["samples"])
 sampleids = mappings["Sample_ID"].tolist()
 
@@ -22,6 +22,7 @@ sampleids = mappings["Sample_ID"].tolist()
 
 rule all:
    input:
+#      annotation_out = expand("{sample}/02_assembly/{sample}_genome_annotation.txt", sample=sampleids)
       data_release_report = expand("{runid}_data_release.txt", runid=config["run_id"])
 
 rule file_rename:
@@ -142,6 +143,7 @@ rule push_data_pathogendb:
    params:
       sample_name = ("{sample}"),
       run_ID = config["run_id"],
+      path = config['path'],
       pdbpush=os.path.join(workflow.basedir, "../workflow/scripts/all-virus_assembly_push.py"),
       config=os.path.join(workflow.basedir, "../config/config.yaml")
    output:
@@ -152,7 +154,7 @@ rule push_data_pathogendb:
       PDBPush = "logs/05_{sample}.PDBPush.snakemake.log"
    shell:
       """
-      python {params.pdbpush} -s {params.sample_name} -r {params.run_ID} -c {params.config} > {log.PDBPush} 2>&1
+      python {params.pdbpush} -s {params.sample_name} -r {params.run_ID} -c {params.config} -p {params.path} > {log.PDBPush} 2>&1
       touch {output.pdb_upload_check}
       """
 
