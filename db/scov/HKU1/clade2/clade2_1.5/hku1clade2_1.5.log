@@ -1,0 +1,1210 @@
+2022-12-01 16:15:27,795 - DEBUG - primalscheme version 1.3.2
+2022-12-01 16:15:27,795 - INFO - References:
+ - hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ - hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ - hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ - hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ - hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:27,795 - INFO - Primary reference for coordinate system: hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+2022-12-01 16:15:27,795 - INFO - Considering primers from all references
+2022-12-01 16:15:27,796 - DEBUG - MuliplexScheme
+Prefix: hku1clade2_1.5
+Amplicon size range: 1425 - 1575
+Target overlap: 0
+Primary only (pinned): False
+References:
+ - hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ - hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ - hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ - hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ - hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:27,796 - DEBUG - Window: left_limit 0, slice_start 0, right_limit 28269
+2022-12-01 16:15:27,796 - DEBUG - Region 1, pool 1
+2022-12-01 16:15:27,796 - DEBUG - Finding primers for slice 0 to 1574
+2022-12-01 16:15:27,821 - DEBUG - Left limit reached
+2022-12-01 16:15:27,821 - DEBUG - Finding primers for slice 0 to 1574
+2022-12-01 16:15:27,839 - DEBUG - Stepping right to 11
+2022-12-01 16:15:27,839 - DEBUG - Finding primers for slice 11 to 1585
+2022-12-01 16:15:27,855 - DEBUG - Stepping right to 22
+2022-12-01 16:15:27,856 - DEBUG - Finding primers for slice 22 to 1596
+2022-12-01 16:15:27,871 - DEBUG - Stepping right to 33
+2022-12-01 16:15:27,871 - DEBUG - Finding primers for slice 33 to 1607
+2022-12-01 16:15:27,887 - DEBUG - Stepping right to 44
+2022-12-01 16:15:27,887 - DEBUG - Finding primers for slice 44 to 1618
+2022-12-01 16:15:27,903 - DEBUG - Stepping right to 55
+2022-12-01 16:15:27,903 - DEBUG - Finding primers for slice 55 to 1629
+2022-12-01 16:15:28,806 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TCTACTAATTAATATATAGTCTGTAACAACCTACTCTATCTGTT...ACC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TCTACTAATTAATATATAGTCTGTAACAACCTACTCTATCTGTT...ACC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TCTACTAATTAATATATAGTCTGTAACAACCTACTCTATCTGTT...ACC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TCTACTAATTAATATATAGTCTGTAACAACCTACTCTATCTGTT...ACC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TCTACTAATTAATATATAGTCTGTAACAACCTACTCTATCTGTT...ACC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:28,806 - DEBUG - Picked primer LEFT:TGATAGAGAGTGTCCTATTCCGACT:119
+2022-12-01 16:15:28,807 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 25 columns
+TGATAGAGAGTGTCCTATTCCGACT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGATAGAGAGTGTCCTATTCCGACT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGATAGAGAGTGTCCTATTCCGACT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGATAGAGAGTGTCCTATTCCGACT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGATAGAGAGTGTCCTATTCCGACT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************* Cigar
+2022-12-01 16:15:28,807 - DEBUG - LEFT candidate 0: base pen 3.449, combined pen 3.449, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,807 - DEBUG - LEFT candidate 1: base pen 3.684, combined pen 3.684, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,808 - DEBUG - LEFT candidate 2: base pen 3.803, combined pen 3.803, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,808 - DEBUG - LEFT candidate 3: base pen 4.146, combined pen 4.146, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,808 - DEBUG - LEFT candidate 4: base pen 4.384, combined pen 4.384, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,809 - DEBUG - LEFT candidate 5: base pen 4.405, combined pen 4.405, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,809 - DEBUG - LEFT candidate 6: base pen 4.408, combined pen 4.408, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,809 - DEBUG - LEFT candidate 7: base pen 4.598, combined pen 4.598, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,810 - DEBUG - LEFT candidate 8: base pen 4.993, combined pen 4.993, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,810 - DEBUG - LEFT candidate 9: base pen 5.063, combined pen 5.063, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,810 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+AATAGTGGTTTTGCTGTTTTTGTTAAGTCTAAAGTTGGTAACTA...CTA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AATAGTGGTTTTGCTGTTTTTGTTAAGTCTAAAGTTGGTAACTA...CTA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+AATAGTGGTTTTGCTGTTTTTGTTAAGTCTAAAGTTGGTAACTA...CTA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+AATAGTGGTTTTGCTGTTTTTGTTAAGTCTAAAGTTGGTAACTA...CTA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AATAGTGGTTTTGCTGTTTTTGTTAAGTCTAAAGTTGGTAACTA...CTA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:28,810 - DEBUG - Picked primer RIGHT:ACCTAGTGGTATGGATACTGCCT:1567
+2022-12-01 16:15:28,811 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 23 columns
+ACCTAGTGGTATGGATACTGCCT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACCTAGTGGTATGGATACTGCCT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ACCTAGTGGTATGGATACTGCCT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ACCTAGTGGTATGGATACTGCCT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACCTAGTGGTATGGATACTGCCT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+*********************** Cigar
+2022-12-01 16:15:28,811 - DEBUG - RIGHT candidate 0: base pen 1.621, combined pen 1.621, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,811 - DEBUG - RIGHT candidate 1: base pen 2.033, combined pen 2.033, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,811 - DEBUG - RIGHT candidate 2: base pen 2.033, combined pen 2.033, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,812 - DEBUG - RIGHT candidate 3: base pen 2.265, combined pen 2.265, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,812 - DEBUG - RIGHT candidate 4: base pen 2.389, combined pen 2.389, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,812 - DEBUG - RIGHT candidate 5: base pen 2.416, combined pen 2.416, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,813 - DEBUG - RIGHT candidate 6: base pen 2.778, combined pen 2.778, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,813 - DEBUG - RIGHT candidate 7: base pen 3.022, combined pen 3.022, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,813 - DEBUG - RIGHT candidate 8: base pen 3.393, combined pen 3.393, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,814 - DEBUG - RIGHT candidate 9: base pen 3.393, combined pen 3.393, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:28,816 - DEBUG - Window: left_limit 144, slice_start 1360, right_limit 28269
+2022-12-01 16:15:28,816 - DEBUG - Region 2, pool 2
+2022-12-01 16:15:28,816 - DEBUG - Finding primers for slice 1360 to 2934
+2022-12-01 16:15:29,983 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+AGTAGACACAGTGAATTTAGGTTGGGTTTTTCTGCCTCTATTAA...TTT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGTAGACACAGTGAATTTAGGTTGGGTTTTTCTGCCTCTATTAA...TTT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+AGTAGACACAGTGAATTTAGGTTGGGTTTTTCTGCCTCTATTAA...TTT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+AGTAGACACAGTGAATTTAGGTTGGGTTTTTCTGCCTCTATTAA...TTT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGTAGACACAGTGAATTTAGGTTGGGTTTTTCTGCCTCTATTAA...TTT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:29,984 - DEBUG - Picked primer LEFT:TGGTCAGCCCAAGAAGTTTTCT:1427
+2022-12-01 16:15:29,984 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+TGGTCAGCCCAAGAAGTTTTCT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGGTCAGCCCAAGAAGTTTTCT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGGTCAGCCCAAGAAGTTTTCT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGGTCAGCCCAAGAAGTTTTCT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGGTCAGCCCAAGAAGTTTTCT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:29,984 - DEBUG - LEFT candidate 0: base pen 0.723, combined pen 0.723, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,985 - DEBUG - LEFT candidate 1: base pen 1.260, combined pen 1.260, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,985 - DEBUG - LEFT candidate 2: base pen 1.260, combined pen 1.260, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,985 - DEBUG - LEFT candidate 3: base pen 0.441, combined pen 1.441, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:29,985 - DEBUG - LEFT candidate 4: base pen 1.623, combined pen 1.623, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,986 - DEBUG - LEFT candidate 5: base pen 1.816, combined pen 1.816, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,986 - DEBUG - LEFT candidate 6: base pen 2.040, combined pen 2.040, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,986 - DEBUG - LEFT candidate 7: base pen 1.048, combined pen 2.048, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:29,986 - DEBUG - LEFT candidate 8: base pen 2.112, combined pen 2.112, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,987 - DEBUG - LEFT candidate 9: base pen 2.222, combined pen 2.222, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,987 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TATATGTTGTTGTACTGGTTGTGGTTCTGCATGTTTTAGTAAAT...GAT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TATATGTTGTTGTACTGGTTGTGGTTCTGCATGTTTTAGTAAAT...GAT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TATATGTTGTTGTACTGGTTGTGGTTCTGCATGTTTTAGTAAAT...GAT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TATATGTTGTTGTACTGGTTGTGGTTCTGCATGTTTTAGTAAAT...GAT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TATATGTTGTTGTACTGGTTGTGGTTCTGCATGTTTTAGTAAAT...GAT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:29,987 - DEBUG - Picked primer RIGHT:ACTGGTTGTGGTTCTGCATGTT:2921
+2022-12-01 16:15:29,987 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+ACTGGTTGTGGTTCTGCATGTT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACTGGTTGTGGTTCTGCATGTT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ACTGGTTGTGGTTCTGCATGTT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ACTGGTTGTGGTTCTGCATGTT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACTGGTTGTGGTTCTGCATGTT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:29,987 - DEBUG - RIGHT candidate 0: base pen 0.133, combined pen 0.133, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,988 - DEBUG - RIGHT candidate 1: base pen 0.461, combined pen 0.461, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,988 - DEBUG - RIGHT candidate 2: base pen 0.658, combined pen 0.658, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,988 - DEBUG - RIGHT candidate 3: base pen 0.658, combined pen 0.658, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,988 - DEBUG - RIGHT candidate 4: base pen 0.855, combined pen 0.855, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,989 - DEBUG - RIGHT candidate 5: base pen 0.921, combined pen 0.921, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,989 - DEBUG - RIGHT candidate 6: base pen 1.048, combined pen 1.048, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,989 - DEBUG - RIGHT candidate 7: base pen 1.057, combined pen 1.057, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,989 - DEBUG - RIGHT candidate 8: base pen 1.057, combined pen 1.057, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,990 - DEBUG - RIGHT candidate 9: base pen 1.317, combined pen 1.317, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:29,991 - DEBUG - Window: left_limit 1568, slice_start 2715, right_limit 28269
+2022-12-01 16:15:29,992 - DEBUG - Region 3, pool 1
+2022-12-01 16:15:29,992 - DEBUG - Finding primers for slice 2715 to 4289
+2022-12-01 16:15:31,118 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+CTTCAAGGTTTGTAACACCAAATTCTCTAATAACAAGAGAATGT...TTC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CTTCAAGGTTTGTAACACCAAATTCTCTAATAACAAGAGAATGT...TTC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+CTTCAAGGTTTGTAACACCAAATTCTCTAATAACAAGAGAATGT...TTC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+CTTCAAGGTTTGTAACACCAAATTCTCTAATGACAAGAGAATGT...TTC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CTTCAAGGTTTGTAACACCAAATTCTCTAATAACAAGAGAATGT...TTC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:31,119 - DEBUG - Picked primer LEFT:TAGCTAGGTCTCCAAACGTCCA:2762
+2022-12-01 16:15:31,119 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+TAGCTAGGTCTCCAAACGTCCA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TAGCTAGGTCTCCAAACGTCCA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TAGCTAGGTCTCCAAACGTCCA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TAGCTAGGTCTCCAAACGTCCA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TAGCTAGGTCTCCAAACGTCCA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:31,119 - DEBUG - LEFT candidate 0: base pen 0.260, combined pen 0.260, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,120 - DEBUG - LEFT candidate 1: base pen 0.338, combined pen 0.338, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,120 - DEBUG - LEFT candidate 2: base pen 0.662, combined pen 0.662, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,120 - DEBUG - LEFT candidate 3: base pen 1.050, combined pen 1.050, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,120 - DEBUG - LEFT candidate 4: base pen 1.051, combined pen 1.051, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,121 - DEBUG - LEFT candidate 5: base pen 1.070, combined pen 1.070, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,121 - DEBUG - LEFT candidate 6: base pen 1.078, combined pen 1.078, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,121 - DEBUG - LEFT candidate 7: base pen 1.138, combined pen 1.138, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,121 - DEBUG - LEFT candidate 8: base pen 1.138, combined pen 1.138, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,122 - DEBUG - LEFT candidate 9: base pen 1.167, combined pen 1.167, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,122 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+GTCACACTTAGCTCCAATCTTAATACTAATTTGCATTTTGATGT...GTT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GTCACACTTAGCTCCAATCTTAATACTAATTTGCATTTTGATGT...GTT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+GTCACACTTAGCTCCAATCTTAATACTAATTCGCATTTTGATGT...GTT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+GTCACACTTAGCTCCAATCTTAATACTAATTTGCATTTTGATGT...GTT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GTCACACTTAGCTCCAATCTTAATACTAATTTGCATTTTGATGT...GTT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:31,122 - DEBUG - Picked primer RIGHT:TGGATGTTTAGGTCCACACTGC:4218
+2022-12-01 16:15:31,122 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+TGGATGTTTAGGTCCACACTGC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGGATGTTTAGGTCCACACTGC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGGATGTTTAGGTCCACACTGC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGGATGTTTAGGTCCACACTGC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGGATGTTTAGGTCCACACTGC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:31,122 - DEBUG - RIGHT candidate 0: base pen 0.266, combined pen 0.266, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,123 - DEBUG - RIGHT candidate 1: base pen 0.684, combined pen 0.684, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,123 - DEBUG - RIGHT candidate 2: base pen 1.314, combined pen 1.314, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,123 - DEBUG - RIGHT candidate 3: base pen 2.052, combined pen 2.052, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,123 - DEBUG - RIGHT candidate 4: base pen 2.069, combined pen 2.069, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,124 - DEBUG - RIGHT candidate 5: base pen 2.092, combined pen 2.092, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,124 - DEBUG - RIGHT candidate 6: base pen 2.136, combined pen 2.136, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,124 - DEBUG - RIGHT candidate 7: base pen 2.251, combined pen 2.251, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,124 - DEBUG - RIGHT candidate 8: base pen 2.264, combined pen 2.264, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,125 - DEBUG - RIGHT candidate 9: base pen 2.656, combined pen 2.656, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:31,127 - DEBUG - Window: left_limit 2922, slice_start 4012, right_limit 28269
+2022-12-01 16:15:31,127 - DEBUG - Region 4, pool 2
+2022-12-01 16:15:31,127 - DEBUG - Finding primers for slice 4012 to 5586
+2022-12-01 16:15:32,075 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+CCAGAAATTTGAGATTCAGACAAAATAGGAGGCAAAACTTTAAT...AAG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CCAGAAATTTGAGATTCAGACAAAATAGGAGGCAAAACTTTAAT...AAG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+CCAGAAATTTGAGATTCAGACAAAATAGGAGGCAAAACTTTAAT...AAG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+CCAGAAATTTGAGATTCAGACAAAATAGGAGGCAAAACTTTAAT...AAG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CCGGAAATTTGAGATTCAGACAAAATAGGAGGCAAAACTTTAAT...AAG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:32,076 - DEBUG - Picked primer LEFT:TGAGATTCAGACAAAATAGGAGGCA:4021
+2022-12-01 16:15:32,077 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 25 columns
+TGAGATTCAGACAAAATAGGAGGCA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGAGATTCAGACAAAATAGGAGGCA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGAGATTCAGACAAAATAGGAGGCA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGAGATTCAGACAAAATAGGAGGCA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGAGATTCAGACAAAATAGGAGGCA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************* Cigar
+2022-12-01 16:15:32,077 - DEBUG - LEFT candidate 0: base pen 3.567, combined pen 3.567, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,077 - DEBUG - LEFT candidate 1: base pen 4.033, combined pen 4.033, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,078 - DEBUG - LEFT candidate 2: base pen 4.033, combined pen 4.033, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,078 - DEBUG - LEFT candidate 3: base pen 4.448, combined pen 4.448, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,078 - DEBUG - LEFT candidate 4: base pen 4.448, combined pen 4.448, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,079 - DEBUG - LEFT candidate 5: base pen 4.881, combined pen 4.881, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,079 - DEBUG - LEFT candidate 6: base pen 4.881, combined pen 4.881, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,079 - DEBUG - LEFT candidate 7: base pen 4.936, combined pen 4.936, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,079 - DEBUG - LEFT candidate 8: base pen 4.936, combined pen 4.936, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,080 - DEBUG - LEFT candidate 9: base pen 5.051, combined pen 5.051, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,080 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TTATTTAAATACTACTATATTATTTACTGGTTATTTCCCTAAAT...CAG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TTATTTAAATACTACTATATTATTTACTGGTTATTTCCCTAAAT...CAG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TTATTTAAATACTACTATATTATTTACTGGTTATTTCCCTAAAT...CAG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TTATTTAAATACTACTATATTATTTACTGGTTATTTCCCTAAAT...CAG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TTATTTAAATACTACTATATTATTTACTGGTTATTTCCCTAAAG...CAG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:32,080 - DEBUG - Picked primer RIGHT:TCTGGTGCCAATTTTAGGGATCT:5543
+2022-12-01 16:15:32,080 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 23 columns
+TCTGGTGCCAATTTTAGGGATCT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TCTGGTGCCAATTTTAGGGATCT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TCTGGTGCCAATTTTAGGGATCT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TCTGGTGCCAATTTTAGGGATCT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GCTGGTGCCAATTTTAGGGATCT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+ ********************** Cigar
+2022-12-01 16:15:32,081 - DEBUG - RIGHT candidate 0: base pen 2.009, combined pen 3.009, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:32,081 - DEBUG - RIGHT candidate 1: base pen 2.592, combined pen 3.592, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:32,081 - DEBUG - RIGHT candidate 2: base pen 3.742, combined pen 3.742, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,081 - DEBUG - RIGHT candidate 3: base pen 3.020, combined pen 4.020, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:32,082 - DEBUG - RIGHT candidate 4: base pen 3.029, combined pen 4.029, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:32,082 - DEBUG - RIGHT candidate 5: base pen 4.093, combined pen 4.093, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,082 - DEBUG - RIGHT candidate 6: base pen 4.139, combined pen 4.139, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,082 - DEBUG - RIGHT candidate 7: base pen 3.149, combined pen 4.149, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:32,083 - DEBUG - RIGHT candidate 8: base pen 4.195, combined pen 4.195, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,083 - DEBUG - RIGHT candidate 9: base pen 0.322, combined pen 4.322, 1 max mismatch, 4 total mismatches.
+2022-12-01 16:15:32,085 - DEBUG - Window: left_limit 4219, slice_start 5336, right_limit 28269
+2022-12-01 16:15:32,085 - DEBUG - Region 5, pool 1
+2022-12-01 16:15:32,085 - DEBUG - Finding primers for slice 5336 to 6910
+2022-12-01 16:15:32,963 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+CAACAATAGTATAAGAGTTGTTAATAAAAACACTACCTATAACT...AAA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CAACAATAGTATAAGAGTTGTTAATAAAAACACTACCTATAACT...AAA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+CAACAATAGTATAAGAGTTGTTAATAAAAACACTACCTATAACT...AAA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+CAACAATAGTATAAGAGTTGTTAATAAAAACACTACCTATAACT...AAA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CAACAATAGTATAAGAGTTGTTAATAAAAACACTACCTATAACT...AAA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:32,963 - DEBUG - Picked primer LEFT:ACACTACCTATAACTATAGTACTAAACTCACT:5365
+2022-12-01 16:15:32,964 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 32 columns
+ACACTACCTATAACTATAGTACTAAACTCACT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACACTACCTATAACTATAGTACTAAACTCACT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ACACTACCTATAACTATAGTACTAAACTCACT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ACACTACCTATAACTATAGTACTAAACTCACT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACACTACCTATAACTATAGTACTAAACTCACT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+******************************** Cigar
+2022-12-01 16:15:32,964 - DEBUG - LEFT candidate 0: base pen 11.070, combined pen 11.070, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,965 - DEBUG - LEFT candidate 1: base pen 11.629, combined pen 11.629, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,965 - DEBUG - LEFT candidate 2: base pen 12.166, combined pen 12.166, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,965 - DEBUG - LEFT candidate 3: base pen 12.170, combined pen 12.170, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,965 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+ATTTTTTTATTTTTTTATTTCTGTTATGGTTTTAATGAACCTCT...ACC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATTTTTTTATTTTTTTATTTCTGTTATGGTTTTAATGAACCTCT...ACC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ATTTTTTTATTTTTTTATTTCTGTTATGGTTTTAATGAACCTCT...ACC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ATTTTTTTATTTTTTTATTTCTGTTATGGTTTTAATGAACCTCT...ACC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATTTTTTTATTTTTTTATTTCTGTTATGGTTTTAATGAACCTCT...ACC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:32,966 - DEBUG - Picked primer RIGHT:TGTGTCTCATTTAAACCATGACTGG:6860
+2022-12-01 16:15:32,966 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 25 columns
+TGTGTCTCATTTAAACCATGACTGG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGTGTCTCATTTAAACCATGACTGG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGTGTCTCATTTAAACCATGACTGG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGTGTCTCATTTAAACCATGACTGG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGTGTCTCATTTAAACCATGACTGG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************* Cigar
+2022-12-01 16:15:32,966 - DEBUG - RIGHT candidate 0: base pen 4.092, combined pen 4.092, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,966 - DEBUG - RIGHT candidate 1: base pen 4.546, combined pen 4.546, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,967 - DEBUG - RIGHT candidate 2: base pen 5.043, combined pen 5.043, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,967 - DEBUG - RIGHT candidate 3: base pen 5.105, combined pen 5.105, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,967 - DEBUG - RIGHT candidate 4: base pen 5.428, combined pen 5.428, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,968 - DEBUG - RIGHT candidate 5: base pen 5.483, combined pen 5.483, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,968 - DEBUG - RIGHT candidate 6: base pen 5.737, combined pen 5.737, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,968 - DEBUG - RIGHT candidate 7: base pen 6.008, combined pen 6.008, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,968 - DEBUG - RIGHT candidate 8: base pen 6.133, combined pen 6.133, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,969 - DEBUG - RIGHT candidate 9: base pen 6.172, combined pen 6.172, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:32,970 - DEBUG - Window: left_limit 5544, slice_start 6651, right_limit 28269
+2022-12-01 16:15:32,971 - DEBUG - Region 6, pool 2
+2022-12-01 16:15:32,971 - DEBUG - Finding primers for slice 6651 to 8225
+2022-12-01 16:15:33,071 - DEBUG - Stepping left to 6640
+2022-12-01 16:15:33,071 - DEBUG - Finding primers for slice 6640 to 8214
+2022-12-01 16:15:33,170 - DEBUG - Stepping left to 6629
+2022-12-01 16:15:33,170 - DEBUG - Finding primers for slice 6629 to 8203
+2022-12-01 16:15:33,270 - DEBUG - Stepping left to 6618
+2022-12-01 16:15:33,271 - DEBUG - Finding primers for slice 6618 to 8192
+2022-12-01 16:15:33,370 - DEBUG - Stepping left to 6607
+2022-12-01 16:15:33,370 - DEBUG - Finding primers for slice 6607 to 8181
+2022-12-01 16:15:33,466 - DEBUG - Stepping left to 6596
+2022-12-01 16:15:33,467 - DEBUG - Finding primers for slice 6596 to 8170
+2022-12-01 16:15:34,413 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+AAAACACTTAAATCTATGATAAGGATTAAAATTAACACCCTCAT...AAA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AAAACACTTAAATCTATGATAAGGATTAAAATTAACACCCTCAT...AAA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+AAAACACTTAAATCTATGATAAGGATTAAAATTAACACCCTCAT...AAA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+AAAACACTTAAATCTATGATAAGGATTAAAATTAACACCCTCAT...AAA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AAAACACTTAAATCTATGATAAGGATTAAAATTAACACCCTCAT...AAA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:34,413 - DEBUG - Picked primer LEFT:ATTTGATCACCTTCGCCAGTGT:6648
+2022-12-01 16:15:34,414 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+ATTTGATCACCTTCGCCAGTGT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATTTGATCACCTTCGCCAGTGT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ATTTGATCACCTTCGCCAGTGT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ATTTGATCACCTTCGCCAGTGT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATTTGATCACCTTCGCCAGTGT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:34,414 - DEBUG - LEFT candidate 0: base pen 0.264, combined pen 0.264, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,414 - DEBUG - LEFT candidate 1: base pen 0.856, combined pen 0.856, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,414 - DEBUG - LEFT candidate 2: base pen 0.856, combined pen 0.856, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,415 - DEBUG - LEFT candidate 3: base pen 1.054, combined pen 1.054, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,415 - DEBUG - LEFT candidate 4: base pen 1.250, combined pen 1.250, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,415 - DEBUG - LEFT candidate 5: base pen 1.310, combined pen 1.310, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,415 - DEBUG - LEFT candidate 6: base pen 1.317, combined pen 1.317, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,416 - DEBUG - LEFT candidate 7: base pen 1.437, combined pen 1.437, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,416 - DEBUG - LEFT candidate 8: base pen 1.437, combined pen 1.437, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,416 - DEBUG - LEFT candidate 9: base pen 1.437, combined pen 1.437, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,416 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TTTATGGTAGTTTTAACCATAAAGTTATAGGAGGTTTGCATTTG...TGA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TTTATGGTAGTTTTAACCATAAAGTTATAGGAGGTTTGCATTTG...TGA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TTTATGGTAGTTTTAACCATAAAGTTATAGGAGGTTTGCATTTG...TGA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TTTATGGTAGTTTTAACCATAAAGTTATAGGAGGTTTGCATTTG...TGA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TTTATGGTAGTTTTAACCATAAAGTTATAGGAGGTTTGCATTTG...TGA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:34,416 - DEBUG - Picked primer RIGHT:GGAGGTTTGCATTTGCTTATAGGC:8141
+2022-12-01 16:15:34,417 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 24 columns
+GGAGGTTTGCATTTGCTTATAGGC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GGAGGTTTGCATTTGCTTATAGGC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+GGAGGTTTGCATTTGCTTATAGGC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+GGAGGTTTGCATTTGCTTATAGGC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GGAGGTTTGCATTTGCTTATAGGC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************ Cigar
+2022-12-01 16:15:34,417 - DEBUG - RIGHT candidate 0: base pen 2.055, combined pen 2.055, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,417 - DEBUG - RIGHT candidate 1: base pen 2.779, combined pen 2.779, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,417 - DEBUG - RIGHT candidate 2: base pen 3.144, combined pen 3.144, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,418 - DEBUG - RIGHT candidate 3: base pen 3.224, combined pen 3.224, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,418 - DEBUG - RIGHT candidate 4: base pen 3.325, combined pen 3.325, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,418 - DEBUG - RIGHT candidate 5: base pen 4.271, combined pen 4.271, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,419 - DEBUG - RIGHT candidate 6: base pen 4.288, combined pen 4.288, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,419 - DEBUG - RIGHT candidate 7: base pen 4.288, combined pen 4.288, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,419 - DEBUG - RIGHT candidate 8: base pen 4.321, combined pen 4.321, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,419 - DEBUG - RIGHT candidate 9: base pen 4.331, combined pen 4.331, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:34,421 - DEBUG - Window: left_limit 6861, slice_start 7933, right_limit 28269
+2022-12-01 16:15:34,421 - DEBUG - Region 7, pool 1
+2022-12-01 16:15:34,421 - DEBUG - Finding primers for slice 7933 to 9507
+2022-12-01 16:15:35,476 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+CTAACACAACTCAAATTTAATGACTTAACAATAGAAACAAAATC...TAA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CTAACACAACTCAAATTTAATGACTTAACAATAGAAACAAAATC...TAA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+CTAACACAACTCAAATTTAATGACTTAACAATAGAAACAAAATC...TAA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+CTAACACAACTCAAATTTAATGACTTAACAATAGAAACAAAATC...TAA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CTAACACAACTCAAATTTAATGACTTAACAATAGAAACAAAATC...TAA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:35,476 - DEBUG - Picked primer LEFT:ACAAACACTCTTACTACTACCACACT:8001
+2022-12-01 16:15:35,477 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 26 columns
+ACAAACACTCTTACTACTACCACACT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACAAACACTCTTACTACTACCACACT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ACAAACACTCTTACTACTACCACACT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ACAAACACTCTTACTACTACCACACT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACAAACACTCTTACTACTACCACACT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************** Cigar
+2022-12-01 16:15:35,477 - DEBUG - LEFT candidate 0: base pen 4.881, combined pen 4.881, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,477 - DEBUG - LEFT candidate 1: base pen 5.791, combined pen 5.791, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,478 - DEBUG - LEFT candidate 2: base pen 6.008, combined pen 6.008, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,478 - DEBUG - LEFT candidate 3: base pen 6.008, combined pen 6.008, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,478 - DEBUG - LEFT candidate 4: base pen 6.017, combined pen 6.017, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,478 - DEBUG - LEFT candidate 5: base pen 6.017, combined pen 6.017, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,479 - DEBUG - LEFT candidate 6: base pen 6.017, combined pen 6.017, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,479 - DEBUG - LEFT candidate 7: base pen 6.110, combined pen 6.110, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,479 - DEBUG - LEFT candidate 8: base pen 6.222, combined pen 6.222, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,480 - DEBUG - LEFT candidate 9: base pen 6.323, combined pen 6.323, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,480 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TGTCAAAGATTATGAATTTAAATTTTATGATGCTTTTCCTGTAG...TTA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGTCAAAGATTATGAATTTAAATTTTATGATGCTTTTCCTGTAG...TTA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGTCAAAGATTATGAATTTAAATTTTATGATGCTTTTCCTGTAG...TTA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGTCAAAGATTATGAATTTAAATTTTATGATGCTTTTCCTGTAG...TTA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGTCAAAGATTATGAATTTAAATTTTATGATGCTTTTCCTGTAG...TTA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:35,480 - DEBUG - Picked primer RIGHT:TGATGCTTTTCCTGTAGCCAAGT:9480
+2022-12-01 16:15:35,480 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 23 columns
+TGATGCTTTTCCTGTAGCCAAGT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGATGCTTTTCCTGTAGCCAAGT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGATGCTTTTCCTGTAGCCAAGT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGATGCTTTTCCTGTAGCCAAGT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGATGCTTTTCCTGTAGCCAAGT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+*********************** Cigar
+2022-12-01 16:15:35,480 - DEBUG - RIGHT candidate 0: base pen 1.244, combined pen 1.244, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,481 - DEBUG - RIGHT candidate 1: base pen 2.137, combined pen 2.137, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,481 - DEBUG - RIGHT candidate 2: base pen 2.444, combined pen 2.444, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,481 - DEBUG - RIGHT candidate 3: base pen 1.816, combined pen 2.816, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:35,481 - DEBUG - RIGHT candidate 4: base pen 1.816, combined pen 2.816, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:35,482 - DEBUG - RIGHT candidate 5: base pen 3.039, combined pen 3.039, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:35,482 - DEBUG - RIGHT candidate 6: base pen 2.240, combined pen 3.240, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:35,482 - DEBUG - RIGHT candidate 7: base pen 2.418, combined pen 3.418, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:35,483 - DEBUG - RIGHT candidate 8: base pen 2.658, combined pen 3.658, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:35,483 - DEBUG - RIGHT candidate 9: base pen 2.737, combined pen 3.737, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:35,485 - DEBUG - Window: left_limit 8142, slice_start 9273, right_limit 28269
+2022-12-01 16:15:35,485 - DEBUG - Region 8, pool 2
+2022-12-01 16:15:35,485 - DEBUG - Finding primers for slice 9273 to 10847
+2022-12-01 16:15:36,323 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TTTATTAACATACAAACTACCACCATTACATCCAGGAAGGTTTA...TTA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TTTATTAACATACAAACTACCACCATTACATCCAGGAAGGTTTA...TTA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TTTATTAACATACAAACTACCACCATTACATCCAGGAAGGTTTA...TTA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TTTATTAACATACAAACTACCACCATTACATCCAGGAAGGTTTA...TTA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TTTATTAACATACAAACTACCACCATTACATCCAGGAAGGTTTA...TTA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:36,323 - DEBUG - Picked primer LEFT:CCACCATTACATCCAGGAAGGT:9292
+2022-12-01 16:15:36,324 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+CCACCATTACATCCAGGAAGGT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CCACCATTACATCCAGGAAGGT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+CCACCATTACATCCAGGAAGGT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+CCACCATTACATCCAGGAAGGT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CCACCATTACATCCAGGAAGGT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:36,324 - DEBUG - LEFT candidate 0: base pen 1.057, combined pen 1.057, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,324 - DEBUG - LEFT candidate 1: base pen 1.057, combined pen 1.057, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,325 - DEBUG - LEFT candidate 2: base pen 1.432, combined pen 1.432, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,325 - DEBUG - LEFT candidate 3: base pen 1.608, combined pen 1.608, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,325 - DEBUG - LEFT candidate 4: base pen 2.140, combined pen 2.140, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,325 - DEBUG - LEFT candidate 5: base pen 2.200, combined pen 2.200, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,326 - DEBUG - LEFT candidate 6: base pen 2.232, combined pen 2.232, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,326 - DEBUG - LEFT candidate 7: base pen 2.402, combined pen 2.402, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,326 - DEBUG - LEFT candidate 8: base pen 2.839, combined pen 2.839, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,326 - DEBUG - LEFT candidate 9: base pen 3.037, combined pen 3.037, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,327 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+AGTAAATTTTTAAAAGCTAATCCAGTTTGGAATAGTGCTGTTTT...CTG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGTAAATTTTTAAAAGCTAATCCAGTTTGGAATAGTGCTGTTTT...CTG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+AGTAAATTTTTAAAAGCTAATCCAGTTTGGAATAGTGCTGTTTT...CTG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+AGTAAATTTTTAAAAGCTAATCCAGTTTGGAATAGTGCTGTTTT...CTG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGTAAATTTTTAAAAGCTAATCCAGTTTGGAATAGTGCTGTTTT...CTG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:36,327 - DEBUG - Picked primer RIGHT:TGTTGCTAAGCGTGTTTTAGGTG:10776
+2022-12-01 16:15:36,327 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 23 columns
+TGTTGCTAAGCGTGTTTTAGGTG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGTTGCTAAGCGTGTTTTAGGTG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGTTGCTAAGCGTGTTTTAGGTG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGTTGCTAAGCGTGTTTTAGGTG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGTTGCTAAGCGTGTTTTAGGTG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+*********************** Cigar
+2022-12-01 16:15:36,327 - DEBUG - RIGHT candidate 0: base pen 1.754, combined pen 1.754, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,328 - DEBUG - RIGHT candidate 1: base pen 2.365, combined pen 2.365, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,328 - DEBUG - RIGHT candidate 2: base pen 3.461, combined pen 3.461, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,328 - DEBUG - RIGHT candidate 3: base pen 3.518, combined pen 3.518, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,328 - DEBUG - RIGHT candidate 4: base pen 3.689, combined pen 3.689, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,329 - DEBUG - RIGHT candidate 5: base pen 3.978, combined pen 3.978, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,329 - DEBUG - RIGHT candidate 6: base pen 4.001, combined pen 4.001, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,329 - DEBUG - RIGHT candidate 7: base pen 4.033, combined pen 4.033, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,329 - DEBUG - RIGHT candidate 8: base pen 4.052, combined pen 4.052, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,330 - DEBUG - RIGHT candidate 9: base pen 4.091, combined pen 4.091, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:36,331 - DEBUG - Window: left_limit 9481, slice_start 10569, right_limit 28269
+2022-12-01 16:15:36,331 - DEBUG - Region 9, pool 1
+2022-12-01 16:15:36,332 - DEBUG - Finding primers for slice 10569 to 12143
+2022-12-01 16:15:37,155 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+AGTAATAAAATTAAGAGATTCAAATAATTGCATATTACTCATAA...TGG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGTAATAAAATTAAGAGATTCAAATAATTGCATATTACTCATAA...TGG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+AGTAATAAAATTAAGAGATTCAAATAATTGCATATTACTCATAA...TGG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+AGTAATAAAATTAAGAGATTCAAATAATTGCATATTACTCATAA...TGG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGTAATAAAATTAAGAGATTCAAATAATTGCATATTACTCATAA...TGG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:37,155 - DEBUG - Picked primer LEFT:CCCTTCTTGGCTCTAGTTATGGC:10624
+2022-12-01 16:15:37,156 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 23 columns
+CCCTTCTTGGCTCTAGTTATGGC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CCCTTCTTGGCTCTAGTTATGGC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+CCCTTCTTGGCTCTAGTTATGGC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+CCCTTCTTGGCTCTAGTTATGGC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CCCTTCTTGGCTCTAGTTATGGC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+*********************** Cigar
+2022-12-01 16:15:37,156 - DEBUG - LEFT candidate 0: base pen 1.000, combined pen 1.000, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,156 - DEBUG - LEFT candidate 1: base pen 1.000, combined pen 1.000, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,157 - DEBUG - LEFT candidate 2: base pen 1.626, combined pen 1.626, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,157 - DEBUG - LEFT candidate 3: base pen 2.051, combined pen 2.051, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,157 - DEBUG - LEFT candidate 4: base pen 3.017, combined pen 3.017, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,158 - DEBUG - LEFT candidate 5: base pen 4.038, combined pen 4.038, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,158 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TATTTGGGTGGTATGTCTTACTATTGTGAAAACCATAAACCCCA...GTT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TATTTGGGTGGTATGTCTTACTATTGTGAAAACCATAAACCCCA...GTT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TATTTGGGTGGTATGTCTTACTATTGTGAAAACCATAAACCCCA...GTT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TATTTGGGTGGTATGTCTTACTATTGTGAAAACCATAAACCCCA...GTT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TATTTGGGTGGTATGTCTTACTATTGTGAAAACCATAAACCCCA...GTT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:37,158 - DEBUG - Picked primer RIGHT:TGGGTGGTATGTCTTACTATTGTGA:12139
+2022-12-01 16:15:37,158 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 25 columns
+TGGGTGGTATGTCTTACTATTGTGA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGGGTGGTATGTCTTACTATTGTGA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGGGTGGTATGTCTTACTATTGTGA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGGGTGGTATGTCTTACTATTGTGA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGGGTGGTATGTCTTACTATTGTGA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************* Cigar
+2022-12-01 16:15:37,158 - DEBUG - RIGHT candidate 0: base pen 4.334, combined pen 4.334, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,159 - DEBUG - RIGHT candidate 1: base pen 4.392, combined pen 4.392, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,159 - DEBUG - RIGHT candidate 2: base pen 4.768, combined pen 4.768, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,159 - DEBUG - RIGHT candidate 3: base pen 4.768, combined pen 4.768, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,160 - DEBUG - RIGHT candidate 4: base pen 5.244, combined pen 5.244, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,160 - DEBUG - RIGHT candidate 5: base pen 5.244, combined pen 5.244, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,160 - DEBUG - RIGHT candidate 6: base pen 5.244, combined pen 5.244, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,160 - DEBUG - RIGHT candidate 7: base pen 5.281, combined pen 5.281, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,161 - DEBUG - RIGHT candidate 8: base pen 5.442, combined pen 5.442, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,161 - DEBUG - RIGHT candidate 9: base pen 5.736, combined pen 5.736, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:37,163 - DEBUG - Window: left_limit 10777, slice_start 11930, right_limit 28269
+2022-12-01 16:15:37,163 - DEBUG - Region 10, pool 2
+2022-12-01 16:15:37,163 - DEBUG - Finding primers for slice 11930 to 13504
+2022-12-01 16:15:38,028 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+CAGCAAATAACTTTAAACGTTCAATACACTCATTTGCCAGAACA...ACC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CAGCAAATAACTTTAAACGTTCAATACACTCATTTGCCAGAACA...ACC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+CAGCAAATAACTTTAAACGTTCAATACACTCATTTGCCAGAACA...ACC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+CAGCAAATAACTTTAAACGTTCAATACACTCATTTGCCAGAACA...ACC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CAGCAAATAACTTTAAACGTTCAATACACTCATTTGCCAGAACA...ACC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:38,028 - DEBUG - Picked primer LEFT:ACGTTCAATACACTCATTTGCCAG:11946
+2022-12-01 16:15:38,029 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 24 columns
+ACGTTCAATACACTCATTTGCCAG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACGTTCAATACACTCATTTGCCAG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ACGTTCAATACACTCATTTGCCAG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ACGTTCAATACACTCATTTGCCAG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACGTTCAATACACTCATTTGCCAG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************ Cigar
+2022-12-01 16:15:38,029 - DEBUG - LEFT candidate 0: base pen 2.601, combined pen 2.601, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,029 - DEBUG - LEFT candidate 1: base pen 2.839, combined pen 2.839, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,030 - DEBUG - LEFT candidate 2: base pen 2.959, combined pen 2.959, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,030 - DEBUG - LEFT candidate 3: base pen 3.061, combined pen 3.061, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,030 - DEBUG - LEFT candidate 4: base pen 3.289, combined pen 3.289, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,030 - DEBUG - LEFT candidate 5: base pen 3.399, combined pen 3.399, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,031 - DEBUG - LEFT candidate 6: base pen 3.641, combined pen 3.641, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,031 - DEBUG - LEFT candidate 7: base pen 4.050, combined pen 4.050, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,031 - DEBUG - LEFT candidate 8: base pen 4.152, combined pen 4.152, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,031 - DEBUG - LEFT candidate 9: base pen 4.328, combined pen 4.328, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,032 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TGAATTTAAAATATGCTATCAGTGCTAAGAATAGAGCTCGCACT...GAG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGAATTTAAAATATGCTATCAGTGCTAAGAATAGAGCTCGCACT...GAG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGAATTTAAAATATGCTATCAGTGCTAAGAATAGAGCTCGCACT...GAG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGAATTTAAAATATGCTATCAGTGCTAAGAATAGAGCTCGCACT...GAG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGAATTTAAAATATGCTATCAGTGCTAAGAATAGAGCTCGCACT...GAG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:38,032 - DEBUG - Picked primer RIGHT:ATGACAGGCCGAATGTTCCATC:13433
+2022-12-01 16:15:38,032 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+ATGACAGGCCGAATGTTCCATC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATGACAGGCCGAATGTTCCATC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ATGACAGGCCGAATGTTCCATC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ATGACAGGCCGAATGTTCCATC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATGACAGGCCGAATGTTCCATC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:38,032 - DEBUG - RIGHT candidate 0: base pen 0.188, combined pen 0.188, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,033 - DEBUG - RIGHT candidate 1: base pen 0.212, combined pen 0.212, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,033 - DEBUG - RIGHT candidate 2: base pen 0.398, combined pen 0.398, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,033 - DEBUG - RIGHT candidate 3: base pen 0.399, combined pen 0.399, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,033 - DEBUG - RIGHT candidate 4: base pen 0.598, combined pen 0.598, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,033 - DEBUG - RIGHT candidate 5: base pen 0.598, combined pen 0.598, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,034 - DEBUG - RIGHT candidate 6: base pen 0.855, combined pen 0.855, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,034 - DEBUG - RIGHT candidate 7: base pen 0.920, combined pen 0.920, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,034 - DEBUG - RIGHT candidate 8: base pen 0.989, combined pen 0.989, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,034 - DEBUG - RIGHT candidate 9: base pen 1.000, combined pen 1.000, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:38,036 - DEBUG - Window: left_limit 12140, slice_start 13227, right_limit 28269
+2022-12-01 16:15:38,036 - DEBUG - Region 11, pool 1
+2022-12-01 16:15:38,036 - DEBUG - Finding primers for slice 13227 to 14801
+2022-12-01 16:15:39,003 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+ACTAACAATACGCAAAATATTTGGCATAGCACGATCACATTTAG...TCC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACTAACAATACGCAAAATATTTGGCATAGCACGATCACATTTAG...TCC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ACTAACAATACGCAAAATATTTGGCATAGCACGATCACATTTAG...TCC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ACTAACAATACGCAAAATATTTGGCATAGCACGATCACATTTAG...TCC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACTAACAATACGCAAAATATTTGGCATAGCACGATCACATTTAG...TCC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:39,003 - DEBUG - Picked primer LEFT:ATCCCAACCCATAAGAACAGGG:13275
+2022-12-01 16:15:39,004 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+ATCCCAACCCATAAGAACAGGG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATCCCAACCCATAAGAACAGGG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ATCCCAACCCATAAGAACAGGG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ATCCCAACCCATAAGAACAGGG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATCCCAACCCATAAGAACAGGG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:39,004 - DEBUG - LEFT candidate 0: base pen 1.058, combined pen 1.058, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,004 - DEBUG - LEFT candidate 1: base pen 1.258, combined pen 1.258, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,005 - DEBUG - LEFT candidate 2: base pen 1.430, combined pen 1.430, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,005 - DEBUG - LEFT candidate 3: base pen 1.624, combined pen 1.624, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,005 - DEBUG - LEFT candidate 4: base pen 1.624, combined pen 1.624, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,005 - DEBUG - LEFT candidate 5: base pen 1.936, combined pen 1.936, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,006 - DEBUG - LEFT candidate 6: base pen 1.939, combined pen 1.939, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,006 - DEBUG - LEFT candidate 7: base pen 2.042, combined pen 2.042, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,006 - DEBUG - LEFT candidate 8: base pen 2.042, combined pen 2.042, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,006 - DEBUG - LEFT candidate 9: base pen 2.191, combined pen 2.191, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,007 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+ATTGATGGTAGTCGCGTGCCACATATAGTTCGTAGGAATCTTTC...TAT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATTGATGGTAGTCGCGTGCCACATATAGTTCGTAGGAATCTTTC...TAT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ATTGATGGTAGTCGCGTGCCACATATAGTTCGTAGGAATCTTTC...TAT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ATTGATGGTAGTCGCGTGCCACATATAGTTCGTAGGAATCTTTC...TAT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATTGATGGTAGTCGCGTGCCACATATAGTTCGTAGGAATCTTTC...TAT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:39,007 - DEBUG - Picked primer RIGHT:AGTCGCGTGCCACATATAGTTC:14792
+2022-12-01 16:15:39,007 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+AGTCGCGTGCCACATATAGTTC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGTCGCGTGCCACATATAGTTC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+AGTCGCGTGCCACATATAGTTC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+AGTCGCGTGCCACATATAGTTC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGTCGCGTGCCACATATAGTTC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:39,007 - DEBUG - RIGHT candidate 0: base pen 0.024, combined pen 0.024, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,007 - DEBUG - RIGHT candidate 1: base pen 0.032, combined pen 0.032, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,008 - DEBUG - RIGHT candidate 2: base pen 0.098, combined pen 0.098, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,008 - DEBUG - RIGHT candidate 3: base pen 0.535, combined pen 0.535, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,008 - DEBUG - RIGHT candidate 4: base pen 0.727, combined pen 0.727, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,008 - DEBUG - RIGHT candidate 5: base pen 0.769, combined pen 0.769, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,009 - DEBUG - RIGHT candidate 6: base pen 1.038, combined pen 1.038, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,009 - DEBUG - RIGHT candidate 7: base pen 1.043, combined pen 1.043, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,009 - DEBUG - RIGHT candidate 8: base pen 1.142, combined pen 1.142, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,009 - DEBUG - RIGHT candidate 9: base pen 1.180, combined pen 1.180, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,011 - DEBUG - Window: left_limit 13434, slice_start 14586, right_limit 28269
+2022-12-01 16:15:39,012 - DEBUG - Region 12, pool 2
+2022-12-01 16:15:39,012 - DEBUG - Finding primers for slice 14586 to 16160
+2022-12-01 16:15:39,881 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TTTTTTATATATATTAATAATATCAGGATTTTCAACAAAATCAT...AAT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TTTTTTATATATATTAATAATATCAGGATTTTCAACAAAATCAT...AAT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TTTTTTATATATATTAATAATATCAGGATTTTCAACAAAATCAT...AAT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TTTTTTATATATATTAATAATATCAGGATTTTCAACAAAATCAT...AAT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TTTTTTATATATATTAATAATATCAGGATTTTCAACAAAATCAT...AAT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:39,881 - DEBUG - Picked primer LEFT:GGATTCTTTACAATCAGCATACTCACA:14652
+2022-12-01 16:15:39,881 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 27 columns
+GGATTCTTTACAATCAGCATACTCACA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GGATTCTTTACAATCAGCATACTCACA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+GGATTCTTTACAATCAGCATACTCACA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+GGATTCTTTACAATCAGCATACTCACA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GGATTCTTTACAATCAGCATACTCACA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+*************************** Cigar
+2022-12-01 16:15:39,882 - DEBUG - LEFT candidate 0: base pen 5.791, combined pen 5.791, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,882 - DEBUG - LEFT candidate 1: base pen 6.006, combined pen 6.006, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,882 - DEBUG - LEFT candidate 2: base pen 6.294, combined pen 6.294, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,883 - DEBUG - LEFT candidate 3: base pen 6.342, combined pen 6.342, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,883 - DEBUG - LEFT candidate 4: base pen 7.018, combined pen 7.018, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,883 - DEBUG - LEFT candidate 5: base pen 7.074, combined pen 7.074, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,883 - DEBUG - LEFT candidate 6: base pen 7.124, combined pen 7.124, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,884 - DEBUG - LEFT candidate 7: base pen 7.124, combined pen 7.124, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,884 - DEBUG - LEFT candidate 8: base pen 7.135, combined pen 7.135, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,884 - DEBUG - LEFT candidate 9: base pen 7.183, combined pen 7.183, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,884 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TCGTAAATTGGATAATCAGGCTTTAAATTCTATTCTGGATAATG...ATA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TCGTAAATTGGATAATCAGGCTTTAAATTCTATTCTGGATAATG...ATA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TCGTAAATTGGATAATCAGGCTTTAAATTCTATTCTGGATAATG...ATA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TCGTAAATTGGATAATCAGGCTTTAAATTCTATTCTGGATAATG...ATA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TCGTAAATTGGATAATCAGGCTTTAAATTCTATTCTGGATAATG...ATA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:39,885 - DEBUG - Picked primer RIGHT:TGTGTACCTTTGAGTGCTATTCCA:16105
+2022-12-01 16:15:39,885 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 24 columns
+TGTGTACCTTTGAGTGCTATTCCA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGTGTACCTTTGAGTGCTATTCCA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGTGTACCTTTGAGTGCTATTCCA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGTGTACCTTTGAGTGCTATTCCA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGTGTACCTTTGAGTGCTATTCCA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************ Cigar
+2022-12-01 16:15:39,885 - DEBUG - RIGHT candidate 0: base pen 2.717, combined pen 2.717, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,885 - DEBUG - RIGHT candidate 1: base pen 3.159, combined pen 3.159, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,886 - DEBUG - RIGHT candidate 2: base pen 3.182, combined pen 3.182, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,886 - DEBUG - RIGHT candidate 3: base pen 3.316, combined pen 3.316, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,886 - DEBUG - RIGHT candidate 4: base pen 3.441, combined pen 3.441, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,887 - DEBUG - RIGHT candidate 5: base pen 3.517, combined pen 3.517, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,887 - DEBUG - RIGHT candidate 6: base pen 3.517, combined pen 3.517, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,887 - DEBUG - RIGHT candidate 7: base pen 4.388, combined pen 4.388, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,887 - DEBUG - RIGHT candidate 8: base pen 4.490, combined pen 4.490, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,888 - DEBUG - RIGHT candidate 9: base pen 4.680, combined pen 4.680, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:39,889 - DEBUG - Window: left_limit 14793, slice_start 15897, right_limit 28269
+2022-12-01 16:15:39,889 - DEBUG - Region 13, pool 1
+2022-12-01 16:15:39,890 - DEBUG - Finding primers for slice 15897 to 17471
+2022-12-01 16:15:40,960 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+ATGATAACAAGAGGCCAATTAGAATCAACACTAATATCAGTTAA...TAA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATGATAACAAGAGGCCAATTAGAATCAACACTAATATCAGTTAA...TAA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ATGATAACAAGAGGCCAATTAGAATCAACACTAATATCAGTTAA...TAA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ATGATAACAAGAGGCCAATTAGAATCAACACTAATATCAGTTAA...TAA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATGATAACAAGAGGCCAATTAGAATCAACACTAATATCAGTTAA...TAA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:40,960 - DEBUG - Picked primer LEFT:ACCATCAGCATCTTGAACAGTCT:15953
+2022-12-01 16:15:40,961 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 23 columns
+ACCATCAGCATCTTGAACAGTCT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACCATCAGCATCTTGAACAGTCT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ACCATCAGCATCTTGAACGGTCT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ACCATCAGCATCTTGAACAGTCT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACCATCAGCATCTTGAACAGTCT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+****************** **** Cigar
+2022-12-01 16:15:40,961 - DEBUG - LEFT candidate 0: base pen 1.752, combined pen 2.752, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:40,961 - DEBUG - LEFT candidate 1: base pen 2.125, combined pen 3.125, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:40,961 - DEBUG - LEFT candidate 2: base pen 2.422, combined pen 3.422, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:40,962 - DEBUG - LEFT candidate 3: base pen 2.422, combined pen 3.422, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:40,962 - DEBUG - LEFT candidate 4: base pen 3.802, combined pen 3.802, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:40,962 - DEBUG - LEFT candidate 5: base pen 2.900, combined pen 3.900, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:40,963 - DEBUG - LEFT candidate 6: base pen 4.035, combined pen 4.035, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:40,963 - DEBUG - LEFT candidate 7: base pen 0.117, combined pen 4.117, 1 max mismatch, 4 total mismatches.
+2022-12-01 16:15:40,963 - DEBUG - LEFT candidate 8: base pen 0.140, combined pen 4.140, 1 max mismatch, 4 total mismatches.
+2022-12-01 16:15:40,963 - DEBUG - LEFT candidate 9: base pen 3.237, combined pen 4.237, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:40,963 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+GTATATTAATACACATATGATTGGTGTTACATTATGTGTACTTT...ATT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GTATATTAATACACATATGATTGGTGTTACATTATGTGTACTTT...ATT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+GTATATTAATACACATATGATTGGTGTTACATTATGTGTACTTT...ATT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+GTATATTAATACACATATGATTGGTGTTACATTATGTGTACTTT...ATT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GTATATTAATACACATATGATTGGTGTTACATTATGTGTACTTT...ATT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:40,963 - DEBUG - Picked primer RIGHT:TGATTGGTGTTACATTATGTGTACTTTGT:17454
+2022-12-01 16:15:40,964 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 29 columns
+TGATTGGTGTTACATTATGTGTACTTTGT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGATTGGTGTTACATTATGTGTACTTTGT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGATTGGTGTTACATTATGTGTACTTTGT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGATTGGTGTTACATTATGTGTACTTTGT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGATTGGTGTTACATTATGTGTACTTTGT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+***************************** Cigar
+2022-12-01 16:15:40,964 - DEBUG - RIGHT candidate 0: base pen 7.377, combined pen 7.377, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:40,964 - DEBUG - RIGHT candidate 1: base pen 7.477, combined pen 7.477, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:40,965 - DEBUG - RIGHT candidate 2: base pen 7.831, combined pen 7.831, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:40,965 - DEBUG - RIGHT candidate 3: base pen 7.831, combined pen 7.831, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:40,965 - DEBUG - RIGHT candidate 4: base pen 8.067, combined pen 8.067, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:40,966 - DEBUG - RIGHT candidate 5: base pen 8.077, combined pen 8.077, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:40,966 - DEBUG - RIGHT candidate 6: base pen 8.181, combined pen 8.181, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:40,966 - DEBUG - RIGHT candidate 7: base pen 8.332, combined pen 8.332, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:40,967 - DEBUG - RIGHT candidate 8: base pen 8.367, combined pen 8.367, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:40,967 - DEBUG - RIGHT candidate 9: base pen 8.368, combined pen 8.368, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:40,970 - DEBUG - Window: left_limit 16106, slice_start 17241, right_limit 28269
+2022-12-01 16:15:40,970 - DEBUG - Region 14, pool 2
+2022-12-01 16:15:40,970 - DEBUG - Finding primers for slice 17241 to 18815
+2022-12-01 16:15:42,024 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TCATAAACATAAGTAAAATTCACAGCAGGAACAAAATATGAGAG...AGG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TCATAAACATAAGTAAAATTCACAGCAGGAACAAAATATGAGAG...AGG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TCATAAACATAAGTAAAATTCACAGCAGGAACAAAATATGAGAG...AGG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TCATAAACATAAGTAAAATTCACAGCAGGAACAAAATATGAGAG...AGG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TCATAAACATAAGTAAAATTCACAGCAGGAACAAAATATGAGAG...AGG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:42,024 - DEBUG - Picked primer LEFT:AGCAGGAACAAAATATGAGAGCCA:17264
+2022-12-01 16:15:42,025 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 24 columns
+AGCAGGAACAAAATATGAGAGCCA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGCAGGAACAAAATATGAGAGCCA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+AGCAGGAACAAAATATGAGAGCCA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+AGCAGGAACAAAATATGAGAGCCA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGCAGGAACAAAATATGAGAGCCA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************ Cigar
+2022-12-01 16:15:42,025 - DEBUG - LEFT candidate 0: base pen 2.107, combined pen 2.107, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,025 - DEBUG - LEFT candidate 1: base pen 2.443, combined pen 2.443, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,026 - DEBUG - LEFT candidate 2: base pen 2.481, combined pen 2.481, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,026 - DEBUG - LEFT candidate 3: base pen 2.481, combined pen 2.481, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,026 - DEBUG - LEFT candidate 4: base pen 3.051, combined pen 3.051, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,026 - DEBUG - LEFT candidate 5: base pen 3.079, combined pen 3.079, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,027 - DEBUG - LEFT candidate 6: base pen 3.332, combined pen 3.332, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,027 - DEBUG - LEFT candidate 7: base pen 3.688, combined pen 3.688, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,027 - DEBUG - LEFT candidate 8: base pen 3.761, combined pen 3.761, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,027 - DEBUG - LEFT candidate 9: base pen 3.764, combined pen 3.764, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,028 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+AAACCATGTTTTATGGTTATTTTCATATTGTAGGAAAATTGGTG...GAT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AAACCATGTTTTATGGTTATTTTCATATTGTAGGAAAATTGGTG...GAT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+AAACCATGTTTTATGGTTATTTTCATATTGTAGGAAAATTGGTG...GAT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+AAACCATGTTTTATGGTTATTTTCATATTGTAGGAAAATTGGTG...GAT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AAACCATGTTTTATGGTTATTTTCATATTGTAGGAAAATTGGTG...GAT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:42,028 - DEBUG - Picked primer RIGHT:AGGAAAATTGGTGTTAATGTATGTAGTGA:18784
+2022-12-01 16:15:42,028 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 29 columns
+AGGAAAATTGGTGTTAATGTATGTAGTGA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGGAAAATTGGTGTTAATGTATGTAGTGA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+AGGAAAATTGGTGTTAATGTATGTAGTGA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+AGGAAAATTGGTGTTAATGTATGTAGTGA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGGAAAATTGGTGTTAATGTATGTAGTGA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+***************************** Cigar
+2022-12-01 16:15:42,028 - DEBUG - RIGHT candidate 0: base pen 7.781, combined pen 7.781, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,029 - DEBUG - RIGHT candidate 1: base pen 8.390, combined pen 8.390, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,029 - DEBUG - RIGHT candidate 2: base pen 8.456, combined pen 8.456, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,029 - DEBUG - RIGHT candidate 3: base pen 8.702, combined pen 8.702, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,029 - DEBUG - RIGHT candidate 4: base pen 8.899, combined pen 8.899, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,030 - DEBUG - RIGHT candidate 5: base pen 8.899, combined pen 8.899, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,030 - DEBUG - RIGHT candidate 6: base pen 8.994, combined pen 8.994, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,030 - DEBUG - RIGHT candidate 7: base pen 9.029, combined pen 9.029, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,031 - DEBUG - RIGHT candidate 8: base pen 9.095, combined pen 9.095, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,031 - DEBUG - RIGHT candidate 9: base pen 9.217, combined pen 9.217, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,034 - DEBUG - Window: left_limit 17455, slice_start 18571, right_limit 28269
+2022-12-01 16:15:42,034 - DEBUG - Region 15, pool 1
+2022-12-01 16:15:42,034 - DEBUG - Finding primers for slice 18571 to 20145
+2022-12-01 16:15:42,758 - DEBUG - Primer interaction between TGATGCTTTTAATCAACTTACTGCTGA and ACCATCAGCATCTTGAACAGTCT predicted with a ∆G of -2.32 kcal/mol
+2022-12-01 16:15:42,767 - DEBUG - Primer interaction between TTGATGCTTTTAATCAACTTACTGCTGA and ACCATCAGCATCTTGAACAGTCT predicted with a ∆G of -2.32 kcal/mol
+2022-12-01 16:15:42,775 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TAGCTAACTGAGAACACGCCGCTTCTCTATAGGCAGCAGTATCC...AGA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TAGCTAACTGAGAACACGCCGCTTCTCTATAGGCAGCAGTATCC...AGA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TAGCTAACTGAGAACACGCCGCTTCTCTATAGGCAGCAGTATCC...AGA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TAGCTAACTGAGAACACGCCGCTTCTCTATAGGCAGCAGTATCC...AGA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TAGCTAACTGAGAACACGCCGCTTCTCTATAGGCAGCAGTATCC...AGA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:42,775 - DEBUG - Picked primer LEFT:GAACACGCCGCTTCTCTATAGG:18582
+2022-12-01 16:15:42,776 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+GAACACGCCGCTTCTCTATAGG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GAACACGCCGCTTCTCTATAGG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+GAACACGCCGCTTCTCTATAGG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+GAACACGCCGCTTCTCTATAGG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GAACACGCCGCTTCTCTATAGG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:42,776 - DEBUG - LEFT candidate 0: base pen 0.036, combined pen 0.036, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,776 - DEBUG - LEFT candidate 1: base pen 0.855, combined pen 0.855, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,777 - DEBUG - LEFT candidate 2: base pen 0.855, combined pen 0.855, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,777 - DEBUG - LEFT candidate 3: base pen 0.961, combined pen 0.961, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,777 - DEBUG - LEFT candidate 4: base pen 0.971, combined pen 0.971, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,777 - DEBUG - LEFT candidate 5: base pen 1.034, combined pen 1.034, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,778 - DEBUG - LEFT candidate 6: base pen 1.036, combined pen 1.036, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,778 - DEBUG - LEFT candidate 7: base pen 1.097, combined pen 1.097, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,778 - DEBUG - LEFT candidate 8: base pen 1.097, combined pen 1.097, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,778 - DEBUG - LEFT candidate 9: base pen 1.375, combined pen 1.375, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,779 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+CAGCTAATATTTCTTGTATATGGTTTATTGATGCTTTTAATCAA...ATT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CAGCTAATATTTCTTGTATATGGTTTATTGATGCTTTTAATCAA...ATT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+CAGCTAATATTTCTTGTATATGGTTTATTGATGCTTTTAATCAA...ATT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+CAGCTAATATTTCTTGTATATGGTTTATTGATGCTTTTAATCAA...ATT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CAGCTAATATTTCTTGTATATGGTTTATTGATGCTTTTAATCAA...ATT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:42,779 - DEBUG - Picked primer RIGHT:TTGATGCTTTTAATCAACTTACTGCTG:20118
+2022-12-01 16:15:42,779 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 27 columns
+TTGATGCTTTTAATCAACTTACTGCTG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TTGATGCTTTTAATCAACTTACTGCTG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TTGATGCTTTTAATCAACTTACTGCTG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TTGATGCTTTTAATCAACTTACTGCTG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TTGATGCTTTTAATCAACTTACTGCTG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+*************************** Cigar
+2022-12-01 16:15:42,779 - DEBUG - RIGHT candidate 0: *interaction, base pen 5.683, combined pen 5.683, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,780 - DEBUG - RIGHT candidate 1: *interaction, base pen 6.188, combined pen 6.188, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,780 - DEBUG - RIGHT candidate 2: base pen 6.324, combined pen 6.324, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,780 - DEBUG - RIGHT candidate 3: base pen 6.343, combined pen 6.343, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,781 - DEBUG - RIGHT candidate 4: base pen 6.967, combined pen 6.967, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,781 - DEBUG - RIGHT candidate 5: base pen 7.125, combined pen 7.125, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,781 - DEBUG - RIGHT candidate 6: base pen 7.125, combined pen 7.125, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,781 - DEBUG - RIGHT candidate 7: base pen 7.125, combined pen 7.125, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,782 - DEBUG - RIGHT candidate 8: base pen 7.173, combined pen 7.173, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,782 - DEBUG - RIGHT candidate 9: base pen 7.682, combined pen 7.682, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:42,785 - DEBUG - Window: left_limit 18785, slice_start 19907, right_limit 28269
+2022-12-01 16:15:42,785 - DEBUG - Region 16, pool 2
+2022-12-01 16:15:42,785 - DEBUG - Finding primers for slice 19907 to 21481
+2022-12-01 16:15:42,813 - DEBUG - Stepping left to 19896
+2022-12-01 16:15:42,813 - DEBUG - Finding primers for slice 19896 to 21470
+2022-12-01 16:15:42,841 - DEBUG - Stepping left to 19885
+2022-12-01 16:15:42,841 - DEBUG - Finding primers for slice 19885 to 21459
+2022-12-01 16:15:42,868 - DEBUG - Stepping left to 19874
+2022-12-01 16:15:42,868 - DEBUG - Finding primers for slice 19874 to 21448
+2022-12-01 16:15:42,895 - DEBUG - Stepping left to 19863
+2022-12-01 16:15:42,895 - DEBUG - Finding primers for slice 19863 to 21437
+2022-12-01 16:15:42,922 - DEBUG - Stepping left to 19852
+2022-12-01 16:15:42,922 - DEBUG - Finding primers for slice 19852 to 21426
+2022-12-01 16:15:42,951 - DEBUG - Stepping left to 19841
+2022-12-01 16:15:42,951 - DEBUG - Finding primers for slice 19841 to 21415
+2022-12-01 16:15:42,997 - DEBUG - Stepping left to 19830
+2022-12-01 16:15:42,997 - DEBUG - Finding primers for slice 19830 to 21404
+2022-12-01 16:15:43,042 - DEBUG - Stepping left to 19819
+2022-12-01 16:15:43,042 - DEBUG - Finding primers for slice 19819 to 21393
+2022-12-01 16:15:43,079 - DEBUG - Stepping left to 19808
+2022-12-01 16:15:43,080 - DEBUG - Finding primers for slice 19808 to 21382
+2022-12-01 16:15:43,112 - DEBUG - Stepping left to 19797
+2022-12-01 16:15:43,112 - DEBUG - Finding primers for slice 19797 to 21371
+2022-12-01 16:15:43,143 - DEBUG - Stepping left to 19786
+2022-12-01 16:15:43,143 - DEBUG - Finding primers for slice 19786 to 21360
+2022-12-01 16:15:43,174 - DEBUG - Stepping left to 19775
+2022-12-01 16:15:43,174 - DEBUG - Finding primers for slice 19775 to 21349
+2022-12-01 16:15:43,204 - DEBUG - Stepping left to 19764
+2022-12-01 16:15:43,205 - DEBUG - Finding primers for slice 19764 to 21338
+2022-12-01 16:15:43,235 - DEBUG - Stepping left to 19753
+2022-12-01 16:15:43,236 - DEBUG - Finding primers for slice 19753 to 21327
+2022-12-01 16:15:43,266 - DEBUG - Stepping left to 19742
+2022-12-01 16:15:43,267 - DEBUG - Finding primers for slice 19742 to 21316
+2022-12-01 16:15:43,298 - DEBUG - Stepping left to 19731
+2022-12-01 16:15:43,298 - DEBUG - Finding primers for slice 19731 to 21305
+2022-12-01 16:15:43,329 - DEBUG - Stepping left to 19720
+2022-12-01 16:15:43,329 - DEBUG - Finding primers for slice 19720 to 21294
+2022-12-01 16:15:43,422 - DEBUG - Stepping left to 19709
+2022-12-01 16:15:43,422 - DEBUG - Finding primers for slice 19709 to 21283
+2022-12-01 16:15:45,106 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+AGGGCAATCCATAGAATTATGATAGTAAACAGACCCAAAAGTGG...TCT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGGGCAATCCATAGAATTATGATAGTAAACAGACCCAAAAGTGG...TCT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+AGGGCAATCCATAGAATTATGATAGTAAACAGACCCAAAAGTGG...TCT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+AGGGCAATCCATAGAATTATGATAGTAAACAGACCCAAAAGTGG...TCT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AGGGCAATCCATAGAATTATGATAATAAACAGACCCAAAAGTGG...TCT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:45,106 - DEBUG - Picked primer LEFT:TGGACTCATACCATTGATCAAATTGG:19750
+2022-12-01 16:15:45,107 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 26 columns
+TGGACTCATACCATTGATCAAATTGG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGGACTCATACCATTGATCAAATTGG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGGACTCATACCATTGATCAAATTGG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGGACTCATACCATTGATCAAATTGG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGGACTCATACCATTGATCAAATTGG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************** Cigar
+2022-12-01 16:15:45,107 - DEBUG - LEFT candidate 0: base pen 4.881, combined pen 4.881, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,107 - DEBUG - LEFT candidate 1: base pen 4.936, combined pen 4.936, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,108 - DEBUG - LEFT candidate 2: base pen 5.106, combined pen 5.106, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,108 - DEBUG - LEFT candidate 3: base pen 5.172, combined pen 5.172, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,108 - DEBUG - LEFT candidate 4: base pen 5.305, combined pen 5.305, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,109 - DEBUG - LEFT candidate 5: base pen 5.414, combined pen 5.414, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,109 - DEBUG - LEFT candidate 6: base pen 5.574, combined pen 5.574, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,109 - DEBUG - LEFT candidate 7: base pen 5.575, combined pen 5.575, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,110 - DEBUG - LEFT candidate 8: base pen 5.954, combined pen 5.954, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,110 - DEBUG - LEFT candidate 9: base pen 6.071, combined pen 6.071, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,110 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+GTTATTGGTTATTCATTATATACAGTATGGTTTTATCCATTATT...TGC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GTTATTGGTTATTCATTATATACAGTATGGTTTTATCCATTATT...TGC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+GTTATTGGTTATTCATTATATACAGTATGGTTTTATCCATTATT...TGC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+GTTATTGGTTATTCATTATATACAGTATGGTTTTATCCATTATT...TGC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GTTATTGGTTATTCATTATATACAGTATGGTTTTATCCATTATT...TGC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:45,110 - DEBUG - Picked primer RIGHT:ACTACATGGTTGCCTGATTTGTTT:21214
+2022-12-01 16:15:45,111 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 24 columns
+ACTACATGGTTGCCTGATTTGTTT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACTACATGGTTGCCTGATTTGTTT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ACTACATGGTTGCCTGATTTGTTT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ACTACATGGTTGCCTGATTTGTTT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACTACATGGTTGCCTGATTTGTTT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************ Cigar
+2022-12-01 16:15:45,111 - DEBUG - RIGHT candidate 0: base pen 3.265, combined pen 3.265, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,111 - DEBUG - RIGHT candidate 1: base pen 4.388, combined pen 4.388, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,111 - DEBUG - RIGHT candidate 2: base pen 4.388, combined pen 4.388, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,112 - DEBUG - RIGHT candidate 3: base pen 4.388, combined pen 4.388, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,112 - DEBUG - RIGHT candidate 4: base pen 4.388, combined pen 4.388, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,112 - DEBUG - RIGHT candidate 5: base pen 4.824, combined pen 4.824, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,112 - DEBUG - RIGHT candidate 6: base pen 4.824, combined pen 4.824, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,113 - DEBUG - RIGHT candidate 7: base pen 4.994, combined pen 4.994, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,113 - DEBUG - RIGHT candidate 8: base pen 5.303, combined pen 5.303, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,113 - DEBUG - RIGHT candidate 9: base pen 5.464, combined pen 5.464, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:45,117 - DEBUG - Window: left_limit 20119, slice_start 21006, right_limit 28269
+2022-12-01 16:15:45,117 - DEBUG - Region 17, pool 1
+2022-12-01 16:15:45,117 - DEBUG - Finding primers for slice 21006 to 22580
+2022-12-01 16:15:46,524 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+CTACAATTTCGTTTATAACAAAATAAACAACCAGCTTTATTACA...ACC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CTACAATTTCGTTTATAACAAAATAAACAACCAGCTTTATTACA...ACC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+CTACAATTTCGTTTATAACAAAATAAACAACCAGCTTTATTACA...ACC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+CTACAATTTCGTTTATAACAAAATAAACAACCAGCTTTATTACA...ACC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CTACAATTTCGTTTATAACAAAATAAACAACCAGCTTTATTACA...ACC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:46,525 - DEBUG - Picked primer LEFT:ACAACCAGCTTTATTACAACCATAGAC:21032
+2022-12-01 16:15:46,525 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 27 columns
+ACAACCAGCTTTATTACAACCATAGAC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACAACCAGCTTTATTACAACCATAGAC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ACAACCAGCTTTATTACAACCATAGAC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ACAACCAGCTTTATTACAACCATAGAC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACAACCAGCTTTATTACAACCATAAAC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************ ** Cigar
+2022-12-01 16:15:46,525 - DEBUG - LEFT candidate 0: base pen 5.630, combined pen 6.630, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,526 - DEBUG - LEFT candidate 1: base pen 5.630, combined pen 6.630, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,526 - DEBUG - LEFT candidate 2: base pen 6.137, combined pen 7.137, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,526 - DEBUG - LEFT candidate 3: base pen 6.137, combined pen 7.137, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,527 - DEBUG - LEFT candidate 4: base pen 6.172, combined pen 7.172, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,527 - DEBUG - LEFT candidate 5: base pen 6.172, combined pen 7.172, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,527 - DEBUG - LEFT candidate 6: base pen 6.337, combined pen 7.337, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,527 - DEBUG - LEFT candidate 7: base pen 6.654, combined pen 7.654, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,528 - DEBUG - LEFT candidate 8: base pen 6.709, combined pen 7.709, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,528 - DEBUG - LEFT candidate 9: base pen 6.812, combined pen 7.812, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,528 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+GGTTGCTTATAACCCTGATCTTTCACAATATTATTGTGATAATG...GTT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GGTTGCTTATAACCCTGATCTTTCACAATATTATTGTGATAATG...GTT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+GGTTGCTTATAACCCTGATCTTTCACAATATTATTGTGATAATG...GTT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+GGTTGCTTATAACCCTGATCTTTCACAATATTATTGTGATAATG...GTT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GGTTGCTTATAACCCTGATCTTTCACAATATTATTGTGATAATG...GTT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:46,528 - DEBUG - Picked primer RIGHT:AAGGCTCAGTTTAAACCATTTGCT:22510
+2022-12-01 16:15:46,529 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 24 columns
+AAGGCTCAGTTTAAACCATTTGCT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AAGGCTCAGTTTAAACCATTTGCT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+AAGGCTCAGTTTAAACCATTTGCT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+AAGGCTCAGTTTAAACCATTTGCT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AAGGCTCAATTTAAACCATTTGCT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+******** *************** Cigar
+2022-12-01 16:15:46,529 - DEBUG - RIGHT candidate 0: base pen 3.022, combined pen 4.022, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,529 - DEBUG - RIGHT candidate 1: base pen 4.381, combined pen 4.381, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:46,529 - DEBUG - RIGHT candidate 2: base pen 3.452, combined pen 4.452, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,530 - DEBUG - RIGHT candidate 3: base pen 4.936, combined pen 4.936, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:46,530 - DEBUG - RIGHT candidate 4: base pen 5.414, combined pen 5.414, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:46,530 - DEBUG - RIGHT candidate 5: base pen 4.599, combined pen 5.599, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,531 - DEBUG - RIGHT candidate 6: base pen 5.991, combined pen 5.991, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:46,531 - DEBUG - RIGHT candidate 7: base pen 6.083, combined pen 6.083, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:46,531 - DEBUG - RIGHT candidate 8: base pen 6.118, combined pen 6.118, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:46,531 - DEBUG - RIGHT candidate 9: base pen 5.247, combined pen 6.247, 1 max mismatch, 1 total mismatch.
+2022-12-01 16:15:46,535 - DEBUG - Window: left_limit 21215, slice_start 22302, right_limit 28269
+2022-12-01 16:15:46,535 - DEBUG - Region 18, pool 2
+2022-12-01 16:15:46,535 - DEBUG - Finding primers for slice 22302 to 23876
+2022-12-01 16:15:48,355 - DEBUG - Primer interaction between AACATCACCAGTAGCTACAGGC and ACTACATGGTTGCCTGATTTGTTT predicted with a ∆G of -3.02 kcal/mol
+2022-12-01 16:15:48,371 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+CCTTTAAAATAACGTTTCACATATAAATCATCAGATGCCAAAAC...TAA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CCTTTAAAATAACGTTTCACATATAAATCATCAGATGCCAAAAC...TAA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+CCTTTAAAATAACGTTTCACATATAAATCATCAGATGCCAAAAC...TAA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+CCTTTAAAATAACGTTTCACATATAAATCATCAGATGCCAAAAC...TAA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CCTTTAAAATAACGTTTCACATATAAATCATCAGATGCCAAAAC...TAA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:48,371 - DEBUG - Picked primer LEFT:ATCACCAGTAGCTACAGGCCAG:22349
+2022-12-01 16:15:48,371 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+ATCACCAGTAGCTACAGGCCAG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATCACCAGTAGCTACAGGCCAG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ATCACCAGTAGCTACAGGCCAG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ATCACCAGTAGCTACAGGCCAG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATCACCAGTAGCTACAGGCCAG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:48,372 - DEBUG - LEFT candidate 0: *interaction, base pen 0.725, combined pen 0.725, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,372 - DEBUG - LEFT candidate 1: base pen 0.727, combined pen 0.727, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,372 - DEBUG - LEFT candidate 2: base pen 0.985, combined pen 0.985, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,373 - DEBUG - LEFT candidate 3: base pen 0.986, combined pen 0.986, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,373 - DEBUG - LEFT candidate 4: base pen 1.106, combined pen 1.106, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,373 - DEBUG - LEFT candidate 5: base pen 1.272, combined pen 1.272, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,373 - DEBUG - LEFT candidate 6: base pen 1.483, combined pen 1.483, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,374 - DEBUG - LEFT candidate 7: base pen 1.504, combined pen 1.504, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,374 - DEBUG - LEFT candidate 8: base pen 1.504, combined pen 1.504, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,374 - DEBUG - LEFT candidate 9: base pen 1.690, combined pen 1.690, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,374 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+CCGTGTTATTAAATTTGAGACAGATGCATACAAACTTTTTTTGA...GAT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CCGTGTTATTAAATTTGAGACAGATGCATACAAACTTTTTTTGA...GAT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+CCGTGTTATTAAATTTGAGACAGATGCATACAAACTTTTTTTGA...GAT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+CCGTGTTATTAAATTTGAGACAGATGCATACAAACTTTTTTTGA...GAT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CCGTGTTATTAAATTTGAGACAGATGCATACAAACTTTTCTTGA...GAT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:48,374 - DEBUG - Picked primer RIGHT:TGAGTGGTGATGATTGTTTTGTTTCA:23835
+2022-12-01 16:15:48,375 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 26 columns
+TGAGTGGTGATGATTGTTTTGTTTCA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGAGTGGTGATGATTGTTTTGTTTCA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGAGTGGTGATGATTGTTTTGTTTCA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGAGTGGTGATGATTGTTTTGTTTCA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGAGTGGTGATGATTGTTTTGTTTCA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************** Cigar
+2022-12-01 16:15:48,375 - DEBUG - RIGHT candidate 0: base pen 4.433, combined pen 4.433, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,375 - DEBUG - RIGHT candidate 1: base pen 5.071, combined pen 5.071, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,376 - DEBUG - RIGHT candidate 2: base pen 5.071, combined pen 5.071, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,376 - DEBUG - RIGHT candidate 3: base pen 5.322, combined pen 5.322, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,376 - DEBUG - RIGHT candidate 4: base pen 5.322, combined pen 5.322, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,377 - DEBUG - RIGHT candidate 5: base pen 5.791, combined pen 5.791, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,377 - DEBUG - RIGHT candidate 6: base pen 5.950, combined pen 5.950, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,377 - DEBUG - RIGHT candidate 7: base pen 6.368, combined pen 6.368, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,378 - DEBUG - RIGHT candidate 8: base pen 6.451, combined pen 6.451, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,378 - DEBUG - RIGHT candidate 9: base pen 6.480, combined pen 6.480, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:48,381 - DEBUG - Window: left_limit 22511, slice_start 23625, right_limit 28269
+2022-12-01 16:15:48,381 - DEBUG - Region 19, pool 1
+2022-12-01 16:15:48,382 - DEBUG - Finding primers for slice 23625 to 25199
+2022-12-01 16:15:49,806 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+ATATAAATAGAATTAGGACACTCAAAATACTTAACAGTTTTAAC...ACA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATATAAATAGAATTAGGACACTCAAAATACTTAACAGTTTTAAC...ACA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ATATAAATAGAATTAGGACACTCAAAATACTTAACAGTTTTAAC...ACA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ATATAAATAGAATTAGGACACTCAAAATACTTAACAGTTTTAAC...ACA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ATATAAATAGAATTAGGACACTCAAAATACTTAACAGTTTTAAC...ACA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:49,806 - DEBUG - Picked primer LEFT:TGATAAGACGCCAATCTTTAGGAAGA:23692
+2022-12-01 16:15:49,807 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 26 columns
+TGATAAGACGCCAATCTTTAGGAAGA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGATAAGACGCCAATCTTTAGGAAGA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGATAAGACGCCAATCTTTAGGAAGA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGATAAGACGCCAATCTTTAGGAAGA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGATAAGACGCCAATCTTTAGGAAGA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************** Cigar
+2022-12-01 16:15:49,807 - DEBUG - LEFT candidate 0: base pen 4.431, combined pen 4.431, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,807 - DEBUG - LEFT candidate 1: base pen 4.769, combined pen 4.769, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,808 - DEBUG - LEFT candidate 2: base pen 5.076, combined pen 5.076, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,808 - DEBUG - LEFT candidate 3: base pen 5.102, combined pen 5.102, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,808 - DEBUG - LEFT candidate 4: base pen 5.602, combined pen 5.602, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,809 - DEBUG - LEFT candidate 5: base pen 5.737, combined pen 5.737, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,809 - DEBUG - LEFT candidate 6: base pen 6.393, combined pen 6.393, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,809 - DEBUG - LEFT candidate 7: base pen 6.864, combined pen 6.864, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,810 - DEBUG - LEFT candidate 8: base pen 7.049, combined pen 7.049, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,810 - DEBUG - LEFT candidate 9: base pen 7.179, combined pen 7.179, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,810 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+GACAATGACGATGAAGATGTTGTTACTGGTGACAATGACGATGA...ATG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GACAATGACGATGAAGATGTTGTTACTGGTGACAATGACGATGA...ATG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+GACAATGACGATGAAGATGTTGTTACTGGTGACAATGACGATGA...ATG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+GACAATGACGATGAAGATGTTGTTACTGGTGACAATGACGATGA...ATG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GACAATGACGATGAAGATGTTGTTACTGGTGACAATGACGATGA...ATG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:49,810 - DEBUG - Picked primer RIGHT:ACTGGTGACAATGACGATGAAGA:25175
+2022-12-01 16:15:49,811 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 23 columns
+ACTGGTGACAATGACGATGAAGA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACTGGTGACAATGACGATGAAGA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+ACTGGTGACAATGACGATGAAGA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+ACTGGTGACAATGACGATGAAGA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+ACTGGTGACAATGACGATGAAGA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+*********************** Cigar
+2022-12-01 16:15:49,811 - DEBUG - RIGHT candidate 0: base pen 1.753, combined pen 1.753, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,811 - DEBUG - RIGHT candidate 1: base pen 1.753, combined pen 1.753, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,811 - DEBUG - RIGHT candidate 2: base pen 2.000, combined pen 2.000, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,812 - DEBUG - RIGHT candidate 3: base pen 2.000, combined pen 2.000, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,812 - DEBUG - RIGHT candidate 4: base pen 2.116, combined pen 2.116, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,812 - DEBUG - RIGHT candidate 5: base pen 2.116, combined pen 2.116, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,812 - DEBUG - RIGHT candidate 6: base pen 2.309, combined pen 2.309, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,813 - DEBUG - RIGHT candidate 7: base pen 2.309, combined pen 2.309, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,813 - DEBUG - RIGHT candidate 8: base pen 2.355, combined pen 2.355, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,813 - DEBUG - RIGHT candidate 9: base pen 2.355, combined pen 2.355, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:49,817 - DEBUG - Window: left_limit 23836, slice_start 24968, right_limit 28269
+2022-12-01 16:15:49,817 - DEBUG - Region 20, pool 2
+2022-12-01 16:15:49,817 - DEBUG - Finding primers for slice 24968 to 26542
+2022-12-01 16:15:51,065 - DEBUG - Primer interaction between TCTTCATCGTCATTGTCACCAGT and TGAGTGGTGATGATTGTTTTGTTTCA predicted with a ∆G of -2.14 kcal/mol
+2022-12-01 16:15:51,073 - DEBUG - Primer interaction between TCTTCATCGTCATTGTCACCAGT and TGAGTGGTGATGATTGTTTTGTTTCA predicted with a ∆G of -2.14 kcal/mol
+2022-12-01 16:15:51,081 - DEBUG - Primer interaction between TCTTCATCGTCATTGTCACCAGT and TGAGTGGTGATGATTGTTTTGTTTCA predicted with a ∆G of -2.14 kcal/mol
+2022-12-01 16:15:51,097 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+CAACATCTTCATCGTCATTGTCACCAGTAACAACATCTTCATCG...ATT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CAACATCTTCATCGTCATTGTCACCAGTAACAACATCTTCATCG...ATT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+CAACATCTTCATCGTCATTGTCACCAGTAACAACATCTTCATCG...ATT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+CAACATCTTCATCGTCATTGTCACCAGTAACAACATCTTCATCG...ATT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+CAACATCTTCATCGTCATTGTCACCAGTAACAACATCTTCATCG...ATT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:51,098 - DEBUG - Picked primer LEFT:TCGTCATTGTCACCAGTAACAACA:25009
+2022-12-01 16:15:51,098 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 24 columns
+TCGTCATTGTCACCAGTAACAACA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TCGTCATTGTCACCAGTAACAACA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TCGTCATTGTCACCAGTAACAACA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TCGTCATTGTCACCAGTAACAACA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TCGTCATTGTCACCAGTAACAACA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+************************ Cigar
+2022-12-01 16:15:51,099 - DEBUG - LEFT candidate 0: *interaction, base pen 1.753, combined pen 1.753, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,099 - DEBUG - LEFT candidate 1: *interaction, base pen 1.753, combined pen 1.753, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,099 - DEBUG - LEFT candidate 2: *interaction, base pen 1.753, combined pen 1.753, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,099 - DEBUG - LEFT candidate 3: base pen 2.000, combined pen 2.000, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,100 - DEBUG - LEFT candidate 4: base pen 2.000, combined pen 2.000, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,100 - DEBUG - LEFT candidate 5: base pen 2.116, combined pen 2.116, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,100 - DEBUG - LEFT candidate 6: base pen 2.116, combined pen 2.116, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,100 - DEBUG - LEFT candidate 7: base pen 2.116, combined pen 2.116, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,101 - DEBUG - LEFT candidate 8: base pen 2.309, combined pen 2.309, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,101 - DEBUG - LEFT candidate 9: base pen 2.309, combined pen 2.309, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,101 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+GAGGTGATTATAATATGCTTCTAAAAAATATTGACTTGTTTGTT...ACT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GAGGTGATTATAATATGCTTCTAAAAAATATTGACTTGTTTGTT...ACT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+GAGGTGATTATAATATGCTTCTAAAAAATATTGACTTGTTTGTT...ACT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+GAGGTGATTATAATATGCTTCTAAAAAATATTGACTTGTTTGTT...ACT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+GAGGTGATTATAATATGCTTCTAAAAAATATTGACTTGTTTGTT...ACT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:51,101 - DEBUG - Picked primer RIGHT:TCGTGCTGATTTTGCTTGCAAG:26493
+2022-12-01 16:15:51,102 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+TCGTGCTGATTTTGCTTGCAAG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TCGTGCTGATTTTGCTTGCAAG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TCGTGCTGATTTTGCTTGCAAG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TCGTGCTGATTTTGCTTGCAAG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TCGTGCTGATTTTGCTTGCAAG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:51,102 - DEBUG - RIGHT candidate 0: base pen 0.036, combined pen 0.036, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,102 - DEBUG - RIGHT candidate 1: base pen 0.287, combined pen 0.287, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,102 - DEBUG - RIGHT candidate 2: base pen 0.288, combined pen 0.288, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,103 - DEBUG - RIGHT candidate 3: base pen 0.291, combined pen 0.291, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,103 - DEBUG - RIGHT candidate 4: base pen 1.181, combined pen 1.181, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,103 - DEBUG - RIGHT candidate 5: base pen 1.198, combined pen 1.198, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,103 - DEBUG - RIGHT candidate 6: base pen 1.300, combined pen 1.300, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,104 - DEBUG - RIGHT candidate 7: base pen 1.444, combined pen 1.444, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,104 - DEBUG - RIGHT candidate 8: base pen 1.512, combined pen 1.512, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,104 - DEBUG - RIGHT candidate 9: base pen 1.566, combined pen 1.566, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:51,108 - DEBUG - Window: left_limit 25176, slice_start 26287, right_limit 28269
+2022-12-01 16:15:51,108 - DEBUG - Region 21, pool 1
+2022-12-01 16:15:51,108 - DEBUG - Finding primers for slice 26287 to 27861
+2022-12-01 16:15:52,407 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TAAAATGTAGCAACTGAAACTCTGTCCATAAACAAAATACACAT...CAC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TAAAATGTAGCAACTGAAACTCTGTCCATAAACAAAATACACAT...CAC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TAAAATGTAGCAACTGAAACTCTGTCCATAAACAAAATACACAT...CAC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TAAAATGTAGCAACTGAAACTCTGTCCATAAACAAAATACACAT...CAC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TAAAATGTAGCAACTGAAACTCTGTCCATAAACAAAATACACAT...CAC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:52,408 - DEBUG - Picked primer LEFT:TGTAGCAACTGAAACTCTGTCCA:26292
+2022-12-01 16:15:52,408 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 23 columns
+TGTAGCAACTGAAACTCTGTCCA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGTAGCAACTGAAACTCTGTCCA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGTAGCAACTGAAACTCTGTCCA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGTAGCAACTGAAACTCTGTCCA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGTAGCAACTGAAACTCTGTCCA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+*********************** Cigar
+2022-12-01 16:15:52,409 - DEBUG - LEFT candidate 0: base pen 1.879, combined pen 1.879, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,409 - DEBUG - LEFT candidate 1: base pen 2.475, combined pen 2.475, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,409 - DEBUG - LEFT candidate 2: base pen 2.475, combined pen 2.475, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,410 - DEBUG - LEFT candidate 3: base pen 3.072, combined pen 3.072, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,410 - DEBUG - LEFT candidate 4: base pen 3.100, combined pen 3.100, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,410 - DEBUG - LEFT candidate 5: base pen 3.439, combined pen 3.439, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,410 - DEBUG - LEFT candidate 6: base pen 3.627, combined pen 3.627, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,411 - DEBUG - LEFT candidate 7: base pen 3.630, combined pen 3.630, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,411 - DEBUG - LEFT candidate 8: base pen 3.860, combined pen 3.860, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,411 - DEBUG - LEFT candidate 9: base pen 3.860, combined pen 3.860, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,411 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TATCCGTGATATTTTTGTTCATGAAGATCTACATGTTGTAGAAG...TTG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TATCCGTGATATTTTTGTTCATGAAGATCTACATGTTGTAGAAG...TTG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TATCCGTGATATTTTTGTTCATGAAGATCTACATGTTGTAGAAG...TTG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TATCCGTGATATTTTTGTTCATGAAGATCTACATGTTGTAGAAG...TTG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TATCCGTGATATTTTTGTTCATGAAGATCTACATGTTGTAGAAG...TTG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:52,411 - DEBUG - Picked primer RIGHT:AAACAGCCGTAAAGTCCGGTAC:27808
+2022-12-01 16:15:52,412 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+AAACAGCCGTAAAGTCCGGTAC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AAACAGCCGTAAAGTCCGGTAC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+AAACAGCCGTAAAGTCCGGTAC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+AAACAGCCGTAAAGTCCGGTAC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AAACAGCCGTAAAGTCCGGTAC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:52,412 - DEBUG - RIGHT candidate 0: base pen 0.047, combined pen 0.047, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,412 - DEBUG - RIGHT candidate 1: base pen 0.594, combined pen 0.594, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,413 - DEBUG - RIGHT candidate 2: base pen 0.594, combined pen 0.594, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,413 - DEBUG - RIGHT candidate 3: base pen 1.237, combined pen 1.237, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,414 - DEBUG - RIGHT candidate 4: base pen 1.360, combined pen 1.360, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,414 - DEBUG - RIGHT candidate 5: base pen 1.360, combined pen 1.360, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,414 - DEBUG - RIGHT candidate 6: base pen 1.422, combined pen 1.422, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,415 - DEBUG - RIGHT candidate 7: base pen 1.561, combined pen 1.561, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,415 - DEBUG - RIGHT candidate 8: base pen 1.604, combined pen 1.604, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,415 - DEBUG - RIGHT candidate 9: base pen 1.753, combined pen 1.753, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:52,418 - DEBUG - Window: left_limit 26494, slice_start 26694, right_limit 28269
+2022-12-01 16:15:52,419 - DEBUG - Region 22, pool 2
+2022-12-01 16:15:52,419 - DEBUG - Finding primers for slice 26694 to 28268
+2022-12-01 16:15:52,449 - DEBUG - Stepping left to 26683
+2022-12-01 16:15:52,449 - DEBUG - Finding primers for slice 26683 to 28257
+2022-12-01 16:15:52,479 - DEBUG - Stepping left to 26672
+2022-12-01 16:15:52,479 - DEBUG - Finding primers for slice 26672 to 28246
+2022-12-01 16:15:53,870 - DEBUG - Primer interaction between TAGGAATCCACAATCCAGGACG and TCGTGCTGATTTTGCTTGCAAG predicted with a ∆G of -2.22 kcal/mol
+2022-12-01 16:15:53,880 - DEBUG - Primer interaction between ATAGGAATCCACAATCCAGGACG and TCGTGCTGATTTTGCTTGCAAG predicted with a ∆G of -2.22 kcal/mol
+2022-12-01 16:15:53,888 - DEBUG - Primer interaction between AGGAATCCACAATCCAGGACG and TCGTGCTGATTTTGCTTGCAAG predicted with a ∆G of -2.22 kcal/mol
+2022-12-01 16:15:53,902 - DEBUG - Left region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TAGATTTACAACCTACTACACCTGAATAAACCAAATCATCATAA...AGA hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TAGATTTACAACCTACTACACCTGAATAAACCAAATCATCATAA...AGA hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TAGATTTACAACCTACTACACCTGAATAAACCAAATCATCATAA...AGA hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TAGATTTACAACCTACTACACCTGAATAAACCAAATCATCATAA...AGA hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TAGATTTACAACCTACTACACCTGAATAAACCAAATCATCATAA...AGA hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:53,902 - DEBUG - Picked primer LEFT:AATCCACAATCCAGGACGCG:26742
+2022-12-01 16:15:53,903 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 20 columns
+AATCCACAATCCAGGACGCG hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AATCCACAATCCAGGACGCG hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+AATCCACAATCCAGGACGCG hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+AATCCACAATCCAGGACGCG hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+AATCCACAATCCAGGACGCG hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+******************** Cigar
+2022-12-01 16:15:53,903 - DEBUG - LEFT candidate 0: *interaction, base pen 1.252, combined pen 1.252, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,903 - DEBUG - LEFT candidate 1: *interaction, base pen 1.816, combined pen 1.816, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,904 - DEBUG - LEFT candidate 2: *interaction, base pen 2.107, combined pen 2.107, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,904 - DEBUG - LEFT candidate 3: base pen 2.239, combined pen 2.239, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,904 - DEBUG - LEFT candidate 4: base pen 2.961, combined pen 2.961, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,905 - DEBUG - LEFT candidate 5: base pen 3.394, combined pen 3.394, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,905 - DEBUG - LEFT candidate 6: base pen 4.036, combined pen 4.036, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,905 - DEBUG - LEFT candidate 7: base pen 4.597, combined pen 4.597, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,905 - DEBUG - LEFT candidate 8: base pen 5.080, combined pen 5.080, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,906 - DEBUG - LEFT candidate 9: base pen 5.456, combined pen 5.456, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,906 - DEBUG - Right region flank MSA: Alphabet() alignment with 5 rows and 109 columns
+TGTCAGATCTCATTAAATCTAAACTTTTTAAACAAGATTCCCTG...CTC hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGTCAGATCTCATTAAATCTAAACTTTTTAAACAAGATTCCCTG...CTC hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TGTCAGATCTCATTAAATCTAAACTTTTTAAACAAGATTCCCTG...CTC hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TGTCAGATCTCATTAAATCTAAACTTTTTAAACAAGATTCCCTG...CTC hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TGTCAGATCTCATTAAATCTAAACTTTTTAAACAAGATTCCCTG...CTC hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+2022-12-01 16:15:53,906 - DEBUG - Picked primer RIGHT:TCCATGCTTGTGAGTGTGGTTT:28199
+2022-12-01 16:15:53,906 - DEBUG - Picked MSA slice: Alphabet() alignment with 6 rows and 22 columns
+TCCATGCTTGTGAGTGTGGTTT hku1/KF686339/HKU1/huma-/USA/HKU1_3/2009/2009|KF686339|HKU1/huma-/USA/HKU1_3/2009|2009-10-31|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TCCATGCTTGTGAGTGTGGTTT hku1/KF430199/HKU1/huma-/USA/HKU1_14/2009/2009|KF430199|HKU1/huma-/USA/HKU1_14/2009|2009-12-28|Huma-|USA|Huma-_coro-avirus_HKU1
+TCCATGCTTGTGAGTGTGGTTT hku1/KF686345/HKU1/huma-/USA/HKU1_20/2010/2010|KF686345|HKU1/huma-/USA/HKU1_20/2010|2010-01-30|Huma-|USA|Huma-_coro-avirus_HKU1
+TCCATGCTTGTGAGTGTGGTTT hku1/KF430202/HKU1/huma-/USA/HKU1_7/2010/2010|KF430202|HKU1/huma-/USA/HKU1_7/2010|2010-01-03|Huma-|USA|Huma-_coro-avirus_HKU1|h
+TCCATGCTTGTGAGTGTGGTTT hku1/KY983584/SC2628/2015|KY983584|SC2628|2015-XX-XX|Huma-|USA|Huma-_coro-avirus_HKU1|hku1|beta|full
+********************** Cigar
+2022-12-01 16:15:53,907 - DEBUG - RIGHT candidate 0: base pen 0.130, combined pen 0.130, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,907 - DEBUG - RIGHT candidate 1: base pen 0.326, combined pen 0.326, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,907 - DEBUG - RIGHT candidate 2: base pen 1.121, combined pen 1.121, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,907 - DEBUG - RIGHT candidate 3: base pen 1.122, combined pen 1.122, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,908 - DEBUG - RIGHT candidate 4: base pen 1.262, combined pen 1.262, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,908 - DEBUG - RIGHT candidate 5: base pen 1.309, combined pen 1.309, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,908 - DEBUG - RIGHT candidate 6: base pen 1.373, combined pen 1.373, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,909 - DEBUG - RIGHT candidate 7: base pen 1.391, combined pen 1.391, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,909 - DEBUG - RIGHT candidate 8: base pen 1.498, combined pen 1.498, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,909 - DEBUG - RIGHT candidate 9: base pen 1.498, combined pen 1.498, 0 max mismatches, 0 total mismatches.
+2022-12-01 16:15:53,914 - INFO - Writing /outputs/67bf5bcc26364246a645f09657742bbc/hku1clade2_1.5.primer.bed
+2022-12-01 16:15:53,915 - INFO - Writing /outputs/67bf5bcc26364246a645f09657742bbc/hku1clade2_1.5.insert.bed
+2022-12-01 16:15:53,916 - INFO - Writing /outputs/67bf5bcc26364246a645f09657742bbc/hku1clade2_1.5.primer.tsv
+2022-12-01 16:15:53,916 - INFO - Writing /outputs/67bf5bcc26364246a645f09657742bbc/hku1clade2_1.5.reference.fasta
+2022-12-01 16:15:53,983 - INFO - Writing /outputs/67bf5bcc26364246a645f09657742bbc/hku1clade2_1.5.plot.pdf
+2022-12-01 16:15:53,983 - INFO - Writing /outputs/67bf5bcc26364246a645f09657742bbc/hku1clade2_1.5.plot.svg
+2022-12-01 16:15:54,284 - INFO - Writing /outputs/67bf5bcc26364246a645f09657742bbc/hku1clade2_1.5.report.json
