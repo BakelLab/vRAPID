@@ -1,4 +1,4 @@
-﻿name	pool	seq	size	%gc	tm (use 65)	Start	End
+Primer Name	Pool	Sequence	Length	GC%	Tm (use 65)	Start	End
 hku1clade2_1.5_1_LEFT	1	TGATAGAGAGTGTCCTATTCCGACT	25	44	60.55	120	145
 hku1clade2_1.5_1_RIGHT	1	ACCTAGTGGTATGGATACTGCCT	23	47.83	60.38	1546	1569
 hku1clade2_1.5_2_LEFT	2	TGGTCAGCCCAAGAAGTTTTCT	22	45.45	60.28	1428	1450
