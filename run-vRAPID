@@ -16,7 +16,7 @@
 # Also pick up on the number of CPUs defined in jobstatus
 CONDA_WORKDIR="${CONDA_WORKDIR:=/sc/arion/work/$USER/snakemake}"
 GIT_REPODIR="${GIT_REPODIR:=$HOME/opt/vRAPID}"
-JOB_NCPUS="${JOB_NCPUS:=16}"
+JOB_NCPUS="${JOB_NCPUS:=24}"
 
 # Make sure the repository exists and has a Snakefile at the expected location
 if [[ ! -f "${GIT_REPODIR}/workflow/Snakefile" ]]
@@ -127,6 +127,7 @@ unset PYTHONPATH
 unset PERL5LIB
 unset R_LIBS
 module load anaconda2
+module load proxies
 source activate snakemake
 
 # Add the bin folder with any external scripts that may be called from the pipeline to the path

@@ -139,6 +139,8 @@ def create_plots(sample_folder, amplified, threads, read1_suffix, read2_suffix, 
                         depth += 1
                 if  refbase == 'n':
                     continue
+                print(depth)
+                print(counts[refbase])
                 if depth >= 10 and counts[refbase] /depth <= 0.85:
                     for i in counts:
                         count_dict[i].append(round(counts[i] /depth,2))

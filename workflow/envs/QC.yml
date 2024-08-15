@@ -1,0 +1,25 @@
+name: QC
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - seqkit
+  - kraken2
+  - pysam
+  - r>=4.0.5
+  - matplotlib
+  - picard
+  - fastqc
+  - r-getopt
+  - r-ggplot2
+  - r-tidyverse
+  - biopython
+  - bamtools
+  - r-stringi
+  - r-odbc
+  - r-rmariadb
+  - r-ini
+  - pandas
+  - mysql
+  - mysql-connector-python

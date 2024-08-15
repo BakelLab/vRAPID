@@ -22,8 +22,9 @@ sampleids = mappings["Sample_ID"].tolist()
 
 rule all:
    input:
-#      annotation_out = expand("{sample}/02_assembly/{sample}_genome_annotation.txt", sample=sampleids)
-      data_release_report = expand("{runid}_data_release.txt", runid=config["run_id"])
+      expand("{sample}/05_status/pdb_upload_complete.txt", sample=sampleids)
+      #expand("{sample}/03_qualityControl/{sample}_kraken_report.out", sample=sampleids)
+      #data_release_report = expand("{runid}_data_release.txt", runid=config["run_id"])
 
 rule file_rename:
    message: "Rename input file for consistency"
@@ -60,6 +61,7 @@ rule assemble:
       "envs/env.yml"
    log:
       assembly = "logs/02_{sample}.aseembly.snakemake.log"
+   threads: 8
    shell:
       """
       python {params.pipeline} -rd {params.repo_dir} -i {input.sample_folder} -r1 _R1_001.fastq.gz -r2 _R2_001.fastq.gz -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -g {params.genbankfile} -l {params.length} -headers {params.ref_headers} > {log.assembly} 2>&1
@@ -83,6 +85,7 @@ rule variant_analysis:
       "envs/env.yml"
    log:
       varanalysis = "logs/04_{sample}.variantanalysis.snakemake.log"
+   threads: 8
    shell:
       """
       python {params.var_analysis} -rd {params.repo_dir} -i {input.sample_folder} -r {params.reference} -ps_2 {params.ps_2kb} -ps_1_5 {params.ps_1_5kb} > {log.varanalysis} 2>&1
@@ -111,6 +114,7 @@ rule QC_analysis:
       "envs/env.yml"
    log:
       QC = "logs/03_{sample}.QC.snakemake.log"
+   threads: 8
    shell:
       """
       python {params.QC} -rd {params.repo_dir} -i {input.sample_folder} -kdb /sc/arion/projects/PVI/db/minikraken_8GB_20200312 -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -v {params.virus} -pc {params.plotcoverage} -tb {params.breakdown} > {log.QC} 2>&1
@@ -130,6 +134,7 @@ rule run_genome_annotation:
       "envs/vadr.yml"
    log:
       annotation = "logs/06_{sample}.annotation.snakemake.log"
+   threads: 4
    shell:
       """
 	  python {params.annotation_script} -i {input.consensus_fasta_file} -v {params.virus} > {log.annotation} 2>&1
@@ -152,6 +157,7 @@ rule push_data_pathogendb:
       "envs/env.yml"
    log:
       PDBPush = "logs/05_{sample}.PDBPush.snakemake.log"
+   threads: 4
    shell:
       """
       python {params.pdbpush} -s {params.sample_name} -r {params.run_ID} -c {params.config} -p {params.path} > {log.PDBPush} 2>&1
@@ -170,6 +176,7 @@ rule run_QualiMap_sample:
       qualimap_dirs = ("multi_bamqc/multisampleBamQcReport.html")
    log:
       qualimap = "logs/07_qualimap.snakemake.log"
+   threads: 4
    shell:
       """
       module load qualimap
@@ -187,6 +194,7 @@ rule run_multiqc:
       "envs/env.yml"
    log:
       multiqc = "logs/08_multiqc.snakemake.log"
+   threads: 1
    shell:
       """
       multiqc . > {log.multiqc} 2>&1
@@ -206,6 +214,7 @@ rule push_QC_report:
       "envs/env.yml"
    log:
       pushQC = "logs/09_qcpush.snakemake.log"
+   threads: 1
    shell:
       """
       python {params.push_script} -r {params.run_ID} > {log.pushQC} 2>&1
@@ -228,6 +237,7 @@ rule version_check:
       "envs/env.yml"
    log:
       versioncheck = "logs/10_versioncheck.snakemake.log"
+   threads: 1
    shell:
       """
       echo "{params.run_ID} was run using the following versions \n" > {output.version_report}
@@ -286,6 +296,7 @@ rule clean_up:
       "envs/env.yml"
    log:
       cleanup = "logs/11_cleanup.snakemake.log"
+   threads: 4
    shell:
       """
       python {params.cleanup} -p {params.samples_run} > {log.cleanup} 2>&1
@@ -306,6 +317,7 @@ rule run_report:
       "envs/env.yml"
    log:
       reporting = "logs/12_reporting.snakemake.log"
+   threads: 1
    shell:
       """
       Rscript {params.report_script} {params.run_ID} > {log.reporting} 2>&1
@@ -328,6 +340,7 @@ rule data_release_prep:
       "envs/env.yml"
    log:
       datarelease = "logs/13_datarelease.snakemake.log"
+   threads: 4
    shell:
       """
       python {params.status_script} -p {params.sample_mapping} -r {params.run_ID} -v {params.virus} -f {params.ref_header} > {log.datarelease} 2>&1
