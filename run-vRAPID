@@ -55,15 +55,14 @@ DEBUG=""
 
 while getopts "i:p:s:D" opt; do
    case $opt in
-   
+
    i) RUN_ID="run_id=$OPTARG"
       ;;
-      
-  p) RUN_PATH="path=$OPTARG"
-      ;; 
-  s) SAMPLES="samples=$OPTARG"
+   p) RUN_PATH="path=$OPTARG"
       ;;
-  D)
+   s) SAMPLES="samples=$OPTARG"
+      ;;
+   D)
       DEBUG="-p -n"
       ;;
    *)
@@ -88,7 +87,7 @@ then
       Path to the Run directory
     -s <string>
       File containing samples to be processed. Column name must be "Sample_ID"
-    -D 
+    -D
       Run pipeline in debug mode to show the commands that will be executed.
     -help
       This help message
@@ -146,7 +145,6 @@ cmd="snakemake \
     --use-singularity \
     --use-conda \
     --conda-frontend mamba \
-    --conda-prefix   ${CONDA_WORKDIR} \
     --snakefile      ${GIT_REPODIR}/workflow/Snakefile \
     --cores          ${JOB_NCPUS} \
     --config         ${RUN_ID} ${RUN_PATH} ${SAMPLES}"
