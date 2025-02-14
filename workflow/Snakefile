@@ -6,7 +6,7 @@
 
 import pandas as pd
 from snakemake.utils import min_version
-min_version("6.8")
+min_version("8.25")
 
 ##########
 # CONFIG #
@@ -22,8 +22,8 @@ sampleids = mappings["Sample_ID"].tolist()
 
 rule all:
    input:
-      expand("{sample}/05_status/pdb_upload_complete.txt", sample=sampleids)
-      #expand("{sample}/03_qualityControl/{sample}_kraken_report.out", sample=sampleids)
+      #expand("{sample}/05_status/pdb_upload_complete.txt", sample=sampleids)
+      expand("{sample}/03_qualityControl/{sample}_kraken_report.out", sample=sampleids)
       #data_release_report = expand("{runid}_data_release.txt", runid=config["run_id"])
 
 rule file_rename:
@@ -117,7 +117,7 @@ rule QC_analysis:
    threads: 8
    shell:
       """
-      python {params.QC} -rd {params.repo_dir} -i {input.sample_folder} -kdb /sc/arion/projects/PVI/db/minikraken_8GB_20200312 -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -v {params.virus} -pc {params.plotcoverage} -tb {params.breakdown} > {log.QC} 2>&1
+      python {params.QC} -rd {params.repo_dir} -i {input.sample_folder} -kdb /sc/arion/projects/FluVac/kraken2_standard_db_2024 -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -v {params.virus} -pc {params.plotcoverage} -tb {params.breakdown} > {log.QC} 2>&1
       """
 		    
 rule run_genome_annotation:
