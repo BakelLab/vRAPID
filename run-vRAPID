@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 04.12.2023 11:17:27 EDT
+# 02.13.2025
 
 ########################################
 # DEFINE GLOBAL ENVIRONMENT PARAMETERS #
@@ -14,9 +14,8 @@
 
 # Set path to parent dir for conda environment work directory and git repositories
 # Also pick up on the number of CPUs defined in jobstatus
-CONDA_WORKDIR="${CONDA_WORKDIR:=/sc/arion/work/$USER/snakemake}"
+CONDA_WORKDIR="${CONDA_WORKDIR:=/sc/arion/work/$USER/conda/envs/snakemake}"
 GIT_REPODIR="${GIT_REPODIR:=$HOME/opt/vRAPID}"
-JOB_NCPUS="${JOB_NCPUS:=24}"
 
 # Make sure the repository exists and has a Snakefile at the expected location
 if [[ ! -f "${GIT_REPODIR}/workflow/Snakefile" ]]
@@ -39,9 +38,7 @@ then
 fi
 
 # Export environment parameters
-export CONDA_WORKDIR
-export GIT_REPODIR
-export JOB_NCPUS
+export CONDA_WORKDIR GIT_REPODIR
 
 ############################
 # PROCESS COMMANDLINE ARGS #
@@ -122,18 +119,12 @@ JOBNAME=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 5 | head -n 1)
 
 # Load snakemake conda environment on chimera
 module purge all
-unset PYTHONPATH
-unset PERL5LIB
-unset R_LIBS
-module load anaconda2
-module load proxies
+unset PYTHONPATH PERL5LIB R_LIBS
+module load anaconda3 proxies
 source activate snakemake
 
 # Add the bin folder with any external scripts that may be called from the pipeline to the path
 export PATH="$GIT_REPODIR/bin/:$PATH"
-export RUN_ID
-export RUN_PATH
-export SAMPLES
 
 ############################
 # START SNAKEMAKE PIPELINE #
@@ -141,12 +132,18 @@ export SAMPLES
 # Prepare the snakemake command with support for conda and docker (singularity) environments
 
 cmd="snakemake \
+<<<<<<< HEAD
+    ${DEBUG} ${CONFIGFILE} ${TOUCH} \
+    --profile /sc/arion/work/$USER/snakemake/profiles/lsf/vRAPID \
+    --executor cluster-generic \
+    --use-singularity --use-conda \
+=======
     ${DEBUG} \
     --use-singularity \
     --use-conda \
     --conda-frontend mamba \
+>>>>>>> 4a3287bd7df58539704b1359b1f2cd9e204332e7
     --snakefile      ${GIT_REPODIR}/workflow/Snakefile \
-    --cores          ${JOB_NCPUS} \
     --config         ${RUN_ID} ${RUN_PATH} ${SAMPLES}"
 
 # Make sure the exact command that was run ends up in the pipeline log
