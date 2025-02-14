@@ -23,3 +23,4 @@ dependencies:
   - pandas
   - mysql
   - mysql-connector-python
+  - poppler

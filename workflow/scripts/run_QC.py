@@ -139,8 +139,8 @@ def create_plots(sample_folder, amplified, threads, read1_suffix, read2_suffix, 
                         depth += 1
                 if  refbase == 'n':
                     continue
-                print(depth)
-                print(counts[refbase])
+#                print(depth)
+#                print(counts[refbase])
                 if depth >= 10 and counts[refbase] /depth <= 0.85:
                     for i in counts:
                         count_dict[i].append(round(counts[i] /depth,2))
@@ -334,7 +334,7 @@ parser.add_argument('-a', '--not_amplified', action='store_true', help="Skip cut
 parser.add_argument('-t', '--threads', action='store', default="12", help='number of threads to use')
 parser.add_argument('-r1', '--read1_suffix', action='store', default="_1.fastq.gz", help='suffix for finding read 1')
 parser.add_argument('-r2', '--read2_suffix', action='store', default="_2.fastq.gz", help='suffix for finding read 2')
-parser.add_argument('-kdb', '--kraken_db', action='store', default="/sc/arion/projects/vanbah01b/COVID/db/minikraken2_v2_8GB_201904_UPDATE", help='location of kraken database')
+parser.add_argument('-kdb', '--kraken_db', action='store', default="/sc/arion/projects/FluVac/kraken2_standard_db_2024/", help='location of kraken database')
 parser.add_argument('-r', '--reference', action='store', default="sars-cov-2/COVID.fa", help='reference genome for assembly')
 parser.add_argument('-pf', '--forward_primer', action='store', default="sars-cov-2/SARS-CoV-2_primers_5prime_NI.fa", help='forward primer')
 parser.add_argument('-pr', '--reverse_primer', action='store', default="sars-cov-2/SARS-CoV-2_primers_3prime_NI.fa", help='reverse primer')

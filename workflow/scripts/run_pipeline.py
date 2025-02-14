@@ -87,6 +87,7 @@ def run_illumina(args):
             dels = set()
             ins = set()
             for line in f:
+                print(line)
                 if line.split()[2] == '.':
                     if '-' in line:
                         start, stop = map(int, line.split()[1].split(':')[1].split('-'))
