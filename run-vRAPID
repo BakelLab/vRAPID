@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 02.13.2025
+# 04.12.2023 11:17:27 EDT
 
 ########################################
 # DEFINE GLOBAL ENVIRONMENT PARAMETERS #
@@ -14,8 +14,9 @@
 
 # Set path to parent dir for conda environment work directory and git repositories
 # Also pick up on the number of CPUs defined in jobstatus
-CONDA_WORKDIR="${CONDA_WORKDIR:=/sc/arion/work/$USER/conda/envs/snakemake}"
+CONDA_WORKDIR="${CONDA_WORKDIR:=/sc/arion/work/$USER/snakemake}"
 GIT_REPODIR="${GIT_REPODIR:=$HOME/opt/vRAPID}"
+JOB_NCPUS="${JOB_NCPUS:=24}"
 
 # Make sure the repository exists and has a Snakefile at the expected location
 if [[ ! -f "${GIT_REPODIR}/workflow/Snakefile" ]]
@@ -38,7 +39,9 @@ then
 fi
 
 # Export environment parameters
-export CONDA_WORKDIR GIT_REPODIR
+export CONDA_WORKDIR
+export GIT_REPODIR
+export JOB_NCPUS
 
 ############################
 # PROCESS COMMANDLINE ARGS #
@@ -52,15 +55,14 @@ DEBUG=""
 
 while getopts "i:p:s:D" opt; do
    case $opt in
-   
+
    i) RUN_ID="run_id=$OPTARG"
       ;;
-      
-  p) RUN_PATH="path=$OPTARG"
-      ;; 
-  s) SAMPLES="samples=$OPTARG"
+   p) RUN_PATH="path=$OPTARG"
       ;;
-  D)
+   s) SAMPLES="samples=$OPTARG"
+      ;;
+   D)
       DEBUG="-p -n"
       ;;
    *)
@@ -85,7 +87,7 @@ then
       Path to the Run directory
     -s <string>
       File containing samples to be processed. Column name must be "Sample_ID"
-    -D 
+    -D
       Run pipeline in debug mode to show the commands that will be executed.
     -help
       This help message
@@ -120,12 +122,18 @@ JOBNAME=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 5 | head -n 1)
 
 # Load snakemake conda environment on chimera
 module purge all
-unset PYTHONPATH PERL5LIB R_LIBS
-module load anaconda3 proxies
+unset PYTHONPATH
+unset PERL5LIB
+unset R_LIBS
+module load anaconda2
+module load proxies
 source activate snakemake
 
 # Add the bin folder with any external scripts that may be called from the pipeline to the path
 export PATH="$GIT_REPODIR/bin/:$PATH"
+export RUN_ID
+export RUN_PATH
+export SAMPLES
 
 ############################
 # START SNAKEMAKE PIPELINE #
@@ -133,11 +141,12 @@ export PATH="$GIT_REPODIR/bin/:$PATH"
 # Prepare the snakemake command with support for conda and docker (singularity) environments
 
 cmd="snakemake \
-    ${DEBUG} ${CONFIGFILE} ${TOUCH} \
-    --profile /sc/arion/work/$USER/snakemake/profiles/lsf/vRAPID \
-    --executor cluster-generic \
-    --use-singularity --use-conda \
+    ${DEBUG} \
+    --use-singularity \
+    --use-conda \
+    --conda-frontend mamba \
     --snakefile      ${GIT_REPODIR}/workflow/Snakefile \
+    --cores          ${JOB_NCPUS} \
     --config         ${RUN_ID} ${RUN_PATH} ${SAMPLES}"
 
 # Make sure the exact command that was run ends up in the pipeline log
