@@ -6,7 +6,7 @@
 
 import pandas as pd
 from snakemake.utils import min_version
-min_version("8.25")
+min_version("8.25.0")
 
 ##########
 # CONFIG #
@@ -22,8 +22,8 @@ sampleids = mappings["Sample_ID"].tolist()
 
 rule all:
    input:
-      #expand("{sample}/05_status/pdb_upload_complete.txt", sample=sampleids)
-      expand("{sample}/03_qualityControl/{sample}_kraken_report.out", sample=sampleids)
+      expand("{sample}/05_status/pdb_upload_complete.txt", sample=sampleids)
+      #expand("{sample}/03_qualityControl/{sample}_kraken_report.out", sample=sampleids)
       #data_release_report = expand("{runid}_data_release.txt", runid=config["run_id"])
 
 rule file_rename:
@@ -72,7 +72,8 @@ rule variant_analysis:
    message: "Perform intra host variant analysis on virus library"
    input:
       sample_folder = ("{sample}"),
-      consensus_fasta_file = ('{sample}/02_assembly/{sample}.fasta')
+      consensus_fasta_file = ('{sample}/02_assembly/{sample}.fasta'),
+      bamfile = ("{sample}/02_assembly/{sample}_ref.bam")
    params:
       repo_dir=os.environ.get("GIT_REPODIR"),
       var_analysis=os.path.join(workflow.basedir, "../workflow/scripts/variant_analysis.py"),
