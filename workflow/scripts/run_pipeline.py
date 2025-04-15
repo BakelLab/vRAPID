@@ -47,25 +47,45 @@ def run_illumina(args):
     	pilon_read_1 = "%s/combined.1.fastq.gz" % working_dir
     	pilon_read_2 = "%s/combined.2.fastq.gz" % working_dir
         
-    subprocess.Popen("fastqc -t %s --nogroup '%s/%s_reads.1.fq.gz' '%s/%s_reads.2.fq.gz' --outdir '%s'" % (args.threads, working_dir, sample, working_dir, sample, working_dir), shell=True).wait()
+    subprocess.Popen("fastqc -t %s --nogroup '%s/reads.1.fq.gz' '%s/reads.2.fq.gz' --outdir '%s'" % (args.threads, working_dir, working_dir, working_dir), shell=True).wait()
     subprocess.Popen("minimap2 -t %s -ax sr %s %s %s | samtools view -b | samtools sort -@ %s -o %s/%s_ref.bam -"
                      " && samtools index %s/%s_ref.bam"
                      % (args.threads, args.reference, pilon_read_1, pilon_read_2, args.threads, working_dir, sample, working_dir, sample), shell=True).wait()
 
-    subprocess.Popen("mv %s/%s_ref.bam %s/%s_ref_clipped.bam"
-                     " && mv %s/%s_ref.bam.bai %s/%s_ref_clipped.bam.bai"
-                     " && samtools view -H %s/%s_ref_clipped.bam > %s/%s_tmp_header.bam"
-                     " && samtools view %s/%s_ref_clipped.bam | awk -F '\t' -v OFS='\t' '$6!~/S/' > %s/%s_tmp_ref.bam"
-                     " && cat %s/%s_tmp_header.bam %s/%s_tmp_ref.bam | samtools view -b | samtools sort -@ %s -o %s/%s_ref.bam -"
-                     " && samtools index %s/%s_ref.bam"
-                     " && rm -f %s/%s_tmp*bam"
-                     % (working_dir, sample, working_dir, sample,
-                        working_dir, sample, working_dir, sample,
-                        working_dir, sample, working_dir, sample,
-                        working_dir, sample, working_dir, sample,
-                        working_dir, sample, working_dir, sample, working_dir, working_dir, sample,
-                        working_dir, sample,
-                        working_dir, sample), shell=True).wait()
+    header = f"{working_dir}/{sample}_tmp_header.bam"
+    filtered = f"{working_dir}/{sample}_tmp_ref.bam"
+    combined = f"{working_dir}/{sample}_combined.sam"
+    final_bam = f"{working_dir}/{sample}_ref.bam"
+    final_bai = f"{final_bam}.bai"
+    
+    subprocess.Popen("mv %s/%s_ref.bam %s/%s_ref_clipped.bam" % (working_dir, sample, working_dir, sample), shell=True).wait()
+    subprocess.Popen("mv %s/%s_ref.bam.bai %s/%s_ref_clipped.bam.bai" % (working_dir, sample, working_dir, sample), shell=True).wait()
+    
+    subprocess.Popen("samtools view -H %s/%s_ref_clipped.bam > %s/%s_tmp_header.bam" % (working_dir, sample, working_dir, sample), shell=True).wait()
+    subprocess.Popen("samtools view %s/%s_ref_clipped.bam | awk -F '\t' -v OFS='\t' '$6!~/S/' > %s/%s_tmp_ref.bam" % (working_dir, sample, working_dir, sample), shell=True).wait()
+    # Step 1: Combine header + filtered reads into a SAM
+    subprocess.run(f"cat {header} {filtered} > {combined}", shell=True, check=True)
+    
+    # Debug: check if combined.sam exists and is non-empty
+    if not os.path.exists(combined) or os.path.getsize(combined) == 0:
+    	raise RuntimeError(f"Combined SAM {combined} was not created correctly.")
+    
+    # Step 2: Convert to BAM and sort
+    subprocess.run(f"samtools view -b {combined} | samtools sort -@ {args.threads} -o {final_bam} -", shell=True, check=True)
+    # Debug: check if sorted BAM exists
+    if not os.path.exists(final_bam):
+    	raise RuntimeError(f"Sorted BAM {final_bam} was not created!")
+    
+    # Step 3: Index
+    subprocess.run(f"samtools index {final_bam}", shell=True, check=True)
+    # Final check
+    if os.path.exists(final_bam) and os.path.exists(final_bai):
+    	print("BAM and BAI files successfully created.")
+    else:
+    	raise RuntimeError("BAM or BAI file missing.")
+
+    #subprocess.run("rm -f %s/%s_tmp*bam" % (working_dir, sample), shell=True)
+
     
     fastafiles = []
     chromosomes = []
@@ -74,6 +94,8 @@ def run_illumina(args):
             if line.startswith('>'):
                 chromosomes.append(line.strip()[1:])
                 fastafiles.append(line.strip()[1:]+".fasta")
+    print(chromosomes)
+    print(fastafiles)
     for chrs in chromosomes:
         print(chrs)
         subprocess.Popen("pilon --fix bases --changes --vcf --mindepth 50 --genome %s --frags %s/%s_ref.bam --tracks --output %s/%s_pilon --targets %s" % (args.reference, working_dir, sample, working_dir, chrs, chrs), shell=True).wait()
