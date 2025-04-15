@@ -132,17 +132,10 @@ export PATH="$GIT_REPODIR/bin/:$PATH"
 # Prepare the snakemake command with support for conda and docker (singularity) environments
 
 cmd="snakemake \
-<<<<<<< HEAD
     ${DEBUG} ${CONFIGFILE} ${TOUCH} \
     --profile /sc/arion/work/$USER/snakemake/profiles/lsf/vRAPID \
     --executor cluster-generic \
     --use-singularity --use-conda \
-=======
-    ${DEBUG} \
-    --use-singularity \
-    --use-conda \
-    --conda-frontend mamba \
->>>>>>> 4a3287bd7df58539704b1359b1f2cd9e204332e7
     --snakefile      ${GIT_REPODIR}/workflow/Snakefile \
     --config         ${RUN_ID} ${RUN_PATH} ${SAMPLES}"
 
