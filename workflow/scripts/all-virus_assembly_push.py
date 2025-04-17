@@ -492,44 +492,30 @@ with open(passpath) as cnf_file:
 # argument useage setup
 if __name__ == "__main__":
 
-    from argparse import ArgumentParser
-
-    def usage(code="0"):
-        print("error: " + str(code))
-        print("\n\tusage: all-virus_assembly_push.py -s <sample> -r <run_id> -c <config>")
-        sys.exit(0)
-
-    # setup of arguments
-    parser = ArgumentParser(description="Assembly push script for SARS-CoV-2, sCoV, MPX, IAV, and IBV")
-    parser.add_argument('-s', '--ins', help='systematic sample name', required=True)
-    parser.add_argument('-r', '--inr', help='run id', required=True)
-    parser.add_argument('-c', '--inc', help='path to config file', required=True)
-    parser.add_argument('-p', '--altpath', help='alternate file path for samples', required=False)
-
-    args = parser.parse_args()
-
     # define user inputs
-    sample = args.ins
-    run = args.inr
-    config = args.inc
+    sample = snakemake.params.sample_name
+    run = snakemake.config["run_id"]
+   # config = snakemake.config["run_id"]
+    altpath = snakemake.config["path"]
     
     # read config.yaml file for inputs
-    with open(config, 'r') as file:
+   # with open(config, 'r') as file:
         # Load the YAML file as a Python dictionary
-        config_data = yaml.load(file, Loader=yaml.FullLoader)
+   #     config_data = yaml.load(file, Loader=yaml.FullLoader)
     
-    virus = config_data['virus']
-    length = config_data['length']
-    headers = config_data['ref_fasta_headers']
-    base_dir = config_data['path']
-    pipeline = config_data['assembly_pipeline']
+    virus = snakemake.config['virus']
+    length = snakemake.config['length']
+    headers = snakemake.config['ref_fasta_headers']
+    base_dir = snakemake.config['path']
+    pipeline = snakemake.config['assembly_pipeline']
 
     # overwrites base directory with alternate if one is provided as an argument
-    if args.altpath:
-        base_dir=args.altpath
+    if altpath:
+        base_dir=altpath
 
     # begin logging
-    logpath = os.path.join(sample,'05_status',sample+'.assembly-push.log')
+    logpath = snakemake.output.upload_log
+    #logpath = os.path.join(sample,'05_status',sample+'.assembly-push.log')
     logging.basicConfig(filename=logpath, filemode='w', level=logging.INFO)
 
 # reformat Influenza naming structure
@@ -740,6 +726,7 @@ if __name__ == "__main__":
     # assign full file paths
     try:
         data_dict['file_paths']['fasta_path']=os.path.join(data_dict['file_paths']['assembly_dir'],data_dict['file_paths']['fasta_path']).replace("\\", "/")
+        print(data_dict['file_paths']['fasta_path'])
         data_dict['file_paths']['flagstat_path']=os.path.join(data_dict['file_paths']['qc_dir'],data_dict['file_paths']['flagstat_path']).replace("\\", "/")
         data_dict['file_paths']['kraken_path']=os.path.join(data_dict['file_paths']['qc_dir'],data_dict['file_paths']['kraken_path']).replace("\\", "/")
         logging.info('Fasta, flagstat, and kraken paths assigned successfully.')
@@ -966,13 +953,13 @@ if __name__ == "__main__":
             fasta_dest2 = os.path.join('', str(sample) + '_final.fa')
 
             #     qc paths
-            qc_source = os.path.join(data_dict['file_paths']['qc_dir'], sample + '_quality_control.pdf')
+            qc_source = os.path.join(data_dict['file_paths']['qc_dir'], sample + '_qualityControl.pdf')
             qc_dest = os.path.join('', str(sample) + '_final.report.pdf')
 
             #     variant paths
             if not multi:
                 # non multisegmented variant source
-                variant_source = os.path.join(data_dict['file_paths']['variant_dir'], sample+'.'+config_data['ref_fasta_headers']+'_variable_bases.tsv')
+                variant_source = os.path.join(data_dict['file_paths']['variant_dir'], snakemake.config['ref_fasta_headers']+'_variable_bases.tsv')
             
             # variant destination for all viruses
             variant_dest = os.path.join('', str(sample) + '_final.variants.calls.txt')
@@ -1028,8 +1015,3 @@ if __name__ == "__main__":
             db.close()
             logging.info('Database connection closed.')
 
-# system exit for improper arguments
-if len(sys.argv)!=7|len(sys.argv)!=9:
-   print(usage())
-   sys.exit(0)
-            
