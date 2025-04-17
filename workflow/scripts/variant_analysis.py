@@ -8,21 +8,11 @@ def run_variant_analysis(args):
     if not os.path.exists(outdir):
         os.makedirs(outdir)
     repo_dir = args.repo_dir
-    bam = "%s/02_assembly/%s_ref.bam" % (sample_folder, sample)
-    ref_fasta = "%s" % args.reference
-    subprocess.Popen("samtools mpileup -f %s %s | gzip > %s/pileup" % (ref_fasta, bam, outdir), shell=True).wait()
+ #   bam = "%s/02_assembly/%s_ref.bam" % (sample_folder, sample)
+ #   ref_fasta = "%s" % args.reference
+#    subprocess.Popen("samtools mpileup -f %s %s | gzip > %s/pileup" % (ref_fasta, bam, outdir), shell=True).wait()
     modlist = ['A', 'T', 'C', 'G', 'a', 't', 'c', 'g', 'n', 'I', 'D']
     
-    chromosomes = []
-    with open(args.reference, 'r') as f:
-    	for line in f:
-    		if line.startswith('>'):
-    			chromosomes.append(line.strip()[1:])
-    print(chromosomes) 
-    for chrs in chromosomes:
-        outseq = ''
-        changes = {}
-        subprocess.Popen("samtools mpileup -f %s %s -r %s > %s/%s_pileup" % (ref_fasta, bam, chrs, outdir, chrs), shell=True).wait()
         with open("%s/02_assembly/%s_pilon.changes" % (sample_folder, chrs)) as f:
             for line in f:
                 pos = line.split()[0].split(':')[1]
