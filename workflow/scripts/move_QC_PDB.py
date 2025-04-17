@@ -34,23 +34,13 @@ cur = db.cursor()
 
 
 if __name__ == "__main__":
-    from argparse import ArgumentParser
 
-    def usage(code="0"):
-        print("error: " + str(code))
-        print("\n\tusage: move_QC_PDB.py -r <run_id>")
-        sys.exit(0)
-
-    parser = ArgumentParser(description="Move files from Minerva to PDB")
-    parser.add_argument('-r', '--inr', help='run id', required=True)
-    args = parser.parse_args()
-    
     # # collect TD# from directory name
     directory = os.getcwd()
 
     # find corresponding xt number
     # split directory by / delimiter and take [-1] item as the TD#
-    td = (args.inr,)
+    td = snakemake.config["run_id"]
     # build and execute query to collect XT number from DB based on TD#
     query = "SELECT `Sequence_Plate_ID` FROM `tIlluminaCoreSubmissions` WHERE `Sequence_Run_ID` = %s"
     cur.execute(query, td)
