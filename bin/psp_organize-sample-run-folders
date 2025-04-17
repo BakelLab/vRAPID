@@ -35,8 +35,8 @@ hCheckPassed = {}
 with os.scandir('./') as dir:
     for entry in dir:
         if entry.is_dir() and not entry.name.startswith('.'):
-            R1 = glob.glob(f"{entry.name}/{entry.name}/{entry.name}_[A-Z]*_R1_001.fastq.gz")[0]
-            R2 = glob.glob(f"{entry.name}/{entry.name}/{entry.name}_[A-Z]*_R2_001.fastq.gz")[0]
+            R1 = glob.glob(f"{entry.name}/{entry.name}/{entry.name}_1.fastq.gz")[0]
+            R2 = glob.glob(f"{entry.name}/{entry.name}/{entry.name}_2.fastq.gz")[0]
             if os.path.exists(R1) and os.path.exists(R2):
                 hCheckPassed[entry.name] = 1
             else:
