@@ -152,11 +152,11 @@ for R1_file in *_R1_001.fastq.gz; do
     SAMPLE=$(echo "$SAMPLE" | sed 's/_S[0-9]*//g')
 
     # Create subdirectories VS_57187/VS_57187
-    mkdir -p "$SAMPLE"
+    mkdir -p "$SAMPLE/$SAMPLE"
 
     # Move R1 and R2 files into the new subdirectories
-    mv "$R1_file" "$SAMPLE/${SAMPLE}_1.fastq.gz"
-    mv "${R1_file/R1/R2}" "$SAMPLE/${SAMPLE}_2.fastq.gz"
+    mv "$R1_file" "$SAMPLE/$SAMPLE/${SAMPLE}_1.fastq.gz"
+    mv "${R1_file/R1/R2}" "$SAMPLE/$SAMPLE/${SAMPLE}_2.fastq.gz"
 done
 
 
