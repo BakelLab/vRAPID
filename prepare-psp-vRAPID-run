@@ -1,0 +1,186 @@
+#!/bin/bash
+
+# 30.03.2019 16:58:07 EDT
+
+########################################
+# DEFINE GLOBAL ENVIRONMENT PARAMETERS #
+########################################
+
+# Set git repodir
+GIT_REPODIR="${GIT_REPODIR:=$HOME/opt}"
+
+# Set a temporary work dir if we're on minerva, otherwise we fall back on the tmpdir in the config file
+if [[ -d "/hpc/users/${USER}/OUTFOLDER/" ]]
+then
+   TMPDIR="tmpdir=/hpc/users/${USER}/OUTFOLDER/"
+else
+   TMPDIR=""
+fi
+
+# Export environment parameters
+export GIT_REPODIR
+export TMPDIR
+
+############################
+# PROCESS COMMANDLINE ARGS #
+############################
+
+# Process command line arguments
+COREFOLDER=""
+RUNID=""
+OUTFOLDER="/sc/arion/projects/PVI/genomes/assembly"
+
+while getopts "i:r:o:" opt; do
+   case $opt in
+
+   i)
+      COREFOLDER="$OPTARG"
+      ;;
+
+   r)
+      RUNID="$OPTARG"
+      ;;
+      
+   o)
+      OUTFOLDER="$OPTARG"
+      ;;
+
+   *)
+      echo "Incorrect options provided"
+      exit 1
+      ;;
+
+   esac
+done
+
+# Check arguments and display a help message if the required arguments are not found
+if [ -z "$COREFOLDER" ] || [ -z "$RUNID" ] || [ -z "$OUTFOLDER" ]
+then
+  cat << EOF
+
+   Usage: prepare-psp-vRAPID-run -i <core-run-folder> -r <core-run-id>
+
+   Arguments:
+    -i <string>
+      Run folder path provided by the sequencing core (e.g. /sc/arion/projects/H_PBG/outgoing/QC/FOLDERNAME/
+    -r <string>
+      Run ID (e.g. TD005334)
+    -o
+      Output folder prefix. Default: /sc/arion/projects/PVI/genomes/assembly
+    -help
+      This help message
+
+EOF
+  exit 0
+fi
+
+############################
+# CHECK PYTHON PREQUISITES #
+############################
+
+# In the final stage of this script we need to query pathogenDB with a python script
+# to retrieve sample information. This will not work unless the mysql.connector version
+# is <9. From version 9 onwards, the basic_authentication used by HPC is no longer supported.
+# NOTE : update version check and script once HPC finally upgrades to the new password standards.  
+
+# Check if Python is available
+if ! command -v python &>/dev/null; then
+   echo "Error: Python is not installed or not in the PATH."
+   exit 1
+fi
+
+# Check if mysql.connector can be imported and check its version
+python_version_check=$(python -c "
+try:
+   import mysql.connector
+   version = mysql.connector.__version__
+   if int(version.split('.')[0]) < 9:
+      print('OK')
+   else:
+      print('Error: mysql.connector version is >= 9 (version found: ' + version + ').')
+except ImportError:
+   print('Error: mysql.connector module is not installed. Make sure python3 with mysql.connector version less than 9 is installed')
+" 2>/dev/null)
+
+# Evaluate the result of the Python version check
+if [[ "$python_version_check" == "OK" ]]; then
+   echo -e "\nPython is installed, the 'mysql.connector' module is available, and its version is less than 9."
+else
+   echo "$python_version_check"
+   exit 1;
+fi
+
+
+################################
+# COPY AND RENAME FASTQ FILES  #
+################################
+
+# Check if output folder already exists
+if [ -d "${OUTFOLDER}/${RUNID}" ]
+then
+   echo -e "Output run folder already exist, exiting.\n"
+   exit 0
+fi
+
+# Copy files and chdir to run folder
+echo -e "\nCopying and renaming fastq files"
+mkdir ${OUTFOLDER}/${RUNID}
+cp ${COREFOLDER}/*/*/*.fastq.gz ${OUTFOLDER}/${RUNID}
+cd ${OUTFOLDER}/${RUNID}
+chmod a-x *.fastq.gz
+
+# Make sure sample names match PSP naming convention (@@_######)
+for file in [A-Z][A-Z]-*; do
+   if [[ -f $file ]]; then
+      mv "$file" "${file/-/_}"
+   fi
+done
+
+
+################################
+# CREATE SAMPLE SUBDIRECTORIES #
+################################
+
+echo -e "Organizing samples into folders"
+
+# Loop through all R1 files
+for R1_file in *_R1_001.fastq.gz; do
+    # Extract the sample name from the R1 file
+    SAMPLE=$(basename "$R1_file" _R1_001.fastq.gz)
+
+    # Remove _S85 or similar combination from the sample name
+    SAMPLE=$(echo "$SAMPLE" | sed 's/_S[0-9]*//g')
+
+    # Create subdirectories VS_57187/VS_57187
+    mkdir -p "$SAMPLE"
+
+    # Move R1 and R2 files into the new subdirectories
+    mv "$R1_file" "$SAMPLE/${SAMPLE}_1.fastq.gz"
+    mv "${R1_file/R1/R2}" "$SAMPLE/${SAMPLE}_2.fastq.gz"
+done
+
+
+#############################################################
+# ORGANIZE TOP-LEVEL FOLDERS BY VIRUS TYPE AND SUBMITTER ID #
+#############################################################
+
+# Organize top-level folders
+echo -e "Organize sample folders by virus type and submitter ID"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+python ${SCRIPT_DIR}/bin/psp_organize-sample-run-folders
+
+# Copy and initialize config.yaml files for top-level folders
+echo -e "Initializing config.yaml files in top-level folders"
+for VIRUSTYPE in SARS-CoV-2
+do
+   if [ -d "${VIRUSTYPE}" ]
+   then
+      for FOLDERNAME in "${VIRUSTYPE}/"
+      do
+         cp ${SCRIPT_DIR}/config/config.yaml ${FOLDERNAME}
+         sed -i "s/REPLACE_BY_VIRUS_TYPE/${VIRUSTYPE}/g; s/REPLACE_BY_RUN_ID/${RUNID}/g" ${FOLDERNAME}/config.yaml
+      done
+   fi
+done
+
+echo -e "\nCreated run folder '${OUTFOLDER}/${RUNID}'\n\nPlease check the config.yaml files in the top level folders for the appropriate run ID and virus type\n"
