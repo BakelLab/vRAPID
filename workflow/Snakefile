@@ -504,7 +504,7 @@ rule plot_intrahosts:
 	params:
 		intrahost_plot = os.path.join(workflow.basedir, "../workflow/scripts/plot_intrahosts.R")
 	conda: "envs/env.yml"
-	log: "logs/{sample}/03_qualityControl/{chromosomes}.plot-coverage.snakemake.log"
+	log: "logs/{sample}/03_qualityControl/{chromosomes}.plot-intrahost.snakemake.log"
 	shell: "Rscript {params.intrahost_plot} -i {input.tsv} -o {output.pdf} -v {output.tsv}"
 
 
@@ -533,7 +533,7 @@ rule plot_taxonomic_breakdown:
 		pdf = temp("{sample}/03_qualityControl/taxonomic-breakdown.pdf")
 	conda: "envs/env.yml"
 	log: "logs/{sample}/03_qualityControl/taxonomic-breakdown.snakemake.log"
-	script: "scripts/plot-taxonomic-breakdown.R"
+	script: "scripts/plot_taxonomic-breakdown.R"
 
 
 rule merge_pdfs:
