@@ -16,335 +16,632 @@ configfile: "config.yaml"
 mappings = pd.read_csv(config["samples"])
 sampleids = mappings["Sample_ID"].tolist()
 
+########
+# DEF #
+########
+
+reference = config['reference_genome'] 
+chromosomes = config['ref_fasta_headers']
+
 #########
 # RULES #
 #########
 
 rule all:
-   input:
-      expand("{sample}/05_status/pdb_upload_complete.txt", sample=sampleids)
-      #expand("{sample}/03_qualityControl/{sample}_kraken_report.out", sample=sampleids)
-      #data_release_report = expand("{runid}_data_release.txt", runid=config["run_id"])
+	input:
+		txt = "workflow_summary.txt"
+
 
 rule file_rename:
-   message: "Rename input file for consistency"
-   input:
-      sample_folder = ("{sample}/{sample}")
-   output:
-      renamed_file = directory(("{sample}/01_fastqs"))
-   log:
-      rename = "logs/01_{sample}.aseembly.snakemake.log"
-   shell:
-      """
-      mv {input.sample_folder} {output.renamed_file} > {log.rename} 2>&1
-      """
+	message: "Rename input folder for consistency"
+	input:
+		R1 = "{sample}/{sample}/{sample}_1.fastq.gz",
+		R2 = "{sample}/{sample}/{sample}_2.fastq.gz",
+	output:
+		R1 = "{sample}/01_fastqs/{sample}_1.fastq.gz",
+		R2 = "{sample}/01_fastqs/{sample}_2.fastq.gz"
+	log: "logs/{sample}/01_rename/rename-fastqs.snakemake.log"
+	shell:
+		"""
+		mv {input.R1} {output.R1}
+		mv {input.R2} {output.R2}
+		rm -rf {wildcards.sample}/{wildcards.sample}
+		"""
 
 
-rule assemble:
-   message: "Assembling viral genome"
-   input:
-      sample_folder = ("{sample}"),
-      renamed_file = ("{sample}/01_fastqs")
-   params:
-      repo_dir = os.environ.get("GIT_REPODIR"),
-      pipeline = os.path.join(workflow.basedir, "../workflow/scripts/run_pipeline.py"),
-      reference = os.path.join(workflow.basedir, "../db/", config["reference"]),
-      forward_primer = os.path.join(workflow.basedir, "../db/", config["forward_primer"]),
-      reverse_primer = os.path.join(workflow.basedir, "../db/", config["reverse_primer"]),
-      genbankfile = os.path.join(workflow.basedir, "../db/", config["genbank"]),
-      length = config["length"],
-      ref_headers = config["ref_fasta_headers"]
-   output:
-      consensus_fasta_file=('{sample}/02_assembly/{sample}.fasta'),
-      bamfile = ("{sample}/02_assembly/{sample}_ref.bam")
-   conda:
-      "envs/env.yml"
-   log:
-      assembly = "logs/02_{sample}.aseembly.snakemake.log"
-   threads: 8
-   shell:
-      """
-      python {params.pipeline} -rd {params.repo_dir} -i {input.sample_folder} -r1 _R1_001.fastq.gz -r2 _R2_001.fastq.gz -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -g {params.genbankfile} -l {params.length} -headers {params.ref_headers} > {log.assembly} 2>&1
-	  """
+rule run_cutadapt:
+	message: "Trim primers using cutadapt"
+	input:
+		R1 = "{sample}/01_fastqs/{sample}_1.fastq.gz",
+		R2 = "{sample}/01_fastqs/{sample}_2.fastq.gz"
+	output:
+		combined_R1 = "{sample}/02_assembly/combined.1.fastq.gz",
+		combined_R2 = "{sample}/02_assembly/combined.2.fastq.gz",
+		cutadapt_R1 = "{sample}/02_assembly/reads.1.fastq.gz",
+		cutadapt_R2 = "{sample}/02_assembly/reads.2.fastq.gz"
+	params:
+		forward_primer = config["forward_primer"],
+		reverse_primer = config["reverse_primer"]
+	log: "logs/{sample}/02_assembly/run-cutadapt.snakemake.log"
+	conda: "envs/env.yml"
+	shell:
+		"""
+		cp {input.R1} {output.combined_R1}
+		cp {input.R2} {output.combined_R2}
+		cutadapt \
+			-g file:{params.forward_primer} \
+			-a file:{params.reverse_primer} \
+			-G file:{params.forward_primer} \
+			-A file:{params.reverse_primer} \
+			-o {output.cutadapt_R1} -p {output.cutadapt_R2} \
+			{output.combined_R1} {output.combined_R2} > {log} 2>&1
+		"""
+
+	
+rule run_fastqc:
+	message: "Run FASTQC on FASTQs"
+	input:
+		cutadapt_R1 = "{sample}/02_assembly/reads.1.fastq.gz",
+		cutadapt_R2 = "{sample}/02_assembly/reads.2.fastq.gz"
+	output:
+		fastqc_R1 = "{sample}/02_assembly/reads.1_fastqc.html",
+		fastqc_R2 = "{sample}/02_assembly/reads.2_fastqc.html"
+	log: "logs/{sample}/02_assembly/run-fastqc.snakemake.log"
+	conda: "envs/env.yml"
+	shell:
+		"""
+		fastqc --nogroup {input.cutadapt_R1} {input.cutadapt_R2} --outdir $(dirname {output.fastqc_R1}) > {log} 2>&1
+		"""
 
 
-rule variant_analysis:
-   message: "Perform intra host variant analysis on virus library"
-   input:
-      sample_folder = ("{sample}"),
-      consensus_fasta_file = ('{sample}/02_assembly/{sample}.fasta'),
-      bamfile = ("{sample}/02_assembly/{sample}_ref.bam")
-   params:
-      repo_dir=os.environ.get("GIT_REPODIR"),
-      var_analysis=os.path.join(workflow.basedir, "../workflow/scripts/variant_analysis.py"),
-      reference = os.path.join(workflow.basedir, "../db/", config["reference"]),
-      ps_2kb = os.path.join(workflow.basedir, "../db/", config["primer_set_2kb"]),
-      ps_1_5kb = os.path.join(workflow.basedir, "../db/", config["primer_set_1_5kb"]),
-   output:
-      pileup_file=('{sample}/04_variants/pileup')
-   conda:
-      "envs/env.yml"
-   log:
-      varanalysis = "logs/04_{sample}.variantanalysis.snakemake.log"
-   threads: 8
-   shell:
-      """
-      python {params.var_analysis} -rd {params.repo_dir} -i {input.sample_folder} -r {params.reference} -ps_2 {params.ps_2kb} -ps_1_5 {params.ps_1_5kb} > {log.varanalysis} 2>&1
-      """
-      
-      
-rule QC_analysis:
-   message: "Perform QC analysis of the virus library"
-   input:
-      sample_folder = ("{sample}"),
-      pileup_file = ('{sample}/04_variants/pileup')
-   params:
-      repo_dir=os.environ.get("GIT_REPODIR"),
-      run_ID = config["run_id"],
-      QC=os.path.join(workflow.basedir, "../workflow/scripts/run_QC.py"),
-      reference = os.path.join(workflow.basedir, "../db/", config["reference"]),
-      forward_primer = os.path.join(workflow.basedir, "../db/", config["forward_primer"]),
-      reverse_primer = os.path.join(workflow.basedir, "../db/", config["reverse_primer"]),
-      virus = config["virus"],
-      breakdown = os.path.join(workflow.basedir, "../workflow/scripts/taxanomic_breakdown.R"),
-      plotcoverage = os.path.join(workflow.basedir, "../workflow/scripts/plot-coverage-report.R")
-   output:
-      qc_file = ('{sample}/03_qualityControl/{sample}_quality_control.pdf'),
-      kraken = ("{sample}/03_qualityControl/{sample}_kraken_report.out")		
-   conda:
-      "envs/env.yml"
-   log:
-      QC = "logs/03_{sample}.QC.snakemake.log"
-   threads: 8
-   shell:
-      """
-      python {params.QC} -rd {params.repo_dir} -i {input.sample_folder} -kdb /sc/arion/projects/FluVac/kraken2_standard_db_2024 -r {params.reference} -pf {params.forward_primer} -pr {params.reverse_primer} -v {params.virus} -pc {params.plotcoverage} -tb {params.breakdown} > {log.QC} 2>&1
-      """
-		    
-rule run_genome_annotation:
-   message: "Preform genome annotation if applicable"
-   input:
-      consensus_fasta_file = ('{sample}/02_assembly/{sample}.fasta'),
-      qc_file = ('{sample}/03_qualityControl/{sample}_quality_control.pdf'),
-   params:
-      virus = config["virus"],
-      annotation_script = os.path.join(workflow.basedir, "../workflow/scripts/run-genome-annotation.py")
-   output:
-      annotation_out = ("{sample}/02_assembly/{sample}_genome_annotation.txt"),
-   conda:
-      "envs/vadr.yml"
-   log:
-      annotation = "logs/06_{sample}.annotation.snakemake.log"
-   threads: 4
-   shell:
-      """
-	  python {params.annotation_script} -i {input.consensus_fasta_file} -v {params.virus} > {log.annotation} 2>&1
-      """
+rule run_minimap2:
+	message: "Align reads to reference using Minimap2"
+	input:
+		fastqc_R2 = "{sample}/02_assembly/reads.2_fastqc.html",
+		cutadapt_R1 = "{sample}/02_assembly/reads.1.fastq.gz",
+		cutadapt_R2 = "{sample}/02_assembly/reads.2.fastq.gz"
+	output:
+		bam = "{sample}/02_assembly/{sample}_ref_tmp.bam"
+	threads: 12
+	log: "logs/{sample}/02_assembly/run-minimap2.snakemake.log"
+	conda: "envs/env.yml"
+	shell:
+		"""
+		minimap2 -t {threads} -ax sr {config[reference_genome]} {input.cutadapt_R1} {input.cutadapt_R2} 2>> {log} | \
+			samtools sort -@ {threads} -o {output.bam} >> {log} 2>&1
+		samtools index {output.bam} >> {log} 2>&1
+		"""
+		
+		
+rule clip_bam:
+	message: "Clip and obtain SAM"
+	input:
+		bam = "{sample}/02_assembly/{sample}_ref_tmp.bam"
+	output:
+		bam = "{sample}/02_assembly/{sample}_ref_clipped.bam",
+		sam = temp("{sample}/02_assembly/{sample}_combined.sam"),
+		tmp_header = temp("{sample}/02_assembly/{sample}_tmp_header.bam"),
+		tmp_ref = temp("{sample}/02_assembly/{sample}_tmp_ref.bam")
+	log: "logs/{sample}/02_assembly/clip-bam.snakemake.log"
+	conda: "envs/env.yml"
+	shell:
+		"""
+		{{
+		mv {input.bam} {output.bam}
+		mv {input.bam}.bai {output.bam}.bai
+		samtools view -H {output.bam} > {output.tmp_header}
+		samtools view {output.bam} | awk -F '\t' -v OFS='\t' '$6!~/S/' > {output.tmp_ref}
+		cat {output.tmp_header} {output.tmp_ref} > {output.sam}
+		}} >> {log} 2>&1
+		"""
 
 
-rule push_data_pathogendb:
-   message: "Push genome assembly data to pathogenDB"
-   input:
-      annotation_out = ("{sample}/02_assembly/{sample}_genome_annotation.txt")
-   params:
-      sample_name = ("{sample}"),
-      run_ID = config["run_id"],
-      path = config['path'],
-      pdbpush=os.path.join(workflow.basedir, "../workflow/scripts/all-virus_assembly_push.py"),
-      config=os.path.join(workflow.basedir, "../config/config.yaml")
-   output:
-      pdb_upload_check = ("{sample}/05_status/pdb_upload_complete.txt")
-   conda:
-      "envs/env.yml"
-   log:
-      PDBPush = "logs/05_{sample}.PDBPush.snakemake.log"
-   threads: 4
-   shell:
-      """
-      python {params.pdbpush} -s {params.sample_name} -r {params.run_ID} -c {params.config} -p {params.path} > {log.PDBPush} 2>&1
-      touch {output.pdb_upload_check}
-      """
+rule ref_bam:
+	message: "Obtain final ref BAM from SAM"
+	input:
+		sam = "{sample}/02_assembly/{sample}_combined.sam",
+	output:
+		bam = "{sample}/02_assembly/{sample}_ref.bam"
+	threads: 12
+	log: "logs/{sample}/02_assembly/ref-bam.snakemake.log"
+	conda: "envs/env.yml"
+	shell:
+		"""
+		(samtools view -b {input.sam} | samtools sort -@ {threads} -o {output.bam} - ) > {log} 2>&1
+		samtools index {output.bam} >> {log} 2>&1
+		"""
+
+
+rule pilon:
+	message: "Run Pilon on final ref BAM"
+	input:
+		bam = "{sample}/02_assembly/{sample}_ref.bam",
+	output:
+		changes = "{sample}/02_assembly/{chromosomes}_pilon.changes",
+		vcf = "{sample}/02_assembly/{chromosomes}_pilon.vcf",
+		fasta = "{sample}/02_assembly/{chromosomes}_pilon.fasta",
+		coverage = "{sample}/02_assembly/{chromosomes}_pilonCoverage.wig",
+	params:
+		targets = "{chromosomes}",
+		samples = "{sample}"
+	log: "logs/{sample}/02_assembly/{chromosomes}.run-pilon.snakemake.log",
+	conda: "envs/env.yml"
+	shell:
+		"""
+		pilon --fix bases --changes --vcf --mindepth 50 \
+			--genome {config[reference_genome]} \
+			--frags {input.bam} \
+			--tracks \
+			--output {params.samples}/02_assembly/{params.targets}_pilon \
+			--targets {params.targets} > {log} 2>&1
+		"""
+
+
+rule parse_pilon_changes:
+	message: "Parse Pilon output to get insertions and deletions"
+	input:
+		changes = "{sample}/02_assembly/{chromosomes}_pilon.changes",
+	output:
+		ins = "{sample}/02_assembly/{chromosomes}_ins.txt",
+		dels = "{sample}/02_assembly/{chromosomes}_dels.txt",
+	params:
+		ins_dels = os.path.join(workflow.basedir, "../workflow/scripts/generate_ins_dels.py")
+	log: "logs/{sample}/02_assembly/{chromosomes}.gen-ins-dels.snakemake.log",
+	conda: "envs/env.yml"
+	shell:
+		"""
+		python {params.ins_dels} {input.changes} {output.ins} {output.dels} > {log} 2>&1
+		"""
+		
+
+rule process_pilon_coverage:
+	message: "Process the insertions and deletions to get the final sequence for each header in reference FASTA"
+	input:
+		coverage = "{sample}/02_assembly/{chromosomes}_pilonCoverage.wig",
+		ins = "{sample}/02_assembly/{chromosomes}_ins.txt",
+		dels = "{sample}/02_assembly/{chromosomes}_dels.txt",
+		fasta = "{sample}/02_assembly/{chromosomes}_pilon.fasta",
+	output:
+		fasta = "{sample}/02_assembly/{chromosomes}_processed.fasta"
+	params:
+		chromosomes = "{chromosomes}",
+		process_pilon = os.path.join(workflow.basedir, "../workflow/scripts/process_pilon_coverage.py")
+	log: "logs/{sample}/02_assembly/{chromosomes}.process-pilon-coverage.snakemake.log"
+	conda: "envs/env.yml"
+	shell:
+		"""
+		python {params.process_pilon} {input.fasta} {params.chromosomes} {input.ins} {input.dels} {input.coverage} {output.fasta} > {log} 2>&1
+		"""
+
+
+rule concatenate_chromosomes:
+	message: "Concatenate all headers into one FASTA per sample"
+	input:
+		lambda wildcards: expand("{sample}/02_assembly/{chromosome}_processed.fasta", 
+								 sample=wildcards.sample, 
+								 chromosome=chromosomes)
+	output:
+		fasta = "{sample}/02_assembly/{sample}.fasta"
+	log:
+		"logs/{sample}/02_assembly/concatenation.snakemake.log"
+	shell:
+		"""
+		cat {input} > {output.fasta}
+		"""
+		
+
+rule run_prokka:
+	message: "Run Prokka on final concatenated FASTA"
+	input:
+		fasta = "{sample}/02_assembly/{sample}.fasta"
+	output:
+		folder = directory("{sample}/02_assembly/prokka")
+	params:
+		sample_name = "{sample}"
+	threads: 12
+	conda: "envs/env.yml"
+	log: "logs/{sample}/02_assembly/run-prokka.snakemake.log"
+	shell:
+		"""
+		prokka --force --cpus {threads} --outdir {output.folder} --prefix {params.sample_name} --kingdom {config[kingdom]} --proteins {config[genbank]} {input.fasta}
+		"""
+		
+		
+rule download_seqkit:
+	message: "Download Seqkit from GitHub"
+	output:
+		seqkit = temporary("seqkit"),
+		seqkit_gz = temporary("seqkit_linux_amd64.tar.gz")
+	shell:
+		"""
+		wget https://github.com/shenwei356/seqkit/releases/latest/download/{output.seqkit_gz}
+		tar -xvzf {output.seqkit_gz}
+		"""
+
+
+rule run_shovill:
+	message: "Run Shovill"
+	input:
+		prokka = "{sample}/02_assembly/prokka",
+		fasta = "{sample}/02_assembly/{sample}.fasta",
+		reads_1 = "{sample}/02_assembly/reads.1.fastq.gz",
+		reads_2 = "{sample}/02_assembly/reads.2.fastq.gz",
+		seqkit = "seqkit"
+	output:
+		folder = directory("{sample}/02_assembly/{chromosomes}_shovill")
+	params:
+		working_dir = "{sample}/02_assembly"
+	threads: 12
+	conda: "envs/env.yml"
+	log: "logs/{sample}/02_assembly/{chromosomes}.run-shovill.snakemake.log"
+	script: "scripts/run_shovill.py"
+	
+	
+rule run_mpileup:
+	message: "Run samtool's mpileup"
+	input:
+		fasta = "{sample}/02_assembly/{sample}.fasta",
+		bam = "{sample}/02_assembly/{sample}_ref.bam",
+		folder = "{sample}/02_assembly/{chromosomes}_shovill",
+	output:
+		pileup = "{sample}/04_variants/{chromosomes}_pileup"
+	conda: "envs/env.yml"
+	log: "logs/{sample}/04_variants/{chromosomes}_mpileup.snakemake.log"
+	shell:
+		"""
+		samtools mpileup -f {config[reference_genome]} {input.bam} -o {output.pileup}
+		"""	
+
+
+rule collect_primer_positions_and_changes:
+	message: "Get primer positions and changes"
+	input:
+		pilon_changes = expand("{sample}/02_assembly/{chromosomes}_pilon.changes", sample=sampleids, chromosomes=chromosomes),
+		primer_file = config["primer_file"]
+	output:
+		primer_positions = temp("{sample}/04_variants/{chromosomes}.primer_positions.txt"),
+		changes = temp("{sample}/04_variants/{chromosomes}.changes.txt")
+	conda: "envs/env.yml"
+	log: "logs/{sample}/04_variants/{chromosomes}.primer-pos-changes.snakemake.log"
+	script: "scripts/parse_primer_position_and_changes.py"
+
+
+rule process_pileup:
+	message: "Process pileup output to get variable bases TSV"
+	input:
+		pileup = "{sample}/04_variants/{chromosomes}_pileup",
+		changes = "{sample}/04_variants/{chromosomes}.changes.txt",
+		primers = "{sample}/04_variants/{chromosomes}.primer_positions.txt"
+	output:
+		tsv="{sample}/04_variants/{chromosomes}_variable_bases.tsv"
+	params:
+		outdir = "{sample}/04_variants",
+		chrom = "{chromosomes}",
+		min_ratio = 0.8,
+		pileup_script = os.path.join(workflow.basedir, "../workflow/scripts/process_pileup.py")
+	conda: "envs/env.yml"
+	log: "logs/{sample}/04_variants/{chromosomes}.process_pileup.snakemake.log" 
+	shell:
+		"""
+		python {params.pileup_script} \
+			--pileup {input.pileup} \
+			--changes {input.changes} \
+			--primers {input.primers} \
+			--chrom {params.chrom} \
+			--outdir {params.outdir} \
+			--min_ratio {params.min_ratio} 2> {log}
+		"""
+
+
+rule run_bamtools_split:
+	message: "Run bamtools split"
+	input:
+		bam = "{sample}/02_assembly/{sample}_ref.bam",
+		tsv = "{sample}/04_variants/{chromosomes}_variable_bases.tsv"
+	output:
+		mapped = "{sample}/02_assembly/{sample}_ref.REF_{chromosomes}.bam",
+	conda: "envs/env.yml"
+	log: "logs/{sample}/02_assembly/{chromosomes}.bamtools-split.snakemake.log"
+	shell:
+		"""
+		 bamtools split -in {input.bam} -reference > {log} 2>&1		
+		"""
+		
+
+rule run_picard_insert_metrics:
+	message: "Get insert metrics using Picard"
+	input:
+		bam = "{sample}/02_assembly/{sample}_ref.bam",
+		mapped = expand("{sample}/02_assembly/{sample}_ref.REF_{chromosomes}.bam", sample=sampleids, chromosomes=chromosomes)
+	output:
+		txt = "{sample}/02_assembly/{sample}_insert_size_metrics.txt",
+		pdf = "{sample}/02_assembly/{sample}_insert_size_histogram.pdf",
+	conda: "envs/env.yml"
+	log: "logs/{sample}/02_assembly/picard-insert-metrics.snakemake.log"
+	shell:
+		"""
+		picard CollectInsertSizeMetrics \
+			I={input.bam} \
+			O={output.txt} \
+			H={output.pdf} \
+			M=0.5 > {log} 2>&1
+		"""	
+
+
+rule run_picard_read_groups:
+	message: "Get read groups using Picard"
+	input:
+		bam = "{sample}/02_assembly/{sample}_ref.bam",
+	output:
+		bam = "{sample}/02_assembly/{sample}_ref_fixed.bam",
+	params:
+		insample = "{sample}"
+	conda: "envs/env.yml"
+	log: "logs/{sample}/02_assembly/picard-read-groups.snakemake.log"
+	shell:
+		"""
+		picard AddOrReplaceReadGroups \
+			I={input.bam} \
+			O={output.bam} \
+			RGID=rg1 \
+			RGLB=lib1 \
+			RGPL=ILLUMINA \
+			RGPU=unit1 \
+			RGSM={params.insample}
+		"""
+
+
+rule run_picard_duplicates:
+	message: "Run Picard duplicates"
+	input:
+		bam = "{sample}/02_assembly/{sample}_ref_fixed.bam",
+		pdf = "{sample}/02_assembly/{sample}_insert_size_histogram.pdf",
+	output:
+		bam = "{sample}/02_assembly/{sample}_marked_duplicates.bam",
+		txt = "{sample}/02_assembly/{sample}_marked_dup_metrics.txt"
+	conda: "envs/env.yml"
+	log: "logs/{sample}/02_assembly/picard-duplicates.snakemake.log"
+	shell:
+		"""
+		picard MarkDuplicates \
+			I={input.bam} \
+			O={output.bam} \
+			M={output.txt} > {log} 2>&1
+		"""
+
+
+rule run_picard_alignment_metrics:
+	message: "Get alignment metrics using Picard"
+	input:
+		fasta = "{sample}/02_assembly/{sample}.fasta",
+		bam = "{sample}/02_assembly/{sample}_ref_fixed.bam",
+		txt = "{sample}/02_assembly/{sample}_marked_dup_metrics.txt"
+	output:
+		txt = "{sample}/02_assembly/{sample}_picard_output.txt"
+	conda: "envs/env.yml"
+	log: "logs/{sample}/02_assembly/picard-alignment-metrics.snakemake.log"
+	shell:
+		"""
+		picard CollectAlignmentSummaryMetrics \
+			R={input.fasta} \
+			I={input.bam} \
+			O={output.txt} > {log} 2>&1
+		"""
+
+
+rule compute_coverage:
+	message: "Use ref BAM to get coverage per FASTA header"
+	input:
+		bam = "{sample}/02_assembly/{sample}_ref.bam",
+		txt = "{sample}/02_assembly/{sample}_picard_output.txt"
+	output:
+		coverage = "{sample}/03_qualityControl/{chromosomes}_coverage.txt"
+	log: "logs/{sample}/03_qualityControl/{chromosomes}.coverage.log"
+	conda: "envs/env.yml"
+	params:
+		chrs = "{chromosomes}"
+	shell:
+		"""
+		samtools depth -aa {input.bam} -r {params.chrs} > {output.coverage} 2> {log}
+		"""
+
+rule generate_qc_report:
+	message: "Plot coverage per FASTA header"
+	input:
+		reference = config["reference_genome"],
+		coverage = "{sample}/03_qualityControl/{chromosomes}_coverage.txt",
+		fasta = "{sample}/02_assembly/{chromosomes}_processed.fasta",
+	output:
+		pdf = temp("{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control2.pdf"),
+		report = "{sample}/03_qualityControl/{chromosomes}_report.txt",
+	params:
+		qc_dir = "{sample}/03_qualityControl/",
+		sample_name = "{sample}",
+		chromosome = "{chromosomes}"
+	conda: "envs/env.yml"
+	log: "logs/{sample}/03_qualityControl/{chromosomes}.initial-qc-report.snakemake.log"
+	script: "scripts/generate_QC_report.py"
+	
+	
+rule add_variant_plot_to_pdf:
+	message: "Plot variants from reference using pileup output and append to coverage plot file"
+	input:
+		pileup = "{sample}/04_variants/{chromosomes}_pileup",
+		pdf = "{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control2.pdf",
+	output:
+		pdf = temp("{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control3.pdf")
+	params:
+		sample_name = "{sample}"
+	conda: "envs/env.yml"
+	log: "logs/{sample}/03_qualityControl/{chromosomes}.plot-variants.snakemake.log"
+	script: "scripts/plot_variants.py"  
+
+
+rule add_primers_plot_to_pdf:
+	message: "Plot primer depth and add to the QC report"
+	input:
+		pdf = "{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control3.pdf",
+		primers = config["primer_file"]
+	output:
+		pdf = temp("{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control4.pdf"),
+	params:
+		sample_folder = "{sample}",
+		qc_dir = "{sample}/03_qualityControl",
+		chromosomes = "{chromosomes}"
+	conda: "envs/env.yml"
+	log: "logs/{sample}/03_qualityControl/{chromosomes}.plot-primers.snakemake.log"
+	script: "scripts/plot_primer_set_depth.py"
+	
+	
+rule plot_intrahosts:
+	message: "Plot intrahosts for each FASTA header"
+	input:
+		pdf = "{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control4.pdf",
+		tsv = "{sample}/04_variants/{chromosomes}_variable_bases.tsv"
+	output:
+		pdf = temp("{sample}/03_qualityControl/{chromosomes}_var.pdf"),
+		tsv = "{sample}/03_qualityControl/{chromosomes}_variants_labels.tsv"
+	params:
+		intrahost_plot = os.path.join(workflow.basedir, "../workflow/scripts/plot_intrahosts.R")
+	conda: "envs/env.yml"
+	log: "logs/{sample}/03_qualityControl/{chromosomes}.plot-coverage.snakemake.log"
+	shell: "Rscript {params.intrahost_plot} -i {input.tsv} -o {output.pdf} -v {output.tsv}"
+
+
+rule run_kraken:
+	message: "Run kraken2 to get the read breakdown"
+	input:
+		R1 = "{sample}/01_fastqs/{sample}_1.fastq.gz",
+		R2 = "{sample}/01_fastqs/{sample}_2.fastq.gz",
+	output:
+		report = "{sample}/03_qualityControl/{sample}_kraken_report.out",
+		out = "{sample}/03_qualityControl/{sample}_kraken"
+	conda: "envs/env.yml"
+	log: "logs/{sample}/03_qualityControl/kraken.snakemake.log"
+	threads: 12
+	shell:
+		"""
+		kraken2 --db {config[kraken_db]} --quick --report {output.report} --threads {threads} --output {output.out} --paired {input.R1} {input.R2} > {log} 2>&1
+		"""
+
+
+rule plot_taxonomic_breakdown:
+	message: "Plot taxanomic breakdown using kraken2 output"
+	input:
+		report = "{sample}/03_qualityControl/{sample}_kraken_report.out",
+	output:
+		pdf = temp("{sample}/03_qualityControl/taxonomic-breakdown.pdf")
+	conda: "envs/env.yml"
+	log: "logs/{sample}/03_qualityControl/taxonomic-breakdown.snakemake.log"
+	script: "scripts/plot-taxonomic-breakdown.R"
+
+
+rule merge_pdfs:
+	message: "Merge QC plots with kraken plot and the intrahost plot(s)"
+	input:
+		pdf_1 = lambda wildcards: expand("{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control4.pdf",
+										 sample=[wildcards.sample], chromosomes=chromosomes),
+		pdf_2 = lambda wildcards: f"{wildcards.sample}/03_qualityControl/taxonomic-breakdown.pdf",
+		pdf_3 = lambda wildcards: expand("{sample}/03_qualityControl/{chromosomes}_var.pdf",
+										 sample=[wildcards.sample], chromosomes=chromosomes),
+	output:
+		pdf = "{sample}/03_qualityControl/{sample}_qualityControl.pdf"
+	conda: "envs/env.yml"
+	log: "logs/{sample}/03_qualityControl/merge-pdfs.snakemake.log"
+	script: "scripts/merge_pdfs.py"
+	  
+		
+rule run_flagstat:
+	message: "Run samtool's flagstat"
+	input:
+		bam = "{sample}/02_assembly/{sample}_ref.bam",
+		pdf = "{sample}/03_qualityControl/{sample}_qualityControl.pdf"
+	output:
+		bam = "{sample}/03_qualityControl/{sample}_refbam.flagstat"
+	conda: "envs/env.yml"
+	log: "logs/{sample}/03_qualityControl/samtools-flagstat.snakemake.log"
+	shell:
+		"""
+		samtools flagstat {input.bam} > {output.bam} 2>{log}
+		"""
 
 
 rule run_QualiMap_sample:
-   message: "Run Qualimap for each sample" 
-   input:
-      bam = expand("{sample}/02_assembly/{sample}_ref.bam", sample=sampleids),
-      qc_file = expand('{sample}/03_qualityControl/{sample}_quality_control.pdf', sample=sampleids),
-      pdb_upload_check = expand("{sample}/05_status/pdb_upload_complete.txt", sample=sampleids)
-      
-   output:
-      qualimap_dirs = ("multi_bamqc/multisampleBamQcReport.html")
-   log:
-      qualimap = "logs/07_qualimap.snakemake.log"
-   threads: 4
-   shell:
-      """
-      module load qualimap
-      qualimap multi-bamqc -d multibamqc_input.txt -r > {log.qualimap} 2>&1
-      """
-
-
+	message: "Run Qualimap for each sample" 
+	input:
+	  bam = expand("{sample}/02_assembly/{sample}_ref.bam", sample=sampleids, chromosomes=chromosomes),
+	  qc_file = expand("{sample}/03_qualityControl/{sample}_qualityControl.pdf", sample=sampleids, chromosomes=chromosomes),
+	  flagstat = expand("{sample}/03_qualityControl/{sample}_refbam.flagstat", sample=sampleids, chromosomes=chromosomes),
+	output:
+	  qualimap_dirs = "multi_bamqc/multisampleBamQcReport.html"
+	conda: "envs/env.yml"
+	log: "logs/05_qualimap.snakemake.log"
+	shell:
+	  """
+	  qualimap multi-bamqc -d {config[qualimap_input]} -r > {log} 2>&1
+	  """
+		
+	  
 rule run_multiqc:
-   message: "Generate MultiQC Report for the run"
-   input:
-      qualimap_all_report = ("multi_bamqc/multisampleBamQcReport.html")
-   output:
-      mqc_file = ("multiqc_report.html"),
-   conda:
-      "envs/env.yml"
-   log:
-      multiqc = "logs/08_multiqc.snakemake.log"
-   threads: 1
-   shell:
-      """
-      multiqc . > {log.multiqc} 2>&1
-      """ 
-
-
+	message: "Generate MultiQC Report for the run"
+	input:
+	  qualimap_all_report = ("multi_bamqc/multisampleBamQcReport.html")
+	output:
+	  mqc_file = "multiqc_report.html",
+	conda: "envs/env.yml"
+	log: "logs/06_multiqc.snakemake.log"
+	shell:
+	  """
+	  multiqc . > {log} 2>&1
+	  """
+	  
+	  
+rule push_data_pathogendb:
+	message: "Push genome assembly data to pathogenDB"
+	input:
+		qualimap_dirs = "multi_bamqc/multisampleBamQcReport.html",
+		mqc_file = "multiqc_report.html",
+	output:
+		upload_log = "{sample}/05_status/{sample}.assembly-push.log",
+	params:
+		sample_name = "{sample}",
+		config = "config.yaml",
+	conda: "envs/env.yml"
+	log: "logs/{sample}/06_PathogenDB-Push.snakemake.log"
+	script: "scripts/all-virus_assembly_push.py"
+	  
+	  
 rule push_QC_report:
-   message: "Push the MultiQC Report to PDB"
-   input:
-      mqc_file = ("multiqc_report.html"),
-   params:
-      push_script = os.path.join(workflow.basedir, "../workflow/scripts/move_QC_PDB.py"),
-      run_ID = expand("{runid}", runid=config["run_id"])
-   output:
-      moved_files = "file_movement_message.txt"
-   conda:
-      "envs/env.yml"
-   log:
-      pushQC = "logs/09_qcpush.snakemake.log"
-   threads: 1
-   shell:
-      """
-      python {params.push_script} -r {params.run_ID} > {log.pushQC} 2>&1
-      """
-
-
-rule version_check:
-   message: "Generate version report for the run"
-   input:
-      moved_files = "file_movement_message.txt"
-   params:
-      run_ID = config["run_id"],
-      reference = config["reference"],
-      genbankfile = config["genbank"],
-      ps1 = config["primer_set_1_5kb"],
-      ps2 = config["primer_set_2kb"]
-   output:
-      version_report = expand("{runid}_software_version.txt", runid=config["run_id"])
-   conda:
-      "envs/env.yml"
-   log:
-      versioncheck = "logs/10_versioncheck.snakemake.log"
-   threads: 1
-   shell:
-      """
-      echo "{params.run_ID} was run using the following versions \n" > {output.version_report}
-      echo "\n Name                    Version                   Build  Channel \n SAMTOOLS: \n" &>> {output.version_report}
-      conda list | grep -w "^samtools" &>> {output.version_report}
-      
-      echo "\n CUTADAPT: \n" &>> {output.version_report}
-      conda list | grep -w "^cutadapt" &>> {output.version_report}
-      
-      echo "\n MINIMAP2: \n" &>> {output.version_report}
-      conda list | grep -w "minimap2" &>> {output.version_report}
-      
-      echo "\n PILON: \n" &>> {output.version_report}
-      conda list | grep "pilon" &>> {output.version_report}
-      
-	  echo "\n QUALIMAP: \n" &>> {output.version_report}
-	  conda list | grep "qualimap" &>> {output.version_report}
-	  
-	  echo "\n SHOVILL: \n" &>> {output.version_report}
-	  conda list | grep "shovill" &>> {output.version_report}
-	  
-	  echo "\n PROKKA: \n" &>> {output.version_report}
-	  conda list | grep "prokka" &>> {output.version_report}
-	  
-	  echo "\n KRAKEN2: \n" &>> {output.version_report}
-	  conda list | grep "kraken2" &>> {output.version_report}
-	  
-	  echo "\n PYTHON: \n" &>> {output.version_report}
-	  conda list | grep "^python" &>> {output.version_report}
-	  
-	  echo "\n MULTIQC: \n" &>> {output.version_report}
-	  conda list | grep "multiqc" &>> {output.version_report}
-	  
-	  echo "\n FASTQC: \n" &>> {output.version_report}
-	  conda list | grep "fastqc" &>> {output.version_report}
-
-	  echo "\n PICARD Alignment Sumamry Metrics: \n" &>> {output.version_report}
-	  conda list | grep "picard" &>> {output.version_report}
-	  
-	  echo "\n {params.run_ID} was aligned against the following reference: \n {params.reference} \n Using the following genabnk file: \n {params.genbankfile} \n " &>> {output.version_report}
-	  echo "\n primer sets used were: \n (1) {params.ps1} \n (2) {params.ps2}" &>> {output.version_report} > {log.versioncheck} 2>&1
-      """
-
-
-rule clean_up:
-   message: "Remove intermediatary output"
-   input:
-      version_report = expand("{runid}_software_version.txt", runid=config["run_id"])
-   output:
-      cleanup_report = expand("{runid}_cleaned.txt", runid=config["run_id"])
-   params:
-      sample_ids = expand("{sample}", sample=sampleids),
-      cleanup = os.path.join(workflow.basedir, "../workflow/scripts/cleanup.py"),
-      samples_run = config["samples"]
-   conda:
-      "envs/env.yml"
-   log:
-      cleanup = "logs/11_cleanup.snakemake.log"
-   threads: 4
-   shell:
-      """
-      python {params.cleanup} -p {params.samples_run} > {log.cleanup} 2>&1
-      touch {output.cleanup_report}
-      """
-    
-      
+	message: "Push the MultiQC Report to PDB"
+	input:
+	  mqc_file = ("multiqc_report.html"),
+	output:
+	  moved_files = temporary("file_movement_message.txt")
+	conda: "envs/env.yml"
+	log: "logs/07_qcpush.snakemake.log"
+	threads: 1
+	script: "scripts/move_QC_PDB.py"
+ 
+ 
 rule run_report:
-   message: "Generate run summary report"
-   input:
-      cleanup_report = expand("{runid}_cleaned.txt", runid=config["run_id"])
-   output:
-      run_report = expand("{runid}_run_report.csv", runid=config["run_id"])
-   params:
-      run_ID = config["run_id"],
-      report_script = os.path.join(workflow.basedir, "../workflow/scripts/generate_run_report.R"),
-   conda:
-      "envs/env.yml"
-   log:
-      reporting = "logs/12_reporting.snakemake.log"
-   threads: 1
-   shell:
-      """
-      Rscript {params.report_script} {params.run_ID} > {log.reporting} 2>&1
-      """
-      
-  
-rule data_release_prep:
-   message: "Create Data Release files"
-   input:
-      cleanup_report = expand("{runid}_cleaned.txt", runid=config["run_id"])
-   output:
-      data_release_report = expand("{runid}_data_release.txt", runid=config["run_id"])
-   params:
-      run_ID = config["run_id"],
-      status_script = os.path.join(workflow.basedir, "../workflow/scripts/data-release.py"),
-      sample_mapping = config["samples"],
-      ref_header = config["ref_fasta_headers"],
-      virus = config["virus"]
-   conda:
-      "envs/env.yml"
-   log:
-      datarelease = "logs/13_datarelease.snakemake.log"
-   threads: 4
-   shell:
-      """
-      python {params.status_script} -p {params.sample_mapping} -r {params.run_ID} -v {params.virus} -f {params.ref_header} > {log.datarelease} 2>&1
-      touch {output.data_release_report}
-      """
-            
+	message: "Generate run summary report"
+	input:
+		upload_log = expand("{sample}/05_status/{sample}.assembly-push.log", sample=sampleids),
+	output:
+		expand("{runid}_run_report.csv", runid=config["run_id"])
+	conda: "envs/env.yml"
+	log: "logs/08_reporting.snakemake.log"
+	script: "scripts/generate_run_report.R"
+
+
+rule summary:
+	message: "Get a summary report for the packages used in the run"
+	input:
+		run_report = expand("{runid}_run_report.csv", runid=config["run_id"])
+	output:
+		txt = "workflow_summary.txt"
+	conda: "envs/env.yml"
+	log: "logs/09_workflow-summary.snakemake.log"
+	script: "scripts/generate_summary.py"
+
+	
