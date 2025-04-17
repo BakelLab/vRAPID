@@ -6,36 +6,39 @@ get_time <- function() format(Sys.time(), "%H:%M:,%S")
 ## Libraries
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Load libraries
-suppressPackageStartupMessages(library(getopt))
-suppressPackageStartupMessages(library(lubridate))
-suppressPackageStartupMessages(library(tidyverse))
+# Check for 'connectPDB' and install if necessary
+if (!requireNamespace("connectPDB")) {
+  if (!requireNamespace("devtools")) {
+    install.packages("devtools", repos = 'http://cran.us.r-project.org')
+  }
+  library(devtools)
+  pdbtoken <- readLines("~/.pdbtoken")
+  install_github("BakelLab/pathogendb-connect", auth_token = pdbtoken)
+}
+# List of libraries to load
+packages <- c("getopt", "lubridate", "tidyverse","connectPDB")
+
+# Function to check if package is installed and load it
+load_or_install <- function(pkg) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    install.packages(pkg, repos = 'http://cran.us.r-project.org')
+  }
+  suppressPackageStartupMessages(library(pkg, character.only = TRUE))
+}
+
+# Load all required packages
+lapply(packages, load_or_install)
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Input Files & Error Messages Configuration
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# read in command line arguments for the files to be used
-arguments <- commandArgs(trailingOnly = TRUE)
 # format output name
-output_name <- paste0(arguments[1], "_run_report.csv")
-
-# if no CL arguments given, stop with the message indicating that at least
-# three need to be provided
-if (length(arguments) == 0) {
-  stop("1 arguments must be supplied:
-                Argument 1: Run ID
-       Please include all arguments.
-       
-       ", call. = FALSE)
-}
-
+output_name <- paste0(snakemake@config[["run_id"]], "_run_report.csv")
 
 #############
 # FUNCTIONS #
 #############
-
-source('~/opt/psp-database-connectors.R')
 
 db_pathogendb <- dbconnect_mariadb('vanbah01_pathogens')
 
@@ -69,7 +72,7 @@ inter_2 <- suppressMessages(full_join(assembly_data, inter_1))
 
 cat(paste0("\n", get_time(), " [-] Reformat Assembly data\n"))
 
-inter_2 <- inter_2 %>% filter(ASSEMBLY_RUN == arguments[1])
+inter_2 <- inter_2 %>% filter(ASSEMBLY_RUN == snakemake@config[["run_id"]])
 
 # drop isolates ID and date created columns after merging on isolates ID
 inter_2 <- inter_2[-c(5, 7, 21)]
