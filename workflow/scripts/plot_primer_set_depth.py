@@ -62,7 +62,7 @@ def plot_primer_depths(primer_file, sample_folder, input_pdf, output_pdf, qc_dir
         fig.set_size_inches(8, 6)
 
         # Save plot to temp file
-        plot_pdf = f"temp_{chrs}_primer_depth_plot.pdf"
+        plot_pdf = f"{sample_folder}/temp_{chrs}_primer_depth_plot.pdf"
         plt.savefig(plot_pdf, dpi=300)
         plt.close(fig)
 
