@@ -141,14 +141,17 @@ rule ref_bam:
 	input:
 		sam = "{sample}/02_assembly/{sample}_combined.sam",
 	output:
-		bam = "{sample}/02_assembly/{sample}_ref.bam"
+		bam = "{sample}/02_assembly/{sample}_ref.bam",
+		sorted_bam = "{sample}/02_assembly/{sample}_ref.sorted.bam",
 	threads: 12
 	log: "logs/{sample}/02_assembly/ref-bam.snakemake.log"
 	conda: "envs/env.yml"
 	shell:
 		"""
 		(samtools view -b {input.sam} | samtools sort -@ {threads} -o {output.bam} - ) > {log} 2>&1
-		samtools index {output.bam} >> {log} 2>&1
+		samtools index {output.bam} 
+		samtools sort -o {output.sorted_bam} {output.bam} 
+		samtools index {output.sorted_bam} >> {log} 2>&1
 		"""
 
 
@@ -156,6 +159,7 @@ rule pilon:
 	message: "Run Pilon on final ref BAM"
 	input:
 		bam = "{sample}/02_assembly/{sample}_ref.bam",
+		sorted_bam = "{sample}/02_assembly/{sample}_ref.sorted.bam",
 	output:
 		changes = "{sample}/02_assembly/{chromosomes}_pilon.changes",
 		vcf = "{sample}/02_assembly/{chromosomes}_pilon.vcf",
@@ -215,19 +219,22 @@ rule process_pilon_coverage:
 
 
 rule concatenate_chromosomes:
-	message: "Concatenate all headers into one FASTA per sample"
-	input:
-		lambda wildcards: expand("{sample}/02_assembly/{chromosome}_processed.fasta", 
-								 sample=wildcards.sample, 
-								 chromosome=chromosomes)
-	output:
-		fasta = "{sample}/02_assembly/{sample}.fasta"
-	log:
-		"logs/{sample}/02_assembly/concatenation.snakemake.log"
-	shell:
-		"""
-		cat {input} > {output.fasta}
-		"""
+    message: "Concatenate all headers into one FASTA per sample with chromosome name appended"
+    input:
+        lambda wildcards: expand("{sample}/02_assembly/{chromosome}_processed.fasta", 
+                                 sample=wildcards.sample, 
+                                 chromosome=chromosomes)
+    output:
+        fasta = "{sample}/02_assembly/{sample}.fasta"
+    log:
+        "logs/{sample}/02_assembly/concatenation.snakemake.log"
+    shell:
+        """
+        for fasta in {input}; do
+            chrom=$(basename "$fasta" | cut -d'_' -f1)
+            awk -v c="$chrom" '{{if($0 ~ /^>/) {{$0 = $0 "_" c}} print}}' "$fasta"
+        done > {output.fasta}
+        """
 		
 
 rule run_prokka:
