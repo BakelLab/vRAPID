@@ -49,6 +49,6 @@ while len(seq) >= 10 and seq[-10:].count('n') >= 3:
 
 sample = fasta_file.split("/")[0]
 with open(output_file, 'w') as o:
-            o.write(f'>{sample}|{chrs}\n')
-            for i in range(0, len(seq), 80):
-                o.write(seq[i:i + 80] + '\n')
+    o.write(f'>{sample}\n')
+    for i in range(0, len(seq), 80):
+        o.write(seq[i:i + 80] + '\n')
