@@ -174,14 +174,14 @@ def var_count(sample,multi,headers,variant_dir):
     var_count = 0
     if multi:
         for header in headers:
-            file_path = os.path.join(variant_dir, sample+'.'+header + "_variable_bases.tsv").replace("\\", "/")
+            file_path = os.path.join(variant_dir, header + "_variable_bases.tsv").replace("\\", "/")
             with open(file_path) as f:
                 f.readline()
                 for line in f:
                     if line.split('\t')[2]=='FLAGGED':
                         var_count+=1
     else:
-        file_pattern = os.path.join(variant_dir, f"*_variable_bases.tsv").replace("\\", "/")
+        file_pattern = os.path.join(variant_dir,headers + "_variable_bases.tsv").replace("\\", "/")
         file_list = glob.glob(file_pattern)
         file_path = file_list[0]
         with open(file_path) as f:
@@ -726,7 +726,6 @@ if __name__ == "__main__":
     # assign full file paths
     try:
         data_dict['file_paths']['fasta_path']=os.path.join(data_dict['file_paths']['assembly_dir'],data_dict['file_paths']['fasta_path']).replace("\\", "/")
-        print(data_dict['file_paths']['fasta_path'])
         data_dict['file_paths']['flagstat_path']=os.path.join(data_dict['file_paths']['qc_dir'],data_dict['file_paths']['flagstat_path']).replace("\\", "/")
         data_dict['file_paths']['kraken_path']=os.path.join(data_dict['file_paths']['qc_dir'],data_dict['file_paths']['kraken_path']).replace("\\", "/")
         logging.info('Fasta, flagstat, and kraken paths assigned successfully.')
@@ -829,6 +828,7 @@ if __name__ == "__main__":
     # assigns variables bases count to data dict
     try:
         data_dict['scores']['variable_bases'] = var_count(sample,multi,headers,data_dict['file_paths']['variant_dir'])
+        logging.info(f"Variable bases count: {data_dict['scores']['variable_bases']}")
         logging.info('Variable bases count parsed successfully.')
     except Exception as e:
         logging.exception(f'Error in variable base count parsing: %s', e)
@@ -886,7 +886,7 @@ if __name__ == "__main__":
             file_list = []
         #     builds list of potential variable base files based on segment header names
             for header in headers:
-                file_path = os.path.join(data_dict['file_paths']['variant_dir'], sample + '.' + header + "_variable_bases.tsv").replace("\\", "/")
+                file_path = os.path.join(data_dict['file_paths']['variant_dir'], header + "_variable_bases.tsv").replace("\\", "/")
                 file_list.append(file_path)
         #     merges all existing segment variable base files
             merged_df = merge_tsvs(file_list)
@@ -960,6 +960,7 @@ if __name__ == "__main__":
             if not multi:
                 # non multisegmented variant source
                 variant_source = os.path.join(data_dict['file_paths']['variant_dir'], snakemake.config['ref_fasta_headers']+'_variable_bases.tsv')
+                print(variant_source)
             
             # variant destination for all viruses
             variant_dest = os.path.join('', str(sample) + '_final.variants.calls.txt')
