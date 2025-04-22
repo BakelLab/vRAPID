@@ -250,7 +250,11 @@ rule run_prokka:
 	log: "logs/{sample}/02_assembly/run-prokka.snakemake.log"
 	shell:
 		"""
-		prokka --force --cpus {threads} --outdir {output.folder} --prefix {params.sample_name} --kingdom {config[kingdom]} --proteins {config[genbank]} {input.fasta}
+		if grep -v '^>' {input.fasta} | grep -q .; then
+			prokka --force --cpus {threads} --outdir {output.folder} --prefix {params.sample_name} --kingdom {config[kingdom]} --proteins {config[genbank]} {input.fasta}
+		else
+			mkdir -p {output.folder}
+		fi
 		"""
 		
 		
@@ -300,45 +304,30 @@ rule run_mpileup:
 		"""	
 
 
-rule collect_primer_positions_and_changes:
-	message: "Get primer positions and changes"
-	input:
-		pilon_changes = expand("{sample}/02_assembly/{chromosomes}_pilon.changes", sample=sampleids, chromosomes=chromosomes),
-		primer_file = config["primer_file"]
-	output:
-		primer_positions = temp("{sample}/04_variants/{chromosomes}.primer_positions.txt"),
-		changes = temp("{sample}/04_variants/{chromosomes}.changes.txt")
-	conda: "envs/env.yml"
-	log: "logs/{sample}/04_variants/{chromosomes}.primer-pos-changes.snakemake.log"
-	script: "scripts/parse_primer_position_and_changes.py"
-
-
 rule process_pileup:
 	message: "Process pileup output to get variable bases TSV"
 	input:
 		pileup = "{sample}/04_variants/{chromosomes}_pileup",
-		changes = "{sample}/04_variants/{chromosomes}.changes.txt",
-		primers = "{sample}/04_variants/{chromosomes}.primer_positions.txt"
+		primer_set = config["primer_file"],
 	output:
 		tsv="{sample}/04_variants/{chromosomes}_variable_bases.tsv"
 	params:
+		sample_folder = "{sample}",
 		outdir = "{sample}/04_variants",
 		chrom = "{chromosomes}",
-		min_ratio = 0.8,
+		min_ratio = 0.9,
 		pileup_script = os.path.join(workflow.basedir, "../workflow/scripts/process_pileup.py")
 	conda: "envs/env.yml"
 	log: "logs/{sample}/04_variants/{chromosomes}.process_pileup.snakemake.log" 
 	shell:
 		"""
 		python {params.pileup_script} \
-			--pileup {input.pileup} \
-			--changes {input.changes} \
-			--primers {input.primers} \
-			--chrom {params.chrom} \
+			--sample_folder {params.sample_folder} \
+			--chrs {params.chrom} \
 			--outdir {params.outdir} \
-			--min_ratio {params.min_ratio} 2> {log}
+			--min_ratio {params.min_ratio} \
+			--primer_set {input.primer_set} 2> {log}
 		"""
-
 
 rule run_bamtools_split:
 	message: "Run bamtools split"
