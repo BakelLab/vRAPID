@@ -169,16 +169,29 @@ echo -e "Organize sample folders by virus type and submitter ID"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 python ${SCRIPT_DIR}/bin/psp_organize-sample-run-folders
 
-# Copy and initialize config.yaml files for top-level folders
-echo -e "Initializing config.yaml files in top-level folders"
 for VIRUSTYPE in SARS-CoV-2
 do
    if [ -d "${VIRUSTYPE}" ]
    then
-      for FOLDERNAME in "${VIRUSTYPE}/"
+      for FOLDERNAME in ${VIRUSTYPE}/*/
       do
-         cp ${SCRIPT_DIR}/config/config.yaml ${FOLDERNAME}
-         sed -i "s/REPLACE_BY_VIRUS_TYPE/${VIRUSTYPE}/g; s/REPLACE_BY_RUN_ID/${RUNID}/g" ${FOLDERNAME}/config.yaml
+         echo "Copying config.yaml to ${FOLDERNAME}" 
+         cp "${SCRIPT_DIR}/config/config.yaml" "${FOLDERNAME}"
+         
+         # Get absolute path to folder (without trailing slash)
+         CONFIGPWD=$(realpath "${FOLDERNAME}")
+         echo "Setting up config.yaml in ${FOLDERNAME}"
+         sed -i \
+           -e "s/REPLACE_BY_VIRUS_TYPE/${VIRUSTYPE}/g" \
+           -e "s/REPLACE_BY_RUN_ID/${RUNID}/g" \
+           -e "s|REPLACE_BY_PWD|${CONFIGPWD}|g" \
+           "${FOLDERNAME}/config.yaml"
+
+         # Run the psp_set_up_run_folders command inside the folder
+         echo "Setting up supplementary files in ${FOLDERNAME}"
+         (cd "${FOLDERNAME}" && python ${SCRIPT_DIR}/bin/psp_set_up_run_folders)
+         echo "Setting up logging directory for cluster jobs in ${FOLDERNAME}"
+         (cd "${FOLDERNAME}" && mkdir -p clusterlogs)
       done
    fi
 done
