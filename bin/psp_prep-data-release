@@ -1,0 +1,147 @@
+#!/usr/bin/env perl
+
+# 16.01.2020 11:54:34 EST
+# Harm van Bakel <hvbakel@gmail.com>
+
+# MODULES
+use strict;
+use warnings;
+use Getopt::Long;
+use DBI;
+use Time::Piece;
+use File::Copy;
+use File::Path qw(make_path);
+use Cwd qw(cwd);
+
+# GET PARAMETERS
+my $sHelp        = 0;
+my $sRunID       = "";
+GetOptions("help!"   => \$sHelp,
+           "runID:s" => \$sRunID);
+
+# PRINT HELP
+$sHelp = 1 unless($sRunID);
+if ($sHelp) {
+   my $sScriptName = ($0 =~ /^.*\/(.+$)/) ? $1 : $0;
+   die <<HELP
+
+   Usage: $sScriptName
+   
+   Arguments:
+    -r --runID <string>
+      Run identifier 
+    -help
+      This help message
+   
+HELP
+}
+
+
+##########
+## MAIN ##
+##########
+
+# Set output prefix
+my $sPrefix = cwd();
+$sPrefix =~ s/\/$//;
+$sPrefix =~ s/.*\///;
+$sPrefix = "${sRunID}_${sPrefix}";
+
+# Get current datestamps
+my $sYearMonth   = localtime->strftime('%Y-%m');
+my $sCurrentDate = localtime->strftime('%Y-%m-%d');
+my $sCurrentTime = localtime->strftime('%H-%M-%S');
+
+# Open database connection and begin transaction
+my $dbPUB = DBI->connect('DBI:mysql:vanbah01_pathogens;mysql_read_default_file=~/.my.cnf;mysql_read_default_group=vanbah01_pathogens_rw', undef, undef, {'RaiseError' => 1, 'AutoCommit' => 0});
+
+# Start processing folder list
+my %hCheckPassed;
+my %hCheckErrors;
+opendir my($dir), './' or die "Can't open ./ : $!\n";
+my @asFolderContent = readdir $dir;
+foreach my $sInputFolder (@asFolderContent){
+   if ( (-d $sInputFolder) and ($sInputFolder !~ /^\.+$/) ){
+      if ( (-e "$sInputFolder/${sInputFolder}_1.fastq.gz") and (-e "$sInputFolder/${sInputFolder}_2.fastq.gz") ){
+         if ($sInputFolder =~ /^([A-Z]{2})_(\d+)$/){
+            my $sSubmitterID = $1;
+            my $sExtractID   = $2;
+            my $nCheckFailed = 0;
+            
+            # Query for assembly results
+            my ($sSampleName,$sStrain,$sType,$sExpectedSubtype,$sAssemblyStatus, $sAssemblyQuality, $sAssemblySubtype, $nTotalReads, $nMappedReads, $nIAVpct, $nIBVpct, $nEUKpct, $nBCTpct, $nVariants) = ("Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown");
+            my $oAssemblyData = $dbPUB->selectall_arrayref("SELECT assembly_status,Assembly_quality,assembly_subtype,Total_reads,Uniq_mapped_read_percent,IAV_percent,IBV_percent,Eukaryota_percent,Bacteria_percent,Variant_pos_sum_15pct FROM tCEIRS_assemblies WHERE Extract_ID=$sExtractID AND assembly_run='$sRunID';") or die $DBI::errstr;
+            if (@$oAssemblyData == 0){
+               # No records found, we proceed with defaults of 'unknown'
+            }
+            elsif (@$oAssemblyData == 1){
+               # Get the data for the current assembly
+               my $rRow = shift @$oAssemblyData;
+               ($sAssemblyStatus, $sAssemblyQuality, $sAssemblySubtype, $nTotalReads, $nMappedReads, $nIAVpct, $nIBVpct, $nEUKpct, $nBCTpct, $nVariants) = @$rRow;
+            }
+            else{
+               # We got more than one record. This shouldn't happen!
+               $nCheckFailed = 1;
+               push @{$hCheckErrors{$sInputFolder}}, "Warning: sample '$sInputFolder' for run '$sRunID' returned multiple assemblies, skipping\n";
+            }
+            
+            # Query for sample name
+            my $oIDlookup = $dbPUB->selectall_arrayref("SELECT I.Sample_Name,I.Strain_Name,I.Flu_Type,I.Expected_Subtype FROM tCEIRS_Extracts as E JOIN tCEIRS_Isolates as I ON E.Isolate_ID=I.Isolate_ID WHERE E.Extract_ID=$sExtractID;") or die $DBI::errstr;;
+            if (@$oIDlookup == 0){
+               # No records found, we proceed with defaults of 'unknown'
+            }
+            elsif (@$oIDlookup == 1){
+               # Get the data for the current assembly
+               my $rRow = shift @$oIDlookup;
+               ($sSampleName, $sStrain, $sType, $sExpectedSubtype) = @$rRow;
+            }
+            else{
+               # We got more than one record. This shouldn't happen!
+               $nCheckFailed = 1;
+               push @{$hCheckErrors{$sInputFolder}}, "Warning: sample '$sInputFolder' for run '$sRunID' returned multiple extracts, skipping\n";
+            }
+
+            $sSampleName =~ s/[\r\n]//g;
+            $sStrain     =~ s/[\r\n]//g;            
+            $hCheckPassed{$sInputFolder} = join("\t", $sSampleName,$sStrain,$sType,$sExpectedSubtype,$sAssemblyStatus, $sAssemblyQuality, $sAssemblySubtype, $nTotalReads, $nMappedReads, $nIAVpct, $nIBVpct, $nEUKpct, $nBCTpct, $nVariants);
+         }
+      }
+      else{
+         warn "Warning: Did not find paired fastq.gz files in folder '$sInputFolder', skipping\n";
+      }
+   }
+}
+
+# Print errors
+if (%hCheckErrors){
+   foreach my $sInputFolder (sort keys %hCheckErrors){
+      foreach my $sError (sort keys %{$hCheckErrors{$sInputFolder}}){
+         print $sError;
+      }
+   }
+}
+
+# Write metadata file
+if (%hCheckPassed){
+   open OUT, ">${sPrefix}_metadata.txt" or die "Error: can't open '${sPrefix}_metadata.txt': $!\n";
+   print OUT "NGS_Sample_ID\tSample_Name\tStrain\tType\tExpectedSubtype\tAssembly_Status\tAssembly_Quality\tAssembly_Subtype\tTotal_Reads\tMapped_Reads\tIAV_percent\tIBV_percent\tHost_percent\tBacteria_percent\tCount_Alt_Variants_above15%\n";
+   foreach my $sInputFolder (sort keys %hCheckPassed){
+      print OUT "$sInputFolder\t$hCheckPassed{$sInputFolder}\n";
+   }
+   close OUT;
+}
+
+# Go through results that passed all checks. Prepare meta-data file and archive
+open TAR, ">${sPrefix}_tar.tmp" or die "Error: can't open '${sPrefix}_tar.tmp': $!\n";
+foreach my $sInputFolder (keys %hCheckPassed){
+   print TAR "$sInputFolder/01_fastqs/${sInputFolder}_1.fastq.gz\n"                     if (-e "$sInputFolder/01_fastqs/${sInputFolder}_1.fastq.gz");
+   print TAR "$sInputFolder/01_fastqs/${sInputFolder}_2.fastq.gz\n"                     if (-e "$sInputFolder/01_fastqs/${sInputFolder}_2.fastq.gz");
+   print TAR "$sInputFolder/02_assembly/${sInputFolder}_ref.bam\n"                      if (-e "$sInputFolder/02_assembly/${sInputFolder}_ref.bam");
+   print TAR "$sInputFolder/02_assembly/${sInputFolder}_ref.bam.bai\n"                  if (-e "$sInputFolder/02_assembly/${sInputFolder}_ref.bam.bai");
+   print TAR "$sInputFolder/02_assembly/${sInputFolder}.fasta\n"                        if (-e "$sInputFolder/02_assembly/${sInputFolder}.fasta");
+   print TAR "$sInputFolder/03_qualityControl/${sInputFolder}_qualityControl.pdf\n"     if (-e "$sInputFolder/03_qualityControl/${sInputFolder}_qualityControl.pdf");
+   #   print TAR "$sInputFolder/04_variants/${sInputFolder}_variable_bases.tsv\n"           if (-e "$sInputFolder/04_variants/${sInputFolder}_variable_bases.tsv");
+}
+print TAR "${sPrefix}_metadata.txt\n";
+`tar czvf ${sPrefix}_release_${sCurrentDate}_${sCurrentTime}.tar.gz -T ${sPrefix}_tar.tmp`;
+`rm ${sPrefix}_tar.tmp`
