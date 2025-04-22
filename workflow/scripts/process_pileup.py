@@ -1,151 +1,173 @@
-import sys
+#!/usr/bin/env python3
+
 import os
+import sys
 import argparse
+import logging
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--pileup", required=True)
-parser.add_argument("--changes", required=True)
-parser.add_argument("--primers", required=True)
-parser.add_argument("--chrom", required=True)
-parser.add_argument("--outdir", required=True)
-parser.add_argument("--min_ratio", type=float, default=0.8)
-args = parser.parse_args()
+def parse_args():
+    parser = argparse.ArgumentParser(description="Analyze pileup, apply Pilon changes, and flag variable bases.")
+    parser.add_argument("--sample_folder", required=True, help="Path to the sample folder containing Pilon changes")
+    parser.add_argument("--outdir", required=True, help="Output directory")
+    parser.add_argument("--chrs", required=True, help="Chromosome or reference ID")
+    parser.add_argument("--primer_set", required=True, help="Path to the combined primer set file")
+    parser.add_argument("--min_ratio", type=float, default=0.9, help="Minimum allele fraction to avoid flagging")
+    return parser.parse_args()
 
-# Read changes
-changes = {}
-with open(args.changes) as f:
-    for line in f:
-        pos, ref, alt = line.strip().split()[:3]
-        changes[pos] = (ref, alt)
+def parse_primers(filepath):
+    primer_positions = set()
+    with open(filepath) as f:
+        f.readline()  # skip header
+        for line in f:
+            try:
+                name, seq, pool, length, tm, gc, start, end = line.split()
+                for i in range(min(int(start), int(end)), max(int(start), int(end))):
+                    primer_positions.add(i)
+            except ValueError:
+                continue
+    return primer_positions
 
-# Read primer positions
-primer_positions = set()
-with open(args.primers) as f:
-    for line in f:
-        primer_positions.add(int(line.strip()))
+def main():
+    args = parse_args()
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-outfile = os.path.join(args.outdir, f"{args.chrom}_variable_bases.tsv")
-outseq = ""  # Moved outside to accumulate full sequence
+    sample_folder, outdir, chrs = args.sample_folder, args.outdir, args.chrs
 
-with open(args.pileup) as f, open(outfile, "w") as out:
-    out.write("reference\tposition\tflagged\tin_primer\treference_base\tpilon_base\tdepth\treference_base_fraction\tforward_depth"
-              "\tforward_fraction\treverse_depth\treverse_fraction\tA\tT\tC\tG\ta\tt\tc\tg\tn\tinsertion\tdeletion\n")
-    
-    for line in f:
-        ref, pos, refbase, cov, seq, qual = line.split()
-        refbase = refbase.lower()
-        
-        # Modify base according to changes (if present)
-        if pos in changes and len(changes[pos][0]) == 1 and len(changes[pos][1]) == 1 and changes[pos][0] != '.':
-            if refbase != changes[pos][0].lower():
-                sys.exit("pileup doesn't match pilon output")
-            new_refbase = changes[pos][1].lower()
-        elif pos in changes:
-            new_refbase = changes[pos][1].lower()
-        else:
-            new_refbase = refbase
+    # Read Pilon changes
+    changes = {}
+    pilon_changes_path = f"{sample_folder}/02_assembly/{chrs}_pilon.changes"
+    with open(pilon_changes_path) as f:
+        for line in f:
+            pos = line.split()[0].split(':')[1]
+            ref_base = line.split()[2]
+            new_base = line.split()[3]
+            changes[pos] = (ref_base, new_base)
 
-        counts = {'a': 0, 't': 0, 'c': 0, 'g': 0, 'A': 0, 'T': 0, 'C': 0, 'G': 0, 'n': 0, 'I': 0, 'D': 0}
-        depth = 0
-        seq = list(seq)
-        getdel = False
-        getins = False
-        forward_depth = 0
-        reverse_depth = 0
+    primer_positions = parse_primers(args.primer_set)
 
-        # Process sequence
-        while seq:
-            x = seq.pop(0)
-            mod = None
-            if x == '.':
-                mod = refbase.upper()
-                forward_depth += 1
-            elif x == ',':
-                mod = refbase.lower()
-                reverse_depth += 1
-            elif x == '+':
-                getins = True
-                digit = ''
-            elif x == '-':
-                getdel = True
-                digit = ''
-            elif x.isdigit() and (getdel or getins):
-                digit += x
-            elif getdel:
-                for _ in range(int(digit) - 1):
-                    seq.pop(0)
-                mod = 'D'
-                getdel = False
-            elif getins:
-                for _ in range(int(digit) - 1):
-                    seq.pop(0)
-                mod = 'I'
-                getins = False
-            elif x == '^':
-                seq.pop(0)
-            elif x in ['a', 't', 'c', 'g', 'A', 'T', 'C', 'G']:
-                mod = x
-                if x.islower():
-                    reverse_depth += 1
-                else:
-                    forward_depth += 1
-            elif x in ['$', '*']:
-                pass
+    modlist = ['A', 'T', 'C', 'G', 'a', 't', 'c', 'g', 'n', 'I', 'D']
+    outseq = ""
+
+    pileup_path = f"{outdir}/{chrs}_pileup"
+    output_table = f"{outdir}/{chrs}_variable_bases.tsv"
+
+    with open(pileup_path) as f, open(output_table, "w") as out:
+        out.write("reference\tposition\tflagged\tin_primer\treference_base\tpilon_base\tdepth\treference_base_fraction\tforward_depth"
+                "\tforward_fraction\treverse_detph\treverse_fraction\tA\tT\tC\tG\ta\tt\tc\tg\tn\tinsertion\tdeletion\n") 
+        for line in f:
+            ref, pos, refbase, cov, seq, qual = line.split()
+            refbase = refbase.lower()
+            pos_int = int(pos)
+
+            if pos in changes and len(changes[pos][0]) == 1 and len(changes[pos][1]) == 1 and changes[pos][0] != '.':
+                if refbase != changes[pos][0].lower():
+                    sys.exit("pileup doesn't match Pilon output at position %s" % pos)
+                new_refbase = changes[pos][1].lower()
+            elif pos in changes:
+                new_refbase = changes[pos][1].lower()
             else:
-                sys.exit(f"Base not recognised {x}")
+                new_refbase = refbase
 
-            if mod:
-                counts[mod] += 1
-                depth += 1
+            counts = {x: 0 for x in modlist}
+            depth = 0
+            forward_depth = 0
+            reverse_depth = 0
+            seq = list(seq)
+            getdel = getins = False
+            digit = ""
 
-        # Calculate fractions
-        try:
-            fraction = (counts[new_refbase.upper()] + counts[new_refbase.lower()]) / depth
-        except KeyError:
-            continue
-        except ZeroDivisionError:
-            fraction = None
+            while seq:
+                x = seq.pop(0)
+                mod = None
 
-        try:
-            forward_fraction = counts[new_refbase.upper()] / forward_depth
-        except ZeroDivisionError:
-            forward_fraction = "no_cov"
+                if x == '.':
+                    mod = refbase.upper()
+                    forward_depth += 1
+                elif x == ',':
+                    mod = refbase.lower()
+                    reverse_depth += 1
+                elif x == '+':
+                    getins = True
+                    digit = ''
+                elif x == '-':
+                    getdel = True
+                    digit = ''
+                elif x.isdigit() and (getins or getdel):
+                    digit += x
+                elif getins:
+                    for _ in range(int(digit) - 1):
+                        seq.pop(0)
+                    mod = 'I'
+                    getins = False
+                elif getdel:
+                    for _ in range(int(digit) - 1):
+                        seq.pop(0)
+                    mod = 'D'
+                    getdel = False
+                elif x == '^':
+                    seq.pop(0)  # skip mapping quality
+                elif x in ['a', 't', 'c', 'g', 'A', 'T', 'C', 'G']:
+                    mod = x
+                    if x.islower():
+                        reverse_depth += 1
+                    else:
+                        forward_depth += 1
+                elif x in ['$', '*']:
+                    continue
+                else:
+                    sys.exit("Unrecognized base in pileup: " + x)
 
-        try:
-            reverse_fraction = counts[new_refbase.lower()] / reverse_depth
-        except ZeroDivisionError:
-            reverse_fraction = "no_cov"
+                if mod:
+                    counts[mod] += 1
+                    depth += 1
 
-        # Determine flagged status
-        if fraction is None:
-            flagged = "no_cov"
-            outseq += 'n'
-        elif int(cov) < 10:
-            flagged = "low_cov"
-            outseq += 'n'
-        elif pos in changes and (len(changes[pos][0]) != 1 or len(changes[pos][1]) != 1):
-            flagged = 'indel'
-        elif (forward_fraction == "no_cov" or forward_fraction < args.min_ratio) and \
-             (reverse_fraction == "no_cov" or reverse_fraction < args.min_ratio):
-            flagged = "FLAGGED"
-            outseq += 'n'
-        else:
-            flagged = "OK"
-            outseq += new_refbase
+            try:
+                fraction = (counts[new_refbase.upper()] + counts[new_refbase.lower()]) / depth
+            except KeyError:
+                continue
+            except ZeroDivisionError:
+                fraction = None
 
-        # Check if position is in primer regions
-        inprimer = "Y" if int(pos) in primer_positions else "N"
+            try:
+                forward_fraction = counts[new_refbase.upper()] / forward_depth
+            except ZeroDivisionError:
+                forward_fraction = "no_cov"
 
-        # Write results
-        outlist = [ref, pos, flagged, inprimer, refbase, new_refbase, cov, fraction, forward_depth,
-                   forward_fraction, reverse_depth, reverse_fraction]
-        for i in ['A', 'T', 'C', 'G', 'a', 't', 'c', 'g', 'n', 'I', 'D']:
-            outlist.append(counts[i])
-        out.write('\t'.join(map(str, outlist)) + '\n')
+            try:
+                reverse_fraction = counts[new_refbase.lower()] / reverse_depth
+            except ZeroDivisionError:
+                reverse_fraction = "no_cov"
 
-# Write final sequence
-with open(f"{args.outdir}/{args.chrom}.final.fna", "w") as out:
-    out.write(f">{args.chrom}\n")
-    for i in range(0, len(outseq), 80):
-        out.write(outseq[i:i+80] + '\n')
+            if fraction is None:
+                flagged = "no_cov"
+                outseq += 'n'
+            elif int(cov) < 10:
+                flagged = "low_cov"
+                outseq += 'n'
+            elif pos in changes and (len(changes[pos][0]) != 1 or len(changes[pos][1]) != 1):
+                flagged = 'indel'
+            elif (forward_fraction == "no_cov" or forward_fraction < args.min_ratio) and \
+                 (reverse_fraction == "no_cov" or reverse_fraction < args.min_ratio):
+                flagged = "FLAGGED"
+                outseq += 'n'
+            else:
+                flagged = "OK"
+                outseq += new_refbase
+
+            in_primer = "Y" if pos_int in primer_positions else "N"
+
+            outlist = [ref, pos, flagged, in_primer, refbase, new_refbase, cov, fraction,
+                       forward_depth, forward_fraction, reverse_depth, reverse_fraction]
+            outlist += [counts[i] for i in modlist]
+            out.write('\t'.join(map(str, outlist)) + '\n')
+
+    with open(f"{outdir}/{chrs}.final.fna", "w") as out:
+        out.write(">%s\n" % chrs)
+        for i in range(0, len(outseq), 80):
+            out.write(outseq[i:i+80] + '\n')
+
+    logging.info("Finished processing %s", chrs)
+
+if __name__ == "__main__":
+    main()
 
