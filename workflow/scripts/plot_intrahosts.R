@@ -68,6 +68,7 @@ alt.ratio = data.frame(
     del = d.var$del / d.var$depth
 )
 
+
 set.var = apply(alt.ratio >= opt$varthr & alt.ratio < 0.5, 1, any)
 alt.ratio = alt.ratio[set.var, ]
 alt.ratio = alt.ratio[complete.cases(alt.ratio), ]
@@ -98,6 +99,7 @@ if (any(set.var)) {
                     }
                     
                     # Adjust alt.bases if base matches pilon base
+                    # Adjust alt.bases if base matches pilon base
                     if (b == toupper(d.var$pilon_base[row])) {
                         all.bases = colnames(alt.ratio[which(alt.ratio[i,] > opt$varthr)])
                         
@@ -106,9 +108,9 @@ if (any(set.var)) {
                         } else {
                             # Remove pilon base if not present in all.bases
                             if (all(all.bases %in% b)) {
-                                alt.bases[[i]] = i  # Keep current base
+                                alt.bases[[i]] = paste0(b)  # Keep current base as a string
                             } else {
-                                alt.bases[[i]] = all.bases[!all.bases %in% b]  # Remove pilon base
+                                alt.bases[[i]] = paste(all.bases[!all.bases %in% b], collapse = "/")  # Collapse to a single string
                             }
                         }
                     }
@@ -132,10 +134,19 @@ if (any(set.var)) {
         cat("No alternate bases detected.\n")
     }
 } else {
-    cat("No variants meet the threshold.\n")
+    # Create empty PDF to satisfy output requirement
+    header <- unlist(lapply(strsplit(opt$output, "_", fixed = TRUE),function(x) x[3]))
+    header <- unlist(lapply(strsplit(header, "/", fixed = TRUE),function(x) x[2]))
+    pdf(file=paste(opt$output))
+    plot.new()
+    title(main=paste0(header, ": No variants found meeting threshold"))
+    dev.off()
 }
 
 # Save the labels to a TSV file before plotting
+if (!exists("variants")) {
+  variants <- data.frame(reference=character(), position=integer(), alt.change=character())
+}
 write.table(variants, file=opt$variants, sep="\t", row.names=FALSE, col.names=TRUE, quote=FALSE)
 
 # Open plot file
