@@ -62,7 +62,7 @@ opendir my($dir), './' or die "Can't open ./ : $!\n";
 my @asFolderContent = readdir $dir;
 foreach my $sInputFolder (@asFolderContent){
    if ( (-d $sInputFolder) and ($sInputFolder !~ /^\.+$/) ){
-      if ( (-e "$sInputFolder/${sInputFolder}_1.fastq.gz") and (-e "$sInputFolder/${sInputFolder}_2.fastq.gz") ){
+      if ( (-e "$sInputFolder/01_fastqs/${sInputFolder}_1.fastq.gz") and (-e "$sInputFolder/01_fastqs/${sInputFolder}_2.fastq.gz") ){
          if ($sInputFolder =~ /^([A-Z]{2})_(\d+)$/){
             my $sSubmitterID = $1;
             my $sExtractID   = $2;
@@ -133,6 +133,7 @@ if (%hCheckPassed){
 
 # Go through results that passed all checks. Prepare meta-data file and archive
 open TAR, ">${sPrefix}_tar.tmp" or die "Error: can't open '${sPrefix}_tar.tmp': $!\n";
+
 foreach my $sInputFolder (keys %hCheckPassed){
    print TAR "$sInputFolder/01_fastqs/${sInputFolder}_1.fastq.gz\n"                     if (-e "$sInputFolder/01_fastqs/${sInputFolder}_1.fastq.gz");
    print TAR "$sInputFolder/01_fastqs/${sInputFolder}_2.fastq.gz\n"                     if (-e "$sInputFolder/01_fastqs/${sInputFolder}_2.fastq.gz");
@@ -140,8 +141,14 @@ foreach my $sInputFolder (keys %hCheckPassed){
    print TAR "$sInputFolder/02_assembly/${sInputFolder}_ref.bam.bai\n"                  if (-e "$sInputFolder/02_assembly/${sInputFolder}_ref.bam.bai");
    print TAR "$sInputFolder/02_assembly/${sInputFolder}.fasta\n"                        if (-e "$sInputFolder/02_assembly/${sInputFolder}.fasta");
    print TAR "$sInputFolder/03_qualityControl/${sInputFolder}_qualityControl.pdf\n"     if (-e "$sInputFolder/03_qualityControl/${sInputFolder}_qualityControl.pdf");
+   #print TAR "multiqc_report.html"                                                      if (-e "multiqc_report.html");
+   #print TAR "multi_bamqc/multisampleBamQcReport.html"                                  if (-e "multi_bamqc/multisampleBamQcReport.html");
    #   print TAR "$sInputFolder/04_variants/${sInputFolder}_variable_bases.tsv\n"           if (-e "$sInputFolder/04_variants/${sInputFolder}_variable_bases.tsv");
 }
+# Add additional reports to TAR
+print TAR "multiqc_report.html\n";                                                 
+print TAR "multi_bamqc/multisampleBamQcReport.html\n";
+
 print TAR "${sPrefix}_metadata.txt\n";
 `tar czvf ${sPrefix}_release_${sCurrentDate}_${sCurrentTime}.tar.gz -T ${sPrefix}_tar.tmp`;
 `rm ${sPrefix}_tar.tmp`
