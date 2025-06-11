@@ -28,7 +28,7 @@ export TMPDIR
 # Process command line arguments
 COREFOLDER=""
 RUNID=""
-OUTFOLDER="/sc/arion/projects/PVI/genomes/assembly"
+OUTFOLDER="/sc/arion/projects/PVI/genomes/SARS_CoV_2/PSP/2025_2026"
 
 while getopts "i:r:o:" opt; do
    case $opt in
