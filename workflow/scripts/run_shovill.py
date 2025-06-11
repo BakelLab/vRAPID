@@ -17,9 +17,9 @@ subprocess.run(f"./seqkit fx2tab --length --name {fasta_file} > {directory}/chro
 # Step 2: Read the chromosome lengths and run shovill for each chromosome
 with open(f"{directory}/chromosome_lengths.txt", "r") as file:
     for line in file:
-        chr, len = line.split()  # Split the line into chromosome and length
-        chr = chr.split("_")[1]
-        print(f"Running shovill for chromosome {chr} with genome size {len}")
+        chrs, length = line.split()  # Split the line into chromosome and length
+        chrs = chrs.split("_")[1]
+        print(f"Running shovill for chromosome {chrs} with genome size {length}")
 
         # Run shovill command
  #       shovill_outdir = f"{chr}_shovill/"
@@ -28,14 +28,16 @@ with open(f"{directory}/chromosome_lengths.txt", "r") as file:
             "--outdir", output_dir,
             "--R1", reads_1,
             "--R2", reads_2,
-            "--gsize", len,
-            "--cpus", "1"
+            "--gsize", length,
+            "--cpus", "1",
+            "--force"
+
         ]
         try:
             subprocess.run(shovill_command, check=True)
         except subprocess.CalledProcessError as e:
-            print(f"Error: shovill command failed for chromosome {chr}")
+            print(f"Error: shovill command failed for chromosome {chrs}")
             raise e
 
 # Clean up
-subprocess.run(f"rm {directory}/chromosome_lengths.txt", shell=True, check=True)
+#subprocess.run(f"rm {directory}/chromosome_lengths.txt", shell=True, check=True)

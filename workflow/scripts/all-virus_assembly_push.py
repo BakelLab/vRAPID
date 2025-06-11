@@ -519,11 +519,11 @@ if __name__ == "__main__":
     logging.basicConfig(filename=logpath, filemode='w', level=logging.INFO)
 
 # reformat Influenza naming structure
-    if virus == 'Influenza-A':
+    if virus == 'IAV':
         virus = 'IAV'
         multi = True
         logging.info('virus set to IAV')
-    elif virus == 'Influenza-B':
+    elif virus == 'IBV':
         virus = 'IBV'
         multi = True
         logging.info('virus set to IBV')

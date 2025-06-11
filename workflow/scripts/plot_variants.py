@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from PyPDF2 import PdfReader, PdfWriter
 import os
 
-def add_variant_plot_to_pdf(pileup_file, input_pdf, output_pdf):
+def add_variant_plot_to_pdf(pileup_file, input_pdf, output_pdf, chrs):
     # Initialize dictionaries and lists
     count_dict = {'a': [], 't': [], 'c': [], 'g': [], 'n': [], 'I': [], 'D': []}
     positions = []
@@ -81,7 +81,7 @@ def add_variant_plot_to_pdf(pileup_file, input_pdf, output_pdf):
     fig.subplots_adjust(bottom=0.3)
 
     # Save the plot to a temporary PDF
-    plot_pdf = f"{sample_name}_temp_plot.pdf"
+    plot_pdf = f"{sample_name}_{chrs}_temp_plot.pdf"
     fig.set_size_inches(8, 6)
     fig.savefig(plot_pdf, dpi=300)
     plt.close(fig)
@@ -111,5 +111,6 @@ if __name__ == "__main__":
     input_pdf = snakemake.input.pdf     # input PDF passed as snakemake input
     output_pdf = snakemake.output.pdf    # output PDF passed as snakemake output
     sample_name = snakemake.params.sample_name
-    add_variant_plot_to_pdf(pileup_file, input_pdf, output_pdf)
+    chrs = snakemake.params.chromosomes
+    add_variant_plot_to_pdf(pileup_file, input_pdf, output_pdf, chrs)
 
