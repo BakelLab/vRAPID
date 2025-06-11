@@ -1,0 +1,15 @@
+name: PDB_connect
+channels:
+ - conda-forge
+ - bioconda
+ - defaults
+dependencies:
+ - python
+ - numpy
+ - pandas
+ - mariadb-connector-c
+ - mysql<9
+ - mysql-connector-python<9
+ - perl
+ - perl-dbi
+ - perl-dbd-mysql
