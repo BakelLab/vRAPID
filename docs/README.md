@@ -6,12 +6,13 @@ vRAPID relies on data structures and naming conventions used by the [Center for 
 
 
 
+## Installation
 
-#### Prepare the snakemake conda environment
+**Set up the snakemake conda environment**
 
 Installation of the required external software packages is largely handled by the pipeline itself, however a conda environment named `snakemake` needs to be present in your environment. We recommend miniconda, which is a free minimal installer for [conda](https://docs.conda.io/en/latest/miniconda.html). Follow the instructions below to start the miniconda installer on Linux. When asked whether the conda environment should automatically be initialized, select 'yes'. Note that Snakemake requires the channel_priority to be set to strict. The post-installation commands to apply this setting are included in the post-installation selection below.
 
-```
+```bash
 # Start miniconda installation
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 sh Miniconda3-latest-Linux-x86_64.sh
@@ -21,9 +22,9 @@ conda config --set auto_activate_base false
 conda config --set channel_priority strict
 ```
 
-On the Mount Sinai [Minerva](https://labs.icahn.mssm.edu/minervalab/minerva-quick-start/) high-performance computer cluster we additionally recommend setting the conda environment `pkgs` and `envs` directories to your `work` folder, which has a much larger storage allocation (100-200 Gb) than the home folders (5 Gb). The conda configuration commands to set the directories are as follows:
+On the Mount Sinai 'Minerva' cluster we additionally recommend setting the conda environment `pkgs` and `envs`directories to your `work` folder, which has a much larger storage allocation (100-200 Gb) than the home folders (5 Gb). The conda configuration commands to set the directories are as follows:
 
-```
+```bash
 mkdir -p /sc/arion/work/$USER/conda/pkgs
 mkdir -p /sc/arion/work/$USER/conda/envs
 conda config --add pkgs_dirs "/sc/arion/work/$USER/conda/pkgs"
@@ -32,181 +33,133 @@ conda config --add envs_dirs "/sc/arion/work/$USER/conda/envs"
 
 After installation and configuration of conda/miniconda, the following 'conda create' command can be used to set up the required 'snakemake' environment.
 
+```bash
+conda create -c conda-forge -c bioconda -n snakemake 'snakemake>=8.25.0' 'conda>=24.7.1'
 ```
-conda create -c conda-forge -c bioconda -n snakemake 'snakemake=6.8.0' 'mamba=0.24' 'tabulate=0.8'
-```
 
-
-
-#### Running the vRAPID pipeline
-
-The following folder structure should exist in the analysis directory to run the pipeline:
+To make use of snakemake's parallelization of jobs, it is important that you have the LSF plugin installed if you are running the pipeline on Mount Sinai's HPC system, Minerva.
 
 ```bash
-<Run-ID>
-├── <virus1>
-│   ├── <expect_subtype>
-│   │   ├── <batch_ID1>
-│   │	│	├── <sample_ID1>
-│   │	│	│   ├── <sample_ID1>
-│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
-│   │	│	├── <sample_ID2>
-│   │	│	│   ├── <sample_ID2>
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │   ├── <batch ID2>
-│   │	│	├── <sample_ID1>
-│   │	│	│   ├── <sample_ID1>
-│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
-│   │	│	├── <sample_ID2>
-│   │	│	│   ├── <sample_ID2>
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-├── <virus2>
-│   ├── <expect_subtype>
-│   │   ├── <batch_ID1>
-│   │	│	├── <sample_ID1>
-│   │	│	│   ├── <sample_ID1>
-│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
-│   │	│	├── <sample_ID2>
-│   │	│	│   ├── <sample_ID2>
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │   ├── <batch_ID2>
-│   │	│	├── <sample_ID1>
-│   │	│	│   ├── <sample_ID1>
-│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
-│   │	│	├── <sample_ID2>
-│   │	│	│   ├── <sample_ID2>
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-
+conda activate snakemake
+pip install snakemake-executor-plugin-cluster-generic
+conda deactivate snakemake
 ```
 
-Then within each sample's subdirectory, create the following two files:
+**Clone the vRAPID repository**
 
-1. `samples.csv:` with the column name `Sample_ID`, holding a list of the samples within each virus-batch subdirectory (the new working directory).
-2. `multibamqc_input.txt:` a tab-separated file that holds the list of samples from `samples.csv` in the first column, and the path to the bam file in the second column. Note that the bam files will always be outputted to `<sample_ID>/02_assembly/<sample_ID>_ref.bam`. Please note that the `multibamqc_input.txt` file **does not** require column names.
+Use `git clone` to clone the vRAPID repository, e.g. in your `~/opt/` folder.
 
-An example of both file structures can be seen below:
+```bash
+git clone https://github.com/BakelLab/FluGAP.git
+```
 
-`samples.csv`
+**Set up the PDB_connect conda repository and .my.cnf configuration file**
+
+Several utility scripts exist that facilitate processing of data for samples sequenced using the Mount Sinai Pathogen Surveillance Program workflow. These scripts connect to the central PathogenDB tracking system to retrieve extract, isolate and assembly information. As such, they require an environment with perl and python database connection libraries. The required libraries can be installed using conda and the provided `PDB_connect.yaml` file in the vRAPID repository.
+
+Assuming that the vRAPID repository was cloned into `~/opt/vRAPID`, the following command will prepare the environment:
+
+```bash
+conda env create -f ~/opt/vRAPID/workflow/envs/PDB_connect.yaml
+```
+
+In addition to the python and perl libraries, the PathogenDB connection also requires a `~/.my.cnf` configuration file installed in your home directory. This configuration file should contain two entries, one for a read/write account that does not have deletion privileges and another for a root account that does have deletion privileges, as follows:
+
+```
+[vanbah01_pathogens_rw]
+user=pathogendb_rw
+database=vanbah01_pathogens
+password=<PASSWORD>
+host=data1
+port=3306
+
+[vanbah01_pathogens_root]
+user=vanbah01_root
+database=vanbah01_pathogens
+password=<PASSWORD>
+host=data1.hpc.mssm.edu
+port=3306
+```
+
+Make sure to change the `<PASSSWORD>` entries to the actual passwords associated with these accounts.
+
+## Prepare sample folders with sequence data for vRAPID assembly
+
+vRAPID processes data organized into individual run folders for each sample. Each run folder must contain the paired-end sequence read files, and the file names must share the same prefix as the run folder name.
+
+For better organization, it is recommended to group samples by sequencing run and virus type using top-level sub-folders for each virus if the run has multiple viruses. For example, **SARS-CoV-2** (for COVID-19 samples) and **Influenza A** (for IAV). These top-level folders must also include a `config.yaml`file that specifies the configuration parameters for the respective run and virus type.
+
+To create the `config.yaml` file, use the template provided in the GitHub repository at `~/opt/vRAPID/config/config.yaml` and adjust it as needed for your analysis.
+
+Note that if you are looking to run the pipeline in parallel, you will need to adjust the workflow-specific `config.yaml` found in the GitHub repository at `~/opt/vRAPID/config/workflow-config.yaml` to your analysis, ensuring the updated paths are also reflected in the workflow wrapper, `~/opt/vRAPID/run-vRAPID`. This is to be placed in `/hpc/users/USER/work/snakemake/profiles/lsf/vRAPID/config.yaml` (or adjust the file path as needed).
+
+Below is an example of what the run folder structure should look like for a given sequencing run:
+
+```
+SEQUENCING-RUN-FOLDER
+ |-
+ |- SARS-CoV-2/
+ |   |- VS/
+ |   | 	|- config.yaml
+ |   | 	|- VS_12341/
+ |   | 	|		|- VS_12341/
+ |   |   			|- VS_12341_1.fastq.gz
+ |   |   			|- VS_12341_2.fastq.gz
+ |   | 	|- VS_12342/
+ |   | 	|		|- VS_12342/
+ |   |   			|- VS_12342_1.fastq.gz
+ |   |   			|- VS_12342_2.fastq.gz
+```
+
+**Automated Run Folder Organization for Mount Sinai Pathogen Surveillance Program Samples**
+
+For samples sequenced using the Mount Sinai Pathogen Surveillance Program workflow and stored in the PathogenDB database, you can use the provided utility script `prepare-psp-flugap-run` to automatically generate the required run folder structure.
+
+This workflow includes an additional level of organization by sample submitter, with folders grouped by the submitter's two-letter prefix.
+
+The `prepare-psp-flugap-run` script requires the path to the core run folder and a run ID as inputs. The output folder for vRAPID is set to /sc/arion/projects/PVI/genomes/SARS_CoV_2/PSP/2025_2026/ by default but can be changed with the -o argument. For example:
+
+```bash
+# Activate the PathogenDB connection environment and run the preparation script
+conda activate PDB_connect
+~/opt/vRAPID/prepare-psp-vRAPID-run \
+   -i /PATH/TO/CORE/FOLDER \
+   -r RUNID \
+   -o /sc/arion/projects/PVI/genomes/SARS_CoV_2/PSP/2025_2026/
+conda deactivate
+```
+
+Note that the run script places a config.yaml file in each toplevel folder that contains the required run-specific parameters (virus type and run ID). Make sure to check these and other parameters before running the pipeline.
+
+Also note that this creates the supplementary files needed to run the pipeline such as the `clusterlogs` directory that holds the log files for each submitted job when the pipeline is run, the `samples.txt` that holds the list of samples to run, and `multibamqc_input.txt` that holds the mapping of each samples and the path to the bam file used when running multibamqc.
+
+For example:
+
+***samples.txt***
 
 ```bash
 Sample_ID
-sample_ID1
-sample_ID2
-sample_ID3
+VS_12341
+VS_12342
 ```
 
-`multibamqc_input.txt`
+***multibamqc_input.txt***
 
 ```bash
-sample_ID1        sample_ID1/02_assembly/sample_ID1_ref.bam
-sample_ID2        sample_ID2/02_assembly/sample_ID2_ref.bam
-sample_ID3        sample_ID3/02_assembly/sample_ID3_ref.bam
+VS_12341	VS_12341/02_assembly/VS_12341_ref.bam
+VS_12342	VS_12342/02_assembly/VS_12342_ref.bam
 ```
 
-The final structure should be as follows:
+## Running the vRAPID pipeline
+
+For each top-level run folder containing sample subfolders, execute the following loop to start the snakemake pipeline for each sample:
 
 ```bash
-<Run-ID>
-├── <virus1>
-│   ├── <expect_subtype>
-│   │   ├── <batch_ID1>
-│   │	│	├── samples.csv
-│   │	│	├── multibamqc_input.txt
-│   │	│	├── <sample_ID1>
-│   │	│	│   ├── <sample_ID1>
-│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
-│   │	│	├── <sample_ID2>
-│   │	│	│   ├── <sample_ID2>
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │   ├── <batch_ID2>
-│   │	│	├── samples.csv
-│   │	│	├── multibamqc_input.txt
-│   │	│	├── <sample_ID1>
-│   │	│	│   ├── <sample_ID1>
-│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
-│   │	│	├── <sample_ID2>
-│   │	│	│   ├── <sample_ID2>
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-├── <virus2>
-│   ├── <expect_subtype>
-│   │   ├── <batch_ID1>
-│   │	│	├── samples.csv
-│   │	│	├── multibamqc_input.txt
-│   │	│	├── <sample_ID1>
-│   │	│	│   ├── <sample_ID1>
-│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
-│   │	│	├── <sample_ID2>
-│   │	│	│   ├── <sample_ID2>
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │   ├── <batch_ID2>
-│   │	│	├── samples.csv
-│   │	│	├── multibamqc_input.txt
-│   │	│	├── <sample_ID1>
-│   │	│	│   ├── <sample_ID1>
-│   │	│	│   │	├── <sample_ID1>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID1>_2.fastq.gz
-│   │	│	├── <sample_ID2>
-│   │	│	│   ├── <sample_ID2>
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
-│   │	│	│   │	├── <sample_ID2>_1.fastq.gz
+# NOTE: make sure that you do not have any conda environments loaded when executing this command
+submitjob 12 -c 1 -m 5 -q premium -P acc_PVI ~/opt/vRAPID/run-flugap -i ${RUNID} -p ${PWD} -s samples.txt
 ```
 
-Lastly, to successfully run the pipeline, depending on the virus, the `config.yaml` file within the pipeline repository might need to be edited. Please note that the current default settings are set for SARS-CoV-2. The following fields are required within the file:
-
-1. **samples**: Name of the file containing a list of the samples being run. Currently set to `samples.csv`.
-2. **run_id:** Run ID name, typically identified as `TD######` from the sequencing core's data release e-mail.
-3. **reference:** path to the reference within the `db` directory that is found in the repository. Currently set to `sars-cov-2/COVID.fa`.
-4. **genbank:** path to the GenBank file within the `db` directory that is found in the repository. Currently set to `sars-cov-2/COVID.gbk`.
-5. **reverse_primer:** path to the 3-prime primer file within the `db` directory that is found in the repository. Currently set to `sars-cov-2/SARS-CoV-2_primers_3prime_NI.fa`.
-6. **forward_primer:** path to the 5-prime primer file within the `db` directory that is found in the repository. Currently set to `sars-cov-2/SARS-CoV-2_primers_5prime_NI.fa`.
-7. **primer_set_2kb:**  path to the 2kb-prime set file within the `db` directory that is found in the repository. Currently set to `sars-cov-2/SARS-CoV-2_primers_2kb_set.tsv`.
-8. **primer_set_1_5kb:**  path to the 1.5kb-prime set file within the `db` directory that is found in the repository. Currently set to `sars-cov-2/SARS-CoV-2_primers_1.5kb_set.tsv`.
-9. **virus:** the virus name for the samples being run. Currently set to `SARS-CoV-2`. Other options include: `Influenza-A`, `Influenza-B`, `sCoV`, `MPX`.
-10. **path:** the full path to where the samples being run are located. See above for the proper structure.
-11. **length:** length of the reference genome(s). For multi-segmented viruses like influenza, this can be a list of lengths, ordered with respect to the FASTA headers.
-12. **ref_fasta_headers:** The name of FASTA header(s) in the reference genome. For multi-segmented viruses like influenza, this can be a list of headers, ordered with respect to the length.
-
-##### *Note for users from the Bakel lab only*
-From a typical data release from the sequencing core the starting directory structure will look as follows: 
-
-```bash
-<Run-ID>
-└───<sample_ID1>
-│   │   <sample_ID1>_1.fastq.gz
-│   │   <sample_ID1>_2.fastq.gz
-│
-└───<sample_ID2>
-    │   <sample_ID2>_1.fastq.gz
-    │   <sample_ID2>_2.fastq.gz
-```
-
-In order to create the required directory structure for the pipeline run:
-
-`python ~/opt/vRAPID/workflow/scripts/organize_run_samples.py`
-
-This script queries to PathogenDB, separating the samples into subdirectories based on the virus type, expected subtype, and batch ID. If no subtype is expected, then the script separates the samples into a `None` subdirectory. This creates the final directory structure within the sequencing run directory as shown before. You can then proceede to generate the `samples.csv` and `multibamqc_input.txt` as previously mentioned.
-
-#### Running vRAPID
-
-Then once the files are generated, the pipeline can be run using the following command:
-
-`submitjob 12 -c 4 -m 64 -q private -P acc_PVI ~/opt/vRAPID/run-vRAPID-analysis -i <run-ID> -p <path> -s <samples-run-csv>`
-
-Note that the `<run-ID> `, `<path>`, and `<samples-run-csv>` arguments in the command above are optional. If they are not supplied, then they are pulled from the `config.yaml` file.
+Note that the config needs to exist in the run directory. See the config directory for the `config.yaml` format for the pipeline. This submits each pipeline step as a seperate job.
 
 #### vRAPID output
 
