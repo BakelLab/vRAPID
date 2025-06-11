@@ -50,7 +50,7 @@ conda deactivate snakemake
 Use `git clone` to clone the vRAPID repository, e.g. in your `~/opt/` folder.
 
 ```bash
-git clone https://github.com/BakelLab/FluGAP.git
+git clone https://github.com/BakelLab/vRAPID.git
 ```
 
 **Set up the PDB_connect conda repository and .my.cnf configuration file**
