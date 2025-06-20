@@ -329,6 +329,7 @@ rule process_pileup:
 			--primer_set {input.primer_set} 2> {log}
 		"""
 
+
 rule run_bamtools_split:
 	message: "Run bamtools split"
 	input:
@@ -419,6 +420,7 @@ rule run_picard_duplicates:
 				M={output.txt} > {log} 2>&1
 		fi
 		"""
+
 
 rule run_picard_alignment_metrics:
 	message: "Get alignment metrics using Picard"
