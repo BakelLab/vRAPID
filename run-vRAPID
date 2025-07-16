@@ -6,15 +6,9 @@
 # DEFINE GLOBAL ENVIRONMENT PARAMETERS #
 ########################################
 
-# For all snakemake based pipelines we will at least need to know the location of the
-# repository itself, as well as a per-user central conda environment work directory.
-# If we do not specify the latter, the conda environments cannot easily be reused
-# between jobs and a new environment will be created in each folder that the pipeline
-# runs in. These would then need to be cleared manually each time.
-
-# Set path to parent dir for conda environment work directory and git repositories
+# Set path to parent dir for conda environment
 # Also pick up on the number of CPUs defined in jobstatus
-CONDA_WORKDIR="${CONDA_WORKDIR:=/sc/arion/work/$USER/conda/envs/snakemake}"
+CONDA_PKGS_DIRS="${PWD}/.snakemake/conda/pkgs"
 GIT_REPODIR="${GIT_REPODIR:=$HOME/opt/vRAPID}"
 
 # Make sure the repository exists and has a Snakefile at the expected location
@@ -24,21 +18,15 @@ then
    exit 2
 fi
 
-# Create the conda environment work directory if it doesn't already exist
-if [[ ! -d "${CONDA_WORKDIR}" ]]
+# Make sure to use a local package cache to avoid conflicts between jobs
+if [[ ! -d "${CONDA_PKGS_DIRS}" ]]
 then
-   mkdir -p "${CONDA_WORKDIR}"
-fi
-
-# Make sure we have a conda environment work directory at this point (the directory creation could have failed)
-if [[ ! -d "${CONDA_WORKDIR}" ]]
-then
-   echo "Error: could not find the conda environment work directory at the defined location:\n  ${CONDA_WORKDIR}"
-   exit 2
+   mkdir -p "${CONDA_PKGS_DIRS}"
 fi
 
 # Export environment parameters
-export CONDA_WORKDIR GIT_REPODIR
+export GIT_REPODIR
+export CONDA_PKGS_DIRS
 
 ############################
 # PROCESS COMMANDLINE ARGS #
