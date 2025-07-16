@@ -1,0 +1,13 @@
+executor: lsf
+default-resources:
+  mem_mb: 95000
+  queue: "express"
+  project: "acc_PVI"
+  runtime: "12h"
+  span: "\"span[hosts=1]\""
+latency-wait: 5
+rerun-incomplete: false
+jobs: 100
+conda-prefix: "/sc/arion/work/$USER/conda/envs/snakemake/bin"
+use-conda: true
+cluster-generic-submit-cmd: bsub -W {resources.runtime} -n 12 -M {resources.mem_mb} -P {resources.project} -q {resources.queue} -R {resources.span} -oo clusterlogs/%J.OU
