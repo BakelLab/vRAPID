@@ -42,7 +42,7 @@ def main(output_file):
     tools = {
         "cutadapt": "cutadapt --version",
         "fastqc": "fastqc --version",
-        "kraken2": "krarken2 --version",
+        "kraken2": "kraken2 --version",
         "minimap2": "minimap2 --version",
         "multiqc": "multiqc --version",
         "pilon": "pilon --version",
