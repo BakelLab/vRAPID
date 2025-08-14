@@ -1,0 +1,156 @@
+Discrepancy Report Results
+
+Summary
+DISC_PROTEIN_NAMES:All proteins have same name "hypothetical protein"
+FATAL: MISSING_PROTEIN_ID:8 proteins have invalid IDs.
+DISC_SOURCE_QUALS_ASNDISC:strain (all present, all same)
+DISC_SOURCE_QUALS_ASNDISC:taxname (all present, all same)
+DISC_FEATURE_COUNT:CDS: 8 present
+DISC_COUNT_NUCLEOTIDES:8 nucleotide Bioseqs are present
+FEATURE_LOCATION_CONFLICT:8 features have inconsistent gene locations.
+DISC_QUALITY_SCORES:Quality scores are missing on all sequences.
+ONCALLER_COMMENT_PRESENT:8 comment descriptors were found (all same)
+MISSING_GENOMEASSEMBLY_COMMENTS:8 bioseqs are missing GenomeAssembly structured comments
+MOLTYPE_NOT_MRNA:8 molecule types are not set as mRNA.
+TECHNIQUE_NOT_TSA:8 technique are not set as TSA
+MISSING_STRUCTURED_COMMENT:8 sequences do not include structured comments.
+MISSING_PROJECT:16 sequences do not include project.
+DISC_INCONSISTENT_MOLINFO_TECH:Molinfo Technique Report (some missing, all same)
+
+
+Detailed Report
+
+DiscRep_ALL:DISC_PROTEIN_NAMES::All proteins have same name "hypothetical protein"
+
+FATAL: DiscRep_ALL:MISSING_PROTEIN_ID::8 proteins have invalid IDs.
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB2_1 (length 759)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB1_1 (length 757)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PA_1 (length 716)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:HA_1 (length 577)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NP_1 (length 498)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NA_1 (length 469)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:M_1 (length 252)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NS_1 (length 230)
+
+DiscRep_ALL:DISC_SOURCE_QUALS_ASNDISC::strain (all present, all same)
+DiscRep_SUB:DISC_SOURCE_QUALS_ASNDISC::8 sources have 'strain' for strain
+DiscRep_ALL:DISC_SOURCE_QUALS_ASNDISC::taxname (all present, all same)
+DiscRep_SUB:DISC_SOURCE_QUALS_ASNDISC::8 sources have 'Genus species' for taxname
+DiscRep_ALL:DISC_FEATURE_COUNT::CDS: 8 present
+DiscRep_ALL:DISC_COUNT_NUCLEOTIDES::8 nucleotide Bioseqs are present
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB2 (length 2341)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB1 (length 2341)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PA (length 2233)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:HA (length 1795)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NP (length 1565)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NA (length 1466)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:M (length 1027)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NS (length 890)
+
+DiscRep_ALL:FEATURE_LOCATION_CONFLICT::8 features have inconsistent gene locations.
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:CDS	hypothetical protein	PB2:28-2307	PNHOOMBA_00001
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:CDS	hypothetical protein	PB1:25-2298	PNHOOMBA_00002
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:CDS	hypothetical protein	PA:25-2175	PNHOOMBA_00003
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:CDS	hypothetical protein	HA:30-1763	PNHOOMBA_00004
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:CDS	hypothetical protein	NP:46-1542	PNHOOMBA_00005
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:CDS	hypothetical protein	NA:20-1429	PNHOOMBA_00006
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:CDS	hypothetical protein	M:26-784	PNHOOMBA_00007
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:CDS	hypothetical protein	NS:27-719	PNHOOMBA_00008
+
+DiscRep_ALL:DISC_QUALITY_SCORES::Quality scores are missing on all sequences.
+
+DiscRep_ALL:ONCALLER_COMMENT_PRESENT::8 comment descriptors were found (all same)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB2:Annotated using prokka 1.14.6 from https://github.com/tseemann/prokka
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB1:Annotated using prokka 1.14.6 from https://github.com/tseemann/prokka
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PA:Annotated using prokka 1.14.6 from https://github.com/tseemann/prokka
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:HA:Annotated using prokka 1.14.6 from https://github.com/tseemann/prokka
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NP:Annotated using prokka 1.14.6 from https://github.com/tseemann/prokka
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NA:Annotated using prokka 1.14.6 from https://github.com/tseemann/prokka
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:M:Annotated using prokka 1.14.6 from https://github.com/tseemann/prokka
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NS:Annotated using prokka 1.14.6 from https://github.com/tseemann/prokka
+
+DiscRep_ALL:MISSING_GENOMEASSEMBLY_COMMENTS::8 bioseqs are missing GenomeAssembly structured comments
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB2 (length 2341)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB1 (length 2341)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PA (length 2233)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:HA (length 1795)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NP (length 1565)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NA (length 1466)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:M (length 1027)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NS (length 890)
+
+DiscRep_ALL:MOLTYPE_NOT_MRNA::8 molecule types are not set as mRNA.
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB2 (length 2341)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB1 (length 2341)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PA (length 2233)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:HA (length 1795)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NP (length 1565)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NA (length 1466)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:M (length 1027)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NS (length 890)
+
+DiscRep_ALL:TECHNIQUE_NOT_TSA::8 technique are not set as TSA
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB2 (length 2341)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB1 (length 2341)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PA (length 2233)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:HA (length 1795)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NP (length 1565)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NA (length 1466)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:M (length 1027)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NS (length 890)
+
+DiscRep_ALL:MISSING_STRUCTURED_COMMENT::8 sequences do not include structured comments.
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB2 (length 2341)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB1 (length 2341)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PA (length 2233)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:HA (length 1795)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NP (length 1565)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NA (length 1466)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:M (length 1027)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NS (length 890)
+
+DiscRep_ALL:MISSING_PROJECT::16 sequences do not include project.
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB2 (length 2341)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB2_1 (length 759)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB1 (length 2341)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB1_1 (length 757)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PA (length 2233)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PA_1 (length 716)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:HA (length 1795)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:HA_1 (length 577)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NP (length 1565)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NP_1 (length 498)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NA (length 1466)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NA_1 (length 469)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:M (length 1027)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:M_1 (length 252)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NS (length 890)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NS_1 (length 230)
+
+DiscRep_ALL:DISC_INCONSISTENT_MOLINFO_TECH::Molinfo Technique Report (some missing, all same)
+DiscRep_SUB:DISC_INCONSISTENT_MOLINFO_TECH::technique (all missing)
+DiscRep_SUB:DISC_INCONSISTENT_MOLINFO_TECH::8 Molinfos are missing field technique
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:HA (length 1795)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:M (length 1027)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NA (length 1466)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NP (length 1565)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:NS (length 890)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PA (length 2233)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB1 (length 2341)
+cH15-3N2_HK14_FK49195_egg/PROKKA_07282025:PB2 (length 2341)
+

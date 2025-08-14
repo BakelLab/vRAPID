@@ -1,0 +1,44 @@
+>Feature PB1
+22	2280	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	IKFIFMLB_00001
+			product	hypothetical protein
+>Feature PB2
+24	2336	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	IKFIFMLB_00002
+			product	hypothetical protein
+>Feature PA
+90	2210	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	IKFIFMLB_00003
+			product	hypothetical protein
+>Feature HA
+34	1782	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	IKFIFMLB_00004
+			product	hypothetical protein
+>Feature NP
+70	1743	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	IKFIFMLB_00005
+			product	hypothetical protein
+>Feature NA
+61	1461	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	IKFIFMLB_00006
+			product	hypothetical protein
+>Feature M
+25	771	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	IKFIFMLB_00007
+			product	hypothetical protein
+831	1100	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	IKFIFMLB_00008
+			product	hypothetical protein
+>Feature NS
+57	890	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	IKFIFMLB_00009
+			product	hypothetical protein

@@ -1,0 +1,1348 @@
+Seq-entry ::= set {
+  class genbank ,
+  seq-set {
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "PB1" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 2369 ,
+            seq-data
+              iupacna "AGCAGAAGCGGAGCCTTTAAGATGAATATAAATCCTTATTTCCTCTTCATAGATG
+TGCCCATACAGGCAGCAATTTCAACAACATTCCCATACACTGGTGTTCCCCCTTATTCCCATGGAACGGGAACAGGCT
+ACACAATAGACACCGTGATCAGAACACATGAGTACTCAAACAAGGGGAAACAGTACATTTCTGATGTTACAGGATGCA
+CAATGGTAGATCCAACAAATGGCCCATTACCCGAAGATAATGAGCCGAGTGCCTATGCGCAATTAGATTGCGTTTTAG
+AGGCTTTGGATAGAATGGATGAAGAACACCCAGGTCTGTTTCAAGCAGCCTCACAGAATGCTATGGAGGCCCTAATGG
+TCACAACTGTAGACAAATTAACCCAGGGGAGACAGACTTTTGATTGGACAGTATGCAGAAACCAACCTGCTGCAACGG
+CACTGAACACAACAATAACCTCTTTTAGGTTGAATGATTTAAATGGAGCCGACAAAGGTGGATTAGTACCTTTTTGCC
+AGGATATCATTGATTCATTAGACAGACCTGAAATGACTTTCTTCTCAGTAAAGAATATAAAGAAAAAATTGCCTGCCA
+AAAACAGAAAGGGTTTCCTCATAAAGAGGATACCAATGAAGGTAAAGGACAAAATAACCAAAGTGGAATACATCAAAA
+GAGCATTATCATTAAACACAATGACAAAAGACGCTGAAAGAGGCAAACTAAAAAGAAGGGCGATTGCCACCGCTGGAA
+TACAAATCAGAGGGTTTGTATTAGTAGTTGAAAACTTGGCTAAAAATATATGTGAAAATCTAGAACAAAGTGGTTTAC
+CAGTAGGTGGAAACGAGAAGAAAGCCAAACTGTCAAACGCAGTGGCAAAAATGCTCAGTAACTGCCCACCTGGAGGGA
+TCAGCATGACAGTAACAGGAGACAATACTAAATGGAATGAATGTTTAAACCCAAGAATCTTTTTGGCTATGACTGAAA
+GAATAACCAGAGACAGCCCAATTTGGTTCAGGGATTTTTGTAGTATAGCACCGGTCCTGTTCTCCAATAAGATAGCCA
+GATTGGGGAAAGGGTTTATGATAACAAGCAAAACAAAGAGACTGAAGGCTCAAATACCTTGTCCTGATCTGTTTAGTA
+TATCATTAGAAAGATATAATGAAGAAACAAGGGCAAAATTGAAAAAGCTAAAACCATTCTTCAATGAAGAAGGAACTG
+CATCTTTGTCACCTGGGATGATGATGGGAATGTTTAATATGCTATCTACCGTGTTGGGGGTAGCTGCACTAGGTATCA
+AGAACATTGGAAACAAAGAATACTTATGGGATGGACTGCAATCTTCTGATGATTTTGCTCTATTTGTTAATGCAAAGG
+ATGAAGAAACATGTATGGAAGGAATAAACGACTTTTACCGAACATGTAAATTATTGGGAATAAACATGAGCAAAAAGA
+AAAGTTACTGTAATGAGACTGGAATGTTTGAATTTACAAGCATGTTCTACAGAGATGGATTTGTATCTAATTTTGCAA
+TGGAACTCCCTTCATTTGGGGTTGCTGGAGTAAATGAATCAGCAGATATGGCAATAGGGATGACAATAATAAAGAACA
+ACATGATCAACAATGGAATGGGTCCGGCAACAGCACAAACAGCCATACAGTTATTCATAGCTGATTATAGATACACCT
+ACAAATGCCACAGGGGAGATTCCAAAGTAGAGGGAAAGAGAATGAAAATCATAAAGGAGTTATGGGAAAACACTAAAG
+GAAGAGATGGTCTATTAGTAGCAGATGGTGGGCCCAACATTTACAATTTGAGAAACTTGCATATTCCAGAAATAGTAT
+TAAAGTATAACTTAATGGACCCTGAATACAAAGGGCGGTTACTTCATCCTCAAAATCCCTTTGTGGGACATTTGTCTA
+TTGAGGGCATCAAAGAGGCAGATATAACCCCAGCACATGGTCCAGTAAAGAAAATGGACTACGATGCGGTGTCTGGAA
+CTCATAGTTGGAGAACCAAAAGAAACAGATCTATACTAAACACTGATCAGAGGAACATGATTCTTGAGGAACAATGCT
+ACGCTAAGTGTTGCAACCTATTTGAGGCCTGTTTTAACAGTGCATCATACAGGAAGCCAGTGGGTCAACATAGCATGC
+TTGAGGCTATGGCCCACAGATTAAGAATGGATGCACGATTAGATTATGAATCAGGAAGAATGTCAAAGGATGATTTTG
+AGAAAGCAATGGCTCACCTTGGTGAGATTGGGTACATATAAGCTTCGAAGATGTCTATGGGGTTATTGGTCATCATTG
+AATACATGCGATACACAAATGATTAAAATGAAAAAAGGCTCGTGTTTCTACT" } } ,
+        seq {
+          id {
+            local
+              str "PB1_1" } ,
+          descr {
+            title "hypothetical protein IKFIFMLB_00001 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 752 ,
+            seq-data
+              ncbieaa "MNINPYFLFIDVPIQAAISTTFPYTGVPPYSHGTGTGYTIDTVIRTHEYSNKGKQ
+YISDVTGCTMVDPTNGPLPEDNEPSAYAQLDCVLEALDRMDEEHPGLFQAASQNAMEALMVTTVDKLTQGRQTFDWTV
+CRNQPAATALNTTITSFRLNDLNGADKGGLVPFCQDIIDSLDRPEMTFFSVKNIKKKLPAKNRKGFLIKRIPMKVKDK
+ITKVEYIKRALSLNTMTKDAERGKLKRRAIATAGIQIRGFVLVVENLAKNICENLEQSGLPVGGNEKKAKLSNAVAKM
+LSNCPPGGISMTVTGDNTKWNECLNPRIFLAMTERITRDSPIWFRDFCSIAPVLFSNKIARLGKGFMITSKTKRLKAQ
+IPCPDLFSISLERYNEETRAKLKKLKPFFNEEGTASLSPGMMMGMFNMLSTVLGVAALGIKNIGNKEYLWDGLQSSDD
+FALFVNAKDEETCMEGINDFYRTCKLLGINMSKKKSYCNETGMFEFTSMFYRDGFVSNFAMELPSFGVAGVNESADMA
+IGMTIIKNNMINNGMGPATAQTAIQLFIADYRYTYKCHRGDSKVEGKRMKIIKELWENTKGRDGLLVADGGPNIYNLR
+NLHIPEIVLKYNLMDPEYKGRLLHPQNPFVGHLSIEGIKEADITPAHGPVKKMDYDAVSGTHSWRTKRNRSILNTDQR
+NMILEEQCYAKCCNLFEACFNSASYRKPVGQHSMLEAMAHRLRMDARLDYESGRMSKDDFEKAMAHLGEIGYI" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 2 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 751 ,
+                        id
+                          local
+                            str "PB1_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 1 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "PB1_1" ,
+                location
+                  int {
+                    from 21 ,
+                    to 2279 ,
+                    strand plus ,
+                    id
+                      local
+                        str "PB1" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "IKFIFMLB_00001" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "PB2" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 2396 ,
+            seq-data
+              iupacna "AGCAGAAGCGGAGCGTTTTCAAGATGACATTGGCCAAAATTGAATTGTTAAAACA
+ACTGCTAAGGGACAATGAAGCCAAAACAGTTTTGAAGCAAACAACGGTAGACCAATATAACATAATAAGAAAATTCAA
+TACATCAAGGATTGAAAAGAATCCTTCACTAAGGATGAAATGGGCCATGTGTTCTAATTTTCCCTTGGCTCTAACCAA
+GGGCGACATGGCAAATAGAATCCCCTTGGAATACAAAGGAATACAACTTAAAACAAATGCTGAAGACATAGGAACCAA
+AGGCCAAATGTGCTCAATAGCAGCAGTTACTTGGTGGAATACATATGGACCAATAGGAGATACTGAAGGTTTCGAAAG
+GGTCTACGAAAGCTTTTTTCTCAGAAAAATGAGACTTGACAATGCCACTTGGGGCCGAATAACTTTTGGCCCAGTTGA
+AAGAGTGAGAAAAAGGGTACTGCTAAACCCTCTCACCAAGGAAATGCCTCCAGATGAGGCGAGCAATGTGATAATGGA
+AATATTGTTCCCTAAAGAAGCAGGAATACCAAGAGAATCCACTTGGATACATAGGGAACTGATAAAAGAAAAAAGAGA
+AAAATTGAGAGGAACAATGATAACTCCAATCGTACTGGCATACATGCTTGAAAGAGAACTGGTTGCTCGAAGAAGATT
+CTTGCCAGTGGCAGGAGCAACATCAGCTGAGTTCATAGAAATGCTACACTGCTTACAAGGTGAAAATTGGAGACAAAT
+ATATCACCCAGGAGGGAATAAATTAACTGAGTCTAGGTCTCAATCAATGATAGTAGCTTGTAGAAAAATAATCAGAAG
+ATCAATAGTCGCTTCAAACCCACTGGAGCTAGCTGTAGAAATTGCAAACAAGACTGTGATAGATACTGAACCTTTAAA
+GTCATGTCTGGCAGCCATAGACGGAGGTGATGTAGCTTGTGACATAATAAGAGCTGCATTAGGACTAAAGATCAGACA
+AAGACAAAGATTTGGACGGCTTGAGTTAAAAAGAATATCAGGAAGAGGATTCAAAAATGATGAAGAAATATTAATAGG
+GAACGGAACAATACAGAAGATTGGAATATGGGACGGGGAAGAGGAGTTCCATGTAAGATGTGGTGAATGCAGGGGAAT
+ATTAAAAAAGAGTAAAATGAAACTGGAAAAACTACTAATAAATTCAGCCAAAAAGGAGGACATGAGAGATTTAATAAT
+CTTATGCATGGTATTTTCTCAAGACACTAGGATGTTCCAAGGGGTGAGAGGAGAAATAAATTTTCTTAATCGAGCAGG
+CCAACTTTTATCTCCAATGTACCAACTCCAACGATATTTTTTGAATAGAAGCAACGACCTTTTTGATCAATGGGGGTA
+TGAGGAATCACCCAAAGCAAGTGAACTATATGGGATAAATGAATCAATGAATGCATCTGACTATACATTGAAAGGGGT
+TGTAGTGACAAGAAATGTAATTGACGACTTTAGCTCTACTGAAACAGAAAAAGTATCCATAACAAAAAATCTTAGTTT
+AATAAAAAGGACTGGGGAAGTCATAATGGGAGCTAATGACGTGAGTGAATTAGAATCACAAGCACAGCTGATGATAAC
+ATATGATACACCTAAGATGTGGGAAATGGGAACAACCAAAGAACTGGTGCAAAACACTTATCAATGGGTGCTAAAAAA
+CTTGGTAACACTGAAGGCTCAGTTTCTTCTAGGAAAAGAGGACATGTTCCAATGGGATGCATTTGAAGCATTTGAGAG
+CATAATTCCTCAGAAGATGGCTGGTCAGTACAGTGGATTTGCAAGAGCAGTGCTCAAACAAATGAGAGACCAGGAGGT
+TATGAAAACTGACCAGTTCATAAAGTTGTTGCCTTTTTGTTTCTCACCACCAAAATTAAGGAGCAATGGGGAGCCTTA
+TCAATTCTTAAAACTTGTATTGAAAGGAGGAGGGGAAAATTTCATCGAAGTAAGGAAAGGGTCCCCTCTATTTTCCTA
+TAATCCACAAACAGAAGTCCTAACCATATGCGGCAGAATGATGTCATTAAAAGGGAAAATTGAAGATGAAGAAAGGAA
+TAGATCAATGGGGAATGCAGTATTAGCAGGCTTTCTCGTTAGTGGCAAGTATGACCCAGATCTTGGAGATTTCAAAAC
+TATTGAAGAACTTGAAAGGCTGAAACCGGGGGAAAAGGCAAATATCTTACTTTATCAAGGAAAGCCAGTTAAAGTAGT
+TAAAAGGAAAAGGTATAGTGCTTTGTCCAATGACATTTCACAAGGAATTAAGAGACAAAGAATGACAGTTGAGTCCAT
+GGGGTGGGCCTTGAGCTAATATAAATTTATCCATTAATTCAATGAACGCAATTGAGTGAAAAATGCTCGTGTTTCTAC
+T" } } ,
+        seq {
+          id {
+            local
+              str "PB2_1" } ,
+          descr {
+            title "hypothetical protein IKFIFMLB_00002 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 770 ,
+            seq-data
+              ncbieaa "MTLAKIELLKQLLRDNEAKTVLKQTTVDQYNIIRKFNTSRIEKNPSLRMKWAMCS
+NFPLALTKGDMANRIPLEYKGIQLKTNAEDIGTKGQMCSIAAVTWWNTYGPIGDTEGFERVYESFFLRKMRLDNATWG
+RITFGPVERVRKRVLLNPLTKEMPPDEASNVIMEILFPKEAGIPRESTWIHRELIKEKREKLRGTMITPIVLAYMLER
+ELVARRRFLPVAGATSAEFIEMLHCLQGENWRQIYHPGGNKLTESRSQSMIVACRKIIRRSIVASNPLELAVEIANKT
+VIDTEPLKSCLAAIDGGDVACDIIRAALGLKIRQRQRFGRLELKRISGRGFKNDEEILIGNGTIQKIGIWDGEEEFHV
+RCGECRGILKKSKMKLEKLLINSAKKEDMRDLIILCMVFSQDTRMFQGVRGEINFLNRAGQLLSPMYQLQRYFLNRSN
+DLFDQWGYEESPKASELYGINESMNASDYTLKGVVVTRNVIDDFSSTETEKVSITKNLSLIKRTGEVIMGANDVSELE
+SQAQLMITYDTPKMWEMGTTKELVQNTYQWVLKNLVTLKAQFLLGKEDMFQWDAFEAFESIIPQKMAGQYSGFARAVL
+KQMRDQEVMKTDQFIKLLPFCFSPPKLRSNGEPYQFLKLVLKGGGENFIEVRKGSPLFSYNPQTEVLTICGRMMSLKG
+KIEDEERNRSMGNAVLAGFLVSGKYDPDLGDFKTIEELERLKPGEKANILLYQGKPVKVVKRKRYSALSNDISQGIKR
+QRMTVESMGWALS" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 4 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 769 ,
+                        id
+                          local
+                            str "PB2_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 3 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "PB2_1" ,
+                location
+                  int {
+                    from 23 ,
+                    to 2335 ,
+                    strand plus ,
+                    id
+                      local
+                        str "PB2" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "IKFIFMLB_00002" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "PA" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 2306 ,
+            seq-data
+              iupacna "AGCAGAAGCGGTGCGTTTGATTTGTCATAATGGATACTTTTATTACAAGAAACTT
+CCAAACTACAATAATACAAAAGGCCAGAAACACAATGGCAGAATTTAGTGAAGATCCTGAATTACAACCAGCAATGCT
+ATTCAATATCTGCGTCCATCTAGAGGTTTGCTATGTAATAAGTGACATGAATTTTCTTGACGAAGAAGGAAAAGCATA
+TACAGCATTAGAAGGACAAGGGAAAGAACAAAATTTGAGACCACAGTATGAAGTAATTGAGGGAATGCCAAGAACCAT
+AGCATGGATGGTCCAAAGATCCTTAGCTCAAGAGCATGGAATAGAGACTCCCAAGTATCTGGCTGATTTGTTTGATTA
+TAAAACCAAGAGATTTATAGAAGTTGGAATAACAAAAGGATTGGCTGATGATTACTTTTGGAAAAAGAAAGAAAAGTT
+GGGAAATAGCATGGAACTGATGATATTCAGCTACAATCAAGACTACTCGTTAAGTAATGAATCCTCATTGGATGAGGA
+AGGGAAAGGGAGAGTGCTAAGCAGACTCACAGAACTTCAGGCTGAATTAAGTCTGAAAAACCTATGGCAAGTTCTCAT
+AGGAGAAGAAGATGTTGAAAAGGGAATTGACTTTAAACTTGGACAAACAATATCTAGACTAAGGGATATATCTGTTCC
+CGCTGGTTTCTCCAATTTTGAAGGAATGAGGAGCTACATAGACAATATAGACCCAAAAGGAGCAATAGAGAGAAATCT
+AGCAAGGATGTCTCCCTTAGTATCAGTCACACCTAAAAAGTTGACATGGGGGGACCTAAGACCAATAGGGCCTCACAT
+TTACAACCATGAGCTACCAGAAGTTCCATATAATGCCTTTCTTCTAATGTCTGATGAACTGGGGCTGGCCAATATGAC
+TGAGGGAAAGTCCAAAAAACCGAAGACATTAGCCAAAGAATGTCTAGAAAAGTACTCAACACTACGGGATCAAACTGA
+CCCAATATTAATAATGAAAAGCGAAAAAGCTAATGAAAATTTCCTATGGAAGCTTTGGAGAGACTGTGTAAATACAAT
+AAGTAATGAGGAAATGAGTAACGAGTTACAGAAAACCAATTATGCCAAGTGGGCCACAGGGGATGGATTAACATACCA
+GAAAATAATGAAAGAAGTAGCAATAGATGACGAAACAATGTGCCAAGAAGAGCCTAAAATCCCTAATAAATGTAGAGT
+GGCTGCTTGGGTTCAAACAGAGATGAATCTATTGAGCACTCTGACAAGTAAAAGAGCTCTGGACCTACCAGAAATAGG
+GCCAGACGTAGCACCCGTGGAGCATGTAGGGAGTGAAAGAAGGAAATACTTTGTTAATGAAATCAACTACTGTAAGGC
+CTCTACAGTTATGATGAAGTATGTGCTTTTTCACACTTCATTGTTGAATGAAAGCAATGCCAGCATGGGAAAATACAA
+AGTAATACCAATAACCAATAGAGTAGTAAATGAAACAGGAGAAAGTTTCGACATGCTTTATGGTCTGGCGGTTAAAGG
+ACAATCTCATCTGAGGGGAGATACTGATGTTGTAACAGTTGTAACTTTCGAATTTAGTAGTACAGACCCAAGAGTGGA
+CTCAGGAAAGTGGCCAAAATATACTGTGTTTAGGATTGGCTCCCTATTTGTGAGTGGGAGGGAAAAATCTGTGTACCT
+GTATTGCCGAGTGAATGGCACAAATAAGATCCAAATGAAATGGGGAATGGAAGCTAGAAGATGTCTGCTTCAATCAAT
+GCAACAAATGGAAGCAATTGTTGAACAGGAATCATCGATACAGGGATATGACATGACCAAGGCTTGTTTCAAGGGAGA
+CAGAGTAAATAGCCCCAAAACTTTCAGTATTGGAACTCAAGAAGGGAAACTAGTAAAAGGATCCTTTGGAAAAGCACT
+AAGAGTAATATTTACTAAATGTTTGATGCACTATGTATTTGGAAATGCCCAATTGGAGGGGTTTAGTGCCGAGTCTAG
+GAGACTTCTACTGTTGATCCAAGCATTAAAGGACAGAAAGGGCCCTTGGGTGTTCGACTTAGAGGGAATGTATTCTGG
+AATAGAAGAATGTATTAGCAACAACCCTTGGGTAATACAGAGTGCATACTGGTTTAATGAATGGTTGGGCTTTGAAAA
+GGAGGGGAGTAAAGTGTTAGAATCAGTGGATGAAATAATGGATGAATAAAAGGACATGGTACTCAATTTGGTACTATT
+TTGTTCATTATGTATCAAAAACATCCAATAAAAAGAACCAAGAATCAAAAATGCACGTGTTTCTACT" } } ,
+        seq {
+          id {
+            local
+              str "PA_1" } ,
+          descr {
+            title "hypothetical protein IKFIFMLB_00003 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 706 ,
+            seq-data
+              ncbieaa "MAEFSEDPELQPAMLFNICVHLEVCYVISDMNFLDEEGKAYTALEGQGKEQNLRP
+QYEVIEGMPRTIAWMVQRSLAQEHGIETPKYLADLFDYKTKRFIEVGITKGLADDYFWKKKEKLGNSMELMIFSYNQD
+YSLSNESSLDEEGKGRVLSRLTELQAELSLKNLWQVLIGEEDVEKGIDFKLGQTISRLRDISVPAGFSNFEGMRSYID
+NIDPKGAIERNLARMSPLVSVTPKKLTWGDLRPIGPHIYNHELPEVPYNAFLLMSDELGLANMTEGKSKKPKTLAKEC
+LEKYSTLRDQTDPILIMKSEKANENFLWKLWRDCVNTISNEEMSNELQKTNYAKWATGDGLTYQKIMKEVAIDDETMC
+QEEPKIPNKCRVAAWVQTEMNLLSTLTSKRALDLPEIGPDVAPVEHVGSERRKYFVNEINYCKASTVMMKYVLFHTSL
+LNESNASMGKYKVIPITNRVVNETGESFDMLYGLAVKGQSHLRGDTDVVTVVTFEFSSTDPRVDSGKWPKYTVFRIGS
+LFVSGREKSVYLYCRVNGTNKIQMKWGMEARRCLLQSMQQMEAIVEQESSIQGYDMTKACFKGDRVNSPKTFSIGTQE
+GKLVKGSFGKALRVIFTKCLMHYVFGNAQLEGFSAESRRLLLLIQALKDRKGPWVFDLEGMYSGIEECISNNPWVIQS
+AYWFNEWLGFEKEGSKVLESVDEIMDE" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 6 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 705 ,
+                        id
+                          local
+                            str "PA_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 5 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "PA_1" ,
+                location
+                  int {
+                    from 89 ,
+                    to 2209 ,
+                    strand plus ,
+                    id
+                      local
+                        str "PA" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "IKFIFMLB_00003" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "HA" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 1890 ,
+            seq-data
+              iupacna "AGCAGAAGCAGAGCATTTTCTAATATCCACAAAATGAAGGCAATAATTGTACTAC
+TCATGGTAGTAACATCCAACGCAGATCGAATCTGCACTGGGATAACATCTTCAAACTCACCTCATGTGGTCAAAACAG
+CTACTCAAGGGGAGGTCAATGTGACTGGCGTGATACCACTGACAACAACACCAACAAAATCTTATTTTGCAAATCTCA
+AAGGAACAAGGACCAGAGGGAAACTATGCCCGGACTGTCTCAACTGTACAGATCTGGATGTGGCCTTGGGCAGGCCAA
+TGTGTGTGGGGTTCACACCTTCTGCTAAAGCTTCAATACTCCATGAGGTCAGACCTGTTACATCCGGGTGCTTTCCTA
+TAATGCACGACAGAACAAAAATCAGGCAACTACCCAATCTTCTCAGAGGATATGAAAAGATCCAGTTATCAACCAAAA
+ACGTTATCGATGCAGAACATGCACCAGGAGGACCCTACAGACTTGGAACCTCAAAGTCTTGCCCATACCAGGGAAAGT
+CCTCCTTTTTTGCAACAATGGCTTGGGCTGTCCCAAAAAAGTACAACAGTACATACAACCCACTAACAGTGGAAGTAC
+CATACATTTGTACAGAAGGGGAAGACCAAATTACTGTTTGGGGGTTCCATTCGGATAATGATGCGGCAATGCAGACAC
+TCTATGGAGACTCAAATCCTCAAAAGTTCACCTCATCTGCTAATGGAGTAACCACGCATTATGTTTCTCAGATTGGCG
+ACTTCCCAGATCAAACAGAAGACGGAGGACTACCACAAAGCGGCAGAATTGTTGTTGATTACATGATGCAAAAACCTG
+GGAAAACAGGAACAATTGTCTATCAAAGGGGTGTTTTGTTGCCTCAAAAGGTGTGGTGCGCGAGTGGCAGGAGCAAAG
+TAATAAAAGGGTCATTGCCTTTAATTGGTGAAGCAGATTGCCTTCATGAAGAATACGGTGGATTAAACAAAAGCAAGC
+CTTACTACACAGGAAAACATGCAAAAGCCATAGGAAATTGCCCAATATGGGTAAAAACACCTTTGAAGCTTGCCAATG
+GAACCAAATATAGACCTCCTGCAAAACTATTGAAGGAAAGGGGTTTCTTCGGAGCTATTGCTGGTTTCCTAGAAGGAG
+GATGGGAAGGAATGATTGCAGGTTGGCACGGATACACATCTCACGGAGCACATGGAGTGGCAGTGGCGGCAGACCTTA
+AGAGTACACAAGAAGCTATAAATAAGATAACAAAAAATCTCAATTCTTTGAGTGAACTAGAAGTAAAGAACCTTCAAA
+GACTAAGTGGTGCCATGGATGAACTCCACAACGAAATACTCGAGCTGGATGAAAAAGTGGATGATCTCAGAGCTGACA
+CTATAAGCTCACAAATAGAACTTGCAGTCTTGCTTTCCAACGAAGGAATAATAAACAGTGAAGACGAGCATCTATTGG
+CACTTGAGAGAAAACTAAAGAAAATGCTGGGTCCCTCTGCTGTAGACATAGGAAACGGATGCTTCGAAACCAAACACA
+AATGCAACCAGACCTGCTTAGACAGGATAGCTGCTGGCACCTTTAATGCAGGAGAATTTTCTCTCCCCACTTTTGATT
+CATTGAACATTACTGCTGCATCTTTAAATGATGATGGATTGGATAACCATACTATACTGCTCTATTACTCAACTGCTG
+CTTCTAGTTTGGCTGTAACATTAATGCTAGCTATTTTTATTGTTTATATGGTCTCCAGAGACAACGTTTCATGCTCCA
+TCTGTCTATAAGGAAAGTTAAACCCTGTATTTTCCTTTATTGTAGTGCTTGTTTGCTTGTTACCATTACAAAAAACGT
+TATTGAAAAATGCTCTTGTTACTACTAATAACCCGGCGGCC" } } ,
+        seq {
+          id {
+            local
+              str "HA_1" } ,
+          descr {
+            title "hypothetical protein IKFIFMLB_00004 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 582 ,
+            seq-data
+              ncbieaa "MKAIIVLLMVVTSNADRICTGITSSNSPHVVKTATQGEVNVTGVIPLTTTPTKSY
+FANLKGTRTRGKLCPDCLNCTDLDVALGRPMCVGFTPSAKASILHEVRPVTSGCFPIMHDRTKIRQLPNLLRGYEKIQ
+LSTKNVIDAEHAPGGPYRLGTSKSCPYQGKSSFFATMAWAVPKKYNSTYNPLTVEVPYICTEGEDQITVWGFHSDNDA
+AMQTLYGDSNPQKFTSSANGVTTHYVSQIGDFPDQTEDGGLPQSGRIVVDYMMQKPGKTGTIVYQRGVLLPQKVWCAS
+GRSKVIKGSLPLIGEADCLHEEYGGLNKSKPYYTGKHAKAIGNCPIWVKTPLKLANGTKYRPPAKLLKERGFFGAIAG
+FLEGGWEGMIAGWHGYTSHGAHGVAVAADLKSTQEAINKITKNLNSLSELEVKNLQRLSGAMDELHNEILELDEKVDD
+LRADTISSQIELAVLLSNEGIINSEDEHLLALERKLKKMLGPSAVDIGNGCFETKHKCNQTCLDRIAAGTFNAGEFSL
+PTFDSLNITAASLNDDGLDNHTILLYYSTAASSLAVTLMLAIFIVYMVSRDNVSCSICL" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 8 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 581 ,
+                        id
+                          local
+                            str "HA_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 7 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "HA_1" ,
+                location
+                  int {
+                    from 33 ,
+                    to 1781 ,
+                    strand plus ,
+                    id
+                      local
+                        str "HA" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "IKFIFMLB_00004" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "NP" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 1844 ,
+            seq-data
+              iupacna "AGCAGAAGCACAGCATTTTCTTGTGAACTTCAAGTGCCAACAAAAGAACTGAAAA
+TCAAAATGTCCAACATGGATATTGACGGTATCAACACTGGGACAATTGACAAAGCACCGGAAGAAATAACTTCTGGAA
+CCAGTGGGACAACCAGACCAATCATCAGACCAGCAACCCTTGCCCCACCAAGCAACAAACGAACCCGGAACCCATCCC
+CGGAAAGAGCAACCACAATCAGTGAAGCTGATGTCGGAAGGAAAACCCAAAAGAAACAGACCCCGACAGAGATAAAGA
+AGAGCGTCTACAATATGGTAGTGAAACTGGGTGAATTCTATAACCAGATGATGGTCAAAGCTGGACTTAACGATGACA
+TGGAGAGAAACCTAATTCAAAATGCGCATGCTGTGGAAAGAATTCTATTGGCTGCCACTGATGACAAGAAAACTGAAT
+TCCAGAAGAAAAAGAATGCCAGAGATGTCAAAGAAGGGAAAGAAGAAATAGATCACAACAAAACAGGGGGCACCTTTT
+ACAAGATGGTAAGAGATGATAAAACCATCTACTTCAGCCCTATAAGAGTCACCTTTTTAAAAGAAGAAGTAAAAACAA
+TGTACAAAACCACCATGGGGAGTGATGGCTTCAGCGGACTAAATCACATAATGATTGGGCATTCACAGATGAATGATG
+TCTGTTTCCAAAGATCAAAGGCACTAAAAAGAGTTGGACTTGACCCTTCATTAATCAGTACCTTTGCAGGAAGCACAC
+TCCCCAGAAGATCAGGTGCAACTGGTGTTGCGATCAAAGGAGGTGGAACTCTAGTGGCTGAAGCCATTCGATTTATAG
+GAAGAGCAATGGCAGACAGAGGGCTATTGAGAGACATCAAAGCCAAGACTGCGTATGAAAAGATTCTTCTGAACCTAA
+AAAACAAATGCTCTGCGCCCCAACAGAAGGCTCTAGTTGATCAAGTGATCGGAAGTAGAAATCCAGGGATTGCAGACA
+TTGAAGACCTAACCCTACTTGCTCGTAGTATGGTCGTTGTTAGGCCCTCTGTGGCGAGCAAAGTAGTGCTTCCCATAA
+GCATTTACGCCAAAATACCTCAACTAGGGTTCAACGTTGAAGAGTACTCTATGGTTGGGTATGAAGCCATGGCTCTTT
+ACAATATGGCAACACCTGTTTCCATATTAAGAGTGGGAGATGATGCAAAGGACAAATCACAATTATTCTTCATGTCTT
+GCTTCGGAGCTGCCTATGAAGACCTGAGAGTTTTGTCTGCATTAACAGGCACAGAATTCAAGCCTAGATCAGCATTAA
+AATGCAAGGGTTTCCATGTTCCAGCAAAGGAACAGGTGGAAGGAATGGGGGCAGCTCTGATGTCCATCAAGCTCCAGT
+TTTGGGCTCCAATGACCAGATCTGGGGGAAACGAAGTAGGTGGAGACGGGGGGTCTGGCCAAATAAGTTGCAGCCCAG
+TGTTTGCAGTAGAAAGACCTATTGCTCTAAGCAAGCAAGCTGTAAGAAGAATGCTGTCAATGAATATTGAGGGACGTG
+ATGCAGATGTCAAAGGAAATCTACTCAAGATGATGAATGACTCAATGGCTAAGAAAACCAATGGAAATGCTTTCATTG
+GGAAGAAAATGTTTCAAATATCAGACAAAAACAAAACCAATCCCGTTGAAATTCCAATTAAGCAAACCATCCCCAATT
+TCTTCTTTGGGAGGGACACAGCAGAGGATTATGATGACCTCGATTATTAAAGCAACAAAATAGACACTATGACTGTGA
+TTGTTTCAATACGTTTGGAATGTGGGTGTTTACTCTTATTAAAATAAATGTAAAAAATGCTGTTGTTTCTACT" } } ,
+        seq {
+          id {
+            local
+              str "NP_1" } ,
+          descr {
+            title "hypothetical protein IKFIFMLB_00005 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 557 ,
+            seq-data
+              ncbieaa "MDIDGINTGTIDKAPEEITSGTSGTTRPIIRPATLAPPSNKRTRNPSPERATTIS
+EADVGRKTQKKQTPTEIKKSVYNMVVKLGEFYNQMMVKAGLNDDMERNLIQNAHAVERILLAATDDKKTEFQKKKNAR
+DVKEGKEEIDHNKTGGTFYKMVRDDKTIYFSPIRVTFLKEEVKTMYKTTMGSDGFSGLNHIMIGHSQMNDVCFQRSKA
+LKRVGLDPSLISTFAGSTLPRRSGATGVAIKGGGTLVAEAIRFIGRAMADRGLLRDIKAKTAYEKILLNLKNKCSAPQ
+QKALVDQVIGSRNPGIADIEDLTLLARSMVVVRPSVASKVVLPISIYAKIPQLGFNVEEYSMVGYEAMALYNMATPVS
+ILRVGDDAKDKSQLFFMSCFGAAYEDLRVLSALTGTEFKPRSALKCKGFHVPAKEQVEGMGAALMSIKLQFWAPMTRS
+GGNEVGGDGGSGQISCSPVFAVERPIALSKQAVRRMLSMNIEGRDADVKGNLLKMMNDSMAKKTNGNAFIGKKMFQIS
+DKNKTNPVEIPIKQTIPNFFFGRDTAEDYDDLDY" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 10 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 556 ,
+                        id
+                          local
+                            str "NP_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 9 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "NP_1" ,
+                location
+                  int {
+                    from 69 ,
+                    to 1742 ,
+                    strand plus ,
+                    id
+                      local
+                        str "NP" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "IKFIFMLB_00005" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "NA" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 1564 ,
+            seq-data
+              iupacna "AGCAGAAGCAGAGCATCTTCTCAAAACCGAAGCAAATAGGCCAAAAATGAACAAT
+GAACAATGCTACCTTCAACTATACAAACGTTAACCCTATTTCTCACATCAGGGGGAGTATTATTATCACTATATGTGT
+CAGCTTCATTGTCATACTTACTATATTCGGATATATTGCTAAAATTCCCATCAACAGAAATTACTGCACCAACAATGC
+CATTGGATTGTGCAAACGCATCAAATGTTCAGGCTGTGAACCGTTCTGCAACAAAAGGGGTGACACTTCTTCTCCCAG
+AACCGGAGTGGACATACCCGCGTTTATCTTGCCCGGGCTCAACCTTTCAGAAAGCACTCCTAATTAGCCCTCATAGAT
+TCGGAGAAACCAAAGGAAACTCAGCTCCCTTGATAATAAGGGAACCTTTTATTGCTTGTGGACCAAAGGAATGCAAAC
+ACTTTGCTCTAACCCACTATGCAGCCCAACCAGGGGGATACTACAATGGAACAAGAGGAGACAGAAACAAGCTGAGGC
+ATCTAATTTCAGTCAAATTGGGCAAAATCCCAACAGTAGAAAACTCCATTTTCCACATGGCAGCATGGAGCGGGTCCG
+CATGCCATGATGGTAAGGAATGGACATATATCGGAGTTGATGGCCCTGACAATAATGCATTGCTCAAAATAAAATATG
+GAGAAGCATATACTGACACATACCATTCCTATGCAAACAACATCCTAAGAACACAAGAAAGTGCCTGCAATTGCATCG
+GGGGAAATTGTTATCTTATGATAACTGATGGCTCAGCTTCAGGTGTTAGTGAATGCAGATTTCTTAAGATTCGAGAGG
+GCCGAATAATAAAAGAAATATTTCCAACAGGAAGAATAAAACATACTGAAGAATGCACATGCGGATTTGCTAGCAATA
+AAACCATAGAATGTGCCTGTAGAGATAACAGTTACACAGCAAAAAGACCCTTTGTCAAATTAAACGTGGAGACTGATA
+CAGCAGAAATAAGATTGATGTGCACAGAGACTTATTTGGACACCCCCAGACCAGATGATGGAAGCATAACAGGGCCTT
+GTGAATCTAATGGGGACAAAGGGAGTGGAGGCATCAAGGGAGGATTTGTCCATCAAAGAATGGCATCCAAGATTGGAA
+GGTGGTACTCTCGAACGATGTCTAAAACTAAAAGGATGGGGATGGGGCTGTATGTCAAGTATGATGGAGACCCATGGG
+CTGACAGTGATGCCCTTGCTTTTAGTGGAGTAATGGTTTCAATGGAAGAACCTGGTTGGTACTCCTTTGGCTTCGAAA
+TAAAAGACAAGAAATGTGATGTCCCCTGTATTGGGATAGAGATGGTACATGATGGTGGAAAAGAGACTTGGCACTCAG
+CAGCTACAGCCATTTACTGTTTAATGGGCTCAGGACAGCTGCTGTGGGACACTGTCACAGGTGTTAATATGGCTCTGT
+AATGGAGGAATGGTTGAGTCTGTTCTAAACCCTTTGTTCCTATTTTGTTTGAACAATTGTCCTTACTGAACTTAATTG
+TTTCTGAAAAATGCTCTTGTTACTACT" } } ,
+        seq {
+          id {
+            local
+              str "NA_1" } ,
+          descr {
+            title "hypothetical protein IKFIFMLB_00006 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 466 ,
+            seq-data
+              ncbieaa "MLPSTIQTLTLFLTSGGVLLSLYVSASLSYLLYSDILLKFPSTEITAPTMPLDCA
+NASNVQAVNRSATKGVTLLLPEPEWTYPRLSCPGSTFQKALLISPHRFGETKGNSAPLIIREPFIACGPKECKHFALT
+HYAAQPGGYYNGTRGDRNKLRHLISVKLGKIPTVENSIFHMAAWSGSACHDGKEWTYIGVDGPDNNALLKIKYGEAYT
+DTYHSYANNILRTQESACNCIGGNCYLMITDGSASGVSECRFLKIREGRIIKEIFPTGRIKHTEECTCGFASNKTIEC
+ACRDNSYTAKRPFVKLNVETDTAEIRLMCTETYLDTPRPDDGSITGPCESNGDKGSGGIKGGFVHQRMASKIGRWYSR
+TMSKTKRMGMGLYVKYDGDPWADSDALAFSGVMVSMEEPGWYSFGFEIKDKKCDVPCIGIEMVHDGGKETWHSAATAI
+YCLMGSGQLLWDTVTGVNMAL" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 12 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 465 ,
+                        id
+                          local
+                            str "NA_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 11 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "NA_1" ,
+                location
+                  int {
+                    from 60 ,
+                    to 1460 ,
+                    strand plus ,
+                    id
+                      local
+                        str "NA" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "IKFIFMLB_00006" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "M" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 1190 ,
+            seq-data
+              iupacna "AGCAGAAGCACGCACTTTCTTAAAATGTCGCTGTTTGGAGACACAATTGCCTACC
+TGCTTTCATTGACAGAAGATGGAGAAGGCAAAGCAGAACTAGCAGAAAAATTACACTGTTGGTTTGGTGGGAAAGAAT
+TTGACCTAGACTCTGCCTTGGAATGGATAAAAAACAAAAGATGCTTAACTGATATACAAAAAGCACTAATTGGTGCCT
+CTATATGCTTTTTAAAACCCAAAGACCAGGAAAGAAAAAGAAGATTCATCACAGAACCCTTATCAGGAATGGGAACAA
+CAGCAACAAAAAAGAAAGGCCTGATTCTGGCTGAGAGAAAAATGAGAAGATGTGTGAGCTTTCATGAGGCATTTGAAA
+TAGCAGAAGGCCATGAAAGCTCAGCGCTACTATACTGTCTCATGGTCATGTACCTGAATCCTGGAAATTATTCAATGC
+AAGTAAAACTAGGAACGCTCTGTGCTTTATGCGAGAAACAAGCATCACATTCACACAGGGCTCATAGCAGAGCAGCGA
+GATCTTCAGTGCCTGGAGTGAGACGAGAAATGCAGATGGTCTCAGCTATGAACACAGCGAAAACAATGAATGGAATGG
+GAAAAGGAGAAGACGTCCAAAAGCTGGCAGAAGAGCTGCAAAGCAACATTGGAGTGCTGAGATCTCTTGGGGCAAGTC
+AAAAGAATGGGGAAGGAATTGCAAAAGATGTAATGGAAGTGCTAAAGCAGAGCTCTATGGGAAATTCAGCTCTTGTGA
+AGAAATATCTATAATGCTCGAACCATTTCAGATTCTTTCAATTTGTTCTTTTATCTTATCAGCTCTCCATTTCATGGC
+TTGGACAATAGGGCATTTGAATCAAATAAAAAGAGGAATAAACATGAAAATACGAATAAAAGGTCCAAACAAAGAGAC
+AATAAACAGAGAGGTATCAATTTTGAGACACAGTTACCAAAAAGAAATCCAGGCCAAAGAAACAATGAAGGAAGTACT
+CTCTGACAACATGGAGGTATTGAGTGACCACATAATAATTGAGGGGCTTTCTGCCGAAGAGATAATAAAAATGGGTGA
+AACAGTTTTGGAGATAGAAGAATTGCATTAAATTCAATTTTTACTGTATTTCTTACTATGCATTTAAGCAAATTGTAA
+TCAATGTCAGCAAATAAACTGGAAAAAGTGCGTTGTTTCTACT" } } ,
+        seq {
+          id {
+            local
+              str "M_1" } ,
+          descr {
+            title "hypothetical protein IKFIFMLB_00007 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 248 ,
+            seq-data
+              ncbieaa "MSLFGDTIAYLLSLTEDGEGKAELAEKLHCWFGGKEFDLDSALEWIKNKRCLTDI
+QKALIGASICFLKPKDQERKRRFITEPLSGMGTTATKKKGLILAERKMRRCVSFHEAFEIAEGHESSALLYCLMVMYL
+NPGNYSMQVKLGTLCALCEKQASHSHRAHSRAARSSVPGVRREMQMVSAMNTAKTMNGMGKGEDVQKLAEELQSNIGV
+LRSLGASQKNGEGIAKDVMEVLKQSSMGNSALVKKYL" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 15 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 247 ,
+                        id
+                          local
+                            str "M_1" } } } } } } ,
+        seq {
+          id {
+            local
+              str "M_2" } ,
+          descr {
+            title "hypothetical protein IKFIFMLB_00008 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 89 ,
+            seq-data
+              ncbieaa "MAWTIGHLNQIKRGINMKIRIKGPNKETINREVSILRHSYQKEIQAKETMKEVLS
+DNMEVLSDHIIIEGLSAEEIIKMGETVLEIEELH" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 16 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 88 ,
+                        id
+                          local
+                            str "M_2" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 13 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "M_1" ,
+                location
+                  int {
+                    from 24 ,
+                    to 770 ,
+                    strand plus ,
+                    id
+                      local
+                        str "M" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "IKFIFMLB_00007" } } } } ,
+              {
+                id
+                  local
+                    id 14 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "M_2" ,
+                location
+                  int {
+                    from 830 ,
+                    to 1099 ,
+                    strand plus ,
+                    id
+                      local
+                        str "M" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "IKFIFMLB_00008" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "NS" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 1098 ,
+            seq-data
+              iupacna "AGCAGAAGCAGAGGATTTGTTTAGTCACTGGCAAACAGGAAAAAATGGCGAACAA
+CATGACCACAACACAAATTGAGGTGGGTCCGGGAGCAACCAATGCCACCATAAACTTTGAAGCAGGAATTCTGGAGTG
+CTATGAAAGGCTTTCATGGCAAAGAGCCCTTGACTACCCTGGTCAAGACCGCCTAAACAGACTAAAGAGAAAATTAGA
+GTCAAGAATAAAGACTCACAACAAAAGTGAGCCTGAAAGTAAAAGGATGTCCCTTGAAGAGAGAAAAGCAATTGGAGT
+AAAAATGATGAAAGTACTCCTATTTATGGATCCGTCTGCTGGAATTGAAGGGTTTGAGCCATACTGTATGAAAAGTTC
+CTCAAATAGCAACTGTACGAAATACAATTGGACCGATTACCCTTCAACACCAGGGAGGTGCCTTGATGACATAGAAGA
+AGAACCAGAGGATGTTGATGGCCCAACTGAAATAGTATTAAGGGACATGAACAACAAAGATGCAAGGCAAAAGATAAA
+GGAGGAAGTAAACACTCAGAAAGAAGGGAAGTTCCGTTTGACAATAAAAAGGGATATGCGTAATGTATTGTCCTTGAG
+AGTGTTGGTAAACGGAACATTCCTCAAACATCCCAATGGATACAAGTCCTTATCAACTCTGCATAGATTGAATGCATA
+TGACCAGAGTGGAAGGCTTGTTGCTAAACTTGTTGCTACTGATGATCTTACAGTGGAGGATGAAGAAGATGGCCATCG
+GATCCTCAACTCACTCTTCGAGCGTCTTAATGAAGGACATTCAAAGCCAATTCGAGCAGCTGAAACTGCGGTGGGAGT
+CTTATCCCAATTTGGTCAAGAGCACCGATTATCACCAGAAGAGGGAGACAATTAGACTGGTCACGGAAGAACTTTATC
+TTTTAAGTAAAAGAATTGATGATAACATATTGTTCCACAAAACAGTAATAGCTAACAGCTCCATAATAGCTGACATGG
+TTGTATCATTATCATTATTAGAAACATTGTATGAAATGAAGGATGTAGTTGAAGTGTACAGCAGGCAGTGCTTGTGAA
+TTTAAAATAAAAATCCTCTTGTTACTACT" } } ,
+        seq {
+          id {
+            local
+              str "NS_1" } ,
+          descr {
+            title "hypothetical protein IKFIFMLB_00009 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 277 ,
+            seq-data
+              ncbieaa "MTTTQIEVGPGATNATINFEAGILECYERLSWQRALDYPGQDRLNRLKRKLESRI
+KTHNKSEPESKRMSLEERKAIGVKMMKVLLFMDPSAGIEGFEPYCMKSSSNSNCTKYNWTDYPSTPGRCLDDIEEEPE
+DVDGPTEIVLRDMNNKDARQKIKEEVNTQKEGKFRLTIKRDMRNVLSLRVLVNGTFLKHPNGYKSLSTLHRLNAYDQS
+GRLVAKLVATDDLTVEDEEDGHRILNSLFERLNEGHSKPIRAAETAVGVLSQFGQEHRLSPEEGDN" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 18 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 276 ,
+                        id
+                          local
+                            str "NS_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 17 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "NS_1" ,
+                location
+                  int {
+                    from 56 ,
+                    to 889 ,
+                    strand plus ,
+                    id
+                      local
+                        str "NS" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "IKFIFMLB_00009" } } } } } } } } } }

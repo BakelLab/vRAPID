@@ -1,0 +1,1271 @@
+Seq-entry ::= set {
+  class genbank ,
+  seq-set {
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "PB2" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 2341 ,
+            seq-data
+              iupacna "AGCAAAAGCAGGTCAATTATATTCAATATGGAAAGAATAAAAGAACTAAGAAATC
+TAATGTCGCAGTCTCGCACCCGCGAGATACTCACAAAAACCACCGTGGACCATATGGCCATAATCAAGAAGTACACAT
+CAGGAAGACAGGAGAAGAACCCAGCACTTAGGATGAAATGGATGATGGCAATGAAATATCCAATTACAGCAGACAAGA
+GGATAACGGAAATGATTCCTGAGAGAAATGAGCAAGGACAAACTTTATGGAGTAAAATGAATGATGCAGGATCAGACC
+GAGTGATGGTATCACCTCTGGCTGTGACATGGTGGAATAGGAATGGACCAATAACAAATACAGTTCATTATCCAAAAA
+TCTACAAAACTTATTTTGAAAGAGTCGAAAGGCTAAAGCATGGAACCTTTGGCCCTGTCCATTTTAGAAACCAAGTCA
+AAATACGTCGGAGAGTTGACATAAATCCTGGTCATGCAGATCTCAGTGCCAAGGAGGCACAGGATGTAATCATGGAAG
+TTGTTTTCCCTAACGAAGTGGGAGCCAGGATACTAACATCGGAATCGCAACTAACGATAACCAAAGAGAAGAAAGAAG
+AACTCCAGGATTGCAAAATTTCTCCTTTGATGGTTGCATACATGTTGGAGAGAGAACTGGTCCGCAAAACGAGATTCC
+TCCCAGTGGCTGGTGGAACAAGCAGTGTGTACATTGAAGTGTTGCATTTGACTCAAGGAACATGCTGGGAACAGATGT
+ATACTCCAGGAGGGGAAGTGAGGAATGATGATGTTGATCAAAGCTTGATTATTGCTGCTAGGAACATAGTGAGAAGAG
+CTGCAGTATCAGCAGATCCACTAGCATCTTTATTGGAGATGTGCCACAGCACACAGATTGGTGGAATTAGGATGGTAG
+ACATCCTTAGGCAGAACCCAACAGAAGAGCAAGCCGTGGATATATGCAAGGCTGCAATGGGACTGAGAATTAGCTCAT
+CCTTCAGTTTTGGTGGATTCACATTTAAGAGAACAAGCGGATCATCAGTCAAGAGAGAGGAAGAGGTGCTTACGGGCA
+ATCTTCAAACATTGAAGATAAGAGTGCATGAGGGATATGAAGAGTTCACAATGGTTGGGAGAAGAGCAACAGCCATAC
+TCAGAAAAGCAACCAGGAGATTGATTCAGCTGATAGTGAGTGGGAGAGACGAACAGTCGATTGCCGAAGCAATAATTG
+TGGCCATGGTATTTTCACAAGAGGATTGTATGATAAAAGCAGTCAGAGGTGATCTGAATTTCGTCAATAGGGCGAATC
+AGCGATTGAATCCTATGCATCAACTTTTAAGACATTTTCAGAAGGATGCGAAAGTGCTTTTTCAAAATTGGGGAGTTG
+AACCTATCGACAATGTGATGGGAATGATTGGGATATTGCCAGACATGACTCCAAGCATCGAGATGTCAATGAGAGGAG
+TGAGAATCAGCAAAATGGGTGTAGATGAGTACTCCAGCACGGAGAGGGTAGTGGTGAGCATTGACCGTTTTTTGAGAA
+TCCGGGACCAACGAGGAAATGTACTACTGTCTCCCGAGGAGGTCAGTGAAACACAGGGAACAGAGAAACTGACAATAA
+CTTACTCATCGTCAATGATGTGGGAGATTAATGGTCCTGAATCAGTGTTGGTCAATACCTATCAATGGATCATCAGAA
+ACTGGGAAACTGTTAAAATTCAGTGGTCCCAGAACCCTACAATGCTATACAATAAAATGGAATTTGAACCATTTCAGT
+CTTTAGTACCTAAGGCCATTAGAGGCCAATACAGTGGGTTTGTAAGAACTCTGTTCCAACAAATGAGGGATGTGCTTG
+GGACATTTGATACCGCACAGATAATAAAACTTCTTCCCTTCGCAGCCGCTCCACCAAAGCAAAGTAGAATGCAGTTCT
+CCTCATTTACTGTGAATGTGAGGGGATCAGGAATGAGAATACTTGTAAGGGGCAATTCTCCTGTATTCAACTATAACA
+AGGCCACGAAGAGACTCACAGTTCTCGGAAAGGATGCTGGCACTTTAACTGAAGACCCAGATGAAGGCACAGCTGGAG
+TGGAGTCCGCTGTTCTGAGGGGATTCCTCATTCTGGGCAAAGAAGACAAGAGATATGGGCCAGCACTAAGCATCAATG
+AACTGAGCAACCTTGCGAAAGGAGAGAAGGCTAATGTGCTAATTGGGCAAGGAGACGTGGTGTTGGTAATGAAACGGA
+AACGGGACTCTAGCATACTTACTGACAGCCAGACAGCGACCAAAAGAATTCGGATGGCCATCAATTAGTGTCGAATAG
+TTTAAAAACGACCTTGTTTCTACT" } } ,
+        seq {
+          id {
+            local
+              str "PB2_1" } ,
+          descr {
+            title "hypothetical protein PNHOOMBA_00001 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 759 ,
+            seq-data
+              ncbieaa "MERIKELRNLMSQSRTREILTKTTVDHMAIIKKYTSGRQEKNPALRMKWMMAMKY
+PITADKRITEMIPERNEQGQTLWSKMNDAGSDRVMVSPLAVTWWNRNGPITNTVHYPKIYKTYFERVERLKHGTFGPV
+HFRNQVKIRRRVDINPGHADLSAKEAQDVIMEVVFPNEVGARILTSESQLTITKEKKEELQDCKISPLMVAYMLEREL
+VRKTRFLPVAGGTSSVYIEVLHLTQGTCWEQMYTPGGEVRNDDVDQSLIIAARNIVRRAAVSADPLASLLEMCHSTQI
+GGIRMVDILRQNPTEEQAVDICKAAMGLRISSSFSFGGFTFKRTSGSSVKREEEVLTGNLQTLKIRVHEGYEEFTMVG
+RRATAILRKATRRLIQLIVSGRDEQSIAEAIIVAMVFSQEDCMIKAVRGDLNFVNRANQRLNPMHQLLRHFQKDAKVL
+FQNWGVEPIDNVMGMIGILPDMTPSIEMSMRGVRISKMGVDEYSSTERVVVSIDRFLRIRDQRGNVLLSPEEVSETQG
+TEKLTITYSSSMMWEINGPESVLVNTYQWIIRNWETVKIQWSQNPTMLYNKMEFEPFQSLVPKAIRGQYSGFVRTLFQ
+QMRDVLGTFDTAQIIKLLPFAAAPPKQSRMQFSSFTVNVRGSGMRILVRGNSPVFNYNKATKRLTVLGKDAGTLTEDP
+DEGTAGVESAVLRGFLILGKEDKRYGPALSINELSNLAKGEKANVLIGQGDVVLVMKRKRDSSILTDSQTATKRIRMA
+IN" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 2 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 758 ,
+                        id
+                          local
+                            str "PB2_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 1 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "PB2_1" ,
+                location
+                  int {
+                    from 27 ,
+                    to 2306 ,
+                    strand plus ,
+                    id
+                      local
+                        str "PB2" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "PNHOOMBA_00001" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "PB1" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 2341 ,
+            seq-data
+              iupacna "AGCAAAAGCAGGCAAACCATTTGAATGGATGTCAATCCGACCTTACTTTTCTTAA
+AAGTGCCAGCACAAAATGCTATAAGCACAACTTTCCCTTATACTGGAGACCCTCCTTACAGCCATGGGACAGGAACAG
+GATACACCATGGATACTGTCAACAGGACACATCAGTACTCAGAAAAGGGAAGATGGACAACAAACACCGAAACTGGAG
+CACCGCAACTCAACCCGATTGATGGGCCACTGCCAGAAGACAATGAACCAAGTGGTTATGCCCAAACAGATTGTGTAT
+TGGAAGCAATGGCTTTCCTTGAGGAATCCCATCCTGGTATTTTTGAAAACTCGTGTATTGAAACGATGGAGGTTGTTC
+AGCAAACACGAGTAGACAAGCTGACACAAGGCCGACAGACCTATGACTGGACTCTAAATAGAAACCAACCTGCTGCAA
+CAGCATTGGCCAACACAATAGAAGTGTTCAGATCAAATGGCCTCACGGCCAATGAGTCTGGAAGGCTCATAGACTTCC
+TTAAGGATGTAATGGAGTCAATGAACAAAGAAGAAATGGGGATCACAACTCATTTTCAGAGAAAGAGACGGGTGAGAG
+ACAATATGACTAAGAAAATGATAACACAGAGAACAATAGGTAAAAAGAAGCAGAGATTGAACAAAAGGAGTTATCTAA
+TTAGAGCATTGACCCTGAACACAATGACCAAAGATGCTGAGAGAGGGAAGCTAAAACGGAGAGCAATTGCAACCCCAG
+GGATGCAAATAAGGGGGTTTGTATACTTTGTTGAGACACTGGCAAGGAGTATATGTGAGAAACTTGAACAATCAGGGT
+TGCCAGTTGGAGGCAATGAGAAGAAAGCAAAGTTGGCAAATGTTGTAAGGAAGATGATGACCAATTCTCAGGACACCG
+AACTTTCTTTCACCATCACTGGAGATAACACCAAATGGAACGAAAATCAGAATCCTCGGATGTTTTTGGCCATGATCA
+CATATATGACAAGAAATCAGCCCGAATGGTTCAGAAATGTTCTAAGTATTGCTCCAATAATGTTCTCAAACAAAATGG
+CGAGACTGGGAAAAGGGTATATGTTTGAGAGCAAGAGTATGAAACTTAGAACTCAAATACCTGCAGAAATGCTAGCAA
+GCATCGATTTGAAATATTTCAATGATTCAACAAGAAAGAAGATTGAAAAAATCCGACCGCTCTTAATAGAGGGGACTG
+CATCATTGAGCCCTGGAATGATGATGGGCATGTTCAATATGTTAAGCACTGTATTAGGCGTCTCCATCCTGAATCTTG
+GACAAAAGAGATACACCAAGACTACTTACTGGTGGGATGGTCTTCAATCCTCTGACGATTTTGCTCTGATTGTGAATG
+CACCCAATCATGAAGGGATTCAAGCCGGAGTCGACAGGTTTTATCGAACCTGTAAGCTACTTGGAATCAATATGAGCA
+AGAAAAAGTCTTACATAAACAGAACAGGTACATTTGAATTCACAAGTTTTTTCTATCGTTATGGGTTTGTTGCCAATT
+TCAGCATGGAGCTCCCCAGTTTTGGGGTGTCTGGGATCAACGAGTCAGCGGACATGAGTATTGGAGTTACTGTCATCA
+AAAACAATATGATAAACAATGATCTTGGTCCAGCAACAGCTCAAATGGCCCTTCAGTTGTTCATCAAAGATTACAGGT
+ACACGTACCGATGCCATAGAGGTGACACACAAATACAAACCCGAAGATCATTTGAAATAAAGAAACTGTGGGAGCAAA
+CCCGTTCCAAAGCTGGACTGCTGGTCTCCGACGGAGGCCCAAATTTATACAACATTAGAAATCTCCACATTCCTGAAG
+TCTGCCTAAAATGGGAATTGATGGATGAGGATTACCAGGGGCGTTTATGCAACCCACTGAACCCATTTGTCAGCCATA
+AAGAAATTGAATCAATGAACAATGCAGTGATGATGCCAGCACATGGTCCAGCCAAAAACATGGAGTATGATGCTGTTG
+CAACAACACACTCCTGGATCCCCAAAAGAAATCGATCCATCTTGAATACAAGTCAAAGAGGAGTACTTGAAGATGAAC
+AAATGTACCAAAGGTGCTGCAATTTATTTGAAAAATTCTTCCCCAGCAGTTCATACAGAAGACCAGTCGGGATATCCA
+GTATGGTGGAGGCTATGGTTTCCAGAGCCCGAATTGATGCACGGATTGATTTCGAATCTGGAAGGATAAAGAAAGAAG
+AGTTCACTGAGATCATGAAGATCTGTTCCACCATTGAAGAGCTCAGACGGCAAAAATAGTGAATTTAGCTTGTCCTTC
+ATGAAAAAATGCCTTGTTTCTACT" } } ,
+        seq {
+          id {
+            local
+              str "PB1_1" } ,
+          descr {
+            title "hypothetical protein PNHOOMBA_00002 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 757 ,
+            seq-data
+              ncbieaa "MDVNPTLLFLKVPAQNAISTTFPYTGDPPYSHGTGTGYTMDTVNRTHQYSEKGRW
+TTNTETGAPQLNPIDGPLPEDNEPSGYAQTDCVLEAMAFLEESHPGIFENSCIETMEVVQQTRVDKLTQGRQTYDWTL
+NRNQPAATALANTIEVFRSNGLTANESGRLIDFLKDVMESMNKEEMGITTHFQRKRRVRDNMTKKMITQRTIGKKKQR
+LNKRSYLIRALTLNTMTKDAERGKLKRRAIATPGMQIRGFVYFVETLARSICEKLEQSGLPVGGNEKKAKLANVVRKM
+MTNSQDTELSFTITGDNTKWNENQNPRMFLAMITYMTRNQPEWFRNVLSIAPIMFSNKMARLGKGYMFESKSMKLRTQ
+IPAEMLASIDLKYFNDSTRKKIEKIRPLLIEGTASLSPGMMMGMFNMLSTVLGVSILNLGQKRYTKTTYWWDGLQSSD
+DFALIVNAPNHEGIQAGVDRFYRTCKLLGINMSKKKSYINRTGTFEFTSFFYRYGFVANFSMELPSFGVSGINESADM
+SIGVTVIKNNMINNDLGPATAQMALQLFIKDYRYTYRCHRGDTQIQTRRSFEIKKLWEQTRSKAGLLVSDGGPNLYNI
+RNLHIPEVCLKWELMDEDYQGRLCNPLNPFVSHKEIESMNNAVMMPAHGPAKNMEYDAVATTHSWIPKRNRSILNTSQ
+RGVLEDEQMYQRCCNLFEKFFPSSSYRRPVGISSMVEAMVSRARIDARIDFESGRIKKEEFTEIMKICSTIEELRRQK
+" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 4 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 756 ,
+                        id
+                          local
+                            str "PB1_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 3 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "PB1_1" ,
+                location
+                  int {
+                    from 24 ,
+                    to 2297 ,
+                    strand plus ,
+                    id
+                      local
+                        str "PB1" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "PNHOOMBA_00002" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "PA" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 2233 ,
+            seq-data
+              iupacna "AGCAAAAGCAGGTACTGATCCAAAATGGAAGATTTTGTGCGACAATGCTTCAATC
+CGATGATTGTCGAGCTTGCGGAAAAAACAATGAAAGAGTATGGGGAGGACCTGAAAATCGAAACAAACAAATTTGCAG
+CAATATGCACTCACTTGGAAGTATGCTTCATGTATTCAGATTTTCACTTCATCAATGAGCAAGGCGAGTCAATAATCG
+TAGAACTTGGTGATCCAAATGCACTTTTGAAGCACAGATTTGAAATAATCGAGGGAAGAGATCGCACAATGGCCTGGA
+CAGTAGTAAACAGTATTTGCAACACTACAGGGGCTGAGAAACCAAAGTTTCTACCAGATTTGTATGATTACAAGGAGA
+ATAGATTCATCGAAATTGGAGTAACAAGGAGAGAAGTTCACATATACTATCTGGAAAAGGCCAATAAAATTAAATCTG
+AGAAAACACACATCCACATTTTCTCGTTCACTGGGGAAGAAATGGCCACAAAGGCAGACTACACTCTCGATGAAGAAA
+GCAGGGCTAGGATCAAAACCAGACTATTCACCATAAGACAAGAAATGGCCAGCAGAGGCCTCTGGGATTCCTTTCGTC
+AGTCCGAGAGAGGAGAAGAGACAATTGAAGAAAGGTTTGAAATCACAGGAACAATGCGCAAGCTTGCCGACCAAAGTC
+TCCCGCCGAACTTCTCCAGCCTTGAAAATTTTAGAGCCTATGTGGATGGATTCGAACCGAACGGCTACATTGAGGGCA
+AGCTGTCTCAAATGTCCAAAGAAGTAAATGCTAGAATTGAACCTTTTTTGAAAACAACACCACGACCACTTAGACTTC
+CGAATGGGCCTCCCTGTTCTCAGCGGTCCAAATTCCTGCTGATGGATGCCTTAAAATTAAGCATTGAGGACCCAAGTC
+ATGAAGGAGAGGGAATACCGCTATATGATGCAATCAAATGCATGAGAACATTCTTTGGATGGAAGGAACCCAATGTTG
+TTAAACCACACGAAAAGGGAATAAATCCAAATTATCTTCTGTCATGGAAGCAAGTACTGGCAGAACTGCAGGACATTG
+AGAATGAGGAGAAAATTCCAAAGACTAAAAATATGAAGAAAACAAGTCAGCTAAAGTGGGCACTTGGTGAGAACATGG
+CACCAGAAAAGGTAGACTTTGACGACTGTAAAGATGTAGGTGATTTGAAGCAATATGATAGTGATGAACCAGAATTGA
+GGTCGCTAGCAAGTTGGATTCAGAATGAGTTTAACAAGGCATGCGAACTGACAGATTCAAGCTGGATAGAGCTCGATG
+AGATTGGAGAAGATGTGGCTCCAATTGAACACATTGCAAGCATGAGAAGGAATTATTTCACATCAGAGGTGTCTCACT
+GCAGAGCCACAGAATACATAATGAAGGGGGTGTACATCAATACTGCCTTGCTTAATGCATCTTGTGCAGCAATGGATG
+ATTTCCAATTAATTCCAATGATAAGCAAGTGTAGAACTAAGGAGGGAAGGCGAAAGACCAACTTGTATGGTTTCATCA
+TAAAAGGAAGATCCCACTTAAGGAATGACACCGACGTGGTAAACTTTGTGAGCATGGAGTTTTCTCTCACTGACCCAA
+GACTTGAACCACATAAATGGGAGAAGTACTGTGTTCTTGAGATAGGAGATATGCTTATAAGAAGTGCCATAGGCCAGG
+TTTCAAGGCCCATGTTCTTGTATGTGAGAACAAATGGAACCTCAAAAATTAAAATGAAATGGGGAATGGAGATGAGGC
+GTTGCCTCCTCCAGTCACTTCAACAAATTGAGAGTATGATTGAAGCTGAGTCCTCTGTCAAAGAGAAAGACATGACCA
+AAGAGTTCTTTGAGAACAAATCAGAAACATGGCCCATTGGAGAGTCCCCCAAAGGAGTGGAGGAAAGTTCCATTGGGA
+AGGTCTGCAGGACTTTATTAGCAAAGTCGGTATTCAACAGCTTGTATGCATCTCCACAACTAGAAGGATTTTCAGCTG
+AATCAAGAAAACTGCTTCTTATCGTTCAGGCTCTTAGGGACAACCTTGAACCTGGGACCTTTGATCTTGGGGGGCTAT
+ATGAAGCAATTGAGGAGTGCCTGATTAATGATCCCTGGGTTTTGCTTAATGCTTCTTGGTTCAACTCCTTCCTTACAC
+ATGCATTGAGTTAGTTGTGGCAGTGCTACTATTTGCTATCCATACTGTCCAAAAAAGTACCTTGTTTCTACT" } } ,
+        seq {
+          id {
+            local
+              str "PA_1" } ,
+          descr {
+            title "hypothetical protein PNHOOMBA_00003 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 716 ,
+            seq-data
+              ncbieaa "MEDFVRQCFNPMIVELAEKTMKEYGEDLKIETNKFAAICTHLEVCFMYSDFHFIN
+EQGESIIVELGDPNALLKHRFEIIEGRDRTMAWTVVNSICNTTGAEKPKFLPDLYDYKENRFIEIGVTRREVHIYYLE
+KANKIKSEKTHIHIFSFTGEEMATKADYTLDEESRARIKTRLFTIRQEMASRGLWDSFRQSERGEETIEERFEITGTM
+RKLADQSLPPNFSSLENFRAYVDGFEPNGYIEGKLSQMSKEVNARIEPFLKTTPRPLRLPNGPPCSQRSKFLLMDALK
+LSIEDPSHEGEGIPLYDAIKCMRTFFGWKEPNVVKPHEKGINPNYLLSWKQVLAELQDIENEEKIPKTKNMKKTSQLK
+WALGENMAPEKVDFDDCKDVGDLKQYDSDEPELRSLASWIQNEFNKACELTDSSWIELDEIGEDVAPIEHIASMRRNY
+FTSEVSHCRATEYIMKGVYINTALLNASCAAMDDFQLIPMISKCRTKEGRRKTNLYGFIIKGRSHLRNDTDVVNFVSM
+EFSLTDPRLEPHKWEKYCVLEIGDMLIRSAIGQVSRPMFLYVRTNGTSKIKMKWGMEMRRCLLQSLQQIESMIEAESS
+VKEKDMTKEFFENKSETWPIGESPKGVEESSIGKVCRTLLAKSVFNSLYASPQLEGFSAESRKLLLIVQALRDNLEPG
+TFDLGGLYEAIEECLINDPWVLLNASWFNSFLTHALS" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 6 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 715 ,
+                        id
+                          local
+                            str "PA_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 5 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "PA_1" ,
+                location
+                  int {
+                    from 24 ,
+                    to 2174 ,
+                    strand plus ,
+                    id
+                      local
+                        str "PA" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "PNHOOMBA_00003" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "HA" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 1795 ,
+            seq-data
+              iupacna "AGCAAAAGCAGGGGATAATTCTATTAACCATGAAGACTATCATTGCTTTGAGCTA
+CATTCTATGTCTGGTTTTCGCTCAAAAAATTCCTGGAAATGACAATAGCACGGCAACGCTGTGCCTTGGGCACCATGC
+AGTACCAAACGGAACGATAGTGAAAACAATCACGAATGACCGAATTGAAGTTACTAATGCTACTGAGCTGGTTCAGAA
+TTCCTCAATAGGTGAAATATGCACAAAAGGGAAGAAAGCAGTGGACCTGGGATCTTGTGGAATACTGGGAACTATCAT
+TGGGCCTCCACAATGTGATCTTCATCTTGAATTCAAAGCTGATCTGATAATAGAAAGAAGAAATTCAAGTGACATCTG
+TTACCCAGGAAGATTCACTAATGAGGAAGCACTGAGACAAATAATCAGAGAATCTGGAGGAATTGACAAAGAGTCAAT
+GGGCTTTAGATATTCAGGAATAAGAACAGACGGGGCAACCAGTGCGTGTAAGAGAACAGTGTCCTCTTTCTACTCAGA
+AATGAAATGGCTTTCATCCAGCATGAATAACCAGGTGTTCCCACAACTGAATCAGACATACAGGAACACCAGAAAAGA
+ACCAGCCCTAATTGTCTGGGGAGTACATCATTCAAGTTCCTTGGATGAGCAAAATAAGCTATATGGAACTGGGAACAA
+GCTGATAACAGTAGGAAGCTCAAAGTACCAACAATCGTTTTCACCAAGTCCAGGGGCCAGGCCCAAAGTGAATGGTCA
+GGCCGGGAGGATCGACTTTCATTGGATGCTATTGGACCCAGGGGATACAGTCACTTTTACCTTCAATGGTGCATTCAT
+AGCCCCAGATAGAGCCACCTTTCTCCGCTCTAATGCCCCTTCAGGAATTGAGTACAATGGGAAGTCACTGGGAATACA
+GAGTGATGCACAAATCGATGAATCATGCAAGTCTGAATGCTTCACTCCAAATGGAAGCATTCCCAATGACAAACCATT
+CCAAAATGTAAACAGGATCACATACGGGGCCTGTCCCAGATATGTTAAGCATAGCACTCTGAAATTGGCAACAGGAAT
+GCGAAATGTACCAGAGAAACAAACTAGAGGCATATTTGGCGCAATAGCGGGTTTCATAGAAAATGGTTGGGAGGGAAT
+GGTGGATGGTTGGTACGGTTTCAGGCATCAAAATTCTGAGGGAAGAGGACAAGCAGCAGATCTCAAAAGCACTCAAGC
+AGCAATCGATCAAATCAATGGGAAGCTGAATCGATTGATCGGGAAAACCAACGAGAAATTCCATCAGATTGAAAAAGA
+ATTCTCAGAAGTAGAAGGAAGAATTCAGGACCTTGAGAAATATGTTGAGGACACTAAAATAGATCTCTGGTCATACAA
+CGCGGAGCTTCTTGTTGCCCTGGAGAACCAACATACAATTGATCTAACTGACTCAGAAATGAACAAACTGTTTGAAAA
+AACAAAGAAGCAACTGAGGGAAAATGCTGAGGATATGGGCAATGGTTGTTTCAAAATATACCACAAATGTGACAATGC
+CTGCATAGGATCAATAAGAAATGGAACTTATGACCACAATGTGTACAGGGATGAAGCATTAAACAACCGGTTCCAGAT
+CAAGGGAGTTGAGCTGAAGTCAGGGTACAAAGATTGGATCCTATGGATTTCCTTTGCCATATCATGTTTTTTGCTTTG
+TGTTGCTTTGTTGGGGTTCATCATGTGGGCCTGCCAAAAGGGCAACATTAGGTGCAACATTTGCATTTGAGTGCATTA
+ATTAAAAACACCCTTGTTTCTACT" } } ,
+        seq {
+          id {
+            local
+              str "HA_1" } ,
+          descr {
+            title "hypothetical protein PNHOOMBA_00004 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 577 ,
+            seq-data
+              ncbieaa "MKTIIALSYILCLVFAQKIPGNDNSTATLCLGHHAVPNGTIVKTITNDRIEVTNA
+TELVQNSSIGEICTKGKKAVDLGSCGILGTIIGPPQCDLHLEFKADLIIERRNSSDICYPGRFTNEEALRQIIRESGG
+IDKESMGFRYSGIRTDGATSACKRTVSSFYSEMKWLSSSMNNQVFPQLNQTYRNTRKEPALIVWGVHHSSSLDEQNKL
+YGTGNKLITVGSSKYQQSFSPSPGARPKVNGQAGRIDFHWMLLDPGDTVTFTFNGAFIAPDRATFLRSNAPSGIEYNG
+KSLGIQSDAQIDESCKSECFTPNGSIPNDKPFQNVNRITYGACPRYVKHSTLKLATGMRNVPEKQTRGIFGAIAGFIE
+NGWEGMVDGWYGFRHQNSEGRGQAADLKSTQAAIDQINGKLNRLIGKTNEKFHQIEKEFSEVEGRIQDLEKYVEDTKI
+DLWSYNAELLVALENQHTIDLTDSEMNKLFEKTKKQLRENAEDMGNGCFKIYHKCDNACIGSIRNGTYDHNVYRDEAL
+NNRFQIKGVELKSGYKDWILWISFAISCFLLCVALLGFIMWACQKGNIRCNICI" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 8 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 576 ,
+                        id
+                          local
+                            str "HA_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 7 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "HA_1" ,
+                location
+                  int {
+                    from 29 ,
+                    to 1762 ,
+                    strand plus ,
+                    id
+                      local
+                        str "HA" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "PNHOOMBA_00004" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "NP" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 1565 ,
+            seq-data
+              iupacna "AGCAAAAGCAGGGTAGATAATCACTCACTGAGTGACATCAAAATCATGGCGTCCC
+AAGGCACCAAACGGTCTTACGAACAGATGGAGACTGATGGAGAACGCCAGAATGCCACTGAAATCAGAGCATCCGTCG
+GAAAAATGATTGGTGGAATTGGACGATTCTACATCCAAATGTGCACCGAACTCAAACTCAGTGATTATGAGGGACGGT
+TGATCCAAAACAGCTTAACAATAGAGAGAATGGTGCTCTCTGCTTTTGACGAAAGGAGAAATAAATACCTGGAAGAAC
+ATCCCAGTGCGGGGAAAGATCCTAAGAAAACTGGAGGACCTATATACAGGAGAGTAAACGGAAAGTGGATGAGAGAAC
+TCATCCTTTATGACAAAGAAGAAATAAGGCGAATCTGGCGCCAAGCTAATAATGGTGACGATGCAACGGCTGGTCTGA
+CTCACATGATGATCTGGCATTCCAATTTGAATGATGCAACTTATCAGAGGACAAGAGCTCTTGTTCGCACCGGAATGG
+ATCCCAGGATGTGCTCTCTGATGCAAGGTTCAACTCTCCCTAGGAGGTCTGGAGCCGCAGGTGCTGCAGTCAAAGGAG
+TTGGAACAATGGTGATGGAATTGGTCAGGATGATCAAACGTGGGATCAATGATCGGAACTTCTGGAGGGGTGAGAATG
+GACGAAAAACAAGAATTGCTTATGAAAGAATGTGCAACATTCTCAAAGGGAAATTTCAAACTGCTGCACAAAAAGCAA
+TGATGGATCAAGTGAGAGAGAGCCGGAACCCAGGGAATGCTGAGTTCGAAGATCTCACTTTTCTAGCACGGTCTGCAC
+TCATATTGAGAGGGTCGGTTGCTCACAAGTCCTGCCTGCCTGCCTGTGTGTATGGACCTGCCGTAGCCAGTGGGTACG
+ACTTTGAAAGAGAGGGATACTCTCTAGTCGGAATAGACCCTTTCAGACTGCTTCAAAACAGCCAAGTGTACAGCCTAA
+TCAGACCAAATGAGAATCCAGCACACAAGAGTCAACTGGTGTGGATGGCATGCCATTCTGCCGCATTTGAAGATCTAA
+GAGTATTAAGCTTCATCAAAGGGACGAAGGTGCTCCCAAGAGGGAAGCTTTCCACTAGAGGAGTTCAAATTGCTTCCA
+ATGAAAATATGGAGACTATGGAATCAAGTACACTTGAACTGAGAAGCAGGTACTGGGCCATAAGGACCAGAAGTGGAG
+GAAACACCAATCAACAGAGGGCATCTGCGGGCCAAATCAGCATACAACCTACGTTCTCAGTACAGAGAAATCTCCCTT
+TTGACAGAACAACCATTATGGCAGCATTCAATGGGAATACAGAGGGAAGAACATCTGACATGAGGACCGAAATCATAA
+GGATGATGGAAAGTGCAAGACCAGAAGATGTGTCTTTCCAGGGGCGGGGAGTCTTCGAGCTCTCGGACGAAAAGGCAG
+CGAGCCCGATCGTGCCTTCCTTTGACATGAGTAATGAAGGATCTTATTTCTTCGGAGACAATGCAGAGGAGTACGACA
+ATTAAAGAAAAATACCCTTGTTTCTACT" } } ,
+        seq {
+          id {
+            local
+              str "NP_1" } ,
+          descr {
+            title "hypothetical protein PNHOOMBA_00005 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 498 ,
+            seq-data
+              ncbieaa "MASQGTKRSYEQMETDGERQNATEIRASVGKMIGGIGRFYIQMCTELKLSDYEGR
+LIQNSLTIERMVLSAFDERRNKYLEEHPSAGKDPKKTGGPIYRRVNGKWMRELILYDKEEIRRIWRQANNGDDATAGL
+THMMIWHSNLNDATYQRTRALVRTGMDPRMCSLMQGSTLPRRSGAAGAAVKGVGTMVMELVRMIKRGINDRNFWRGEN
+GRKTRIAYERMCNILKGKFQTAAQKAMMDQVRESRNPGNAEFEDLTFLARSALILRGSVAHKSCLPACVYGPAVASGY
+DFEREGYSLVGIDPFRLLQNSQVYSLIRPNENPAHKSQLVWMACHSAAFEDLRVLSFIKGTKVLPRGKLSTRGVQIAS
+NENMETMESSTLELRSRYWAIRTRSGGNTNQQRASAGQISIQPTFSVQRNLPFDRTTIMAAFNGNTEGRTSDMRTEII
+RMMESARPEDVSFQGRGVFELSDEKAASPIVPSFDMSNEGSYFFGDNAEEYDN" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 10 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 497 ,
+                        id
+                          local
+                            str "NP_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 9 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "NP_1" ,
+                location
+                  int {
+                    from 45 ,
+                    to 1541 ,
+                    strand plus ,
+                    id
+                      local
+                        str "NP" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "PNHOOMBA_00005" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "NA" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 1466 ,
+            seq-data
+              iupacna "AGCAAAAGCAGGAGTAAAGATGAATCCAAATCAAAAGATAATAACGATTGGCTCT
+GTTTCTCTCACCATTTCCACAATATGCTTCTTCATGCAAATTGCCATTTTGATAACTACTGTAACATTGCATTTCAAG
+CAATATGAATTCAACTCCCCCCCAAACAACCAAGTGATGCTGTGTGAACCAACAATAATAGAAAGAAACATAACAGAA
+ATAGTGTATTTAACTAACACCACCATAGAGAAGGAAATATGCCCCAAACCAGCAGAATACAGAAATTGGTCAAAACCG
+CAATGTGGCATTACAGGATTTGCACCTTTCTCTAAGGACAATTCGATTAGGCTTTCCGCTGGTGGGGACATCTGGGTG
+ACAAGAGAACCTTATGTGTCATGCGATCCTGACAAGTGTTATCAATTTGCCCTTGGACAGGGAACAACACTAAACAAC
+GTGCATTCAAATAACACAGTACGTGATAGGACCCCTTATCGGACTCTATTGATGAATGAGTTGGGTGTTCCTTTCCAT
+CTGGGGACCAAGCAAGTGTGCATAGCATGGTCCAGCTCAAGTTGTCACGATGGAAAAGCATGGCTGCATGTTTGTATA
+ACGGGGGATGATAAAAATGCAACTGCTAGCTTCATTTACAATGGGAGGCTTGTAGATAGTGTTGTTTCATGGTCCAAA
+GATATTCTCAGGACCCAGGAGTCAGAATGCATTTGTATCAATGGAACTTGTACAGTAGTAATGACTGATGGAAGTGCT
+TCAGGAAAAGCTGATACTAAAATACTATTCATTGAGGAGGGGAAAATCGTTCATACTAGCACATTGTCAGGAAGTGCT
+CAGCATGTCGAAGAGTGCTCTTGCTATCCTCGATATCCTGGTGTCAGATGTGTCTGCAGAGACAACTGGAAGGGCTCC
+AATCGGCCCATCGTAGATATAAACATAAAGGATCATAGCATTGTTTCCAGTTATGTGTGTTCAGGACTTGTTGGAGAC
+ACACCCAGAAAAACCGACAGCTCCAGCAGTAGCCATTGTTTGGATCCTAACAATGAAGAAGGTGGTCATGGAGTGAAA
+GGCTGGGCCTTTGATGATGGAAATGACGTGTGGATGGGAAGAACAATCAACGAGACGTCACGCTTAGGGTATGAAACC
+TTCAAAGTCATTGAAGGCTGGTCCAACCCTAAGTCCAAATTGCAGACAAATAGGCAAGTCATAGTTGACAGAGGTGAT
+AGGTCCGGTTATTCTGGTATTTTCTCTGTTGAAGGCAAAAGCTGCATCAATCGGTGCTTTTATGTGGAGTTGATTAGG
+GGAAGAAAAGAGGAAACTGAAGTCTTGTGGACCTCAAACAGTATTGTTGTGTTTTGTGGCACCTCAGGTACATATGGA
+ACAGGCTCATGGCCTGATGGGGCGGACCTCAATCTCATGCCTATATAAGCTTTCGCAATTTTAGAAAAAACTCCTTGT
+TTCTACT" } } ,
+        seq {
+          id {
+            local
+              str "NA_1" } ,
+          descr {
+            title "hypothetical protein PNHOOMBA_00006 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 469 ,
+            seq-data
+              ncbieaa "MNPNQKIITIGSVSLTISTICFFMQIAILITTVTLHFKQYEFNSPPNNQVMLCEP
+TIIERNITEIVYLTNTTIEKEICPKPAEYRNWSKPQCGITGFAPFSKDNSIRLSAGGDIWVTREPYVSCDPDKCYQFA
+LGQGTTLNNVHSNNTVRDRTPYRTLLMNELGVPFHLGTKQVCIAWSSSSCHDGKAWLHVCITGDDKNATASFIYNGRL
+VDSVVSWSKDILRTQESECICINGTCTVVMTDGSASGKADTKILFIEEGKIVHTSTLSGSAQHVEECSCYPRYPGVRC
+VCRDNWKGSNRPIVDINIKDHSIVSSYVCSGLVGDTPRKTDSSSSSHCLDPNNEEGGHGVKGWAFDDGNDVWMGRTIN
+ETSRLGYETFKVIEGWSNPKSKLQTNRQVIVDRGDRSGYSGIFSVEGKSCINRCFYVELIRGRKEETEVLWTSNSIVV
+FCGTSGTYGTGSWPDGADLNLMPI" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 12 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 468 ,
+                        id
+                          local
+                            str "NA_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 11 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "NA_1" ,
+                location
+                  int {
+                    from 19 ,
+                    to 1428 ,
+                    strand plus ,
+                    id
+                      local
+                        str "NA" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "PNHOOMBA_00006" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "M" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 1027 ,
+            seq-data
+              iupacna "AGCAAAAGCAGGTAGATATTGAAAGATGAGTCTTCTAACCGAGGTCGAAACGTAC
+GTACTCTCTATCATCCCGTCAGGCCCCCTCAAAGCCGAGATCGCACAGAGACTTGAAGATGTCTTTGCAGGGAAGAAC
+ACTGATCTTGAGGTTCTCATGGAATGGCTAAAGACAAGACCAATCCTGTCACCTCTGACTAAGGGGATTTTAGGATTT
+GTGTTCACGCTCACCGTGCCCAGTGAGCGAGGACTGCAGCGTAGACGCTTTGTCCAAAATGCCCTTAATGGGAACGGG
+GATCCAAATAACATGGACAAAGCAGTTAAACTGTATAGGAAGCTCAAGAGGGAGATAACATTCCATGGGGCCAAAGAA
+ATCTCACTCAGTTATTCTGCTGGTGCACTTGCCAGTTGTATGGGCCTCATATACAACAGGATGGGGGCTGTGACCACT
+GAAGTGGCATTTGGCCTGGTATGTGCAACCTGTGAACAGATTGCTGACTCCCAGCATCGGTCTCATAGGCAAATGGTG
+ACAACAACCAATCCACTAATCAGACATGAGAACAGAATGGTTTTAGCCAGCACTACAGCTAAGGCTATGGAGCAAATG
+GCTGGATCGAGTGAGCAAGCAGCAGAGGCCATGGAGGTTGCTAGTCAGGCTAGACAAATGGTGCAAGCGATGAGAACC
+ATTGGGACTCATCCTAGCTCCAGTGCTGGTCTGAAAAATGATCTTCTTGAAAATTTGCAGGCCTATCAGAAACGAATG
+GGGGTGCAGATGCAACGGTTCAAGTGATCCTCTCGCTATTGCCGCAAATATCATTGGGATCTTGCACTTGACATTGTG
+GATTCTTGATCGTCTTTTTTTCAAATGCATTTACCGTCGCTTTAAATACGGACTGAAAGGAGGGCCTTCTACGGAAGG
+AGTGCCAAAGTCTATGAGGGAAGAATATCGAAAGGAACAGCAGAGTGCTGTGGATGCTGACGATGGTCATTTTGTCAG
+CATAGAGCTGGAGTAAAAAACTACCTTGTTTCTACT" } } ,
+        seq {
+          id {
+            local
+              str "M_1" } ,
+          descr {
+            title "hypothetical protein PNHOOMBA_00007 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 252 ,
+            seq-data
+              ncbieaa "MSLLTEVETYVLSIIPSGPLKAEIAQRLEDVFAGKNTDLEVLMEWLKTRPILSPL
+TKGILGFVFTLTVPSERGLQRRRFVQNALNGNGDPNNMDKAVKLYRKLKREITFHGAKEISLSYSAGALASCMGLIYN
+RMGAVTTEVAFGLVCATCEQIADSQHRSHRQMVTTTNPLIRHENRMVLASTTAKAMEQMAGSSEQAAEAMEVASQARQ
+MVQAMRTIGTHPSSSAGLKNDLLENLQAYQKRMGVQMQRFK" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 14 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 251 ,
+                        id
+                          local
+                            str "M_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 13 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "M_1" ,
+                location
+                  int {
+                    from 25 ,
+                    to 783 ,
+                    strand plus ,
+                    id
+                      local
+                        str "M" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "PNHOOMBA_00007" } } } } } } } } ,
+    set {
+      class nuc-prot ,
+      descr {
+        source {
+          org {
+            taxname "Genus species" ,
+            orgname {
+              mod {
+                {
+                  subtype strain ,
+                  subname "strain" } } ,
+              gcode 11 } } } ,
+        comment "Annotated using prokka 1.14.6 from
+ https://github.com/tseemann/prokka" ,
+        user {
+          type
+            str "NcbiCleanup" ,
+          data {
+            {
+              label
+                str "method" ,
+              data
+                str "SeriousSeqEntryCleanup" } ,
+            {
+              label
+                str "version" ,
+              data
+                int 8 } ,
+            {
+              label
+                str "month" ,
+              data
+                int 7 } ,
+            {
+              label
+                str "day" ,
+              data
+                int 28 } ,
+            {
+              label
+                str "year" ,
+              data
+                int 2025 } } } ,
+        create-date
+          std {
+            year 2025 ,
+            month 7 ,
+            day 28 } } ,
+      seq-set {
+        seq {
+          id {
+            local
+              str "NS" } ,
+          descr {
+            molinfo {
+              biomol genomic } } ,
+          inst {
+            repr raw ,
+            mol dna ,
+            length 890 ,
+            seq-data
+              iupacna "AGCAAAAGCAGGGTGACAAAGACATAATGGATCCAAACACTGTGTCAAGCTTTCA
+GGTAGATTGCTTTCTTTGGCATGTCCGCAAACGAGTTGCAGACCAAGAACTAGGTGATGCCCCATTCCTTGATCGGCT
+TCGCCGAGATCAGAAATCCCTAAGAGGAAGGGGCAGCACCCTCGGTCTGGACATCGAGACAGCCACACGTGCTGGAAA
+GCAGATAGTGGAGCGGATTCTGAAAGAAGAATCCGATGAGGCACTTAAAATGACCATGGCCTCTGTACCTGCGTCGCG
+TTACCTAACTGACATGACTCTTGAGGAAATGTCAAGGGACTGGTCCATGCTCATACCCAAGCAGAAAGTGGCAGGCCC
+TCTTTGTATCAGAATGGACCAGGCGATCATGGATAAGAACATCATACTGAAAGCGAACTTCAGTGTGATTTTTGACCG
+GCTGGAGACTCTAATATTGCTAAGGGCTTTCACCGAAGAGGGAGCAATTGTTGGCGAAATTTCACCATTGCCTTCTCT
+TCCAGGACATACTGCTGAGGATGTCAAAAATGCAGTTGGAGTCCTCATCGGGGGACTTGAATGGAATGATAACACAGT
+TCGAGTCTCTGAAACTCTACAGAGATTCGCTTGGAGAAGCAGTAATGAGAATGGGAGACCTCCACTCACTCCAAAACA
+GAAACGAGAAATGGCGGGAACAATTAGGTCAGAAGTTTGAAGAAATAAGATGGTTGATTGAAGAAGTGAGACACAAAC
+TGAAGATAACAGAGAATAGTTTTGAGCAAATAACATTTATGCAAGCCTTACATCTATTGCTTGAAGTGGAGCAAGAGA
+TAAGAACTTTCTCGTTTCAGCTTATTTAATAATAAAAAACACCCTTGTTTCTACT" } } ,
+        seq {
+          id {
+            local
+              str "NS_1" } ,
+          descr {
+            title "hypothetical protein PNHOOMBA_00008 [Genus species]" ,
+            molinfo {
+              biomol peptide ,
+              tech concept-trans } } ,
+          inst {
+            repr raw ,
+            mol aa ,
+            length 230 ,
+            seq-data
+              ncbieaa "MDPNTVSSFQVDCFLWHVRKRVADQELGDAPFLDRLRRDQKSLRGRGSTLGLDIE
+TATRAGKQIVERILKEESDEALKMTMASVPASRYLTDMTLEEMSRDWSMLIPKQKVAGPLCIRMDQAIMDKNIILKAN
+FSVIFDRLETLILLRAFTEEGAIVGEISPLPSLPGHTAEDVKNAVGVLIGGLEWNDNTVRVSETLQRFAWRSSNENGR
+PPLTPKQKREMAGTIRSEV" } ,
+          annot {
+            {
+              data
+                ftable {
+                  {
+                    id
+                      local
+                        id 16 ,
+                    data
+                      prot {
+                        name {
+                          "hypothetical protein" } } ,
+                    location
+                      int {
+                        from 0 ,
+                        to 229 ,
+                        id
+                          local
+                            str "NS_1" } } } } } } } ,
+      annot {
+        {
+          data
+            ftable {
+              {
+                id
+                  local
+                    id 15 ,
+                data
+                  cdregion {
+                    frame one ,
+                    code {
+                      id 11 } } ,
+                product
+                  whole
+                    local
+                      str "NS_1" ,
+                location
+                  int {
+                    from 26 ,
+                    to 718 ,
+                    strand plus ,
+                    id
+                      local
+                        str "NS" } ,
+                qual {
+                  {
+                    qual "inference" ,
+                    val "ab initio prediction:Prodigal:002006" } } ,
+                xref {
+                  {
+                    data
+                      gene {
+                        locus-tag "PNHOOMBA_00008" } } } } } } } } } }

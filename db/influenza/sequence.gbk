@@ -1,0 +1,821 @@
+LOCUS       OQ352552                 890 bp    cRNA    linear   VRL 04-FEB-2023
+DEFINITION  Influenza A virus (A/black skimmer/Chile/C61962/2022(H5N1)) segment
+            8 nuclear export protein (NEP) and nonstructural protein 1 (NS1)
+            genes, complete cds.
+ACCESSION   OQ352552
+VERSION     OQ352552.1  GI:2437578989
+DBLINK      BioProject: PRJNA803139
+KEYWORDS    .
+SOURCE      Influenza A virus
+  ORGANISM  Influenza A virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 890)
+  AUTHORS   Tan,S., Freiden,P., Sharp,B., Jimenez-Bluhm,P., Mukherjee,N.,
+            Hamilton-West,C. and Schultz-Cherry,S.
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (30-JAN-2023) CEIRR Influenza Data Processing and
+            Communication Center, St. Jude Center of Excellence for Influenza
+            Research and Response (CEIRR), Memphis, TN 38105, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the  St. Jude Center of
+            Excellence for Influenza Research and Response (CEIRR). This work
+            was supported by National Institute of Allergy and Infectious
+            Diseases, National Institutes of Health, grant 75N93021C00016.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: IRMA v. 0.6.7
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..890
+                     /organism="Influenza A virus"
+                     /mol_type="viral cRNA"
+                     /strain="A/black skimmer/Chile/C61962/2022"
+                     /serotype="H5N1"
+                     /isolation_source="feces"
+                     /host="Rynchops niger"
+                     /db_xref="taxon:11320"
+                     /segment="8"
+                     /geo_loc_name="Chile"
+                     /collection_date="02-Dec-2022"
+                     /note="passage_history:E2"
+     gene            27..864
+                     /gene="NEP"
+                     /gene_synonym="NS2"
+     CDS             join(27..56,529..864)
+                     /gene="NEP"
+                     /gene_synonym="NS2"
+                     /note="nonstructural protein 2"
+                     /codon_start=1
+                     /product="nuclear export protein"
+                     /protein_id="WCF80501.1"
+                     /db_xref="GI:2437578991"
+                     /translation="MDSNTVSSFQDILMRMSKMQLGSSSEDLNGMITQFESLKLYRDS
+                     LGEAVMRMGDLHSLQSRNGKWREQLSQKFEEIRWLIEEVRHRLKITENSFEQITFMQA
+                     LQLLLEVEQEIRTFSFQLI"
+     gene            27..719
+                     /gene="NS1"
+     CDS             27..719
+                     /gene="NS1"
+                     /codon_start=1
+                     /product="nonstructural protein 1"
+                     /protein_id="WCF80500.1"
+                     /db_xref="GI:2437578990"
+                     /translation="MDSNTVSSFQVDCFLWHVRKRFADQELGDAPFLDRLRRDQKSLR
+                     GRGSTLGLGIETATRAGKQIVERILEEESDEALKMTIASVPAPRYLTDMTLEEMSRDW
+                     FMLMPKQKVAGSLSIRMDQAIMDKNIILKANFSVIFNRLETLILLRAFTEEGAIVGEI
+                     SPLPSLPGHTDEDVKNAIGVLIGGLEWNDNTVRVSETLQRFAWRSSNEDGRPPLPPKQ
+                     KRKMERTIESEV"
+ORIGIN      
+        1 agcgaaagca gggtgacaaa aacataatgg attccaacac tgtgtcaagc tttcaggtag
+       61 actgctttct ttggcatgtc cgcaaacgat ttgcagacca agaactgggt gatgccccat
+      121 tccttgaccg gctccgccga gaccagaagt ctctaagagg aagaggcagc actcttggtc
+      181 tgggcatcga gacggccact cgtgctggaa agcagatagt ggagaggatt ctggaggaag
+      241 aatccgacga ggcactcaaa atgactattg cctctgtgcc tgctccacgc tacctaactg
+      301 acatgactct tgaagagatg tcaagagact ggttcatgct catgcccaag caaaaagtgg
+      361 caggctccct cagtatcaga atggaccagg cgattatgga taagaacatc atactgaagg
+      421 caaacttcag tgtgatcttc aatcggctgg agacactaat actactcaga gctttcactg
+      481 aagagggagc aattgtcggc gaaatttcac cattgccttc tcttccagga catactgatg
+      541 aggatgtcaa aaatgcaatt ggggtcctca tcggaggact tgaatggaat gataacacag
+      601 ttcgagtctc tgaaacttta cagagattcg cttggagaag cagtaatgag gatgggagac
+      661 ctccactccc tccaaagcag aaacggaaaa tggagagaac aattgagtca gaagtttgaa
+      721 gaaataaggt ggctgattga agaagttcga cacagactaa agatcacaga aaatagtttt
+      781 gaacaaataa catttatgca agccttacaa ctactgcttg aagtggagca agagataaga
+      841 actttctcgt ttcagcttat ttaataataa aaaacaccct tgtttctact
+//
+
+LOCUS       OQ352551                1027 bp    cRNA    linear   VRL 04-FEB-2023
+DEFINITION  Influenza A virus (A/black skimmer/Chile/C61962/2022(H5N1)) segment
+            7 matrix protein 2 (M2) and matrix protein 1 (M1) genes, complete
+            cds.
+ACCESSION   OQ352551
+VERSION     OQ352551.1  GI:2437578986
+DBLINK      BioProject: PRJNA803139
+KEYWORDS    .
+SOURCE      Influenza A virus
+  ORGANISM  Influenza A virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1027)
+  AUTHORS   Tan,S., Freiden,P., Sharp,B., Jimenez-Bluhm,P., Mukherjee,N.,
+            Hamilton-West,C. and Schultz-Cherry,S.
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (30-JAN-2023) CEIRR Influenza Data Processing and
+            Communication Center, St. Jude Center of Excellence for Influenza
+            Research and Response (CEIRR), Memphis, TN 38105, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the  St. Jude Center of
+            Excellence for Influenza Research and Response (CEIRR). This work
+            was supported by National Institute of Allergy and Infectious
+            Diseases, National Institutes of Health, grant 75N93021C00016.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: IRMA v. 0.6.7
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1027
+                     /organism="Influenza A virus"
+                     /mol_type="viral cRNA"
+                     /strain="A/black skimmer/Chile/C61962/2022"
+                     /serotype="H5N1"
+                     /isolation_source="feces"
+                     /host="Rynchops niger"
+                     /db_xref="taxon:11320"
+                     /segment="7"
+                     /geo_loc_name="Chile"
+                     /collection_date="02-Dec-2022"
+                     /note="passage_history:E2"
+     gene            26..1007
+                     /gene="M2"
+     CDS             join(26..51,740..1007)
+                     /gene="M2"
+                     /codon_start=1
+                     /product="matrix protein 2"
+                     /protein_id="WCF80499.1"
+                     /db_xref="GI:2437578988"
+                     /translation="MSLLTEVETPTKNGWECNCSDSSDPLVIAASIIGILHLILWILD
+                     RLFFKCVYRRLKYGLKGGPSTEGVPESMREEYRQEQQSAVDVDDGHFVNIELE"
+     gene            26..784
+                     /gene="M1"
+     CDS             26..784
+                     /gene="M1"
+                     /codon_start=1
+                     /product="matrix protein 1"
+                     /protein_id="WCF80498.1"
+                     /db_xref="GI:2437578987"
+                     /translation="MSLLTEVETYVLSIVPSGPLKAEIAQRLEDVFAGKNTDLEALME
+                     WLKTRPILSPLTKGILGFVFTLTVPSERGLQRRRFVQNALSGTGDPNNMDRAVKLYRK
+                     LKREITFHGAKEVALSYSTGALASCMGLIYNRMGTVTAEVALGLVCATCEQIADSQHR
+                     SHRQIATTTNPLIRHENRMVLASTTAKAMEQMAGSSEQAVEAMEVASQARQMVQAMRT
+                     IGTHPSSSAGLRDDLLENLQAYQKRMGVQLQRFK"
+ORIGIN      
+        1 agcaaaagca ggtagatatt gaaagatgag tcttctaacc gaggtcgaaa cgtacgttct
+       61 ctctatcgtc ccgtcgggcc ccctcaaagc cgagatcgcg cagagacttg aagatgtctt
+      121 tgcagggaag aacaccgatc ttgaggctct catggaatgg ctaaagacaa gaccaatcct
+      181 gtcacctctg actaagggga ttttgggatt tgtgttcacg ctcaccgtgc ccagtgagcg
+      241 aggactgcag cgtagacgct ttgtccaaaa tgctctaagt ggaactggag acccaaacaa
+      301 catggacagg gcagtcaagt tgtacaggaa actgaagaga gagataacat tccatggtgc
+      361 taaagaagtt gcactcagtt actcaaccgg tgcacttgcc agttgtatgg gtctcatata
+      421 caacaggatg gggacggtga ccgcagaagt ggcattgggc ctagtgtgtg ccacctgtga
+      481 gcagattgct gattcacagc atcggtctca cagacagata gctaccacca ccaacccact
+      541 aatcagacat gaaaacagaa tggttttggc cagtactaca gctaaggcta tggagcagat
+      601 ggctggatcg agtgagcaag cagtggaagc catggaggtt gctagtcagg ctaggcagat
+      661 ggtgcaggcg atgaggacca ttggaactca tcctagctcc agtgccggtc tgagagatga
+      721 tctccttgaa aatttgcagg cctaccaaaa acggatggga gtgcaactgc agcgattcaa
+      781 gtgatcctct cgttattgcc gcaagtatca ttgggatctt gcacttgata ttgtggattc
+      841 ttgatcgcct tttcttcaaa tgcgtttatc gtcgccttaa atacggtttg aaaggagggc
+      901 cttctacgga aggagtacct gagtccatga gggaagagta ccggcaggaa cagcagagtg
+      961 ctgtggatgt tgacgatggt cattttgtca acatagagct ggagtaaaaa actaccttgt
+     1021 ttctact
+//
+
+LOCUS       OQ352550                1458 bp    cRNA    linear   VRL 04-FEB-2023
+DEFINITION  Influenza A virus (A/black skimmer/Chile/C61962/2022(H5N1)) segment
+            6 neuraminidase (NA) gene, complete cds.
+ACCESSION   OQ352550
+VERSION     OQ352550.1  GI:2437578984
+DBLINK      BioProject: PRJNA803139
+KEYWORDS    .
+SOURCE      Influenza A virus
+  ORGANISM  Influenza A virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1458)
+  AUTHORS   Tan,S., Freiden,P., Sharp,B., Jimenez-Bluhm,P., Mukherjee,N.,
+            Hamilton-West,C. and Schultz-Cherry,S.
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (30-JAN-2023) CEIRR Influenza Data Processing and
+            Communication Center, St. Jude Center of Excellence for Influenza
+            Research and Response (CEIRR), Memphis, TN 38105, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the  St. Jude Center of
+            Excellence for Influenza Research and Response (CEIRR). This work
+            was supported by National Institute of Allergy and Infectious
+            Diseases, National Institutes of Health, grant 75N93021C00016.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: IRMA v. 0.6.7
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1458
+                     /organism="Influenza A virus"
+                     /mol_type="viral cRNA"
+                     /strain="A/black skimmer/Chile/C61962/2022"
+                     /serotype="H5N1"
+                     /isolation_source="feces"
+                     /host="Rynchops niger"
+                     /db_xref="taxon:11320"
+                     /segment="6"
+                     /geo_loc_name="Chile"
+                     /collection_date="02-Dec-2022"
+                     /note="passage_history:E2"
+     gene            21..1430
+                     /gene="NA"
+     CDS             21..1430
+                     /gene="NA"
+                     /codon_start=1
+                     /product="neuraminidase"
+                     /protein_id="WCF80497.1"
+                     /db_xref="GI:2437578985"
+                     /translation="MNPNQKITTIGSICMVIGIVSLMLQIGNIISIWVSHSIQTGNQY
+                     QPEPCNQSIITYENNTWVNQTYVNISNTNFLAEQAVTSVTLAGNSSLCPISGWAIYSK
+                     DNGIRIGSKGDVFVIREPFISCSHLECRTFFLTQGALLNDKHSNGTVKDRSPYRTLMS
+                     CPVGEAPSPYNSRFESVAWSASACHDGISWLTIGISGPDNGAVAVLKYNDIITDTIKS
+                     WRNNILRTQESECACVNGSCFTVMTDGPSNGQASYKIFKIEKGKVVKSVEMNAPNYHY
+                     EECSCYPDAGDIMCVCRDNWHGSNRPWVSFNQNLEYQIGYICSGVFGDNPRPNDGTGS
+                     CSPMPSNGAYGVKGFSFKYGNGVWIGRTKSTSSRSGFEMIWDPNGWTETDSSFSVKQD
+                     IVEITDWSGYSGSFVQHPELTGLDCMRPCFWVELIRGRPKENTIWTSGSSISFCGVNS
+                     DTVGWSWPDGAELPFTIDK"
+ORIGIN      
+        1 agcaaaagca ggagttcaaa atgaatccaa atcaaaagat aacaaccatt ggatcaatct
+       61 gtatggtaat tgggatagtc agcttgatgc tgcaaattgg gaacataatc tcaatatggg
+      121 ttagccattc aatccaaaca gggaatcaat accagcctga accatgcaat caaagcatca
+      181 ttacctatga gaacaacacc tgggtaaatc agacgtatgt caacatcagc aataccaatt
+      241 ttcttgctga gcaggctgtt acttcggtaa cattagcggg caattcatct ctttgcccta
+      301 ttagtgggtg ggcaatatac agtaaggaca acggtataag aattgggtcc aagggggatg
+      361 tgtttgttat aagagaaccg ttcatctcat gctcccactt ggaatgcaga acctttttcc
+      421 tgacccaggg agctctgctg aatgacaaac attctaatgg gacagttaag gatagaagcc
+      481 cttatagaac tttgatgagt tgtcccgtgg gtgaggctcc ttccccgtat aattcaagat
+      541 ttgagtctgt tgcttggtcg gcaagtgctt gtcatgatgg catcagttgg ttgacaatcg
+      601 gtatttctgg tccagacaat ggagctgtgg ctgtattgaa gtacaatgac ataataacgg
+      661 atactatcaa gagttggaga aacaacattt tgagaactca agaatctgaa tgtgcttgcg
+      721 taaatggctc ttgcttcact gtaatgactg atggaccaag caatgggcag gcctcatata
+      781 aaatcttcaa gatagagaaa gggaaagttg tcaaatcagt tgaaatgaat gcccctaatt
+      841 accactacga ggaatgctcc tgttatcctg atgcgggtga tattatgtgt gtgtgcaggg
+      901 acaattggca tggctcaaac cggccgtggg tatcttttaa tcaaaatctg gagtatcaaa
+      961 taggatatat atgcagtggg gttttcgggg acaatccccg ccccaatgat ggaacaggca
+     1021 gttgcagtcc aatgccctct aatggggcat atggggtaaa agggttttca tttaagtacg
+     1081 gtaatggggt ttggatcgga agaacaaaaa gcactagttc cagaagcggc tttgagatga
+     1141 tttgggatcc gaatgggtgg actgagacgg acagtagttt ctcagtgaag caagacattg
+     1201 tagaaataac tgactggtca ggatatagtg ggagttttgt ccagcatcca gaactgacag
+     1261 gattagattg catgaggcct tgtttctggg ttgagctaat cagagggagg cccaaagaga
+     1321 acacaatttg gactagcggg agcagcatat ccttttgtgg tgtaaatagt gacactgtgg
+     1381 gttggtcttg gccagacggt gctgagttgc cattcaccat tgacaagtag tttgttcaaa
+     1441 aaactccttg tttctact
+//
+
+LOCUS       OQ352549                1565 bp    cRNA    linear   VRL 04-FEB-2023
+DEFINITION  Influenza A virus (A/black skimmer/Chile/C61962/2022(H5N1)) segment
+            5 nucleocapsid protein (NP) gene, complete cds.
+ACCESSION   OQ352549
+VERSION     OQ352549.1  GI:2437578982
+DBLINK      BioProject: PRJNA803139
+KEYWORDS    .
+SOURCE      Influenza A virus
+  ORGANISM  Influenza A virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1565)
+  AUTHORS   Tan,S., Freiden,P., Sharp,B., Jimenez-Bluhm,P., Mukherjee,N.,
+            Hamilton-West,C. and Schultz-Cherry,S.
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (30-JAN-2023) CEIRR Influenza Data Processing and
+            Communication Center, St. Jude Center of Excellence for Influenza
+            Research and Response (CEIRR), Memphis, TN 38105, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the  St. Jude Center of
+            Excellence for Influenza Research and Response (CEIRR). This work
+            was supported by National Institute of Allergy and Infectious
+            Diseases, National Institutes of Health, grant 75N93021C00016.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: IRMA v. 0.6.7
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1565
+                     /organism="Influenza A virus"
+                     /mol_type="viral cRNA"
+                     /strain="A/black skimmer/Chile/C61962/2022"
+                     /serotype="H5N1"
+                     /isolation_source="feces"
+                     /host="Rynchops niger"
+                     /db_xref="taxon:11320"
+                     /segment="5"
+                     /geo_loc_name="Chile"
+                     /collection_date="02-Dec-2022"
+                     /note="passage_history:E2"
+     gene            46..1542
+                     /gene="NP"
+     CDS             46..1542
+                     /gene="NP"
+                     /codon_start=1
+                     /product="nucleocapsid protein"
+                     /protein_id="WCF80496.1"
+                     /db_xref="GI:2437578983"
+                     /translation="MASQGTKRSYEQMETGGERQNATEIRASVGRMVGGIGRFYIQMC
+                     TELKLSDYEGRLIQNSITIERMVLSAFDERRNKYLEEHPSAGKDPKKTGGPIYRRRDG
+                     KWVRELILYDKEEIRRIWRQANNGEDATAGLTHLMIWHSNLNDATYQRTRALVRTGMD
+                     PRMCSLMQGSTLPRRSGAAGAAVKGVGTMVMELIRMIKRGINDRNFWRGENGRRTRIA
+                     YERMCNILKGKLQTAAQRAMMDQVRESRNPGNAEIEDLIFLARSALILRGSVAHKSCL
+                     PACVYGLAVASGYDFEREGYSLVGIDPFRLLQNSQVFSLIRPNENPAHKSQLVWMACH
+                     SAAFEDLRVSSFIRGTRVVPRGQLSTRGVQIASNENMETMDSSTLELRSRYWAIRTRS
+                     GGNTNQQRASAGQISVQPTFSVQRNLPFERATIMAAFTGNTEGRTSDMRTEIIRMMEN
+                     ARPEDVSFQGRGVFELSDEKATNPIVPSFDMSNEGSYFFGDNAEEYDN"
+ORIGIN      
+        1 agcgaaagca gggtagataa tcactcactg agtgacatcc acatcatggc gtctcaaggc
+       61 accaaacgat cctatgaaca aatggaaact ggtggggaac gccagaatgc cactgaaatc
+      121 agagcatctg ttggaagaat ggttggcgga atcgggagat tctacataca gatgtgcact
+      181 gaactcaaac tcagtgatta cgaagggagg ctgatccaaa acagcataac catagaaagg
+      241 atggttctct cggcatttga tgagaggagg aacaagtacc tggaggaaca tcccagtgcc
+      301 gggaaggatc ccaagaagac tggaggtcca atctacagga ggagagatgg caaatgggtg
+      361 agagagttga tcctctacga caaagaagag atcagaagaa tttggcgtca agctaataat
+      421 ggagaggatg caactgctgg tctcactcac ttgatgattt ggcattccaa tctgaatgat
+      481 gccacatacc agagaacaag ggcacttgtg cgtactggaa tggaccctag aatgtgctct
+      541 ctgatgcaag gctcaaccct ccctaggaga tcaggggctg ctggagcagc agtgaaagga
+      601 gttggaacaa tggtgatgga actaattcga atgatcaaac gagggatcaa tgatcggaat
+      661 ttctggagag gcgaaaacgg tcggagaacc aggattgcct acgagagaat gtgcaacatt
+      721 ctcaagggaa agctccaaac agcagcacaa cgggcaatga tggaccaagt gagagaaagc
+      781 cggaatcctg ggaatgctga aattgaagat ctcatctttc tcgcacgatc tgctctcatc
+      841 ctgaggggat cagtggctca taagtcctgt ctgcctgctt gcgtatatgg acttgctgta
+      901 gccagtggat atgactttga aagagaggga tattctctag tcggaattga tcctttccgt
+      961 ctgctccaaa acagccaagt cttcagtctc atcagaccga acgaaaatcc agctcataaa
+     1021 agtcagctgg tatggatggc atgccactct gcggcatttg aggatctgag agtgtcaagc
+     1081 ttcatcagag gaacaagagt agtcccaaga ggacaactgt ccaccagagg agttcagatt
+     1141 gcttcaaatg aaaacatgga gacaatggac tccagtactc ttgaactgag gagcagatat
+     1201 tgggctataa gaacaagaag tggaggaaac actaaccaac agagagcatc tgcaggacaa
+     1261 atcagcgtac agcccacatt ctctgtacaa agaaacctcc cattcgagag agcaaccatc
+     1321 atggcagcat ttacgggaaa cactgaaggc agaacttcag atatgagaac tgagatcata
+     1381 aggatgatgg aaaatgccag acctgaagat gtgtctttcc aggggcgggg agtcttcgag
+     1441 ctctcggacg aaaaggcaac gaacccgatc gtgccttcct ttgacatgag taatgaagga
+     1501 tcttatttct tcggagacaa tgcagaggag tatgacaatt aaagaaaaat acccttgttt
+     1561 ctact
+//
+
+LOCUS       OQ352548                1776 bp    cRNA    linear   VRL 04-FEB-2023
+DEFINITION  Influenza A virus (A/black skimmer/Chile/C61962/2022(H5N1)) segment
+            4 hemagglutinin (HA) gene, complete cds.
+ACCESSION   OQ352548
+VERSION     OQ352548.1  GI:2437578980
+DBLINK      BioProject: PRJNA803139
+KEYWORDS    .
+SOURCE      Influenza A virus
+  ORGANISM  Influenza A virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1776)
+  AUTHORS   Tan,S., Freiden,P., Sharp,B., Jimenez-Bluhm,P., Mukherjee,N.,
+            Hamilton-West,C. and Schultz-Cherry,S.
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (30-JAN-2023) CEIRR Influenza Data Processing and
+            Communication Center, St. Jude Center of Excellence for Influenza
+            Research and Response (CEIRR), Memphis, TN 38105, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the  St. Jude Center of
+            Excellence for Influenza Research and Response (CEIRR). This work
+            was supported by National Institute of Allergy and Infectious
+            Diseases, National Institutes of Health, grant 75N93021C00016.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: IRMA v. 0.6.7
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1776
+                     /organism="Influenza A virus"
+                     /mol_type="viral cRNA"
+                     /strain="A/black skimmer/Chile/C61962/2022"
+                     /serotype="H5N1"
+                     /isolation_source="feces"
+                     /host="Rynchops niger"
+                     /db_xref="taxon:11320"
+                     /segment="4"
+                     /geo_loc_name="Chile"
+                     /collection_date="02-Dec-2022"
+                     /note="passage_history:E2"
+     gene            29..1732
+                     /gene="HA"
+     CDS             29..1732
+                     /gene="HA"
+                     /function="receptor binding and fusion protein"
+                     /codon_start=1
+                     /product="hemagglutinin"
+                     /protein_id="WCF80495.1"
+                     /db_xref="GI:2437578981"
+                     /translation="MENIVLLLAIVSLVKSDQICIGYHANNSTEQVDTIMEKNVTVTH
+                     AQDILEKTHNGKLCDLNGVKPLILKDCSVAGWLLGNPMCDEFIRVPEWSYIVERANPA
+                     NDLCYPGSLNDYEELKHMLSRINHFEKIQIIPKSSWPNHETSLGVSAACPYQGAPSFF
+                     RNVVWLIKKNDAYPTIKISYNNTNREDLLILWGIHHSNNAEEQTNLYKNPTTYISVGT
+                     STLNQRLAPKIATRSQVNGQRGRMDFFWTILKPDDAIHFESNGNFIAPEYAYKIVKKG
+                     DSTIMKSGVEYGHCNTKCQTPVGAINSSMPFHNIHPLTIGECPKYVKSNKLVLATGLR
+                     NSPLREKRRKRGLFGAIAGFIEGGWQGMVDGWYGYHHSNEQGSGYAADKESTQKAIDG
+                     VTNKVNSIIDKMNTQFEAVGREFNNLERRIENLNKKMEDGFLDVWTYNAELLVLMENE
+                     RTLDFHDSNVKNLYDKVRLQLRDNAKELGNGCFEFYHKCDNECMESVRNGTYDYPQYS
+                     EEARLKREEISGVKLESVGTYQILSIYSTAASSLALAIMMAGLSLWMCSNGSLQCRIC
+                     I"
+     sig_peptide     29..76
+                     /gene="HA"
+     mat_peptide     77..1063
+                     /gene="HA"
+                     /product="HA1"
+     mat_peptide     1064..1729
+                     /gene="HA"
+                     /product="HA2"
+ORIGIN      
+        1 agcaaaagca ggggttcact ctgtcaaaat ggagaacata gtactacttc ttgcaatagt
+       61 tagccttgtt aagagtgatc agatttgcat tggttaccat gcaaacaatt cgacagagca
+      121 agttgacacg ataatggaaa agaacgtcac tgttacacat gcccaagaca tactggaaaa
+      181 aacacacaac gggaaactct gtgatttaaa tggggtgaag ccactgattt taaaggattg
+      241 tagtgtagct ggatggctcc tcggaaaccc aatgtgcgac gaattcatca gagtgccgga
+      301 atggtcctac atagtggagc gggctaaccc agctaatgac ctctgttacc cagggagcct
+      361 caatgactat gaagaactga aacacatgtt gagcagaata aatcattttg agaagattca
+      421 gatcattccc aagagttcct ggccaaatca tgaaacatca ctaggggtga gcgcagcttg
+      481 tccataccag ggagcgccct cctttttcag aaatgtggtg tggcttatca aaaagaacga
+      541 tgcataccca acaataaaga taagctacaa taatactaat cgggaagatc tcttgatact
+      601 gtgggggatt catcattcca acaatgcaga agaacagaca aatctctaca aaaacccaac
+      661 cacctacatt tcagttggaa catcaacttt aaaccagagg ttggcaccaa aaatagctac
+      721 tagatcccaa gtaaacgggc aacgtggaag aatggacttc ttctggacaa tcttaaaacc
+      781 agatgatgca atccatttcg agagtaatgg aaatttcatt gctccagaat atgcatacaa
+      841 aattgtcaag aaaggggact caacaattat gaaaagtgga gtggaatatg gccactgcaa
+      901 caccaaatgt caaaccccag taggtgcgat aaattctagt atgccattcc acaacataca
+      961 tcctctcacc attggggaat gccccaaata cgtgaagtca aacaagttgg tccttgcgac
+     1021 tgggctcaga aatagtcctc taagagaaaa gagaagaaaa agaggtctgt ttggggcgat
+     1081 agcagggttt atagagggag gatggcaggg aatggttgat ggttggtatg gataccatca
+     1141 tagcaatgag caggggagtg ggtacgctgc ggacaaagaa tccacccaaa aggcaataga
+     1201 tggagttacc aataaggtca actcaatcat tgacaaaatg aacactcaat ttgaggcagt
+     1261 tggaagggag tttaataact tagaaaggag gatagagaat ttgaacaaga aaatggaaga
+     1321 cggattccta gatgtctgga cctataatgc tgaacttcta gttctcatgg aaaacgagag
+     1381 gactctagat ttccatgatt caaatgtcaa gaacctttac gacaaagtca gattacagct
+     1441 tagggataat gcaaaggagc tgggtaacgg ctgtttcgaa ttctatcaca aatgtgataa
+     1501 tgaatgtatg gaaagtgtga gaaatgggac gtatgactac cctcagtatt cagaagaagc
+     1561 aagattaaaa agagaagaaa taagcggagt gaaattagaa tcagtaggaa cttaccagat
+     1621 actgtcaatt tattcaacag cggcaagttc cctagcactg gcaatcatga tggctggtct
+     1681 atctttatgg atgtgctcca atgggtcgtt acaatgcaga atttgcattt agatttgtga
+     1741 gctcagattg tagttaaaaa cacccttgtt tctact
+//
+
+LOCUS       OQ352547                2233 bp    cRNA    linear   VRL 04-FEB-2023
+DEFINITION  Influenza A virus (A/black skimmer/Chile/C61962/2022(H5N1)) segment
+            3 polymerase PA (PA) and PA-X protein (PA-X) genes, complete cds.
+ACCESSION   OQ352547
+VERSION     OQ352547.1  GI:2437578977
+DBLINK      BioProject: PRJNA803139
+KEYWORDS    .
+SOURCE      Influenza A virus
+  ORGANISM  Influenza A virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 2233)
+  AUTHORS   Tan,S., Freiden,P., Sharp,B., Jimenez-Bluhm,P., Mukherjee,N.,
+            Hamilton-West,C. and Schultz-Cherry,S.
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (30-JAN-2023) CEIRR Influenza Data Processing and
+            Communication Center, St. Jude Center of Excellence for Influenza
+            Research and Response (CEIRR), Memphis, TN 38105, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the  St. Jude Center of
+            Excellence for Influenza Research and Response (CEIRR). This work
+            was supported by National Institute of Allergy and Infectious
+            Diseases, National Institutes of Health, grant 75N93021C00016.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: IRMA v. 0.6.7
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..2233
+                     /organism="Influenza A virus"
+                     /mol_type="viral cRNA"
+                     /strain="A/black skimmer/Chile/C61962/2022"
+                     /serotype="H5N1"
+                     /isolation_source="feces"
+                     /host="Rynchops niger"
+                     /db_xref="taxon:11320"
+                     /segment="3"
+                     /geo_loc_name="Chile"
+                     /collection_date="02-Dec-2022"
+                     /note="passage_history:E2"
+     gene            25..2175
+                     /gene="PA"
+     CDS             25..2175
+                     /gene="PA"
+                     /codon_start=1
+                     /product="polymerase PA"
+                     /protein_id="WCF80493.1"
+                     /db_xref="GI:2437578978"
+                     /translation="MEDFVRQCFNPMIVELAEKAMKEYGEDPKIETNKFAAICTHLEV
+                     CFMYSDFHFIDEQGESMIVESGDPNALLKHRFEIIEGRDRAMAWTVVNSICNTTGVEK
+                     PKFLPDLYDYKENRFIEIGVTRREVHIYYLEKANKIKSEKTHIHIFSFTGEEMATKAD
+                     YTLDEESRARIKTRLFTIRQEMASRGLWDSFRQSERGEETIEERFEITGTMRRLADQS
+                     LPPNFSSLENFRAYVDGFEPNGCIEGKLSQMSKEVNARIEPFLKTTPRPLRLPDGPPC
+                     SQRSKFLLMDALKLSIEDPSHEGEGIPLYDAIKCMKTFFGWKEPNIVKPHEKGINPNY
+                     LLAWKQVLAELQDIENEEKIPKTKNMKKTSQLKWALGENMAPEKVDFEDCKDVSDLRQ
+                     YDSDEPESRSLASWIQSEFNKACELTDSSWIELDEIGEDVAPIEHIASVRRNYFTAEV
+                     SHCRATEYIMKGVYINTALLNASCAAMDDFQLIPMISKCRTKEGRRKTNLYGFIIKGR
+                     SHLRNDTDVVNFVSMEFSLTDPRLEPHKWEKYCVLEIGDMLLRTAIGQVSRPMFLYVR
+                     TNGTSKIKMKWGMEMRRCLLQSLQQIESMIEAESSVKEKDMSKEFFENKSETWPIGES
+                     PKGVEEGSIGKVCRTLLAKSVFNSLYASPQLEGFSAESRKLLLIVQALRDNLEPGTFD
+                     LGGLYEAIEECLINDPWVLLNASWFNSFLTHALK"
+     gene            25..784
+                     /gene="PA-X"
+     CDS             join(25..594,596..784)
+                     /gene="PA-X"
+                     /ribosomal_slippage
+                     /codon_start=1
+                     /product="PA-X protein"
+                     /protein_id="WCF80494.1"
+                     /db_xref="GI:2437578979"
+                     /translation="MEDFVRQCFNPMIVELAEKAMKEYGEDPKIETNKFAAICTHLEV
+                     CFMYSDFHFIDEQGESMIVESGDPNALLKHRFEIIEGRDRAMAWTVVNSICNTTGVEK
+                     PKFLPDLYDYKENRFIEIGVTRREVHIYYLEKANKIKSEKTHIHIFSFTGEEMATKAD
+                     YTLDEESRARIKTRLFTIRQEMASRGLWDSFVNPREAKRQLKKDLKSQEPCAGLPTKV
+                     FHRTSPALKTLEPMWMDSNRTAALRANFLKCQKK"
+ORIGIN      
+        1 agcgaaagca ggtactgatt caaaatggaa gactttgtgc gacaatgctt caatccaatg
+       61 attgtcgagc ttgcggaaaa agcaatgaaa gaatatgggg aagatccgaa aatcgagaca
+      121 aacaaatttg ccgcaatatg cacacactta gaagtctgtt tcatgtattc ggatttccat
+      181 tttattgatg aacaaggcga atcaatgatt gtagaatctg gcgatccaaa tgcattattg
+      241 aaacaccgat ttgagataat cgaagggaga gaccgagcaa tggcctggac agtggtgaat
+      301 agtatctgca acaccacagg ggtcgaaaag cccaaattcc tccctgattt gtatgactac
+      361 aaagagaacc gattcattga aattggagta acgcgaaggg aagttcacat atactattta
+      421 gaaaaagcca acaagataaa atcagagaaa acacatattc acatattctc attcactgga
+      481 gaggaaatgg ccaccaaggc ggactacacc cttgatgaag agagcagagc aagaataaaa
+      541 accagactgt tcactataag acaagaaatg gccagtagag gtctatggga ttcctttcgt
+      601 caatccgaga gaggcgaaga gacaattgaa gaaagatttg aaatcacagg aaccatgcgc
+      661 aggcttgccg accaaagtct tccaccgaac ttctccagcc ttgaaaactt tagagcctat
+      721 gtggatggat tcgaaccgaa cggctgcatt gagggcaaac tttctcaaat gtcaaaagaa
+      781 gtgaacgcca gaattgagcc atttctgaag acaacaccac gccctctcag attacctgat
+      841 gggcctccct gttctcagcg gtcgaagttc ttgctgatgg atgcccttaa gttgagcatc
+      901 gaagacccta gccatgaggg ggagggcata ccgctgtatg atgcaatcaa atgcatgaag
+      961 acattttttg gctggaaaga gcccaacatc gtaaagccgc atgagaaagg cataaaccct
+     1021 aattacctcc tggcttggaa gcaggtgctg gcagaacttc aagacattga aaatgaggag
+     1081 aaaattccaa aaacaaagaa catgaagaaa acaagccaat tgaagtgggc acttggtgag
+     1141 aacatggctc cagaaaaagt ggactttgag gactgcaaag atgttagcga tctaagacag
+     1201 tacgacagtg acgaaccaga gtctagatca ctagcaagct ggattcagag tgaattcaac
+     1261 aaggcatgcg aactgacaga ttcgagttgg attgaacttg atgagatagg ggaagacgtt
+     1321 gctccaatcg aacacattgc gagtgtgagg aggaactatt tcacagcgga ggtatcccat
+     1381 tgcagggcca ctgaatacat aatgaaggga gtatacataa acacagccct attgaatgca
+     1441 tcctgtgcag ccatggatga cttccaattg attccaatga taagtaagtg cagaactaaa
+     1501 gaaggaagac ggaagacaaa tctgtatgga ttcattataa aaggaagatc ccatttgagg
+     1561 aatgacaccg atgtggtaaa ctttgtgagc atggaattct ctctaactga cccgaggcta
+     1621 gagccacaca aatgggaaaa gtactgtgtt cttgagatag gagacatgct cctacggact
+     1681 gcaataggcc aagtgtcgag gcccatgttc ctgtatgtga gaaccaatgg aacttccaag
+     1741 atcaaaatga aatggggcat ggagatgagg cgatgccttc ttcagtccct tcaacaaatt
+     1801 gagagcatga ttgaggccga atcttctgtc aaagagaagg acatgtccaa ggaattcttt
+     1861 gaaaacaaat cagaaacatg gccaattgga gaatcaccca aaggggtgga ggaaggctct
+     1921 attgggaaag tatgcagaac attgctagca aagtctgtgt tcaacagcct atatgcatct
+     1981 ccacaactcg aggggttttc agctgaatca agaaaattgc ttctcattgt tcaggcactt
+     2041 agggacaacc tggaacctgg aaccttcgat cttggggggc tatatgaagc aattgaggag
+     2101 tgcctgatta acgatccctg ggttttgctt aatgcatctt ggttcaactc cttcctcaca
+     2161 catgcactga aatagttgtg gcaatgctac tatttgctat ccatactgtc caaaaaagta
+     2221 ccttgtttct act
+//
+
+LOCUS       OQ352546                2344 bp    cRNA    linear   VRL 04-FEB-2023
+DEFINITION  Influenza A virus (A/black skimmer/Chile/C61962/2022(H5N1)) segment
+            2 polymerase PB1 (PB1) and PB1-F2 protein (PB1-F2) genes, complete
+            cds.
+ACCESSION   OQ352546
+VERSION     OQ352546.1  GI:2437578974
+DBLINK      BioProject: PRJNA803139
+KEYWORDS    .
+SOURCE      Influenza A virus
+  ORGANISM  Influenza A virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 2344)
+  AUTHORS   Tan,S., Freiden,P., Sharp,B., Jimenez-Bluhm,P., Mukherjee,N.,
+            Hamilton-West,C. and Schultz-Cherry,S.
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (30-JAN-2023) CEIRR Influenza Data Processing and
+            Communication Center, St. Jude Center of Excellence for Influenza
+            Research and Response (CEIRR), Memphis, TN 38105, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the  St. Jude Center of
+            Excellence for Influenza Research and Response (CEIRR). This work
+            was supported by National Institute of Allergy and Infectious
+            Diseases, National Institutes of Health, grant 75N93021C00016.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: IRMA v. 0.6.7
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..2344
+                     /organism="Influenza A virus"
+                     /mol_type="viral cRNA"
+                     /strain="A/black skimmer/Chile/C61962/2022"
+                     /serotype="H5N1"
+                     /isolation_source="feces"
+                     /host="Rynchops niger"
+                     /db_xref="taxon:11320"
+                     /segment="2"
+                     /geo_loc_name="Chile"
+                     /collection_date="02-Dec-2022"
+                     /note="passage_history:E2"
+     gene            28..2301
+                     /gene="PB1"
+     CDS             28..2301
+                     /gene="PB1"
+                     /codon_start=1
+                     /product="polymerase PB1"
+                     /protein_id="WCF80491.1"
+                     /db_xref="GI:2437578975"
+                     /translation="MDVNPTLLFLKVPAQNAISTTFPYTGDPPYSHGTGTGYTMDTVN
+                     RTHQYSEKGKWTTNSETGAPQLNPIDGPLPEDNEPSGYAQTDCVLEAMAFLEESHPGI
+                     FENSCLETMEVVQQTRVDKLTQGRQTYDWTLNRNQPAATALANTIEVFRSNGLTANES
+                     GRLIDFLKDVMESMDKEEMEITTHFQRKRRVRDNMTKKMVTQRTIGKKKQRLNKKSYL
+                     IRALTLNTMTKDAERGKLKRRAIATPGMQIRGFVYFVETLARSICDKLEQSGLPVGGN
+                     EKKAKLANVVRKMMTNSQDTELSFTITGDNTKWNENQNPRMFLAMITYITRNQPEWFR
+                     NVLSIAPIMFSNKMARLGKGYMFESKSMKLRTQIPAEMLASIDMKYFNESTRKKIEKI
+                     RPLLIDDTASLSPGMMMGMFNMLSTVLGVSILNLGQRRYTKTTYWWDGLQSSDDFALI
+                     VNAPNHEGIQAGVDRFYRTCKLVGINMSKKKSYINRTGTFEFTSFFYRYGFVANFSME
+                     LPSFGVSGINESADMSIGVTVIKNNMINNDLGPATAQMALQLFIKDYRYTYRCHRGDT
+                     QIQTRRSFELKKLWEQTRSKAGLLVSDGGPNLYNIRNLHIPEVCLKWELMDEDYQGRL
+                     CNPLNPFVSHKEIESVNNAVVMPAHGPAKSMEYDAVATTHSWIPKRNRSILNTSQRGI
+                     LEDEQMYQKCCNLFEKFFPSSSYRRPVGISSMVEAMVSRARIDARIDFESGRIKKEEF
+                     AEIMKICSTIEELRRQK"
+     gene            122..394
+                     /gene="PB1-F2"
+     CDS             122..394
+                     /gene="PB1-F2"
+                     /codon_start=1
+                     /product="PB1-F2 protein"
+                     /protein_id="WCF80492.1"
+                     /db_xref="GI:2437578976"
+                     /translation="MEQEQDIPWTQLTEHISIQKKGNGQQTQKLEHLNSIQLMDHCLR
+                     TMNQVGMHKRTVSLKQWLSLKSPTQESLKTRVLKRWKLFNKQEWTS"
+ORIGIN      
+        1 ccagtagaaa caaggcaaac catttgaatg gatgtcaatc cgactttact tttcttgaag
+       61 gttccagcgc aaaatgccat aagcaccaca ttcccatata ctggagatcc cccatacagc
+      121 catggaacag gaacaggata taccatggac acagttaaca gaacacatca gtattcagaa
+      181 aaagggaaat ggacaacaaa ctcagaaact ggagcacctc aactcaatcc aattgatgga
+      241 ccattgcctg aggacaatga accaagtggg tatgcacaaa cggactgtgt ccttgaagca
+      301 atggctttcc ttgaagagtc ccacccagga atctttgaaa actcgtgtct tgaaacgatg
+      361 gaagttgttc aacaaacaag agtggacaag ttgactcaag gccgtcagac ctatgattgg
+      421 acgttaaaca ggaatcagcc ggctgcaact gcattagcta atactataga ggtcttcaga
+      481 tctaacggcc tcacagccaa tgaatcagga aggctaatag attttctcaa ggatgtgatg
+      541 gaatcaatgg ataaggagga aatggaaata acaacgcatt tccaaaggaa aagaagagtg
+      601 agagacaaca tgaccaagaa aatggtcaca caaaggacaa taggaaagaa gaaacagagg
+      661 ctaaataaaa agagctatct aataagagca ttgacactga acacaatgac aaaagacgcc
+      721 gagagaggca aattaaaaag aagggcaatt gcgacacctg gaatgcaaat cagagggttt
+      781 gtgtactttg ttgaaacatt agcgaggagc atttgtgata agcttgaaca atctggactc
+      841 ccagttgggg gcaatgaaaa gaaggctaaa ctggcaaatg ttgtgagaaa aatgatgact
+      901 aattcgcagg acacagagct ctctttcaca atcactggag acaacaccaa atggaatgaa
+      961 aatcagaacc ctaggatgtt tctggcaatg ataacatata taacaaggaa ccaacctgaa
+     1021 tggttcagga atgtcttaag cattgcacct ataatgttct caaataaaat ggcaagacta
+     1081 gggaaagggt acatgttcga aagtaagagc atgaagctcc gaacacaaat accagcagaa
+     1141 atgctagcaa gcattgatat gaagtacttc aatgagtcaa caagaaagaa aatagagaag
+     1201 ataagacctc ttctaataga tgatacagcc tcattaagcc caggaatgat gatgggcatg
+     1261 ttcaatatgc tgagtacagt tttgggagtt tcgattctaa atctaggaca aaggaggtac
+     1321 accaaaacaa catactggtg ggacggactc caatcctctg atgactttgc tctcatagtg
+     1381 aatgctccga atcatgaggg aatacaagca ggggtagaca gattctatag aacctgcaag
+     1441 ctggtcggaa tcaacatgag caaaaagaag tcctacataa acaggacagg aacatttgaa
+     1501 ttcacaagtt ttttctaccg ctatggattt gtagccaact tcagtatgga gttgcccagc
+     1561 tttggagtgt ctgggatcaa tgaatctgca gacatgagca ttggagtaac agtgataaag
+     1621 aacaacatga tcaacaatga tcttggacca gcaacagctc agatggctct tcagctattc
+     1681 atcaaggatt acagatacac ataccgatgt cacagaggag acacacaaat tcagacaagg
+     1741 aggtcattcg agctgaagaa gttgtgggaa cagacccgct caaaagcagg actgctggtc
+     1801 tcagatggag gaccaaatct atacaatatt cggaatcttc acattccaga agtctgcttg
+     1861 aaatgggagc taatggacga agactatcag ggaaggcttt gtaatcccct gaacccgttt
+     1921 gtcagccaca aggaaataga gtctgtgaac aacgctgtgg tgatgccagc tcatggcccg
+     1981 gccaagagca tggaatatga tgctgttgcc accactcact cctggatacc gaagaggaac
+     2041 cgctccattc tcaatacaag ccaaagggga atccttgaag acgaacagat gtatcaaaag
+     2101 tgctgcaacc tgttcgaaaa attcttccct agcagttcat acaggaggcc agttggaatt
+     2161 tccagcatgg tggaggccat ggtttctagg gcccgaattg acgcacgaat tgacttcgaa
+     2221 tctggacgga ttaagaagga ggagtttgct gagatcatga agatctgttc caccattgaa
+     2281 gagctcagac ggcagaaata gtgaatttag cttgtccttc atgaaaaaat gccttgtttc
+     2341 tact
+//
+
+LOCUS       OQ352545                2341 bp    cRNA    linear   VRL 04-FEB-2023
+DEFINITION  Influenza A virus (A/black skimmer/Chile/C61962/2022(H5N1)) segment
+            1 polymerase PB2 (PB2) gene, complete cds.
+ACCESSION   OQ352545
+VERSION     OQ352545.1  GI:2437578972
+DBLINK      BioProject: PRJNA803139
+KEYWORDS    .
+SOURCE      Influenza A virus
+  ORGANISM  Influenza A virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 2341)
+  AUTHORS   Tan,S., Freiden,P., Sharp,B., Jimenez-Bluhm,P., Mukherjee,N.,
+            Hamilton-West,C. and Schultz-Cherry,S.
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (30-JAN-2023) CEIRR Influenza Data Processing and
+            Communication Center, St. Jude Center of Excellence for Influenza
+            Research and Response (CEIRR), Memphis, TN 38105, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the  St. Jude Center of
+            Excellence for Influenza Research and Response (CEIRR). This work
+            was supported by National Institute of Allergy and Infectious
+            Diseases, National Institutes of Health, grant 75N93021C00016.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: IRMA v. 0.6.7
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..2341
+                     /organism="Influenza A virus"
+                     /mol_type="viral cRNA"
+                     /strain="A/black skimmer/Chile/C61962/2022"
+                     /serotype="H5N1"
+                     /isolation_source="feces"
+                     /host="Rynchops niger"
+                     /db_xref="taxon:11320"
+                     /segment="1"
+                     /geo_loc_name="Chile"
+                     /collection_date="02-Dec-2022"
+                     /note="passage_history:E2"
+     gene            28..2307
+                     /gene="PB2"
+     CDS             28..2307
+                     /gene="PB2"
+                     /codon_start=1
+                     /product="polymerase PB2"
+                     /protein_id="WCF80490.1"
+                     /db_xref="GI:2437578973"
+                     /translation="MERIKELRDLMSQSRTREILTKTTVDHMAIIKKYTSGRQEKNPA
+                     LRMKWMMAMKYPITADKRIMEMIPERNEQGQTLWSKTNDAGSDRVMVSPLAVTWWNRN
+                     GPTTSTVHYPKVYKTYFEKVERLKHGTFGPVHFRNQVKIRRRVDINPGHADLSAKEAQ
+                     DVIMEVVFPNEVGARILTSESQLTITKEKKEELQDCKIAPLMVAYMLERELVRKTRFL
+                     PVAGGTSSVYIEVLHLTQGTCWEQMYTPGGEVRNDDVDQSLIIAARNIVRRATVSADP
+                     LASLLEMCHSTQIGGIRMVDILRQNPTEEQAVDICKAAMGLRISSSFSFGGFTFKRTS
+                     GSSVKKEEEVLTGNLQTLKIRVHEGYEEFTMVGRRATAILRKATRRLIQLIVSGRDEQ
+                     SIAEAIIVAMVFSQEDCMIKAVRGDLNFVNRANQRLNPMHQLLRHFQKDAKVLFQNWG
+                     IEPIDNVMGMIGVMPDMTPSTEMSLRGIRVSKMGVDEYSSTERVVVSIDRFLRVRDQR
+                     GNVLLSPEEVSETQGTEKLTITYSSSMMWEINGPESVLVNTYQWIIRNWETVKIQWSQ
+                     DPTMLYNKMEFEPFQSLVPKAARGQYSGFVRTLFQQMRDVLGTFDTVQIVKLLPFAAA
+                     PPEQSRMQFSSLTVNVRGSGMRILVRGNSPVFNYNKATKRLTVLGKDAGALTEDPDEG
+                     TAGVESAVLRGFLILGKEDKRYGPALSINELSNLAKGEKANVLIGQGDVVLVMKRKRD
+                     SSILTDSQTATKRIRMAIN"
+ORIGIN      
+        1 agcaaaagca ggtcaaatat attcaatatg gagagaataa aagaactaag agatctaatg
+       61 tcacagtctc gcactcgcga gatactgacc aaaaccactg ttgaccacat ggccataatc
+      121 aaaaagtaca catcgggaag gcaagagaag aaccccgcac tcagaatgaa atggatgatg
+      181 gcaatgaaat atccaattac agcagataag cgaataatgg aaatgatccc tgagaggaat
+      241 gaacaagggc aaactctctg gagcaaaaca aacgatgccg gatcagaccg agtgatggta
+      301 tcacccctgg ctgtgacatg gtggaacagg aacggaccaa caacaagtac agttcactac
+      361 ccaaaggtat ataaaactta tttcgaaaaa gttgaaaggt tgaaacacgg gacctttggc
+      421 cctgtgcact tcagaaacca agttaagata agacggaggg tcgatataaa cccgggccat
+      481 gctgacctca gtgccaaaga ggcgcaggat gtaatcatgg aagtcgtctt cccaaatgaa
+      541 gtgggagcaa ggatattgac gtcggagtca caactgacga taacaaagga gaaaaaggaa
+      601 gaactccagg actgcaaaat cgctcctctg atggttgcat acatgctaga aagagagttg
+      661 gttcgcaaga cgaggtttct cccagttgct ggtgggacaa gcagtgtcta cattgaggtg
+      721 ctgcatttga cccaggggac atgctgggag cagatgtaca ctccgggagg agaagtgagg
+      781 aacgatgatg tagaccaaag cttgatcatt gctgccagga atatagtaag aagagcaaca
+      841 gtatcagcag atccattagc atctctattg gagatgtgtc acagcacaca aattggggga
+      901 ataaggatgg tagacatcct tcggcaaaat ccaacagagg aacaagccgt ggatatatgc
+      961 aaggcagcaa tgggcttgag gattagctca tctttcagct ttggtggatt cacttttaaa
+     1021 agaacaagtg gatcgtcagt caaaaaagaa gaagaagtgc taacaggcaa ccttcaaaca
+     1081 ttgaaaataa gagtacatga ggggtatgaa gagttcacaa tggttgggag aagagcaacg
+     1141 gccattctca ggaaagcaac cagaaggctg atccagctaa ttgtaagtgg gagagacgag
+     1201 cagtcaattg ctgaagcaat aattgtggcc atggtattct cacaagagga ctgcatgatt
+     1261 aaagcagtta gaggtgacct gaattttgtc aatagggcga accagcgact aaacccaatg
+     1321 catcaactct tgaggcattt ccaaaaggat gcaaaggtgc ttttccaaaa ttggggaatt
+     1381 gaacccattg acaatgtgat gggaatgatc ggggtaatgc ccgacatgac cccaagtact
+     1441 gagatgtcgc tgaggggaat aagagtcagt aagatgggag tagatgaata ctcaagtaca
+     1501 gagcgagtag tagtaagcat cgaccggttt ttaagagttc gagaccaacg ggggaacgta
+     1561 ctattatcac ccgaagaggt cagtgagact caaggaacgg agaaactgac aatcacttat
+     1621 tcgtcatcaa tgatgtggga gatcaatggt cctgagtcgg tgttggtcaa tacttatcag
+     1681 tggataatta gaaactggga aactgtaaaa attcaatggt cacaggatcc cacaatgttg
+     1741 tataataaga tggaattcga gccattccag tctctagtcc ctaaggcagc cagaggtcaa
+     1801 tacagtgggt ttgtgagaac actattccag caaatgcgag atgtgcttgg aacatttgac
+     1861 actgttcaga tagtaaaact cctccccttt gctgccgccc caccggaaca aagtaggatg
+     1921 cagttctcct ccctgactgt gaatgtaaga ggatcaggaa tgaggatact ggtaagaggc
+     1981 aattcaccag tgttcaatta caacaaggcc accaagaggc tcacagttct cgggaaagat
+     2041 gcaggtgcat tgaccgaaga tccagatgaa ggcacagctg gagtggagtc tgctgtttta
+     2101 agaggattcc tcattttggg caaagaagac aagagatatg gcccagcatt gagcatcaat
+     2161 gagctgagca atcttgcaaa gggagagaag gctaatgtgc taattgggca aggagacgta
+     2221 gtgttggtga tgaaacggaa acgggactct agcatactta ctgacagcca gacagcgacc
+     2281 aaaaggattc ggatggccat caattagtgt cgaattattt aaaaacgacc ttgtttctac
+     2341 t
+//
+

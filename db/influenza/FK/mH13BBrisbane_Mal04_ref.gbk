@@ -1,0 +1,900 @@
+LOCUS       OQ349641                1878 bp ss-RNA     linear   SYN 26-JUN-2023
+DEFINITION  Synthetic construct clone HA_mH13B-Brisbane hemagglutinin (HA)
+            gene, complete cds.
+ACCESSION   OQ349641
+VERSION     OQ349641.1
+KEYWORDS    .
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            other sequences; artificial sequences.
+REFERENCE   1  (bases 1 to 1878)
+  AUTHORS   Puente-Massaguer,E., Beyer,A., Loganathan,M., Sapse,I.,
+            Carreno,J.M., Bajic,G., Sun,W., Palese,P. and Krammer,F.
+  TITLE     Bioprocess development for universal influenza vaccines based on
+            inactivated split chimeric and mosaic hemagglutinin viruses
+  JOURNAL   Front Bioeng Biotechnol 11, 1097349 (2023)
+   PUBMED   37342504
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 1878)
+  AUTHORS   Puente-Massaguer,E., Beyer,A., Loganathan,M., Sapse,I.,
+            Carreno,J.M., Bajic,G., Sun,W., Palese,P. and Krammer,F.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (27-JAN-2023) Microbiology, Icahn School of Medicine at
+            Mount Sinai, 1468 Madison Avenue, New York, NY 10029, USA
+COMMENT     ##Assembly-Data-START##
+            Assembly Method       :: Minimap2/Pilon v. 2.21-r1071p1.24
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1878
+                     /organism="synthetic construct"
+                     /mol_type="other RNA"
+                     /db_xref="taxon:32630"
+                     /clone="HA_mH13B-Brisbane"
+                     /note="hemagglutinin B/Brisbane/60/2008 virus with the
+                     major antigenic sites replaced by those from
+                     A/black-headed gull/Sweden/1/1999(H13N6)"
+     gene            16..1865
+                     /gene="HA"
+     CDS             36..1784
+                     /gene="HA"
+                     /function="receptor binding and fusion protein"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hemagglutinin"
+                     /protein_id="WEM02636.1"
+                     /translation="MKAIIVLLMVVTSNADRICTGITSSNSPHVVKTATQGEVNVTGV
+                     IPLTTTPTKSHFANLKGTETRGKLCPKCLNCTDLDVALGRPKCTGNIPSARVSILHEV
+                     RPVTSGCFPIMHDRTKIRQLPNLLRGYERIELSTHNVINAEVAPGGPYKIGTSKSCPD
+                     KGASSFFATMAWAVPKRGNQYTNPLTIEVPYICTEGEDQITVWGFHSDVSTNMAELYG
+                     DSKPQKFTSSANGVTTHYVSQIGGFPNQTEDEGLPQSGRIVVDYMVQKSGKTGTITYQ
+                     RGILLPQKVWCASGRSKVIKGSLPLIGEADCLHEKYGGLNKSKPYYTGEHAKAIGNCP
+                     IWVKTPLKLANGTKYRPPAKLLKERGFFGAIAGFLEGGWEGMIAGWHGYTSHGAHGVA
+                     VAADLKSTQEAINKITKNLNSLSELEVKNLQRLSGAMDELHNEILELDEKVDDLRADT
+                     ISSQIELAVLLSNEGIINSEDEHLLALERKLKKMLGPSAVEIGNGCFETKHKCNQTCL
+                     DRIAAGTFDAGEFSLPTFDSLNITAASLNDDGLDNHTILLYYSTAASSLAVTLMIAIF
+                     VVYMVSRDNVSCSICL"
+ORIGIN      
+        1 acagcagaag cagagcattt tctaatatcc acaaaatgaa ggcaataatt gtactactca
+       61 tggtagtaac atccaatgca gatcgaatct gcactgggat aacatcgtca aactcaccac
+      121 atgtcgtcaa aactgctact caaggggagg tcaatgtgac tggtgtaata ccactgacaa
+      181 caacacccac caaatctcat tttgcaaatc tcaaaggaac agaaaccagg gggaaactat
+      241 gcccaaaatg cctcaactgc acagatctgg acgtagcctt gggcagacca aaatgcacgg
+      301 ggaacatacc ttcggcaaga gtttcaatac tccatgaagt cagacctgtt acatctgggt
+      361 gctttcctat aatgcacgac agaacaaaaa ttagacagct gcctaacctt ctccgaggat
+      421 acgaaagaat cgagttatca acccataacg ttatcaatgc agaagtggca ccaggaggac
+      481 cctacaaaat tggaacctca aaatcttgcc cagataaagg agccagcagc tttttcgcaa
+      541 caatggcttg ggccgtccca aagagaggaa atcagtatac aaatccatta acaatagaag
+      601 taccatacat ttgtacagaa ggagaagacc aaattaccgt ttgggggttc cactctgacg
+      661 tttccacaaa catggcggaa ctctatgggg actcaaagcc ccagaagttc acctcatctg
+      721 ccaacggagt gaccacacat tacgtttcac agattggtgg cttcccaaat caaacagaag
+      781 acgaaggact accacaaagt ggtagaattg ttgttgatta catggtgcaa aaatctggga
+      841 aaacaggaac aattacctat caaaggggta ttttattgcc tcaaaaggtg tggtgcgcaa
+      901 gtggcaggag caaggtaata aaaggatcct tgcctttaat tggagaagca gattgcctcc
+      961 acgaaaaata cggtggatta aacaaaagca agccttacta cacaggggaa catgcaaagg
+     1021 ccataggaaa ttgcccaata tgggtgaaaa cacccttgaa gctggccaat ggaaccaaat
+     1081 atagacctcc tgcaaaacta ttaaaggaaa ggggtttctt cggagctatt gctggtttct
+     1141 tagaaggagg atgggaagga atgattgcag gttggcacgg atacacatcc catggggcac
+     1201 atggagtagc ggtggcagca gaccttaaga gcactcaaga ggccataaac aagataacaa
+     1261 aaaatctcaa ctctttgagt gagctggaag taaagaatct tcaaagacta agcggtgcca
+     1321 tggatgaact ccacaacgaa atactagaac tagatgagaa agtggatgat ctcagagctg
+     1381 atacaataag ctcacaaata gaactcgcag tcctgctttc caatgaagga ataataaaca
+     1441 gtgaagatga acatctcttg gcgcttgaaa gaaagctgaa gaaaatgctg ggcccctctg
+     1501 ctgtagagat agggaatgga tgctttgaaa ccaaacacaa gtgcaaccag acctgtctcg
+     1561 acagaatagc tgctggtacc tttgatgcag gagaattttc tctccccacc tttgattcac
+     1621 tgaatattac tgctgcatct ttaaatgacg atggattgga taatcatact atactgcttt
+     1681 actactcaac tgctgcctcc agtttggctg taacactgat gatagctatc tttgttgttt
+     1741 atatggtctc cagagacaat gtttcttgct ccatctgtct ataagggaag ttaagccctg
+     1801 tattttcctt tattgtagtg cttgtttact tgttgtcatt acaaagaaac gttattgaaa
+     1861 aatgctcttg tttctact
+//
+
+LOCUS       OQ034411                1190 bp    cRNA    linear   VRL 22-MAY-2023
+DEFINITION  Influenza B virus (B/Malaysia/2506/2004-MA) segment 7 matrix
+            protein 1 (M1) and BM2 protein (BM2) genes, complete cds.
+ACCESSION   OQ034411
+VERSION     OQ034411.1
+DBLINK      BioProject: PRJNA909321
+KEYWORDS    .
+SOURCE      Influenza B virus
+  ORGANISM  Influenza B virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Betainfluenzavirus; Betainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1190)
+  AUTHORS   Aslam,S., Rajendran,M., Kriti,D., Kurland,A., Johnson,J., van
+            Bakel,H., Krammer,F., Garcia-Sastre,A. and Ayllon,J.
+  TITLE     Generation of a high yield vaccine backbone for influenza B virus
+            in embryonated chicken eggs
+  JOURNAL   NPJ Vaccines 8 (1), 12 (2023)
+   PUBMED   36765053
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 1190)
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR);NIAID Centers of Excellence for Influenza Research and
+            Surveillance (CEIRS)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (14-DEC-2022) CEIRS Data Processing and Coordinating
+            Center, Center for Research on Influenza Pathogenesis (CRIP), New
+            York, NY 10029-6574, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the Center for Research
+            on Influenza Pathogenesis (CRIP). This work was supported by
+            National Institute of Allergy and Infectious Diseases, National
+            Institutes of Health, grant HHSN272201400008C.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: Trinity/Inchworm v. r20140413p1
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1190
+                     /organism="Influenza B virus"
+                     /mol_type="viral cRNA"
+                     /strain="B/Malaysia/2506/2004-MA"
+                     /isolation_source="allantoic fluid"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11520"
+                     /segment="7"
+                     /lab_host="embryonate chicken eggs"
+                     /geo_loc_name="Malaysia"
+                     /collection_date="2004"
+                     /PCR_primers="fwd_name: fwd1, fwd_seq:
+                     gttacgcgccagcagaagcg, rev_name: rev1, rev_seq:
+                     gttacgcgccagtagaaacac"
+                     /PCR_primers="fwd_name: fwd2, fwd_seq:
+                     gttacgcgccagcagaagca, rev_name: rev2, rev_seq:
+                     gttacgcgccagtagtaacaa"
+                     /note="passage_history:P5;
+                     PCR_primers=rev_name: rev3, rev_seq:
+                     gttacgcgccagtagaaacaa"
+     gene            25..771
+                     /gene="M1"
+     CDS             25..771
+                     /gene="M1"
+                     /codon_start=1
+                     /product="matrix protein 1"
+                     /protein_id="WAQ14001.1"
+                     /translation="MSLFGDTIAYLLSLTEDGEGKAELAEKLHCWFGGKEFDLDSALE
+                     WIKNKRCLTDIQKALIGASICFLKPKDQERKRRFITEPLSGMGTTATKKKGLILAERK
+                     MRRCVSFHEAFEIAEGHESSALLYCLMVMYLNPGNYSMQVKLGTLCALCEKQASHSHR
+                     AHSRAARSSVPGVRREMQMVSAMNTAKTMNGMGKGEDVQKLAEELQSNIGVLRSLGAS
+                     QKNGEGIAKDVMEVLKQSSMGNSALVKKYL"
+     gene            771..1100
+                     /gene="BM2"
+     CDS             771..1100
+                     /gene="BM2"
+                     /codon_start=1
+                     /product="BM2 protein"
+                     /protein_id="WAQ14002.1"
+                     /translation="MLEPFQILSICSFILSALHFMAWTIGHLNQIKRGINMKIRIKGP
+                     NKETINREVSILRHSYQKEIQAKETMKEVLSDNMEVLSDHIIIEGLSAEEIIKMGETV
+                     LEIEELH"
+ORIGIN      
+        1 agcagaagca cgcactttct taaaatgtcg ctgtttggag acacaattgc ctacctgctt
+       61 tcattgacag aagatggaga aggcaaagca gaactagcag aaaaattaca ctgttggttt
+      121 ggtgggaaag aatttgacct agactctgcc ttggaatgga taaaaaacaa aagatgctta
+      181 actgatatac aaaaagcact aattggtgcc tctatatgct ttttaaaacc caaagaccag
+      241 gaaagaaaaa gaagattcat cacagaaccc ttatcaggaa tgggaacaac agcaacaaaa
+      301 aagaaaggcc tgattctggc tgagagaaaa atgagaagat gtgtgagctt tcatgaagca
+      361 tttgaaatag cagaaggcca tgaaagctca gcgctactat actgtctcat ggtcatgtac
+      421 ctgaatcctg gaaattattc aatgcaagta aaactaggaa cgctctgtgc tttatgcgag
+      481 aaacaagcat cacattcaca cagggctcat agcagagcag cgagatcttc agtgcctgga
+      541 gtgagacgag aaatgcagat ggtctcagct atgaacacag cgaaaacaat gaatggaatg
+      601 ggaaaaggag aagacgtcca aaagctggca gaagagctgc aaagcaacat tggagtgctg
+      661 agatctcttg gggcaagtca aaagaatggg gaaggaattg caaaggatgt aatggaagtg
+      721 ctaaagcaga gctctatggg aaattcagct cttgtgaaga aatatctata atgctcgaac
+      781 catttcagat tctttcaatt tgttctttta tcttatcagc tctccatttc atggcttgga
+      841 caatagggca tttgaatcaa ataaaaagag gaataaacat gaaaatacga ataaaaggtc
+      901 caaacaaaga gacaataaac agagaggtat caattttgag acacagttac caaaaagaaa
+      961 tccaggccaa agaaacaatg aaggaagtac tctctgacaa catggaggta ttgagtgacc
+     1021 acataataat tgaggggctt tctgccgaag agataataaa aatgggtgaa acagttttgg
+     1081 agatagaaga attgcattaa attcaatttt tactgtattt cttactatgc atttaagcaa
+     1141 attgtaatca atgtcagcaa ataaactgga aaaagtgcgt tgtttctact
+//
+
+LOCUS       OQ034410                1557 bp    cRNA    linear   VRL 22-MAY-2023
+DEFINITION  Influenza B virus (B/Malaysia/2506/2004-MA) segment 6 NB protein
+            (NB) and neuraminidase (NA) genes, complete cds.
+ACCESSION   OQ034410
+VERSION     OQ034410.1
+DBLINK      BioProject: PRJNA909321
+KEYWORDS    .
+SOURCE      Influenza B virus
+  ORGANISM  Influenza B virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Betainfluenzavirus; Betainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1557)
+  AUTHORS   Aslam,S., Rajendran,M., Kriti,D., Kurland,A., Johnson,J., van
+            Bakel,H., Krammer,F., Garcia-Sastre,A. and Ayllon,J.
+  TITLE     Generation of a high yield vaccine backbone for influenza B virus
+            in embryonated chicken eggs
+  JOURNAL   NPJ Vaccines 8 (1), 12 (2023)
+   PUBMED   36765053
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 1557)
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR);NIAID Centers of Excellence for Influenza Research and
+            Surveillance (CEIRS)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (14-DEC-2022) CEIRS Data Processing and Coordinating
+            Center, Center for Research on Influenza Pathogenesis (CRIP), New
+            York, NY 10029-6574, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the Center for Research
+            on Influenza Pathogenesis (CRIP). This work was supported by
+            National Institute of Allergy and Infectious Diseases, National
+            Institutes of Health, grant HHSN272201400008C.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: Trinity/Inchworm v. r20140413p1
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1557
+                     /organism="Influenza B virus"
+                     /mol_type="viral cRNA"
+                     /strain="B/Malaysia/2506/2004-MA"
+                     /isolation_source="allantoic fluid"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11520"
+                     /segment="6"
+                     /lab_host="embryonate chicken eggs"
+                     /geo_loc_name="Malaysia"
+                     /collection_date="2004"
+                     /PCR_primers="fwd_name: fwd1, fwd_seq:
+                     gttacgcgccagcagaagcg, rev_name: rev1, rev_seq:
+                     gttacgcgccagtagaaacac"
+                     /PCR_primers="fwd_name: fwd2, fwd_seq:
+                     gttacgcgccagcagaagca, rev_name: rev2, rev_seq:
+                     gttacgcgccagtagtaacaa"
+                     /note="passage_history:P5;
+                     PCR_primers=rev_name: rev3, rev_seq:
+                     gttacgcgccagtagaaacaa"
+     gene            47..349
+                     /gene="NB"
+     CDS             47..349
+                     /gene="NB"
+                     /codon_start=1
+                     /product="NB protein"
+                     /protein_id="WAQ13999.1"
+                     /translation="MNNATFNYTNVNPISHIRGSIIITICVSFIVILTIFGYIAKIPI
+                     NRNYCTNNAIGLCKRIKCSGCEPFCNKRGDTSSPRTGVDIPAFILPGLNLSESTPN"
+     gene            54..1454
+                     /gene="NA"
+     CDS             54..1454
+                     /gene="NA"
+                     /codon_start=1
+                     /product="neuraminidase"
+                     /protein_id="WAQ14000.1"
+                     /translation="MLPSTIQTLTLFLTSGGVLLSLYVSASLSYLLYSDILLKFPSTE
+                     ITAPTMPLDCANASNVQAVNRSATKGVTLLLPEPEWTYPRLSCPGSTFQKALLISPHR
+                     FGETKGNSAPLIIREPFIACGPKECKHFALTHYAAQPGGYYNGTRGDRNKLRHLISVK
+                     LGKIPTVENSIFHMAAWSGSACHDGKEWTYIGVDGPDNNALLKIKYGEAYTDTYHSYA
+                     NNILRTQESACNCIGGNCYLMITDGSASGVSECRFLKIREGRIIKEIFPTGRIKHTEE
+                     CTCGFASNKTIECACRDNSYTAKRPFVKLNVETDTAEIRLMCTETYLDTPRPDDGSIT
+                     GPCESNGDKGSGGIKGGFVHQRMASKIGRWYSRTMSKTKRMGMGLYVKYDGDPWADSD
+                     ALAFSGVMVSMEEPGWYSFGFEIKDKKCDVPCIGIEMVHDGGKETWHSAATAIYCLMG
+                     SGQLLWDTVTGVNMAL"
+ORIGIN      
+        1 agcagaagca gagcatcttc tcaaaactga agcaaatagg ccaaaaatga acaatgctac
+       61 cttcaactat acaaacgtta accctatttc tcacatcagg gggagtatta ttatcactat
+      121 atgtgtcagc ttcattgtca tacttactat attcggatat attgctaaaa ttcccatcaa
+      181 cagaaattac tgcaccaaca atgccattgg attgtgcaaa cgcatcaaat gttcaggctg
+      241 tgaaccgttc tgcaacaaaa ggggtgacac ttcttctccc agaaccggag tggacatacc
+      301 cgcgtttatc ttgcccgggc tcaacctttc agaaagcact cctaattagc cctcatagat
+      361 tcggagaaac caaaggaaac tcagctccct tgataataag ggaacctttt attgcttgtg
+      421 gaccaaagga atgcaaacac tttgctctaa cccactatgc agcccaacca gggggatact
+      481 acaatggaac aagaggagac agaaacaagc tgaggcatct aatttcagtc aaattgggca
+      541 aaatcccaac agtagaaaac tccattttcc acatggcagc atggagcggg tccgcatgcc
+      601 atgatggtaa ggaatggaca tatatcggag ttgatggccc tgacaataat gcattgctca
+      661 aaataaaata tggagaagca tatactgaca cataccattc ctatgcaaac aacatcctaa
+      721 gaacacaaga aagtgcctgc aattgcatcg ggggaaattg ttatcttatg ataactgatg
+      781 gctcagcttc aggtgttagt gaatgcagat ttcttaagat tcgagagggc cgaataataa
+      841 aagaaatatt tccaacagga agaataaaac atactgaaga atgcacatgc ggatttgcta
+      901 gcaataaaac catagaatgt gcctgtagag ataacagtta cacagcaaaa agaccctttg
+      961 tcaaattaaa cgtggagact gatacagcag aaataagatt gatgtgcaca gagacttatt
+     1021 tggacacccc cagaccagat gatggaagca taacagggcc ttgtgaatct aatggggaca
+     1081 aagggagtgg aggcatcaag ggaggatttg tccatcaaag aatggcatcc aagattggaa
+     1141 ggtggtactc tcgaacgatg tctaaaacta aaaggatggg gatggggctg tatgtcaagt
+     1201 atgatggaga cccatgggct gacagtgatg cccttgcttt tagtggagta atggtttcaa
+     1261 tggaagaacc tggttggtac tcctttggct tcgaaataaa agacaagaaa tgtgatgtcc
+     1321 cctgtattgg gatagagatg gtacatgatg gtggaaaaga gacttggcac tcagcagcta
+     1381 cagccattta ctgtttaatg ggctcaggac agctgctgtg ggacactgtc acaggtgtta
+     1441 atatggctct gtaatggagg aatggttgag tctgttctaa accctttgtt cctattttgt
+     1501 ttgaacaatt gtccttactg aacttaattg tttctgaaaa atgctcttgt tactacc
+//
+
+LOCUS       OQ034409                1844 bp    cRNA    linear   VRL 22-MAY-2023
+DEFINITION  Influenza B virus (B/Malaysia/2506/2004-MA) segment 5 nucleoprotein
+            (NP) gene, complete cds.
+ACCESSION   OQ034409
+VERSION     OQ034409.1
+DBLINK      BioProject: PRJNA909321
+KEYWORDS    .
+SOURCE      Influenza B virus
+  ORGANISM  Influenza B virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Betainfluenzavirus; Betainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1844)
+  AUTHORS   Aslam,S., Rajendran,M., Kriti,D., Kurland,A., Johnson,J., van
+            Bakel,H., Krammer,F., Garcia-Sastre,A. and Ayllon,J.
+  TITLE     Generation of a high yield vaccine backbone for influenza B virus
+            in embryonated chicken eggs
+  JOURNAL   NPJ Vaccines 8 (1), 12 (2023)
+   PUBMED   36765053
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 1844)
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR);NIAID Centers of Excellence for Influenza Research and
+            Surveillance (CEIRS)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (14-DEC-2022) CEIRS Data Processing and Coordinating
+            Center, Center for Research on Influenza Pathogenesis (CRIP), New
+            York, NY 10029-6574, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the Center for Research
+            on Influenza Pathogenesis (CRIP). This work was supported by
+            National Institute of Allergy and Infectious Diseases, National
+            Institutes of Health, grant HHSN272201400008C.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: Trinity/Inchworm v. r20140413p1
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1844
+                     /organism="Influenza B virus"
+                     /mol_type="viral cRNA"
+                     /strain="B/Malaysia/2506/2004-MA"
+                     /isolation_source="allantoic fluid"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11520"
+                     /segment="5"
+                     /lab_host="embryonate chicken eggs"
+                     /geo_loc_name="Malaysia"
+                     /collection_date="2004"
+                     /PCR_primers="fwd_name: fwd1, fwd_seq:
+                     gttacgcgccagcagaagcg, rev_name: rev1, rev_seq:
+                     gttacgcgccagtagaaacac"
+                     /PCR_primers="fwd_name: fwd2, fwd_seq:
+                     gttacgcgccagcagaagca, rev_name: rev2, rev_seq:
+                     gttacgcgccagtagtaacaa"
+                     /note="passage_history:P5;
+                     PCR_primers=rev_name: rev3, rev_seq:
+                     gttacgcgccagtagaaacaa"
+     gene            61..1743
+                     /gene="NP"
+     CDS             61..1743
+                     /gene="NP"
+                     /codon_start=1
+                     /product="nucleoprotein"
+                     /protein_id="WAQ13998.1"
+                     /translation="MSNMDIDGINTGTIDKAPEEITSGTSGTTRPIIRPATLAPPSNK
+                     RTRNPSPERATTISEADVGRKTQKKQTPTEIKKSVYNMVVKLGEFYNQMMVKAGLNDD
+                     MERNLIQNAHAVERILLAATDDKKTEFQKKKNARDVKEGKEEIDHNKTGGTFYKMVRD
+                     DKTIYFSPIRVTFLKEEVKTMYKTTMGSDGFSGLNHIMIGHSQMNDVCFQRSKALKRV
+                     GLDPSLISTFAGSTLPRRSGATGVAIKGGGTLVAEAIRFIGRAMADRGLLRDIKAKTA
+                     YEKILLNLKNKCSAPQQKALVDQVIGSRNPGIADIEDLTLLARSMVVVRPSVASKVVL
+                     PISIYAKIPQLGFNVEEYSMVGYEAMALYNMATPVSILRVGDDAKDKSQLFFMSCFGA
+                     AYEDLRVLSALTGTEFKPRSALKCKGFHVPAKEQVEGMGAALMSIKLQFWAPMTRSGG
+                     NEVGGDGGSGQISCSPVFAVERPIALSKQAVRRMLSMNIEGRDADVKGNLLKMMNDSM
+                     AKKTNGNAFIGKKMFQISDKNKTNPVEIPIKQTIPNFFFGRDTAEDYDDLDY"
+ORIGIN      
+        1 agcagaagca cagcattttc ttgtgaactt caagtgccaa caaaagaact gaaaatcaaa
+       61 atgtccaaca tggatattga cggtatcaac actgggacaa ttgacaaagc accggaagaa
+      121 ataacttctg gaaccagtgg gacaaccaga ccaatcatca gaccagcaac ccttgcccca
+      181 ccaagcaaca aacgaacccg gaacccatcc ccggaaagag caaccacaat cagtgaagct
+      241 gatgtcggaa ggaaaaccca aaagaaacag accccgacag agataaagaa gagcgtctac
+      301 aatatggtag tgaaactggg tgaattctat aaccagatga tggtcaaagc tggacttaac
+      361 gatgacatgg agagaaacct aattcaaaat gcgcatgctg tggaaagaat tctattggct
+      421 gccactgatg acaagaaaac tgaattccag aagaaaaaga atgccagaga tgtcaaagaa
+      481 gggaaagaag aaatagatca caacaaaaca gggggcacct tttacaagat ggtaagagat
+      541 gataaaacca tctacttcag ccctataaga gtcacctttt taaaagaaga agtaaaaaca
+      601 atgtacaaaa ccaccatggg gagtgatggc ttcagcggac taaatcacat aatgattggg
+      661 cattcacaga tgaatgatgt ctgtttccaa agatcaaagg cactaaaaag agttggactt
+      721 gacccttcat taatcagtac ctttgcagga agcacactcc ccagaagatc aggtgcaact
+      781 ggtgttgcga tcaaaggagg tggaactcta gtggctgaag ccattcgatt tataggaaga
+      841 gcaatggcag acagagggct attgagagac atcaaagcca agactgcgta tgaaaagatt
+      901 cttctgaacc taaaaaacaa atgctctgcg ccccaacaga aggctctagt tgatcaagtg
+      961 atcggaagta gaaatccagg gattgcagac attgaagacc taaccctact tgctcgtagt
+     1021 atggtcgttg ttaggccctc tgtggcgagc aaagtagtgc ttcccataag catttacgcc
+     1081 aaaatacctc aactagggtt caacgttgaa gagtactcta tggttgggta tgaagccatg
+     1141 gctctttaca atatggcaac acctgtttcc atattaagag tgggagatga tgcaaaggac
+     1201 aaatcacaat tattcttcat gtcttgcttc ggagctgcct atgaagacct gagagttttg
+     1261 tctgcattaa caggcacaga attcaagcct agatcagcat taaaatgcaa gggtttccat
+     1321 gttccagcaa aggaacaggt ggaaggaatg ggggcagctc tgatgtccat caagctccag
+     1381 ttttgggctc caatgaccag atctggggga aacgaagtag gtggagacgg ggggtctggc
+     1441 caaataagtt gcagcccagt gtttgcagta gaaagaccta ttgctctaag caagcaagct
+     1501 gtaagaagaa tgctgtcaat gaatattgag ggacgtgatg cagatgtcaa aggaaatcta
+     1561 ctcaagatga tgaatgactc aatggctaag aaaaccaatg gaaatgcttt cattgggaag
+     1621 aaaatgtttc aaatatcaga caaaaacaaa accaatcccg ttgaaattcc aattaagcaa
+     1681 accatcccca atttcttctt tgggagggac acagcagagg attatgatga cctcgattat
+     1741 taaagcaaca aaatagacac tatgactgtg attgtttcaa tacgtttgga atgtgggtgt
+     1801 ttactcttat taaaataaat ataaaaaatg ctgttgtttc tact
+//
+
+LOCUS       OQ034412                1098 bp    cRNA    linear   VRL 22-MAY-2023
+DEFINITION  Influenza B virus (B/Malaysia/2506/2004-MA) segment 8 nuclear
+            export protein (NEP) and nonstructural protein 1 (NS1) genes,
+            complete cds.
+ACCESSION   OQ034412
+VERSION     OQ034412.1
+DBLINK      BioProject: PRJNA909321
+KEYWORDS    .
+SOURCE      Influenza B virus
+  ORGANISM  Influenza B virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Betainfluenzavirus; Betainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1098)
+  AUTHORS   Aslam,S., Rajendran,M., Kriti,D., Kurland,A., Johnson,J., van
+            Bakel,H., Krammer,F., Garcia-Sastre,A. and Ayllon,J.
+  TITLE     Generation of a high yield vaccine backbone for influenza B virus
+            in embryonated chicken eggs
+  JOURNAL   NPJ Vaccines 8 (1), 12 (2023)
+   PUBMED   36765053
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 1098)
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR);NIAID Centers of Excellence for Influenza Research and
+            Surveillance (CEIRS)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (14-DEC-2022) CEIRS Data Processing and Coordinating
+            Center, Center for Research on Influenza Pathogenesis (CRIP), New
+            York, NY 10029-6574, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the Center for Research
+            on Influenza Pathogenesis (CRIP). This work was supported by
+            National Institute of Allergy and Infectious Diseases, National
+            Institutes of Health, grant HHSN272201400008C.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: Trinity/Inchworm v. r20140413p1
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1098
+                     /organism="Influenza B virus"
+                     /mol_type="viral cRNA"
+                     /strain="B/Malaysia/2506/2004-MA"
+                     /isolation_source="allantoic fluid"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11520"
+                     /segment="8"
+                     /lab_host="embryonate chicken eggs"
+                     /geo_loc_name="Malaysia"
+                     /collection_date="2004"
+                     /PCR_primers="fwd_name: fwd1, fwd_seq:
+                     gttacgcgccagcagaagcg, rev_name: rev1, rev_seq:
+                     gttacgcgccagtagaaacac"
+                     /PCR_primers="fwd_name: fwd2, fwd_seq:
+                     gttacgcgccagcagaagca, rev_name: rev2, rev_seq:
+                     gttacgcgccagtagtaacaa"
+                     /note="passage_history:P5;
+                     PCR_primers=rev_name: rev3, rev_seq:
+                     gttacgcgccagtagaaacaa"
+     gene            45..1068
+                     /gene="NEP"
+                     /gene_synonym="NS2"
+     CDS             join(45..77,733..1068)
+                     /gene="NEP"
+                     /gene_synonym="NS2"
+                     /note="nonstructural protein 2"
+                     /codon_start=1
+                     /product="nuclear export protein"
+                     /protein_id="WAQ14004.1"
+                     /translation="MANNMTTTQIEWRMKKMAIGSSTHSSSVLMKDIQSQFEQLKLRW
+                     ESYPNLVKSTDYHQKRETIRLVTEELYLLSKRIDDNILFHKTVIANSSIIADMVVSLS
+                     LLETLYEMKDVVEVYSRQCL"
+     gene            45..890
+                     /gene="NS1"
+     CDS             45..890
+                     /gene="NS1"
+                     /codon_start=1
+                     /product="nonstructural protein 1"
+                     /protein_id="WAQ14003.1"
+                     /translation="MANNMTTTQIEVGPGATNATINFEAGILECYERLSWQRALDYPG
+                     QDRLNRLKRKLESRIKTHNKSEPESKRMSLEERKAIGVKMMKVLLFMDPSAGIEGFEP
+                     YCMKSSSNSNCTKYNWTDYPSTPGRCLDDIEEEPEDVDGPTEIVLRDMNNKDARQKIK
+                     EEVNTQKEGKFRLTIKRDMRNVLSLRVLVNGTFLKHPNGYKSLSTLHRLNAYDQSGRL
+                     VAKLVATDDLTVEDEEDGHRILNSLFERLNEGHSKPIRAAETAVGVLSQFGQEHRLSP
+                     EEGDN"
+ORIGIN      
+        1 agcagaagca gaggatttgt ttagtcactg gcaaacagga aaaaatggcg aacaacatga
+       61 ccacaacaca aattgaggtg ggtccgggag caaccaatgc caccataaac tttgaagcag
+      121 gaattctgga gtgctatgaa aggctttcat ggcaaagagc ccttgactac cctggtcaag
+      181 accgcctaaa cagactaaag agaaaattag agtcaagaat aaagactcac aacaaaagtg
+      241 agcctgaaag taaaaggatg tcccttgaag agagaaaagc aattggagta aaaatgatga
+      301 aagtactcct atttatggat ccgtctgctg gaattgaagg gtttgagcca tactgtatga
+      361 aaagttcctc aaatagcaac tgtacgaaat acaattggac cgattaccct tcaacaccag
+      421 ggaggtgcct tgatgacata gaagaagaac cagaggatgt tgatggccca actgaaatag
+      481 tattaaggga catgaacaac aaagatgcaa ggcaaaagat aaaggaggaa gtaaacactc
+      541 agaaagaagg gaagttccgt ttgacaataa aaagggatat gcgtaatgta ttgtccttga
+      601 gagtgttggt aaacggaaca ttcctcaaac atcccaatgg atacaagtcc ttatcaactc
+      661 tgcatagatt gaatgcatat gaccagagtg gaaggcttgt tgctaaactt gttgctactg
+      721 atgatcttac agtggaggat gaagaagatg gccatcggat cctcaactca ctcttcgagc
+      781 gtcttaatga aggacattca aagccaattc gagcagctga aactgcggtg ggagtcttat
+      841 cccaatttgg tcaagagcac cgattatcac cagaagaggg agacaattag actggtcacg
+      901 gaagaacttt atcttttaag taaaagaatt gatgataaca tattgttcca caaaacagta
+      961 atagctaaca gctccataat agctgacatg gttgtatcat tatcattatt agaaacattg
+     1021 tatgaaatga aggatgtagt tgaagtgtac agcaggcagt gcttgtgaat ttaaaataaa
+     1081 aatcctcttg ttactact
+//
+
+LOCUS       OQ034407                2305 bp    cRNA    linear   VRL 22-MAY-2023
+DEFINITION  Influenza B virus (B/Malaysia/2506/2004-MA) segment 3 polymerase PA
+            (PA) gene, complete cds.
+ACCESSION   OQ034407
+VERSION     OQ034407.1
+DBLINK      BioProject: PRJNA909321
+KEYWORDS    .
+SOURCE      Influenza B virus
+  ORGANISM  Influenza B virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Betainfluenzavirus; Betainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 2305)
+  AUTHORS   Aslam,S., Rajendran,M., Kriti,D., Kurland,A., Johnson,J., van
+            Bakel,H., Krammer,F., Garcia-Sastre,A. and Ayllon,J.
+  TITLE     Generation of a high yield vaccine backbone for influenza B virus
+            in embryonated chicken eggs
+  JOURNAL   NPJ Vaccines 8 (1), 12 (2023)
+   PUBMED   36765053
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 2305)
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR);NIAID Centers of Excellence for Influenza Research and
+            Surveillance (CEIRS)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (14-DEC-2022) CEIRS Data Processing and Coordinating
+            Center, Center for Research on Influenza Pathogenesis (CRIP), New
+            York, NY 10029-6574, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the Center for Research
+            on Influenza Pathogenesis (CRIP). This work was supported by
+            National Institute of Allergy and Infectious Diseases, National
+            Institutes of Health, grant HHSN272201400008C.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: Trinity/Inchworm v. r20140413p1
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..2305
+                     /organism="Influenza B virus"
+                     /mol_type="viral cRNA"
+                     /strain="B/Malaysia/2506/2004-MA"
+                     /isolation_source="allantoic fluid"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11520"
+                     /segment="3"
+                     /lab_host="embryonate chicken eggs"
+                     /geo_loc_name="Malaysia"
+                     /collection_date="2004"
+                     /PCR_primers="fwd_name: fwd1, fwd_seq:
+                     gttacgcgccagcagaagcg, rev_name: rev1, rev_seq:
+                     gttacgcgccagtagaaacac"
+                     /PCR_primers="fwd_name: fwd2, fwd_seq:
+                     gttacgcgccagcagaagca, rev_name: rev2, rev_seq:
+                     gttacgcgccagtagtaacaa"
+                     /note="passage_history:P5;
+                     PCR_primers=rev_name: rev3, rev_seq:
+                     gttacgcgccagtagaaacaa"
+     gene            30..2210
+                     /gene="PA"
+     CDS             30..2210
+                     /gene="PA"
+                     /codon_start=1
+                     /product="polymerase PA"
+                     /protein_id="WAQ13996.1"
+                     /translation="MDTFITRNFQTTIIQKARNTMAEFSEDPELQPAMLFNICVHLEV
+                     CYVISDMNFLDEEGKAYTALEGQGKEQNLRPQYEVIEGMPRTIAWMVQRSLAQEHGIE
+                     TPKYLADLFDYKTKRFIEVGITKGLADDYFWKKKEKLGNSMELMIFSYNQDYSLSNES
+                     SLDEEGKGRVLSRLTELQAELSLKNLWQVLIGEEDVEKGIDFKLGQTISRLRDISVPA
+                     GFSNFEGMRSYIDNIDPKGAIERNLARMSPLVSVTPKKLTWEDLRPIGPHIYNHELPE
+                     VPYNAFLLMSDELGLANMTEGKSKKPKTLAKECLEKYSTLRDQTNPILIMKSEKANEN
+                     FLWKLWRDCVNTISNEEMSNELQKTNYAKWATGDGLTYQKIMKEVAIDDETMCQEEPK
+                     IPNKCRVAAWVQTEMNLLSTLTSKRALDLPEIGPDVAPVEHVGSERRKYFVNEINYCK
+                     ASTVMMKYVLFHTSLLNESNASMGKYKVIPITNRVVNETGESFDMLYGLAVKGQSHLR
+                     GDTDVVTVVTFEFSSTDPRVDSGKWPKYTVFRIGSLFVSGREKSVYLYCRVNGTNKIQ
+                     MKWGMEARRCLLQSMQQMEAIVEQESSIQGYDMTKACFKGDRVNSPKTFSIGTQEGKL
+                     VKGSFGKALRVIFTKCLMHYVFGNAQLEGFSAESRRLLLLIQALKDRKGPWVFDLEGM
+                     YSGIEECISNNPWVIQSAYWFNEWLGFEKEGSKVLESVDEIMDE"
+ORIGIN      
+        1 agcagaagcg gtgcgtttga tttgtcataa tggatacttt tattacaaga aacttccaaa
+       61 ctacaataat acaaaaggcc agaaacacaa tggcagaatt tagtgaagat cctgaattac
+      121 aaccagcaat gctattcaat atctgcgtcc atctagaggt ttgctatgta ataagtgaca
+      181 tgaattttct tgacgaagaa ggaaaagcat atacagcatt agaaggacaa gggaaagaac
+      241 aaaatttgag accacaatat gaagtaattg agggaatgcc aagaaccata gcatggatgg
+      301 tccaaagatc cttagctcaa gagcatggaa tagagactcc caagtatctg gctgatttgt
+      361 ttgattataa aaccaagaga tttatagaag ttggaataac aaaaggattg gctgatgatt
+      421 acttttggaa aaagaaagaa aagttgggaa atagcatgga actgatgata ttcagctaca
+      481 atcaagacta ctcgttaagt aatgaatcct cattggatga ggaagggaaa gggagagtgc
+      541 taagcagact cacagaactt caggctgaat taagtctgaa aaacctatgg caagttctca
+      601 taggagaaga agatgttgaa aagggaattg actttaaact tggacaaaca atatctagac
+      661 taagggatat atctgttccc gctggtttct ccaattttga aggaatgagg agctacatag
+      721 acaatataga cccaaaagga gcaatagaga gaaatctagc aaggatgtct cccttagtat
+      781 cagtcacacc taaaaagttg acatgggagg acctaagacc aatagggcct cacatttaca
+      841 accatgagct accagaagtt ccatataatg cctttcttct aatgtctgat gaactggggc
+      901 tggccaatat gactgaggga aagtccaaaa aaccgaagac attagccaaa gaatgtctag
+      961 aaaagtactc aacactacgg gatcaaacta acccaatatt aataatgaaa agcgaaaaag
+     1021 ctaatgaaaa tttcctatgg aagctttgga gagactgtgt aaatacaata agtaatgagg
+     1081 aaatgagtaa cgagttacag aaaaccaatt atgccaagtg ggccacaggg gatggattaa
+     1141 cataccagaa aataatgaaa gaagtagcaa tagatgacga aacaatgtgc caagaagagc
+     1201 ctaaaatccc taataaatgt agagtggctg cttgggttca aacagagatg aatctattga
+     1261 gcactctgac aagtaaaaga gctctggacc taccagaaat agggccagac gtagcacccg
+     1321 tggagcatgt agggagtgaa agaaggaaat actttgttaa tgaaatcaac tactgtaagg
+     1381 cctctacagt tatgatgaag tatgtgcttt ttcacacttc attgttgaat gaaagcaatg
+     1441 ccagcatggg aaaatacaaa gtaataccaa taaccaatag agtagtaaat gaaacaggag
+     1501 aaagtttcga catgctttat ggtctggcgg ttaaaggaca atctcatctg aggggagata
+     1561 ctgatgttgt aacagttgta actttcgaat ttagtagtac agacccaaga gtggactcag
+     1621 gaaagtggcc aaaatatact gtgtttagga ttggctccct atttgtgagt gggagggaaa
+     1681 aatctgtgta cctgtattgc cgagtgaatg gcacaaataa gatccaaatg aaatggggaa
+     1741 tggaagctag aagatgtctg cttcaatcaa tgcaacaaat ggaagcaatt gttgaacagg
+     1801 aatcatcgat acagggatat gacatgacca aggcttgttt caagggagac agagtaaata
+     1861 gccccaaaac tttcagtatt ggaactcaag aagggaaact agtaaaagga tcctttggaa
+     1921 aagcactaag agtaatattt actaaatgtt tgatgcacta tgtatttgga aatgcccaat
+     1981 tggaggggtt tagtgccgag tctaggagac ttctactgtt gatccaagca ttaaaggaca
+     2041 gaaagggccc ttgggtgttc gacttagagg gaatgtattc tggaatagaa gaatgtatta
+     2101 gcaacaaccc ttgggtaata cagagtgcat actggtttaa tgaatggttg ggctttgaaa
+     2161 aggaggggag taaagtgtta gaatcagtgg atgaaataat ggatgaataa aaggacatgg
+     2221 tactcaattt ggtactattt tgttcattat gtatctaaac atccaataaa aagaaccaag
+     2281 aatcaaaaat gcacgtgttt ctact
+//
+
+LOCUS       OQ034405                2369 bp    cRNA    linear   VRL 22-MAY-2023
+DEFINITION  Influenza B virus (B/Malaysia/2506/2004-MA) segment 1 polymerase
+            PB1 (PB1) gene, complete cds.
+ACCESSION   OQ034405
+VERSION     OQ034405.1
+DBLINK      BioProject: PRJNA909321
+KEYWORDS    .
+SOURCE      Influenza B virus
+  ORGANISM  Influenza B virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Betainfluenzavirus; Betainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 2369)
+  AUTHORS   Aslam,S., Rajendran,M., Kriti,D., Kurland,A., Johnson,J., van
+            Bakel,H., Krammer,F., Garcia-Sastre,A. and Ayllon,J.
+  TITLE     Generation of a high yield vaccine backbone for influenza B virus
+            in embryonated chicken eggs
+  JOURNAL   NPJ Vaccines 8 (1), 12 (2023)
+   PUBMED   36765053
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 2369)
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR);NIAID Centers of Excellence for Influenza Research and
+            Surveillance (CEIRS)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (14-DEC-2022) CEIRS Data Processing and Coordinating
+            Center, Center for Research on Influenza Pathogenesis (CRIP), New
+            York, NY 10029-6574, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the Center for Research
+            on Influenza Pathogenesis (CRIP). This work was supported by
+            National Institute of Allergy and Infectious Diseases, National
+            Institutes of Health, grant HHSN272201400008C.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: Trinity/Inchworm v. r20140413p1
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..2369
+                     /organism="Influenza B virus"
+                     /mol_type="viral cRNA"
+                     /strain="B/Malaysia/2506/2004-MA"
+                     /isolation_source="allantoic fluid"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11520"
+                     /segment="1"
+                     /lab_host="embryonate chicken eggs"
+                     /geo_loc_name="Malaysia"
+                     /collection_date="2004"
+                     /PCR_primers="fwd_name: fwd1, fwd_seq:
+                     gttacgcgccagcagaagcg, rev_name: rev1, rev_seq:
+                     gttacgcgccagtagaaacac"
+                     /PCR_primers="fwd_name: fwd2, fwd_seq:
+                     gttacgcgccagcagaagca, rev_name: rev2, rev_seq:
+                     gttacgcgccagtagtaacaa"
+                     /note="passage_history:P5;
+                     PCR_primers=rev_name: rev3, rev_seq:
+                     gttacgcgccagtagaaacaa"
+     gene            22..2280
+                     /gene="PB1"
+     CDS             22..2280
+                     /gene="PB1"
+                     /codon_start=1
+                     /product="polymerase PB1"
+                     /protein_id="WAQ13994.1"
+                     /translation="MNINPYFLFIDVPIQAAISTTFPYTGVPPYSHGTGTGYTIDTVI
+                     RTHEYSNKGKQYISDVTGCTMVDPTNGPLPEDNEPSAYAQLDCVLEALDRMDEEHPGL
+                     FQAASQNAMEALMVTTVDKLTQGRQTFDWTVCRNQPAATALNTTITSFRLNDLNGADK
+                     GGLVPFCQDIIDSLDRPEMTFFSVKNIKKKLPAKNRKGFLIKRIPMKVKDKITKVEYI
+                     KRALSLNTMTKDAERGKLKRRAIATAGIQIRGFVLVVENLAKNICENLEQSGLPVGGN
+                     EKKAKLSNAVAKMLSNCPPGGISMTVTGDNTKWNECLNPRIFLAMTERITRDSPIWFR
+                     DFCSIAPVLFSNKIARLGKGFMITSKTKRLKAQIPCPDLFSISLERYNEETRAKLKKL
+                     KPFFNEEGTASLSPGMMMGMFNMLSTVLGVAALGIKNIGNKEYLWDGLQSSDDFALFV
+                     NAKDEETCMEGINDFYRTCKLLGINMSKKKSYCNETGMFEFTSMFYRDGFVSNFAMEL
+                     PSFGVAGVNESADMAIGMTIIKNNMINNGMGPATAQTAIQLFIADYRYTYKCHRGDSK
+                     VEGKRMKIIKELWENTKGRDGLLVADGGPNIYNLRNLHIPEIVLKYNLMDPEYKGRLL
+                     HPQNPFVGHLSIEGIKEADITPAHGPVKKMDYDAVSGTHSWRTKRNRSILNTDQRNMI
+                     LEEQCYAKCCNLFEACFNSASYRKPVGQHSMLEAMAHRLRMDARLDYESGRMSKDDFE
+                     KAMAHLGEIGYI"
+ORIGIN      
+        1 agcagaagca gagcctttaa gatgaatata aatccttatt tcctcttcat agatgtgccc
+       61 atacaggcag caatttcaac aacattccca tacactggtg ttccccctta ttcccatgga
+      121 acgggaacag gctacacaat agacaccgtg atcagaacac atgagtactc aaacaagggg
+      181 aaacagtaca tttctgatgt tacaggatgc acaatggtag atccaacaaa tggcccatta
+      241 cccgaagata atgagccgag tgcctatgcg caattagatt gcgttttaga ggctttggat
+      301 agaatggatg aagaacaccc aggtctgttt caagcagcct cacagaatgc tatggaggcc
+      361 ctaatggtca caactgtaga caaattaacc caggggagac agacttttga ttggacagta
+      421 tgcagaaacc aacctgctgc aacggcactg aacacaacaa taacctcttt taggttgaat
+      481 gatttaaatg gagccgacaa aggtggatta gtaccttttt gccaggatat cattgattca
+      541 ttagacagac ctgaaatgac tttcttctca gtaaagaata taaagaaaaa attgcctgcc
+      601 aaaaacagaa agggtttcct cataaagagg ataccaatga aggtaaagga caaaataacc
+      661 aaagtggaat acatcaaaag agcattatca ttaaacacaa tgacaaaaga cgctgaaaga
+      721 ggcaaactaa aaagaagagc gattgccacc gctggaatac aaatcagagg gtttgtatta
+      781 gtagttgaaa acttggctaa aaatatatgt gaaaatctag aacaaagtgg tttaccagta
+      841 ggtggaaacg agaagaaagc caaactgtca aacgcagtgg caaaaatgct cagtaactgc
+      901 ccacctggag ggatcagcat gacagtaaca ggagacaata ctaaatggaa tgaatgttta
+      961 aacccaagaa tctttttggc tatgactgaa agaataacca gagacagccc aatttggttc
+     1021 agggattttt gtagtatagc accggtcctg ttctccaata agatagccag attggggaaa
+     1081 gggtttatga taacaagcaa aacaaagaga ctgaaggctc aaataccttg tcctgatctg
+     1141 tttagtatat cattagaaag atataatgaa gaaacaaggg caaaattgaa aaagctaaaa
+     1201 ccattcttca atgaagaagg aactgcatct ttgtcacctg ggatgatgat gggaatgttt
+     1261 aatatgctat ctaccgtgtt gggggtagct gcactaggta tcaagaacat tggaaacaaa
+     1321 gaatacttat gggatggact gcaatcttct gatgattttg ctctatttgt taatgcaaag
+     1381 gatgaagaaa catgtatgga aggaataaac gacttttacc gaacatgtaa attattggga
+     1441 ataaacatga gcaaaaagaa aagttactgt aatgagactg gaatgtttga atttacaagc
+     1501 atgttctaca gagatggatt tgtatctaat tttgcaatgg aactcccttc atttggggtt
+     1561 gctggagtaa atgaatcagc agatatggca atagggatga caataataaa gaacaacatg
+     1621 atcaacaatg gaatgggtcc ggcaacagca caaacagcca tacagttatt catagctgat
+     1681 tatagataca cctacaaatg ccacagggga gattccaaag tagagggaaa gagaatgaaa
+     1741 atcataaagg agttatggga aaacactaaa ggaagagatg gtctattagt agcagatggt
+     1801 gggcccaaca tttacaattt gagaaacttg catattccag aaatagtatt aaagtataac
+     1861 ttaatggacc ctgaatacaa agggcggtta cttcatcctc aaaatccctt tgtgggacat
+     1921 ttgtctattg agggcatcaa agaggcagat ataaccccag cacatggtcc agtaaagaaa
+     1981 atggactacg atgcggtgtc tggaactcat agttggagaa ccaaaagaaa cagatctata
+     2041 ctaaacactg atcagaggaa catgattctt gaggaacaat gctacgctaa gtgttgcaac
+     2101 ctatttgagg cctgttttaa cagtgcatca tacaggaagc cagtgggtca acatagcatg
+     2161 cttgaggcta tggcccacag attaagaatg gatgcacgat tagattatga atcaggaaga
+     2221 atgtcaaagg atgattttga gaaagcaatg gctcaccttg gtgagattgg gtacatataa
+     2281 gcttcgaaga tgtctatggg gttattggtc atcattgaat acatgcgata cacaaatgat
+     2341 taaaatgaaa aaaggctcgt gtttctact
+//
+
+LOCUS       OQ034406                2396 bp    cRNA    linear   VRL 22-MAY-2023
+DEFINITION  Influenza B virus (B/Malaysia/2506/2004-MA) segment 2 polymerase
+            PB2 (PB2) gene, complete cds.
+ACCESSION   OQ034406
+VERSION     OQ034406.1
+DBLINK      BioProject: PRJNA909321
+KEYWORDS    .
+SOURCE      Influenza B virus
+  ORGANISM  Influenza B virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Betainfluenzavirus; Betainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 2396)
+  AUTHORS   Aslam,S., Rajendran,M., Kriti,D., Kurland,A., Johnson,J., van
+            Bakel,H., Krammer,F., Garcia-Sastre,A. and Ayllon,J.
+  TITLE     Generation of a high yield vaccine backbone for influenza B virus
+            in embryonated chicken eggs
+  JOURNAL   NPJ Vaccines 8 (1), 12 (2023)
+   PUBMED   36765053
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 2396)
+  CONSRTM   NIAID Centers of Excellence for Influenza Research and Response
+            (CEIRR);NIAID Centers of Excellence for Influenza Research and
+            Surveillance (CEIRS)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (14-DEC-2022) CEIRS Data Processing and Coordinating
+            Center, Center for Research on Influenza Pathogenesis (CRIP), New
+            York, NY 10029-6574, USA
+COMMENT     This submission was made by the CEIRR Influenza Data Processing and
+            Communication Center (iDPCC) on behalf of the Center for Research
+            on Influenza Pathogenesis (CRIP). This work was supported by
+            National Institute of Allergy and Infectious Diseases, National
+            Institutes of Health, grant HHSN272201400008C.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: Trinity/Inchworm v. r20140413p1
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..2396
+                     /organism="Influenza B virus"
+                     /mol_type="viral cRNA"
+                     /strain="B/Malaysia/2506/2004-MA"
+                     /isolation_source="allantoic fluid"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11520"
+                     /segment="2"
+                     /lab_host="embryonate chicken eggs"
+                     /geo_loc_name="Malaysia"
+                     /collection_date="2004"
+                     /PCR_primers="fwd_name: fwd1, fwd_seq:
+                     gttacgcgccagcagaagcg, rev_name: rev1, rev_seq:
+                     gttacgcgccagtagaaacac"
+                     /PCR_primers="fwd_name: fwd2, fwd_seq:
+                     gttacgcgccagcagaagca, rev_name: rev2, rev_seq:
+                     gttacgcgccagtagtaacaa"
+                     /note="passage_history:P5;
+                     PCR_primers=rev_name: rev3, rev_seq:
+                     gttacgcgccagtagaaacaa"
+     gene            24..2336
+                     /gene="PB2"
+     CDS             24..2336
+                     /gene="PB2"
+                     /codon_start=1
+                     /product="polymerase PB2"
+                     /protein_id="WAQ13995.1"
+                     /translation="MTLAKIELLKQLLRDNEAKTVLKQTTVDQYNIIRKFNTSRIEKN
+                     PSLRMKWAMCSNFPLALTKGDMANRIPLEYKGIQLKTNAEDIGTKGQMCSIAAVTWWN
+                     TYGPIGDTEGFERVYESFFLRKMRLDNATWGRITFGPVERVRKRVLLNPLTKEMPPDE
+                     ASNVIMEILFPKEAGIPRESTWIHRELIKEKREKLKGTMITPIVLAYMLERELVARRR
+                     FLPVAGATSAEFIEMLHCLQGENWRQIYHPGGNKLTESRSQSMIVACRKIIRRSIVAS
+                     NPLELAVEIANKTVIDTEPLKSCLAAIDGGDVACDIIRAALGLKIRQRQRFGRLELKR
+                     ISGRGFKNDEEILIGNGTIQKIGIWDGEEEFHVRCGECRGILKKSKMKLEKLLINSAK
+                     KEDMRDLIILCMVFSQDTRMFQGVRGEINFLNRAGQLLSPMYQLQRYFLNRSNDLFDQ
+                     WGYEESPKASELYGINESMNASDYTLKGVVVTRNVIDDFSSTETEKVSITKNLSLIKR
+                     TGEVIMGANDVSELESQAQLMITYDTPKMWEMGTTKELVQNTYQWVLKNLVTLKAQFL
+                     LGKEDMFQWDAFEAFESIIPQKMAGQYSGFARAVLKQMRDQEVMKTDQFIKLLPFCFS
+                     PPKLRSNGEPYQFLKLVLKGGGENFIEVRKGSPLFSYNPQTEVLTICGRMMSLKGKIE
+                     DEERNRSMGNAVLAGFLVSGKYDPDLGDFKTIEELERLKPGEKANILLYQGKPVKVVK
+                     RKRYSALSNDISQGIKRQRMTVESMGWALS"
+ORIGIN      
+        1 agcagaagca gagcgttttc aagatgacat tggccaaaat tgaattgtta aaacaactgc
+       61 taagggacaa tgaagccaaa acagttttga agcaaacaac ggtagaccaa tataacataa
+      121 taagaaaatt caatacatca aggattgaaa agaatccttc actaaggatg aaatgggcca
+      181 tgtgttctaa ttttcccttg gctctaacca agggcgacat ggcaaataga atccccttgg
+      241 aatacaaagg aatacaactt aaaacaaatg ctgaagacat aggaaccaaa ggccaaatgt
+      301 gctcaatagc agcagttact tggtggaata catatggacc aataggagat actgaaggtt
+      361 tcgaaagggt ctacgaaagc ttttttctca gaaaaatgag acttgacaat gccacttggg
+      421 gccgaataac ttttggccca gttgaaagag tgagaaaaag ggtactgcta aaccctctca
+      481 ccaaggaaat gcctccagat gaggcgagca atgtgataat ggaaatattg ttccctaaag
+      541 aagcaggaat accaagagaa tccacttgga tacatagaga actgataaaa gaaaaaagag
+      601 aaaaattgaa aggaacaatg ataactccaa tcgtactggc atacatgctt gaaagagaac
+      661 tggttgctcg aagaagattc ttgccagtgg caggagcaac atcagctgag ttcatagaaa
+      721 tgctacactg cttacaaggt gaaaattgga gacaaatata tcacccagga gggaataaat
+      781 taactgagtc taggtctcaa tcaatgatag tagcttgtag aaaaataatc agaagatcaa
+      841 tagtcgcttc aaacccactg gagctagctg tagaaattgc aaacaagact gtgatagata
+      901 ctgaaccttt aaagtcatgt ctggcagcca tagacggagg tgatgtagct tgtgacataa
+      961 taagagctgc attaggacta aagatcagac aaagacaaag atttggacgg cttgagttaa
+     1021 aaagaatatc aggaagagga ttcaaaaatg atgaagaaat attaataggg aacggaacaa
+     1081 tacagaagat tggaatatgg gacggggaag aggagttcca tgtaagatgt ggtgaatgca
+     1141 ggggaatatt aaaaaagagt aaaatgaaac tggaaaaact actaataaat tcagccaaaa
+     1201 aggaggacat gagagattta ataatcttat gcatggtatt ttctcaagac actaggatgt
+     1261 tccaaggggt gagaggagaa ataaattttc ttaatcgagc aggccaactt ttatctccaa
+     1321 tgtaccaact ccaacgatat tttttgaata gaagcaacga cctttttgat caatgggggt
+     1381 atgaggaatc acccaaagca agtgaactat atgggataaa tgaatcaatg aatgcatctg
+     1441 actatacatt gaaaggggtt gtagtgacaa gaaatgtaat tgacgacttt agctctactg
+     1501 aaacagaaaa agtatccata acaaaaaatc ttagtttaat aaaaaggact ggggaagtca
+     1561 taatgggagc taatgacgtg agtgaattag aatcacaagc acagctgatg ataacatatg
+     1621 atacacctaa gatgtgggaa atgggaacaa ccaaagaact ggtgcaaaac acttatcaat
+     1681 gggtgctaaa aaacttggta acactgaagg ctcagtttct tctaggaaaa gaggacatgt
+     1741 tccaatggga tgcatttgaa gcatttgaga gcataattcc tcagaagatg gctggtcagt
+     1801 acagtggatt tgcaagagca gtgctcaaac aaatgagaga ccaggaggtt atgaaaactg
+     1861 accagttcat aaagttgttg cctttttgtt tctcaccacc aaaattaagg agcaatgggg
+     1921 agccttatca attcttaaaa cttgtattga aaggaggagg ggaaaatttc atcgaagtaa
+     1981 ggaaagggtc ccctctattt tcctataatc cacaaacaga agtcctaacc atatgcggca
+     2041 gaatgatgtc attaaaaggg aaaattgaag atgaagaaag gaatagatca atggggaatg
+     2101 cagtattagc aggctttctc gttagtggca agtatgaccc agatcttgga gatttcaaaa
+     2161 ctattgaaga acttgaaagg ctgaaaccgg gggaaaaggc aaatatctta ctttatcaag
+     2221 gaaagccagt taaagtagtt aaaaggaaaa ggtatagtgc tttgtccaat gacatttcac
+     2281 aaggaattaa gagacaaaga atgacagttg agtccatggg gtgggccttg agctaatata
+     2341 aatttatcca ttaattcaat gaacgcaatt gagtgaaaaa tgctcgtgtt tctact
+//
+

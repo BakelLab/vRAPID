@@ -6,228 +6,270 @@
 
 import pandas as pd
 from snakemake.utils import min_version
-min_version("8.25.0")
+min_version("9.0.0")
 
 ##########
 # CONFIG #
 ##########
 
 configfile: "config.yaml"
-mappings = pd.read_csv(config["samples"])
+mappings  = pd.read_csv(config["samples"])
 sampleids = mappings["Sample_ID"].tolist()
 
 ########
 # DEF #
 ########
 
-reference = config['reference_genome'] 
+reference   = config['reference_genome'] 
 chromosomes = config['ref_fasta_headers']
 
 #########
 # RULES #
 #########
 
+
 rule all:
-	input:
-		txt = "workflow_summary.txt"
+    input:
+        txt = "workflow_summary.txt"
 
 
 rule file_rename:
-	message: "Rename input folder for consistency"
-	input:
-		R1 = "{sample}/{sample}/{sample}_1.fastq.gz",
-		R2 = "{sample}/{sample}/{sample}_2.fastq.gz",
-	output:
-		R1 = "{sample}/01_fastqs/{sample}_1.fastq.gz",
-		R2 = "{sample}/01_fastqs/{sample}_2.fastq.gz"
-	log: "logs/{sample}/01_rename/rename-fastqs.snakemake.log"
-	shell:
-		"""
-		mv {input.R1} {output.R1}
-		mv {input.R2} {output.R2}
-		rm -rf {wildcards.sample}/{wildcards.sample}
-		"""
+    message: "Rename input folder for consistency"
+    input:
+        R1 = "{sample}/{sample}/{sample}_1.fastq.gz",
+        R2 = "{sample}/{sample}/{sample}_2.fastq.gz",
+    output:
+        R1 = "{sample}/01_fastqs/{sample}_1.fastq.gz",
+        R2 = "{sample}/01_fastqs/{sample}_2.fastq.gz"
+    log:
+        "logs/{sample}/01_rename/01_rename-fastqs.snakemake.log"
+    shell:
+        """
+        mv {input.R1} {output.R1}
+        mv {input.R2} {output.R2}
+        rm -rf {wildcards.sample}/{wildcards.sample}
+        """
 
 
 rule run_cutadapt:
-	message: "Trim primers using cutadapt"
-	input:
-		R1 = "{sample}/01_fastqs/{sample}_1.fastq.gz",
-		R2 = "{sample}/01_fastqs/{sample}_2.fastq.gz"
-	output:
-		combined_R1 = "{sample}/02_assembly/combined.1.fastq.gz",
-		combined_R2 = "{sample}/02_assembly/combined.2.fastq.gz",
-		cutadapt_R1 = "{sample}/02_assembly/reads.1.fastq.gz",
-		cutadapt_R2 = "{sample}/02_assembly/reads.2.fastq.gz"
-	params:
-		forward_primer = config["forward_primer"],
-		reverse_primer = config["reverse_primer"]
-	log: "logs/{sample}/02_assembly/run-cutadapt.snakemake.log"
-	conda: "envs/env.yml"
-	shell:
-		"""
-		cp {input.R1} {output.combined_R1}
-		cp {input.R2} {output.combined_R2}
-		cutadapt \
-			-g file:{params.forward_primer} \
-			-a file:{params.reverse_primer} \
-			-G file:{params.forward_primer} \
-			-A file:{params.reverse_primer} \
-			-o {output.cutadapt_R1} -p {output.cutadapt_R2} \
-			{output.combined_R1} {output.combined_R2} > {log} 2>&1
-		"""
+    message: "Trim primers using cutadapt"
+    input:
+        R1 = "{sample}/01_fastqs/{sample}_1.fastq.gz",
+        R2 = "{sample}/01_fastqs/{sample}_2.fastq.gz"
+    output:
+        R1 = "{sample}/02_assembly/reads.1.fastq.gz",
+        R2 = "{sample}/02_assembly/reads.2.fastq.gz"
+    log:
+        "logs/{sample}/02_assembly/01_run-cutadapt.snakemake.log"
+    conda: 
+        "envs/env.yml"
+    shell:
+        """
+        cutadapt \
+            -g file:{config[forward_primer]} \
+            -a file:{config[reverse_primer]} \
+            -G file:{config[forward_primer]} \
+            -A file:{config[reverse_primer]} \
+            -o {output.R1} -p {output.R2} \
+            {input.R1} {input.R2} > {log} 2>&1
+        """
 
-	
+    
 rule run_fastqc:
-	message: "Run FASTQC on FASTQs"
-	input:
-		cutadapt_R1 = "{sample}/02_assembly/reads.1.fastq.gz",
-		cutadapt_R2 = "{sample}/02_assembly/reads.2.fastq.gz"
-	output:
-		fastqc_R1 = "{sample}/02_assembly/reads.1_fastqc.html",
-		fastqc_R2 = "{sample}/02_assembly/reads.2_fastqc.html"
-	log: "logs/{sample}/02_assembly/run-fastqc.snakemake.log"
-	conda: "envs/env.yml"
-	shell:
-		"""
-		fastqc --nogroup {input.cutadapt_R1} {input.cutadapt_R2} --outdir $(dirname {output.fastqc_R1}) > {log} 2>&1
-		"""
+    message: "Run FASTQC on FASTQs"
+    input:
+        R1 = "{sample}/02_assembly/reads.1.fastq.gz",
+        R2 = "{sample}/02_assembly/reads.2.fastq.gz"
+    output:
+        R1 = "{sample}/02_assembly/reads.1_fastqc.html",
+        R2 = "{sample}/02_assembly/reads.2_fastqc.html"
+    log:
+        "logs/{sample}/02_assembly/02_run-fastqc.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        fastqc --nogroup {input.R1} {input.R2} --outdir $(dirname {output.R1}) > {log} 2>&1
+        """
 
 
-rule run_minimap2:
-	message: "Align reads to reference using Minimap2"
-	input:
-		fastqc_R2 = "{sample}/02_assembly/reads.2_fastqc.html",
-		cutadapt_R1 = "{sample}/02_assembly/reads.1.fastq.gz",
-		cutadapt_R2 = "{sample}/02_assembly/reads.2.fastq.gz"
-	output:
-		bam = "{sample}/02_assembly/{sample}_ref_tmp.bam"
-	threads: 12
-	log: "logs/{sample}/02_assembly/run-minimap2.snakemake.log"
-	conda: "envs/env.yml"
-	shell:
-		"""
-		minimap2 -t {threads} -ax sr {config[reference_genome]} {input.cutadapt_R1} {input.cutadapt_R2} 2>> {log} | \
-			samtools sort -@ {threads} -o {output.bam} >> {log} 2>&1
-		samtools index {output.bam} >> {log} 2>&1
-		"""
-		
-		
-rule clip_bam:
-	message: "Clip and obtain SAM"
-	input:
-		bam = "{sample}/02_assembly/{sample}_ref_tmp.bam"
-	output:
-		bam = "{sample}/02_assembly/{sample}_ref_clipped.bam",
-		sam = temp("{sample}/02_assembly/{sample}_combined.sam"),
-		tmp_header = temp("{sample}/02_assembly/{sample}_tmp_header.bam"),
-		tmp_ref = temp("{sample}/02_assembly/{sample}_tmp_ref.bam")
-	log: "logs/{sample}/02_assembly/clip-bam.snakemake.log"
-	conda: "envs/env.yml"
-	shell:
-		"""
-		{{
-		mv {input.bam} {output.bam}
-		mv {input.bam}.bai {output.bam}.bai
-		samtools view -H {output.bam} > {output.tmp_header}
-		samtools view {output.bam} | awk -F '\t' -v OFS='\t' '$6!~/S/' > {output.tmp_ref}
-		cat {output.tmp_header} {output.tmp_ref} > {output.sam}
-		}} >> {log} 2>&1
-		"""
+rule minimap2_clip:
+    message: "Align reads to reference, clip, and generate final BAM"
+    input:
+        fR2 = "{sample}/02_assembly/reads.2_fastqc.html",
+        cR1 = "{sample}/02_assembly/reads.1.fastq.gz",
+        cR2 = "{sample}/02_assembly/reads.2.fastq.gz"
+    output:
+        bam = "{sample}/02_assembly/{sample}_ref.bam",
+        bai = "{sample}/02_assembly/{sample}_ref.bam.bai"
+    log:
+        "logs/{sample}/02_assembly/03_minimap2-clip.snakemake.log"
+    conda: 
+        "envs/env.yml"
+    shell:
+        r"""
+        # Align and sort
+        minimap2 -t {threads} -ax sr {config[reference_genome]} {input.cR1} {input.cR2} 2>> {log} \
+            | samtools sort -@ {threads} -o {output.bam} >> {log} 2>&1
+        
+        samtools index {output.bam} >> {log} 2>&1
+
+        # Create clipped BAM (remove soft-clipped reads)
+        samtools view -h {output.bam} \
+            | awk '$6 !~ /S/' \
+            | samtools view -b - > {output.bam}.tmp
+
+        mv {output.bam}.tmp {output.bam}
+        samtools index {output.bam} >> {log} 2>&1
+        """
 
 
-rule ref_bam:
-	message: "Obtain final ref BAM from SAM"
-	input:
-		sam = "{sample}/02_assembly/{sample}_combined.sam",
-	output:
-		bam = "{sample}/02_assembly/{sample}_ref.bam",
-		sorted_bam = "{sample}/02_assembly/{sample}_ref.sorted.bam",
-	threads: 12
-	log: "logs/{sample}/02_assembly/ref-bam.snakemake.log"
-	conda: "envs/env.yml"
-	shell:
-		"""
-		(samtools view -b {input.sam} | samtools sort -@ {threads} -o {output.bam} - ) > {log} 2>&1
-		samtools index {output.bam} 
-		samtools sort -o {output.sorted_bam} {output.bam} 
-		samtools index {output.sorted_bam} >> {log} 2>&1
-		"""
+rule sorted_bam:
+    message: "Generate fully sorted BAM"
+    input:
+        bam = "{sample}/02_assembly/{sample}_ref.bam"
+    output:
+        bam = "{sample}/02_assembly/{sample}_ref.sorted.bam"
+    log:
+        "logs/{sample}/02_assembly/04_sort-bam.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        samtools sort -o {output.bam} {input.bam} >> {log} 2>&1
+        samtools index {output.bam} >> {log} 2>&1
+        """
 
 
-rule pilon:
-	message: "Run Pilon on final ref BAM"
-	input:
-		bam = "{sample}/02_assembly/{sample}_ref.bam",
-		sorted_bam = "{sample}/02_assembly/{sample}_ref.sorted.bam",
-	output:
-		changes = "{sample}/02_assembly/{chromosomes}_pilon.changes",
-		vcf = "{sample}/02_assembly/{chromosomes}_pilon.vcf",
-		fasta = "{sample}/02_assembly/{chromosomes}_pilon.fasta",
-		coverage = "{sample}/02_assembly/{chromosomes}_pilonCoverage.wig",
-	params:
-		targets = "{chromosomes}",
-		samples = "{sample}"
-	log: "logs/{sample}/02_assembly/{chromosomes}.run-pilon.snakemake.log",
-	conda: "envs/env.yml"
-	shell:
-		"""
-		pilon --fix bases --changes --vcf --mindepth 50 \
-			--genome {config[reference_genome]} \
-			--frags {input.bam} \
-			--tracks \
-			--output {params.samples}/02_assembly/{params.targets}_pilon \
-			--targets {params.targets} > {log} 2>&1
-		"""
+rule group_reads_in_bam:
+    message: "Run samtools to group reads in BAM file"
+    input:
+        sorted_bam    = "{sample}/02_assembly/{sample}_ref.sorted.bam"
+    output:
+        sorted_rg_bam = "{sample}/02_assembly/{sample}_ref.sorted.rg.bam",
+        sorted_rg_bai = "{sample}/02_assembly/{sample}_ref.sorted.rg.bam.bai"
+    log:
+        "logs/{sample}/02_assembly/05_read-group-bam.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        samtools addreplacerg -r '@RG\tID:1\tSM:sample\tPL:ILLUMINA' -o {output.sorted_rg_bam} {input.sorted_bam} >> {log} 2>&1
+        samtools index {output.sorted_rg_bam} >> {log} 2>&1
+        """
+
+##########################
+# MOVE TO PREP SCRIPT #
+#########################
+
+#rule download_clair3_model:
+#    message: "Download Clair3 model"
+#    output:
+#        model = directory("ilmn")
+#    log: "logs/00_dowloang-clair3-model.snakemake.log"
+#    shell:
+#        """
+#        wget https://www.bio8.cs.hku.hk/clair3/clair3_models/ilmn.tar.gz
+#        tar -xvzf ilmn.tar.gz
+#        rm ilmn.tar.gz
+#       """
+        
+
+rule run_clair3:
+    message: "Run Clair3 on final ref BAM"
+    input:
+        sorted_rg_bam = "{sample}/02_assembly/{sample}_ref.sorted.rg.bam",
+        model         = "ilmn"
+    output:
+        vcf           = "{sample}/02_assembly/clair3/merge_output.vcf.gz",
+        folder        = directory("{sample}/02_assembly/clair3")
+    params:
+        samples       = "{sample}"
+    log:
+        "logs/{sample}/02_assembly/06_run-clair3.snakemake.log"
+    container: "docker://hkubal/clair3:v1.2.0"
+    shell:
+        """
+        run_clair3.sh --bam_fn={input.sorted_rg_bam} \
+             --ref_fn={config[reference_genome]} \
+             --threads={threads} \
+             --platform=ilmn \
+             --model_path=./ilmn \
+             --output={output.folder} \
+             --include_all_ctgs > {log} 2>&1
+        """
 
 
-rule parse_pilon_changes:
-	message: "Parse Pilon output to get insertions and deletions"
-	input:
-		changes = "{sample}/02_assembly/{chromosomes}_pilon.changes",
-	output:
-		ins = "{sample}/02_assembly/{chromosomes}_ins.txt",
-		dels = "{sample}/02_assembly/{chromosomes}_dels.txt",
-	params:
-		ins_dels = os.path.join(workflow.basedir, "../workflow/scripts/generate_ins_dels.py")
-	log: "logs/{sample}/02_assembly/{chromosomes}.gen-ins-dels.snakemake.log",
-	conda: "envs/env.yml"
-	shell:
-		"""
-		python {params.ins_dels} {input.changes} {output.ins} {output.dels} > {log} 2>&1
-		"""
-		
-
-rule process_pilon_coverage:
-	message: "Process the insertions and deletions to get the final sequence for each header in reference FASTA"
-	input:
-		coverage = "{sample}/02_assembly/{chromosomes}_pilonCoverage.wig",
-		ins = "{sample}/02_assembly/{chromosomes}_ins.txt",
-		dels = "{sample}/02_assembly/{chromosomes}_dels.txt",
-		fasta = "{sample}/02_assembly/{chromosomes}_pilon.fasta",
-	output:
-		fasta = "{sample}/02_assembly/{chromosomes}_processed.fasta"
-	params:
-		chromosomes = "{chromosomes}",
-		process_pilon = os.path.join(workflow.basedir, "../workflow/scripts/process_pilon_coverage.py")
-	log: "logs/{sample}/02_assembly/{chromosomes}.process-pilon-coverage.snakemake.log"
-	conda: "envs/env.yml"
-	shell:
-		"""
-		python {params.process_pilon} {input.fasta} {params.chromosomes} {input.ins} {input.dels} {input.coverage} {output.fasta} > {log} 2>&1
-		"""
+rule get_masking_sites:
+    message: "Get masking sites for low coverage regions"
+    input:
+        sorted_rg_bam = "{sample}/02_assembly/{sample}_ref.sorted.rg.bam",
+    output:
+       mask_sites     = "{sample}/02_assembly/{chromosomes}_coverage_mask.txt"
+    params:
+        depth_masking = os.path.join(workflow.basedir, "../workflow/scripts/02_generate-depth-masking.py")
+    log:
+        "logs/{sample}/02_assembly/07_{chromosomes}.get-masking-sites.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        python {params.depth_masking} --depth {config[depth]} {config[reference_genome]} {input.sorted_rg_bam} {output.mask_sites}
+        """
 
 
-rule concatenate_chromosomes:
+rule generate_preconsensus_sequence:
+    message: "Use coverage information to generate preconsensus sequence"
+    input:
+        vcf        = "{sample}/02_assembly/clair3/merge_output.vcf.gz",
+        mask_sites = "{sample}/02_assembly/{chromosomes}_coverage_mask.txt"
+    output:
+        fasta      = "{sample}/02_assembly/{chromosomes}_preconsensus.fasta"
+    params:
+        mask       = os.path.join(workflow.basedir, "../workflow/scripts/02_mask-to-preconsensus.py")
+    log:
+        "logs/{sample}/02_assembly/08_{chromosomes}.generate-preconsensus-sequence.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+         """
+         bcftools index {input.vcf}
+         python {params.mask} {config[reference_genome]} {input.mask_sites} {input.vcf} {output.fasta}
+         """
+
+
+rule polish_consensus:
+    message: "Polish sequence for each header in reference FASTA"
+    input:
+        vcf         = "{sample}/02_assembly/clair3/merge_output.vcf.gz",
+        fasta       = "{sample}/02_assembly/{chromosomes}_preconsensus.fasta"
+    output:
+        fasta       = "{sample}/02_assembly/{chromosomes}_polished.fasta",
+        normalised  = "{sample}/02_assembly/{chromosomes}_normalised.vcf.gz"
+    params:
+        chromosomes = "{chromosomes}",
+    log:
+        "logs/{sample}/02_assembly/09_{chromosomes}.polish-consensus.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        bcftools norm -f {config[reference_genome]} -m-any -o {output.normalised} {input.vcf} >> {log} 2>&1
+        bcftools index {output.normalised} >> {log} 2>&1
+        bcftools consensus -f {config[reference_genome]} -o {output.fasta} {output.normalised} >> {log} 2>&1
+        """ 
+
+
+rule concatenate_FASTAs:
     message: "Concatenate all headers into one FASTA per sample with chromosome name appended"
     input:
-        lambda wildcards: expand("{sample}/02_assembly/{chromosome}_processed.fasta", 
-                                 sample=wildcards.sample, 
-                                 chromosome=chromosomes)
+        lambda wildcards: expand("{sample}/02_assembly/{chromosomes}_polished.fasta", 
+                                 sample = wildcards.sample, 
+                                 chromosomes = chromosomes)
     output:
         fasta = "{sample}/02_assembly/{sample}.fasta"
     log:
-        "logs/{sample}/02_assembly/concatenation.snakemake.log"
+        "logs/{sample}/02_assembly/10_FASTA-concatenation.snakemake.log"
     shell:
         """
         for fasta in {input}; do
@@ -235,431 +277,438 @@ rule concatenate_chromosomes:
             awk -v c="$chrom" '{{if($0 ~ /^>/) {{$0 = $0 "_" c}} print}}' "$fasta"
         done > {output.fasta}
         """
-		
 
-rule run_prokka:
-	message: "Run Prokka on final concatenated FASTA"
-	input:
-		fasta = "{sample}/02_assembly/{sample}.fasta"
-	output:
-		folder = directory("{sample}/02_assembly/prokka")
-	params:
-		sample_name = "{sample}"
-	threads: 12
-	conda: "envs/env.yml"
-	log: "logs/{sample}/02_assembly/run-prokka.snakemake.log"
-	shell:
-		"""
-		if grep -v '^>' {input.fasta} | grep -q .; then
-			prokka --force --cpus {threads} --outdir {output.folder} --prefix {params.sample_name} --kingdom {config[kingdom]} --proteins {config[genbank]} {input.fasta}
-		else
-			mkdir -p {output.folder}
-		fi
-		"""
-		
-		
-rule download_seqkit:
-	message: "Download Seqkit from GitHub"
-	output:
-		seqkit = temporary("seqkit"),
-		seqkit_gz = temporary("seqkit_linux_amd64.tar.gz")
-	shell:
-		"""
-		wget https://github.com/shenwei356/seqkit/releases/latest/download/{output.seqkit_gz}
-		tar -xvzf {output.seqkit_gz}
-		"""
-
-
-rule run_shovill:
-	message: "Run Shovill"
-	input:
-		prokka = "{sample}/02_assembly/prokka",
-		fasta = "{sample}/02_assembly/{sample}.fasta",
-		reads_1 = "{sample}/02_assembly/reads.1.fastq.gz",
-		reads_2 = "{sample}/02_assembly/reads.2.fastq.gz",
-		seqkit = "seqkit"
-	output:
-		folder = directory("{sample}/02_assembly/{chromosomes}_shovill")
-	params:
-		working_dir = "{sample}/02_assembly"
-	threads: 12
-	conda: "envs/env.yml"
-	log: "logs/{sample}/02_assembly/{chromosomes}.run-shovill.snakemake.log"
-	script: "scripts/run_shovill.py"
-	
-	
+    
 rule run_mpileup:
-	message: "Run samtool's mpileup"
-	input:
-		fasta = "{sample}/02_assembly/{sample}.fasta",
-		bam = "{sample}/02_assembly/{sample}_ref.bam",
-		folder = "{sample}/02_assembly/{chromosomes}_shovill",
-	output:
-		pileup = "{sample}/04_variants/{chromosomes}_pileup"
-	conda: "envs/env.yml"
-	log: "logs/{sample}/04_variants/{chromosomes}_mpileup.snakemake.log"
-	shell:
-		"""
-		samtools mpileup -f {config[reference_genome]} -r {wildcards.chromosomes} {input.bam} -o {output.pileup}
-		"""	
+    message: "Run samtool's mpileup"
+    input:
+        fasta  = "{sample}/02_assembly/{sample}.fasta",
+        bam    = "{sample}/02_assembly/{sample}_ref.sorted.rg.bam",
+    output:
+        pileup = "{sample}/04_variants/{chromosomes}_pileup"
+    log:
+        "logs/{sample}/04_variants/01_{chromosomes}_mpileup.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        samtools mpileup -f {config[reference_genome]} -r {wildcards.chromosomes} {input.bam} -o {output.pileup}
+        """    
 
 
 rule process_pileup:
-	message: "Process pileup output to get variable bases TSV"
-	input:
-		pileup = "{sample}/04_variants/{chromosomes}_pileup",
-		primer_set = config["primer_file"],
-	output:
-		tsv="{sample}/04_variants/{chromosomes}_variable_bases.tsv"
-	params:
-		sample_folder = "{sample}",
-		outdir = "{sample}/04_variants",
-		chrom = "{chromosomes}",
-		min_ratio = 0.9,
-		pileup_script = os.path.join(workflow.basedir, "../workflow/scripts/process_pileup.py")
-	conda: "envs/env.yml"
-	log: "logs/{sample}/04_variants/{chromosomes}.process_pileup.snakemake.log" 
-	shell:
-		"""
-		python {params.pileup_script} \
-			--sample_folder {params.sample_folder} \
-			--chrs {params.chrom} \
-			--outdir {params.outdir} \
-			--min_ratio {params.min_ratio} \
-			--primer_set {input.primer_set} 2> {log}
-		"""
+    message: "Process pileup output to get variable bases TSV"
+    input:
+        pileup        = "{sample}/04_variants/{chromosomes}_pileup",
+        vcf           = "{sample}/02_assembly/clair3/merge_output.vcf.gz"
+    output:
+        tsv           = "{sample}/04_variants/{chromosomes}_variable_bases.tsv"
+    params:
+        sample_folder = "{sample}",
+        outdir        = "{sample}/04_variants",
+        chrom         = "{chromosomes}",
+        min_ratio     = 0.9,
+        pileup_script = os.path.join(workflow.basedir, "../workflow/scripts/04_process-pileup.py")
+    log:
+        "logs/{sample}/04_variants/02_{chromosomes}.process_pileup.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        python {params.pileup_script} \
+            --sample_folder {params.sample_folder} \
+            --chrs {params.chrom} \
+            --outdir {params.outdir} \
+            --min_ratio {params.min_ratio} \
+            --primer_set {config[primer_file]} \
+            --vcf {input.vcf} 2> {log}
+        """
 
 
 rule run_bamtools_split:
-	message: "Run bamtools split"
-	input:
-		bam = "{sample}/02_assembly/{sample}_ref.bam",
-		tsv = "{sample}/04_variants/{chromosomes}_variable_bases.tsv"
-	output:
-		mapped = "{sample}/02_assembly/{sample}_ref.REF_{chromosomes}.bam",
-	conda: "envs/env.yml"
-	log: "logs/{sample}/02_assembly/{chromosomes}.bamtools-split.snakemake.log"
-	shell:
-		"""
-		 bamtools split -in {input.bam} -reference > {log} 2>&1		
-		"""
-		
+    message: "Run bamtools split"
+    input:
+        sorted_rg_bam = "{sample}/02_assembly/{sample}_ref.sorted.rg.bam",
+        tsv           = "{sample}/04_variants/{chromosomes}_variable_bases.tsv"
+    output:
+        mapped        = temp("{sample}/02_assembly/{sample}_ref.sorted.REF_{chromosomes}.bam")
+    log:
+        "logs/{sample}/02_assembly/10_{chromosomes}.bamtools-split.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        bamtools split -in {input.sorted_rg_bam} -reference > {log} 2>&1        
+        """
+        
 
 rule run_picard_insert_metrics:
-	message: "Get insert metrics using Picard"
-	input:
-		fasta =  "{sample}/02_assembly/{sample}.fasta",
-		bam = "{sample}/02_assembly/{sample}_ref.bam",
-		mapped = expand("{sample}/02_assembly/{sample}_ref.REF_{chromosomes}.bam", sample=sampleids, chromosomes=chromosomes)
-	output:
-		txt = "{sample}/02_assembly/{sample}_insert_size_metrics.txt",
-		pdf = "{sample}/02_assembly/{sample}_insert_size_histogram.pdf",
-	conda: "envs/env.yml"
-	log: "logs/{sample}/02_assembly/picard-insert-metrics.snakemake.log"
-	shell:
-		"""
-		if [ "$(awk 'END {{print NR}}' {input.fasta})" -eq 1 ]; then
-			touch {output.txt} {output.pdf}
-		else
-			picard CollectInsertSizeMetrics \
-				I={input.bam} \
-				O={output.txt} \
-				H={output.pdf} \
-				M=0.5 > {log} 2>&1
-		fi
-		"""	
+    message: "Get insert metrics using Picard"
+    input:
+        fasta         =  "{sample}/02_assembly/{sample}.fasta",
+        sorted_rg_bam = "{sample}/02_assembly/{sample}_ref.sorted.rg.bam",
+        mapped        = expand("{sample}/02_assembly/{sample}_ref.sorted.REF_{chromosomes}.bam", 
+                                 sample = sampleids, chromosomes = chromosomes)
+    output:
+        txt           = temp("{sample}/02_assembly/{sample}_insert_size_metrics.txt"),
+        pdf           = temp("{sample}/02_assembly/{sample}_insert_size_histogram.pdf"),
+    log:
+        "logs/{sample}/02_assembly/11_picard-insert-metrics.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        if [ "$(awk 'END {{print NR}}' {input.fasta})" -eq 1 ]; then
+            touch {output.txt} {output.pdf}
+        else
+            picard CollectInsertSizeMetrics \
+                I={input.sorted_rg_bam} \
+                O={output.txt} \
+                H={output.pdf} \
+                M=0.5 > {log} 2>&1
+        fi
+        """    
 
 
 rule run_picard_read_groups:
-	message: "Get read groups using Picard"
-	input:
-		fasta = "{sample}/02_assembly/{sample}.fasta",
-		bam = "{sample}/02_assembly/{sample}_ref.bam",
-	output:
-		bam = "{sample}/02_assembly/{sample}_ref_fixed.bam",
-	params:
-		insample = "{sample}"
-	conda: "envs/env.yml"
-	log: "logs/{sample}/02_assembly/picard-read-groups.snakemake.log"
-	shell:
-		"""
-		if [ "$(awk 'END {{print NR}}' {input.fasta})" -eq 1 ]; then
-			touch {output.bam}
-		else
-			picard AddOrReplaceReadGroups \
-				I={input.bam} \
-				O={output.bam} \
-				RGID=rg1 \
-				RGLB=lib1 \
-				RGPL=ILLUMINA \
-				RGPU=unit1 \
-				RGSM={params.insample}
-		fi
-		"""
+    message: "Get read groups using Picard"
+    input:
+        fasta         = "{sample}/02_assembly/{sample}.fasta",
+        sorted_rg_bam = "{sample}/02_assembly/{sample}_ref.sorted.rg.bam",
+    output:
+        bam           = temp("{sample}/02_assembly/{sample}_ref.sorted.rg.fixed.bam")
+    params:
+        insample      = "{sample}"
+    log:
+        "logs/{sample}/02_assembly/12_picard-read-groups.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        if [ "$(awk 'END {{print NR}}' {input.fasta})" -eq 1 ]; then
+            touch {output.bam}
+        else
+            picard AddOrReplaceReadGroups \
+                I={input.sorted_rg_bam} \
+                O={output.bam} \
+                RGID=rg1 \
+                RGLB=lib1 \
+                RGPL=ILLUMINA \
+                RGPU=unit1 \
+                RGSM={params.insample}
+        fi
+        """
 
 
 rule run_picard_duplicates:
-	message: "Run Picard duplicates"
-	input:
-		fasta =  "{sample}/02_assembly/{sample}.fasta",
-		bam = "{sample}/02_assembly/{sample}_ref_fixed.bam",
-		pdf = "{sample}/02_assembly/{sample}_insert_size_histogram.pdf",
-	output:
-		bam = "{sample}/02_assembly/{sample}_marked_duplicates.bam",
-		txt = "{sample}/02_assembly/{sample}_marked_dup_metrics.txt"
-	conda: "envs/env.yml"
-	log: "logs/{sample}/02_assembly/picard-duplicates.snakemake.log"
-	shell:
-		"""
-		if [ "$(awk 'END {{print NR}}' {input.fasta})" -eq 1 ]; then
-			touch {output.txt} {output.bam}
-		else
-			picard MarkDuplicates \
-				I={input.bam} \
-				O={output.bam} \
-				M={output.txt} > {log} 2>&1
-		fi
-		"""
+    message: "Run Picard duplicates"
+    input:
+        fasta =  "{sample}/02_assembly/{sample}.fasta",
+        bam   = "{sample}/02_assembly/{sample}_ref.sorted.rg.fixed.bam",
+        pdf   = "{sample}/02_assembly/{sample}_insert_size_histogram.pdf",
+    output:
+        bam   = temp("{sample}/02_assembly/{sample}_marked_duplicates.bam"),
+        txt   = temp("{sample}/02_assembly/{sample}_marked_dup_metrics.txt")
+    log:
+        "logs/{sample}/02_assembly/13_picard-duplicates.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        if [ "$(awk 'END {{print NR}}' {input.fasta})" -eq 1 ]; then
+            touch {output.txt} {output.bam}
+        else
+            picard MarkDuplicates \
+                I={input.bam} \
+                O={output.bam} \
+                M={output.txt} > {log} 2>&1
+        fi
+        """
 
 
 rule run_picard_alignment_metrics:
-	message: "Get alignment metrics using Picard"
-	input:
-		fasta = "{sample}/02_assembly/{sample}.fasta",
-		bam = "{sample}/02_assembly/{sample}_ref_fixed.bam",
-		txt = "{sample}/02_assembly/{sample}_marked_dup_metrics.txt"
-	output:
-		txt = "{sample}/02_assembly/{sample}_picard_output.txt"
-	conda: "envs/env.yml"
-	log: "logs/{sample}/02_assembly/picard-alignment-metrics.snakemake.log"
-	shell:
-		"""
-		if [ "$(awk 'END {{print NR}}' {input.fasta})" -eq 1 ]; then
-			touch {output.txt}
-		else
-			picard CollectAlignmentSummaryMetrics \
-				R={input.fasta} \
-				I={input.bam} \
-				O={output.txt} > {log} 2>&1
-		fi
-		"""
+    message: "Get alignment metrics using Picard"
+    input:
+        fasta = "{sample}/02_assembly/{sample}.fasta",
+        bam   = "{sample}/02_assembly/{sample}_ref.sorted.rg.fixed.bam",
+        txt   = "{sample}/02_assembly/{sample}_marked_dup_metrics.txt"
+    output:
+        txt   = temp("{sample}/02_assembly/{sample}_picard_output.txt")
+    log:
+        "logs/{sample}/02_assembly/14_picard-alignment-metrics.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        if [ "$(awk 'END {{print NR}}' {input.fasta})" -eq 1 ]; then
+            touch {output.txt}
+        else
+            picard CollectAlignmentSummaryMetrics \
+                R={input.fasta} \
+                I={input.bam} \
+                O={output.txt} > {log} 2>&1
+        fi
+        """
 
 
 rule compute_coverage:
-	message: "Use ref BAM to get coverage per FASTA header"
-	input:
-		bam = "{sample}/02_assembly/{sample}_ref.bam",
-		txt = "{sample}/02_assembly/{sample}_picard_output.txt"
-	output:
-		coverage = "{sample}/03_qualityControl/{chromosomes}_coverage.txt"
-	log: "logs/{sample}/03_qualityControl/{chromosomes}.coverage.log"
-	conda: "envs/env.yml"
-	params:
-		chrs = "{chromosomes}"
-	shell:
-		"""
-		samtools depth -aa {input.bam} -r {params.chrs} > {output.coverage} 2> {log}
-		"""
+    message: "Use ref BAM to get coverage per FASTA header"
+    input:
+        bam      = "{sample}/02_assembly/{sample}_ref.sorted.rg.bam",
+        txt      = "{sample}/02_assembly/{sample}_picard_output.txt"
+    output:
+        coverage = "{sample}/03_qualityControl/{chromosomes}_coverage.txt"
+    params:
+        chrs     = "{chromosomes}"
+    log:
+        "logs/{sample}/03_qualityControl/01_{chromosomes}.coverage.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        samtools depth -aa {input.bam} -r {params.chrs} > {output.coverage} 2> {log}
+        """
+
 
 rule generate_qc_report:
-	message: "Plot coverage per FASTA header"
-	input:
-		reference = config["reference_genome"],
-		coverage = "{sample}/03_qualityControl/{chromosomes}_coverage.txt",
-		fasta = "{sample}/02_assembly/{chromosomes}_processed.fasta",
-	output:
-		pdf = temp("{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control2.pdf"),
-		report = "{sample}/03_qualityControl/{chromosomes}_report.txt",
-	params:
-		qc_dir = "{sample}/03_qualityControl/",
-		sample_name = "{sample}",
-		chromosome = "{chromosomes}"
-	conda: "envs/env.yml"
-	log: "logs/{sample}/03_qualityControl/{chromosomes}.initial-qc-report.snakemake.log"
-	script: "scripts/generate_QC_report.py"
-	
-	
+    message: "Plot coverage per FASTA header"
+    input:
+        coverage    = "{sample}/03_qualityControl/{chromosomes}_coverage.txt",
+        fasta       = "{sample}/02_assembly/{chromosomes}_polished.fasta",
+    output:
+        pdf         = temp("{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control2.pdf"),
+        report      = "{sample}/03_qualityControl/{chromosomes}_report.txt"
+    params:
+        qc_dir      = "{sample}/03_qualityControl/",
+        sample_name = "{sample}",
+        chromosome  = "{chromosomes}"
+    log:
+        "logs/{sample}/03_qualityControl/02_{chromosomes}.initial-QC-report.snakemake.log"
+    conda:
+        "envs/env.yml"
+    script:
+        "scripts/03_generate-QC-report.py"
+    
+    
 rule add_variant_plot_to_pdf:
-	message: "Plot variants from reference using pileup output and append to coverage plot file"
-	input:
-		pileup = "{sample}/04_variants/{chromosomes}_pileup",
-		pdf = "{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control2.pdf",
-	output:
-		pdf = temp("{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control3.pdf")
-	params:
-		sample_name = "{sample}",
-		chromosomes = "{chromosomes}"
-	conda: "envs/env.yml"
-	log: "logs/{sample}/03_qualityControl/{chromosomes}.plot-variants.snakemake.log"
-	script: "scripts/plot_variants.py"  
+    message: "Plot variants from reference using pileup output and append to coverage plot file"
+    input:
+        pileup      = "{sample}/04_variants/{chromosomes}_pileup",
+        pdf         = "{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control2.pdf",
+    output:
+        pdf         = temp("{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control3.pdf")
+    params:
+        sample_name = "{sample}",
+        chromosomes = "{chromosomes}"
+    log:
+        "logs/{sample}/03_qualityControl/03_{chromosomes}.plot-variants.snakemake.log"
+    conda:
+        "envs/env.yml"
+    script:
+        "scripts/03_plot-variants.py"  
 
 
 rule add_primers_plot_to_pdf:
-	message: "Plot primer depth and add to the QC report"
-	input:
-		pdf = "{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control3.pdf",
-		primers = config["primer_file"]
-	output:
-		pdf = temp("{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control4.pdf"),
-	params:
-		sample_folder = "{sample}",
-		qc_dir = "{sample}/03_qualityControl",
-		chromosomes = "{chromosomes}"
-	conda: "envs/env.yml"
-	log: "logs/{sample}/03_qualityControl/{chromosomes}.plot-primers.snakemake.log"
-	script: "scripts/plot_primer_set_depth.py"
-	
-	
+    message: "Plot primer depth and add to the QC report"
+    input:
+        pdf           = "{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control3.pdf"
+    output:
+        pdf           = temp("{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control4.pdf"),
+    params:
+        sample_folder = "{sample}",
+        qc_dir        = "{sample}/03_qualityControl",
+        chromosomes   = "{chromosomes}"
+    log:
+        "logs/{sample}/03_qualityControl/04_{chromosomes}.plot-primers.snakemake.log"
+    conda:
+        "envs/env.yml"
+    script:
+        "scripts/03_plot-primer-set-depth.py"
+    
+    
 rule plot_intrahosts:
-	message: "Plot intrahosts for each FASTA header"
-	input:
-		pdf = "{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control4.pdf",
-		tsv = "{sample}/04_variants/{chromosomes}_variable_bases.tsv"
-	output:
-		pdf = temp("{sample}/03_qualityControl/{chromosomes}_var.pdf"),
-		tsv = "{sample}/03_qualityControl/{chromosomes}_variants_labels.tsv"
-	params:
-		intrahost_plot = os.path.join(workflow.basedir, "../workflow/scripts/plot_intrahosts.R")
-	conda: "envs/env.yml"
-	log: "logs/{sample}/03_qualityControl/{chromosomes}.plot-intrahost.snakemake.log"
-	shell: "Rscript {params.intrahost_plot} -i {input.tsv} -o {output.pdf} -v {output.tsv}"
+    message: "Plot intrahosts for each FASTA header"
+    input:
+        pdf = "{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control4.pdf",
+        tsv = "{sample}/04_variants/{chromosomes}_variable_bases.tsv"
+    output:
+        pdf = temp("{sample}/03_qualityControl/{chromosomes}_var.pdf"),
+        tsv = "{sample}/03_qualityControl/{chromosomes}_variants_labels.tsv"
+    params:
+        intrahost_plot = os.path.join(workflow.basedir, "../workflow/scripts/03_plot-intrahosts.R")
+    log:
+        "logs/{sample}/03_qualityControl/05_{chromosomes}.plot-intrahost.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell: "Rscript {params.intrahost_plot} -i {input.tsv} -o {output.pdf} -v {output.tsv}"
 
 
 rule run_kraken:
-	message: "Run kraken2 to get the read breakdown"
-	input:
-		R1 = "{sample}/01_fastqs/{sample}_1.fastq.gz",
-		R2 = "{sample}/01_fastqs/{sample}_2.fastq.gz",
-	output:
-		report = "{sample}/03_qualityControl/{sample}_kraken_report.out",
-		out = "{sample}/03_qualityControl/{sample}_kraken"
-	conda: "envs/env.yml"
-	log: "logs/{sample}/03_qualityControl/kraken.snakemake.log"
-	threads: 12
-	shell:
-		"""
-		kraken2 --db {config[kraken_db]} --quick --report {output.report} --threads {threads} --output {output.out} --paired {input.R1} {input.R2} > {log} 2>&1
-		"""
+    message: "Run kraken2 to get the read breakdown"
+    input:
+        R1     = "{sample}/01_fastqs/{sample}_1.fastq.gz",
+        R2     = "{sample}/01_fastqs/{sample}_2.fastq.gz",
+    output:
+        report = "{sample}/03_qualityControl/{sample}_kraken_report.out",
+        out    = "{sample}/03_qualityControl/{sample}_kraken"
+    log:
+        "logs/{sample}/03_qualityControl/06_kraken.snakemake.log"
+    conda:
+        "envs/env.yml"
+    threads: 12
+    shell:
+        """
+        kraken2 \
+        --db {config[kraken_db]} \
+        --quick \
+        --report {output.report} \
+        --threads {threads} \
+        --output {output.out} \
+        --paired {input.R1} {input.R2} > {log} 2>&1
+        """
 
 
 rule plot_taxonomic_breakdown:
-	message: "Plot taxanomic breakdown using kraken2 output"
-	input:
-		report = "{sample}/03_qualityControl/{sample}_kraken_report.out",
-	output:
-		pdf = temp("{sample}/03_qualityControl/taxonomic-breakdown.pdf")
-	conda: "envs/env.yml"
-	log: "logs/{sample}/03_qualityControl/taxonomic-breakdown.snakemake.log"
-	script: "scripts/plot_taxonomic-breakdown.R"
+    message: "Plot taxanomic breakdown using kraken2 output"
+    input:
+        report = "{sample}/03_qualityControl/{sample}_kraken_report.out",
+    output:
+        pdf   = temp("{sample}/03_qualityControl/taxonomic-breakdown.pdf")
+    log:
+        "logs/{sample}/03_qualityControl/07_taxonomic-breakdown.snakemake.log"
+    conda:
+        "envs/env.yml"
+    script:
+        "scripts/03_plot-taxonomic-breakdown.R"
 
 
 rule merge_pdfs:
-	message: "Merge QC plots with kraken plot and the intrahost plot(s)"
-	input:
-		pdf_1 = lambda wildcards: expand("{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control4.pdf",
-										 sample=[wildcards.sample], chromosomes=chromosomes),
-		pdf_2 = lambda wildcards: f"{wildcards.sample}/03_qualityControl/taxonomic-breakdown.pdf",
-		pdf_3 = lambda wildcards: expand("{sample}/03_qualityControl/{chromosomes}_var.pdf",
-										 sample=[wildcards.sample], chromosomes=chromosomes),
-	output:
-		pdf = "{sample}/03_qualityControl/{sample}_qualityControl.pdf"
-	conda: "envs/env.yml"
-	log: "logs/{sample}/03_qualityControl/merge-pdfs.snakemake.log"
-	script: "scripts/merge_pdfs.py"
-	  
-		
+    message: "Merge QC plots with kraken plot and the intrahost plot(s)"
+    input:
+        pdf_1 = lambda wildcards: expand("{sample}/03_qualityControl/{sample}-{chromosomes}_quality_control4.pdf",
+                                         sample = [wildcards.sample], chromosomes = chromosomes),
+        pdf_2 = lambda wildcards: f"{wildcards.sample}/03_qualityControl/taxonomic-breakdown.pdf",
+        pdf_3 = lambda wildcards: expand("{sample}/03_qualityControl/{chromosomes}_var.pdf",
+                                         sample = [wildcards.sample], chromosomes = chromosomes),
+    output:
+        pdf   = "{sample}/03_qualityControl/{sample}_qualityControl.pdf"
+    log:
+        "logs/{sample}/03_qualityControl/08_merge-pdfs.snakemake.log"
+    conda:
+        "envs/env.yml"
+    script:
+        "scripts/03_merge-pdfs.py"
+      
+        
 rule run_flagstat:
-	message: "Run samtool's flagstat"
-	input:
-		bam = "{sample}/02_assembly/{sample}_ref.bam",
-		pdf = "{sample}/03_qualityControl/{sample}_qualityControl.pdf"
-	output:
-		bam = "{sample}/03_qualityControl/{sample}_refbam.flagstat"
-	conda: "envs/env.yml"
-	log: "logs/{sample}/03_qualityControl/samtools-flagstat.snakemake.log"
-	shell:
-		"""
-		samtools flagstat {input.bam} > {output.bam} 2>{log}
-		"""
+    message: "Run samtool's flagstat"
+    input:
+        bam = "{sample}/02_assembly/{sample}_ref.bam",
+        pdf = "{sample}/03_qualityControl/{sample}_qualityControl.pdf"
+    output:
+        bam = "{sample}/03_qualityControl/{sample}_refbam.flagstat"
+    log:
+        "logs/{sample}/03_qualityControl/09_samtools-flagstat.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+        """
+        samtools flagstat {input.bam} > {output.bam} 2>{log}
+        """
 
 
 rule run_QualiMap_sample:
-	message: "Run Qualimap for each sample" 
-	input:
-	  bam = expand("{sample}/02_assembly/{sample}_ref.bam", sample=sampleids, chromosomes=chromosomes),
-	  qc_file = expand("{sample}/03_qualityControl/{sample}_qualityControl.pdf", sample=sampleids, chromosomes=chromosomes),
-	  flagstat = expand("{sample}/03_qualityControl/{sample}_refbam.flagstat", sample=sampleids, chromosomes=chromosomes),
-	output:
-	  qualimap_dirs = "multi_bamqc/multisampleBamQcReport.html"
-	conda: "envs/env.yml"
-	log: "logs/05_qualimap.snakemake.log"
-	shell:
-	  """
-	  qualimap multi-bamqc -d {config[qualimap_input]} -r > {log} 2>&1
-	  """
-		
-	  
+    message: "Run Qualimap for each sample" 
+    input:
+        bam           = expand("{sample}/02_assembly/{sample}_ref.bam", 
+                            sample = sampleids, chromosomes = chromosomes),
+          qc_file     = expand("{sample}/03_qualityControl/{sample}_qualityControl.pdf",
+                            sample = sampleids, chromosomes = chromosomes),
+        flagstat      = expand("{sample}/03_qualityControl/{sample}_refbam.flagstat",
+                            sample = sampleids, chromosomes = chromosomes)
+    output:
+        qualimap_dirs = "multi_bamqc/multisampleBamQcReport.html"
+    log:
+        "logs/05_qualimap.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+      """
+      qualimap multi-bamqc -d {config[qualimap_input]} -r > {log} 2>&1
+      """
+        
+      
 rule run_multiqc:
-	message: "Generate MultiQC Report for the run"
-	input:
-	  qualimap_all_report = ("multi_bamqc/multisampleBamQcReport.html")
-	output:
-	  mqc_file = "multiqc_report.html",
-	conda: "envs/env.yml"
-	log: "logs/06_multiqc.snakemake.log"
-	shell:
-	  """
-	  multiqc . > {log} 2>&1
-	  """
-	  
-	  
+    message: "Generate MultiQC Report for the run"
+    input:
+        qc_report = "multi_bamqc/multisampleBamQcReport.html"
+    output:
+        mqc_file  = "multiqc_report.html"
+    log:
+        "logs/05_multiqc.snakemake.log"
+    conda:
+        "envs/env.yml"
+    shell:
+      """
+      multiqc . > {log} 2>&1
+      """
+      
+      
 rule push_data_pathogendb:
-	message: "Push genome assembly data to pathogenDB"
-	input:
-		#qualimap_dirs = "multi_bamqc/multisampleBamQcReport.html",
-		#mqc_file = "multiqc_report.html",
-		bam = "{sample}/03_qualityControl/{sample}_refbam.flagstat"
-	output:
-		upload_log = "{sample}/05_status/{sample}.assembly-push.log",
-	params:
-		sample_name = "{sample}",
-		config = "config.yaml",
-	conda: "envs/env.yml"
-	log: "logs/{sample}/06_PathogenDB-Push.snakemake.log"
-	script: "scripts/all-virus_assembly_push.py"
-	  
-	  
+    message: "Push genome assembly data to pathogenDB"
+    input:
+        #qualimap_dirs = "multi_bamqc/multisampleBamQcReport.html",
+        #mqc_file      = "multiqc_report.html",
+        bam            = "{sample}/03_qualityControl/{sample}_refbam.flagstat"
+    output:
+        up_log         = "{sample}/05_status/{sample}.assembly-push.log",
+    params:
+        sample_name    = "{sample}",
+        config         = "config.yaml",
+    log:
+        "logs/{sample}/05_PathogenDB-Push.snakemake.log"
+    conda:
+        "envs/env.yml"
+    script:
+        "scripts/05_all-virus-assembly-push.py"
+      
+      
 rule push_QC_report:
-	message: "Push the MultiQC Report to PDB"
-	input:
-	  mqc_file = ("multiqc_report.html"),
-	output:
-	  moved_files = temporary("file_movement_message.txt")
-	conda: "envs/env.yml"
-	log: "logs/07_qcpush.snakemake.log"
-	threads: 1
-	script: "scripts/move_QC_PDB.py"
+    message: "Push the MultiQC Report to PDB"
+    input:
+      mqc_file = "multiqc_report.html"
+    output:
+      moed_txt = temp("file_movement_message.txt")
+    log:
+        "logs/06_qcpush.snakemake.log"
+    conda:
+        "envs/env.yml"
+    script:
+        "scripts/06_move-QC-PDB.py"
  
  
 rule run_report:
-	message: "Generate run summary report"
-	input:
-		upload_log = expand("{sample}/05_status/{sample}.assembly-push.log", sample=sampleids),
-	output:
-		expand("{runid}_run_report.csv", runid=config["run_id"])
-	conda: "envs/env.yml"
-	log: "logs/08_reporting.snakemake.log"
-	script: "scripts/generate_run_report.R"
+    message: "Generate run summary report"
+    input:
+        expand("{sample}/05_status/{sample}.assembly-push.log", sample = sampleids)
+    output:
+        expand("{runid}_run_report.csv", runid = config["run_id"])
+    conda: "envs/env.yml"
+    log: "logs/07_reporting.snakemake.log"
+    script: "scripts/07_generate-run-report.R"
 
 
 rule summary:
-	message: "Get a summary report for the packages used in the run"
-	input:
-		run_report = expand("{runid}_run_report.csv", runid=config["run_id"])
-	output:
-		txt = "workflow_summary.txt"
-	conda: "envs/env.yml"
-	log: "logs/09_workflow-summary.snakemake.log"
-	script: "scripts/generate_summary.py"
+    message: "Get a summary report for the packages used in the run"
+    input:
+        expand("{runid}_run_report.csv", runid = config["run_id"])
+    output:
+        "workflow_summary.txt"
+    log:
+        "logs/08_workflow-summary.snakemake.log"
+    conda:
+        "envs/env.yml"
+    script:
+        "scripts/08_generate-workflow-summary.py"
 
-	
+    

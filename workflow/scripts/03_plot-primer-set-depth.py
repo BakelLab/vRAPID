@@ -132,7 +132,7 @@ def plot_primer_depths(primer_file, sample_folder, input_pdf, output_pdf, qc_dir
 
 
 if __name__ == "__main__":
-    primer_file = snakemake.input.primers
+    primer_file = snakemake.config.primer_file
     sample_folder = snakemake.params.sample_folder
     input_pdf = snakemake.input.pdf
     output_pdf = snakemake.output.pdf

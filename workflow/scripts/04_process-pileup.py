@@ -4,14 +4,16 @@ import os
 import sys
 import argparse
 import logging
+import gzip
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Analyze pileup, apply Pilon changes, and flag variable bases.")
-    parser.add_argument("--sample_folder", required=True, help="Path to the sample folder containing Pilon changes")
+    parser = argparse.ArgumentParser(description="Analyze pileup, apply Clair3 changes from VCF, and flag variable bases.")
+    parser.add_argument("--sample_folder", required=True, help="Path to the sample folder containing Clair3 VCF")
     parser.add_argument("--outdir", required=True, help="Output directory")
     parser.add_argument("--chrs", required=True, help="Chromosome or reference ID")
     parser.add_argument("--primer_set", required=True, help="Path to the combined primer set file")
     parser.add_argument("--min_ratio", type=float, default=0.9, help="Minimum allele fraction to avoid flagging")
+    parser.add_argument("--vcf", required=True, help="Path to Clair3 VCF (can be gzipped)")
     return parser.parse_args()
 
 def parse_primers(filepath):
@@ -27,21 +29,30 @@ def parse_primers(filepath):
                 continue
     return primer_positions
 
+def parse_vcf(vcf_path, chrs):
+    changes = {}
+    opener = gzip.open if vcf_path.endswith(".gz") else open
+    with opener(vcf_path, "rt") as f:
+        for line in f:
+            if line.startswith("#"):
+                continue
+            parts = line.strip().split("\t")
+            chrom, pos, _id, ref, alt = parts[:5]
+            if chrom != chrs:
+                continue
+            # Keep first ALT allele if multiple
+            alt = alt.split(",")[0]
+            changes[pos] = (ref, alt)
+    return changes
+
 def main():
     args = parse_args()
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
     sample_folder, outdir, chrs = args.sample_folder, args.outdir, args.chrs
 
-    # Read Pilon changes
-    changes = {}
-    pilon_changes_path = f"{sample_folder}/02_assembly/{chrs}_pilon.changes"
-    with open(pilon_changes_path) as f:
-        for line in f:
-            pos = line.split()[0].split(':')[1]
-            ref_base = line.split()[2]
-            new_base = line.split()[3]
-            changes[pos] = (ref_base, new_base)
+    # Read Clair3 VCF changes
+    changes = parse_vcf(args.vcf, chrs)
 
     primer_positions = parse_primers(args.primer_set)
 
@@ -52,8 +63,8 @@ def main():
     output_table = f"{outdir}/{chrs}_variable_bases.tsv"
 
     with open(pileup_path) as f, open(output_table, "w") as out:
-        out.write("reference\tposition\tflagged\tin_primer\treference_base\tpilon_base\tdepth\treference_base_fraction\tforward_depth"
-                "\tforward_fraction\treverse_detph\treverse_fraction\tA\tT\tC\tG\ta\tt\tc\tg\tn\tinsertion\tdeletion\n") 
+        out.write("reference\tposition\tflagged\tin_primer\treference_base\tvcf_base\tdepth\treference_base_fraction\tforward_depth"
+                "\tforward_fraction\treverse_detph\treverse_fraction\tA\tT\tC\tG\ta\tt\tc\tg\tn\tinsertion\tdeletion\n")
         for line in f:
             ref, pos, refbase, cov, seq, qual = line.split()
             refbase = refbase.lower()
@@ -61,7 +72,7 @@ def main():
 
             if pos in changes and len(changes[pos][0]) == 1 and len(changes[pos][1]) == 1 and changes[pos][0] != '.':
                 if refbase != changes[pos][0].lower():
-                    sys.exit("pileup doesn't match Pilon output at position %s" % pos)
+                    sys.exit(f"pileup doesn't match VCF ref base at position {pos}: pileup={refbase}, vcf={changes[pos][0]}")
                 new_refbase = changes[pos][1].lower()
             elif pos in changes:
                 new_refbase = changes[pos][1].lower()

@@ -108,7 +108,7 @@ JOBNAME=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 5 | head -n 1)
 # Load snakemake conda environment on chimera
 module purge all
 unset PYTHONPATH PERL5LIB R_LIBS
-module load anaconda3 proxies
+module load anaconda3 singularity/3.6.4 proxies cuda
 source activate snakemake
 
 # Add the bin folder with any external scripts that may be called from the pipeline to the path

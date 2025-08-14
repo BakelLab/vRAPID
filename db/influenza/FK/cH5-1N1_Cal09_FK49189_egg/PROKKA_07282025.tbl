@@ -1,0 +1,40 @@
+>Feature PB2
+28	2307	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	GALCMDLJ_00001
+			product	hypothetical protein
+>Feature PB1
+25	2298	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	GALCMDLJ_00002
+			product	hypothetical protein
+>Feature PA
+25	2175	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	GALCMDLJ_00003
+			product	hypothetical protein
+>Feature HA
+33	1730	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	GALCMDLJ_00004
+			product	hypothetical protein
+>Feature NP
+46	1542	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	GALCMDLJ_00005
+			product	hypothetical protein
+>Feature NA
+21	1430	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	GALCMDLJ_00006
+			product	hypothetical protein
+>Feature MP
+26	784	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	GALCMDLJ_00007
+			product	hypothetical protein
+>Feature NS
+27	719	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	GALCMDLJ_00008
+			product	hypothetical protein

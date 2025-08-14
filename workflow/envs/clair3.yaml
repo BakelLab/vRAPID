@@ -1,0 +1,7 @@
+name: clair3-illumina
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - clair3

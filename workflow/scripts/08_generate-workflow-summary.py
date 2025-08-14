@@ -49,7 +49,7 @@ def main(output_file):
         "prokka": "prokka --version",
         "qualimap": "qualimap --version | head -n 4 | tail -1",
         "samtools": "samtools --version | head -n 1",
-        "shovill": "shovill --version",
+        #"shovill": "shovill --version",
     }
 
     for tool, cmd in tools.items():

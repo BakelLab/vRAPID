@@ -1,0 +1,512 @@
+LOCUS       PB1                     2259 bp    DNA     linear       29-JUL-2025
+DEFINITION  .
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Unknown.
+  ORGANISM  Unknown.
+            Unclassified.
+FEATURES             Location/Qualifiers
+     source          1..2259
+                     /organism="unknown"
+                     /mol_type="genomic DNA"
+     gene            1..2259
+                     /gene="PB1"
+     CDS             1..2259
+                     /gene="PB1"
+                     /codon_start=1
+                     /product="polymerase PB1"
+                     /translation="MNINPYFLFIDVPIQAAISTTFPYTGVPPYSHGTGTGYTIDTVI
+                     RTHEYSNKGKQYISDVTGCTMVDPTNGPLPEDNEPSAYAQLDCVLEALDRMDEEHPGL
+                     FQAASQNAMEALMVTTVDKLTQGRQTFDWTVCRNQPAATALNTTITSFRLNDLNGADK
+                     GGLVPFCQDIIDSLDRPEMTFFSVKNIKKKLPAKNRKGFLIKRIPMKVKDKITKVEYI
+                     KRALSLNTMTKDAERGKLKRRAIATAGIQIRGFVLVVENLAKNICENLEQSGLPVGGN
+                     EKKAKLSNAVAKMLSNCPPGGISMTVTGDNTKWNECLNPRIFLAMTERITRDSPIWFR
+                     DFCSIAPVLFSNKIARLGKGFMITSKTKRLKAQIPCPDLFSISLERYNEETRAKLKKL
+                     KPFFNEEGTASLSPGMMMGMFNMLSTVLGVAALGIKNIGNKEYLWDGLQSSDDFALFV
+                     NAKDEETCMEGINDFYRTCKLLGINMSKKKSYCNETGMFEFTSMFYRDGFVSNFAMEL
+                     PSFGVAGVNESADMAIGMTIIKNNMINNGMGPATAQTAIQLFIADYRYTYKCHRGDSK
+                     VEGKRMKIIKELWENTKGRDGLLVADGGPNIYNLRNLHIPEIVLKYNLMDPEYKGRLL
+                     HPQNPFVGHLSIEGIKEADITPAHGPVKKMDYDAVSGTHSWRTKRNRSILNTDQRNMI
+                     LEEQCYAKCCNLFEACFNSASYRKPVGQHSMLEAMAHRLRMDARLDYESGRMSKDDFE
+                     KAMAHLGEIGYI"
+ORIGIN      
+        1 atgaatataa atccttattt cctcttcata gatgtgccca tacaggcagc aatttcaaca
+       61 acattcccat acactggtgt tcccccttat tcccatggaa cgggaacagg ctacacaata
+      121 gacaccgtga tcagaacaca tgagtactca aacaagggga aacagtacat ttctgatgtt
+      181 acaggatgca caatggtaga tccaacaaat ggcccattac ccgaagataa tgagccgagt
+      241 gcctatgcgc aattagattg cgttttagag gctttggata gaatggatga agaacaccca
+      301 ggtctgtttc aagcagcctc acagaatgct atggaggccc taatggtcac aactgtagac
+      361 aaattaaccc aggggagaca gacttttgat tggacagtat gcagaaacca acctgctgca
+      421 acggcactga acacaacaat aacctctttt aggttgaatg atttaaatgg agccgacaaa
+      481 ggtggattag tacctttttg ccaggatatc attgattcat tagacagacc tgaaatgact
+      541 ttcttctcag taaagaatat aaagaaaaaa ttgcctgcca aaaacagaaa gggtttcctc
+      601 ataaagagga taccaatgaa ggtaaaggac aaaataacca aagtggaata catcaaaaga
+      661 gcattatcat taaacacaat gacaaaagac gctgaaagag gcaaactaaa aagaagggcg
+      721 attgccaccg ctggaataca aatcagaggg tttgtattag tagttgaaaa cttggctaaa
+      781 aatatatgtg aaaatctaga acaaagtggt ttaccagtag gtggaaacga gaagaaagcc
+      841 aaactgtcaa acgcagtggc aaaaatgctc agtaactgcc cacctggagg gatcagcatg
+      901 acagtaacag gagacaatac taaatggaat gaatgtttaa acccaagaat ctttttggct
+      961 atgactgaaa gaataaccag agacagccca atttggttca gggatttttg tagtatagca
+     1021 ccggtcctgt tctccaataa gatagccaga ttggggaaag ggtttatgat aacaagcaaa
+     1081 acaaagagac tgaaggctca aataccttgt cctgatctgt ttagtatatc attagaaaga
+     1141 tataatgaag aaacaagggc aaaattgaaa aagctaaaac cattcttcaa tgaagaagga
+     1201 actgcatctt tgtcacctgg gatgatgatg ggaatgttta atatgctatc taccgtgttg
+     1261 ggggtagctg cactaggtat caagaacatt ggaaacaaag aatacttatg ggatggactg
+     1321 caatcttctg atgattttgc tctatttgtt aatgcaaagg atgaagaaac atgtatggaa
+     1381 ggaataaacg acttttaccg aacatgtaaa ttattgggaa taaacatgag caaaaagaaa
+     1441 agttactgta atgagactgg aatgtttgaa tttacaagca tgttctacag agatggattt
+     1501 gtatctaatt ttgcaatgga actcccttca tttggggttg ctggagtaaa tgaatcagca
+     1561 gatatggcaa tagggatgac aataataaag aacaacatga tcaacaatgg aatgggtccg
+     1621 gcaacagcac aaacagccat acagttattc atagctgatt atagatacac ctacaaatgc
+     1681 cacaggggag attccaaagt agagggaaag agaatgaaaa tcataaagga gttatgggaa
+     1741 aacactaaag gaagagatgg tctattagta gcagatggtg ggcccaacat ttacaatttg
+     1801 agaaacttgc atattccaga aatagtatta aagtataact taatggaccc tgaatacaaa
+     1861 gggcggttac ttcatcctca aaatcccttt gtgggacatt tgtctattga gggcatcaaa
+     1921 gaggcagata taaccccagc acatggtcca gtaaagaaaa tggactacga tgcggtgtct
+     1981 ggaactcata gttggagaac caaaagaaac agatctatac taaacactga tcagaggaac
+     2041 atgattcttg aggaacaatg ctacgctaag tgttgcaacc tatttgaggc ctgttttaac
+     2101 agtgcatcat acaggaagcc agtgggtcaa catagcatgc ttgaggctat ggcccacaga
+     2161 ttaagaatgg atgcacgatt agattatgaa tcaggaagaa tgtcaaagga tgattttgag
+     2221 aaagcaatgg ctcaccttgg tgagattggg tacatataa
+//
+===================================================================
+LOCUS       PB2                     2313 bp    DNA     linear       29-JUL-2025
+DEFINITION  .
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Unknown.
+  ORGANISM  Unknown.
+            Unclassified.
+FEATURES             Location/Qualifiers
+     source          1..2313
+                     /organism="unknown"
+                     /mol_type="genomic DNA"
+     gene            1..2313
+                     /gene="PB2"
+     CDS             1..2313
+                     /gene="PB2"
+                     /codon_start=1
+                     /product="polymerase PB2"
+                     /translation="MTLAKIELLKQLLRDNEAKTVLKQTTVDQYNIIRKFNTSRIEKN
+                     PSLRMKWAMCSNFPLALTKGDMANRIPLEYKGIQLKTNAEDIGTKGQMCSIAAVTWWN
+                     TYGPIGDTEGFERVYESFFLRKMRLDNATWGRITFGPVERVRKRVLLNPLTKEMPPDE
+                     ASNVIMEILFPKEAGIPRESTWIHRELIKEKREKLRGTMITPIVLAYMLERELVARRR
+                     FLPVAGATSAEFIEMLHCLQGENWRQIYHPGGNKLTESRSQSMIVACRKIIRRSIVAS
+                     NPLELAVEIANKTVIDTEPLKSCLAAIDGGDVACDIIRAALGLKIRQRQRFGRLELKR
+                     ISGRGFKNDEEILIGNGTIQKIGIWDGEEEFHVRCGECRGILKKSKMKLEKLLINSAK
+                     KEDMRDLIILCMVFSQDTRMFQGVRGEINFLNRAGQLLSPMYQLQRYFLNRSNDLFDQ
+                     WGYEESPKASELYGINESMNASDYTLKGVVVTRNVIDDFSSTETEKVSITKNLSLIKR
+                     TGEVIMGANDVSELESQAQLMITYDTPKMWEMGTTKELVQNTYQWVLKNLVTLKAQFL
+                     LGKEDMFQWDAFEAFESIIPQKMAGQYSGFARAVLKQMRDQEVMKTDQFIKLLPFCFS
+                     PPKLRSNGEPYQFLKLVLKGGGENFIEVRKGSPLFSYNPQTEVLTICGRMMSLKGKIE
+                     DEERNRSMGNAVLAGFLVSGKYDPDLGDFKTIEELERLKPGEKANILLYQGKPVKVVK
+                     RKRYSALSNDISQGIKRQRMTVESMGWALS"
+ORIGIN      
+        1 atgacattgg ccaaaattga attgttaaaa caactgctaa gggacaatga agccaaaaca
+       61 gttttgaagc aaacaacggt agaccaatat aacataataa gaaaattcaa tacatcaagg
+      121 attgaaaaga atccttcact aaggatgaaa tgggccatgt gttctaattt tcccttggct
+      181 ctaaccaagg gcgacatggc aaatagaatc cccttggaat acaaaggaat acaacttaaa
+      241 acaaatgctg aagacatagg aaccaaaggc caaatgtgct caatagcagc agttacttgg
+      301 tggaatacat atggaccaat aggagatact gaaggtttcg aaagggtcta cgaaagcttt
+      361 tttctcagaa aaatgagact tgacaatgcc acttggggcc gaataacttt tggcccagtt
+      421 gaaagagtga gaaaaagggt actgctaaac cctctcacca aggaaatgcc tccagatgag
+      481 gcgagcaatg tgataatgga aatattgttc cctaaagaag caggaatacc aagagaatcc
+      541 acttggatac atagggaact gataaaagaa aaaagagaaa aattgagagg aacaatgata
+      601 actccaatcg tactggcata catgcttgaa agagaactgg ttgctcgaag aagattcttg
+      661 ccagtggcag gagcaacatc agctgagttc atagaaatgc tacactgctt acaaggtgaa
+      721 aattggagac aaatatatca cccaggaggg aataaattaa ctgagtctag gtctcaatca
+      781 atgatagtag cttgtagaaa aataatcaga agatcaatag tcgcttcaaa cccactggag
+      841 ctagctgtag aaattgcaaa caagactgtg atagatactg aacctttaaa gtcatgtctg
+      901 gcagccatag acggaggtga tgtagcttgt gacataataa gagctgcatt aggactaaag
+      961 atcagacaaa gacaaagatt tggacggctt gagttaaaaa gaatatcagg aagaggattc
+     1021 aaaaatgatg aagaaatatt aatagggaac ggaacaatac agaagattgg aatatgggac
+     1081 ggggaagagg agttccatgt aagatgtggt gaatgcaggg gaatattaaa aaagagtaaa
+     1141 atgaaactgg aaaaactact aataaattca gccaaaaagg aggacatgag agatttaata
+     1201 atcttatgca tggtattttc tcaagacact aggatgttcc aaggggtgag aggagaaata
+     1261 aattttctta atcgagcagg ccaactttta tctccaatgt accaactcca acgatatttt
+     1321 ttgaatagaa gcaacgacct ttttgatcaa tgggggtatg aggaatcacc caaagcaagt
+     1381 gaactatatg ggataaatga atcaatgaat gcatctgact atacattgaa aggggttgta
+     1441 gtgacaagaa atgtaattga cgactttagc tctactgaaa cagaaaaagt atccataaca
+     1501 aaaaatctta gtttaataaa aaggactggg gaagtcataa tgggagctaa tgacgtgagt
+     1561 gaattagaat cacaagcaca gctgatgata acatatgata cacctaagat gtgggaaatg
+     1621 ggaacaacca aagaactggt gcaaaacact tatcaatggg tgctaaaaaa cttggtaaca
+     1681 ctgaaggctc agtttcttct aggaaaagag gacatgttcc aatgggatgc atttgaagca
+     1741 tttgagagca taattcctca gaagatggct ggtcagtaca gtggatttgc aagagcagtg
+     1801 ctcaaacaaa tgagagacca ggaggttatg aaaactgacc agttcataaa gttgttgcct
+     1861 ttttgtttct caccaccaaa attaaggagc aatggggagc cttatcaatt cttaaaactt
+     1921 gtattgaaag gaggagggga aaatttcatc gaagtaagga aagggtcccc tctattttcc
+     1981 tataatccac aaacagaagt cctaaccata tgcggcagaa tgatgtcatt aaaagggaaa
+     2041 attgaagatg aagaaaggaa tagatcaatg gggaatgcag tattagcagg ctttctcgtt
+     2101 agtggcaagt atgacccaga tcttggagat ttcaaaacta ttgaagaact tgaaaggctg
+     2161 aaaccggggg aaaaggcaaa tatcttactt tatcaaggaa agccagttaa agtagttaaa
+     2221 aggaaaaggt atagtgcttt gtccaatgac atttcacaag gaattaagag acaaagaatg
+     2281 acagttgagt ccatggggtg ggccttgagc taa
+//
+===================================================================
+LOCUS       PA                      2181 bp    DNA     linear       29-JUL-2025
+DEFINITION  .
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Unknown.
+  ORGANISM  Unknown.
+            Unclassified.
+FEATURES             Location/Qualifiers
+     source          1..2181
+                     /organism="unknown"
+                     /mol_type="genomic DNA"
+     gene            1..2181
+                     /gene="PA"
+     CDS             1..2181
+                     /gene="PA"
+                     /codon_start=1
+                     /product="polymerase PA"
+                     /translation="MDTFITRNFQTTIIQKARNTMAEFSEDPELQPAMLFNICVHLEV
+                     CYVISDMNFLDEEGKAYTALEGQGKEQNLRPQYEVIEGMPRTIAWMVQRSLAQEHGIE
+                     TPKYLADLFDYKTKRFIEVGITKGLADDYFWKKKEKLGNSMELMIFSYNQDYSLSNES
+                     SLDEEGKGRVLSRLTELQAELSLKNLWQVLIGEEDVEKGIDFKLGQTISRLRDISVPA
+                     GFSNFEGMRSYIDNIDPKGAIERNLARMSPLVSVTPKKLTWGDLRPIGPHIYNHELPE
+                     VPYNAFLLMSDELGLANMTEGKSKKPKTLAKECLEKYSTLRDQTDPILIMKSEKANEN
+                     FLWKLWRDCVNTISNEEMSNELQKTNYAKWATGDGLTYQKIMKEVAIDDETMCQEEPK
+                     IPNKCRVAAWVQTEMNLLSTLTSKRALDLPEIGPDVAPVEHVGSERRKYFVNEINYCK
+                     ASTVMMKYVLFHTSLLNESNASMGKYKVIPITNRVVNETGESFDMLYGLAVKGQSHLR
+                     GDTDVVTVVTFEFSSTDPRVDSGKWPKYTVFRIGSLFVSGREKSVYLYCRVNGTNKIQ
+                     MKWGMEARRCLLQSMQQMEAIVEQESSIQGYDMTKACFKGDRVNSPKTFSIGTQEGKL
+                     VKGSFGKALRVIFTKCLMHYVFGNAQLEGFSAESRRLLLLIQALKDRKGPWVFDLEGM
+                     YSGIEECISNNPWVIQSAYWFNEWLGFEKEGSKVLESVDEIMDE"
+ORIGIN      
+        1 atggatactt ttattacaag aaacttccaa actacaataa tacaaaaggc cagaaacaca
+       61 atggcagaat ttagtgaaga tcctgaatta caaccagcaa tgctattcaa tatctgcgtc
+      121 catctagagg tttgctatgt aataagtgac atgaattttc ttgacgaaga aggaaaagca
+      181 tatacagcat tagaaggaca agggaaagaa caaaatttga gaccacagta tgaagtaatt
+      241 gagggaatgc caagaaccat agcatggatg gtccaaagat ccttagctca agagcatgga
+      301 atagagactc ccaagtatct ggctgatttg tttgattata aaaccaagag atttatagaa
+      361 gttggaataa caaaaggatt ggctgatgat tacttttgga aaaagaaaga aaagttggga
+      421 aatagcatgg aactgatgat attcagctac aatcaagact actcgttaag taatgaatcc
+      481 tcattggatg aggaagggaa agggagagtg ctaagcagac tcacagaact tcaggctgaa
+      541 ttaagtctga aaaacctatg gcaagttctc ataggagaag aagatgttga aaagggaatt
+      601 gactttaaac ttggacaaac aatatctaga ctaagggata tatctgttcc cgctggtttc
+      661 tccaattttg aaggaatgag gagctacata gacaatatag acccaaaagg agcaatagag
+      721 agaaatctag caaggatgtc tcccttagta tcagtcacac ctaaaaagtt gacatggggg
+      781 gacctaagac caatagggcc tcacatttac aaccatgagc taccagaagt tccatataat
+      841 gcctttcttc taatgtctga tgaactgggg ctggccaata tgactgaggg aaagtccaaa
+      901 aaaccgaaga cattagccaa agaatgtcta gaaaagtact caacactacg ggatcaaact
+      961 gacccaatat taataatgaa aagcgaaaaa gctaatgaaa atttcctatg gaagctttgg
+     1021 agagactgtg taaatacaat aagtaatgag gaaatgagta acgagttaca gaaaaccaat
+     1081 tatgccaagt gggccacagg ggatggatta acataccaga aaataatgaa agaagtagca
+     1141 atagatgacg aaacaatgtg ccaagaagag cctaaaatcc ctaataaatg tagagtggct
+     1201 gcttgggttc aaacagagat gaatctattg agcactctga caagtaaaag agctctggac
+     1261 ctaccagaaa tagggccaga cgtagcaccc gtggagcatg tagggagtga aagaaggaaa
+     1321 tactttgtta atgaaatcaa ctactgtaag gcctctacag ttatgatgaa gtatgtgctt
+     1381 tttcacactt cattgttgaa tgaaagcaat gccagcatgg gaaaatacaa agtaatacca
+     1441 ataaccaata gagtagtaaa tgaaacagga gaaagtttcg acatgcttta tggtctggcg
+     1501 gttaaaggac aatctcatct gaggggagat actgatgttg taacagttgt aactttcgaa
+     1561 tttagtagta cagacccaag agtggactca ggaaagtggc caaaatatac tgtgtttagg
+     1621 attggctccc tatttgtgag tgggagggaa aaatctgtgt acctgtattg ccgagtgaat
+     1681 ggcacaaata agatccaaat gaaatgggga atggaagcta gaagatgtct gcttcaatca
+     1741 atgcaacaaa tggaagcaat tgttgaacag gaatcatcga tacagggata tgacatgacc
+     1801 aaggcttgtt tcaagggaga cagagtaaat agccccaaaa ctttcagtat tggaactcaa
+     1861 gaagggaaac tagtaaaagg atcctttgga aaagcactaa gagtaatatt tactaaatgt
+     1921 ttgatgcact atgtatttgg aaatgcccaa ttggaggggt ttagtgccga gtctaggaga
+     1981 cttctactgt tgatccaagc attaaaggac agaaagggcc cttgggtgtt cgacttagag
+     2041 ggaatgtatt ctggaataga agaatgtatt agcaacaacc cttgggtaat acagagtgca
+     2101 tactggttta atgaatggtt gggctttgaa aaggagggga gtaaagtgtt agaatcagtg
+     2161 gatgaaataa tggatgaata a
+//
+===================================================================
+LOCUS       HA                      1749 bp    DNA     linear       29-JUL-2025
+DEFINITION  .
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Unknown.
+  ORGANISM  Unknown.
+            Unclassified.
+FEATURES             Location/Qualifiers
+     source          1..1749
+                     /organism="unknown"
+                     /mol_type="genomic DNA"
+     gene            1..1749
+                     /gene="HA"
+     CDS             1..1749
+                     /gene="HA"
+                     /function="receptor binding and fusion protein"
+                     /codon_start=1
+                     /product="hemagglutinin"
+                     /translation="MKAIIVLLMVVTSNADRICTGITSSNSPHVVKTATQGEVNVTGV
+                     IPLTTTPTKSHFANLKGTETRGKLCPKCLNCTDLDVALGRPKCTGNIPSARVSILHEV
+                     RPVTSGCFPIMHDRTKIRQLPNLLRGYERIELSTHNVINAEVAPGGPYKIGTSKSCPD
+                     KGASSFFATMAWAVPKRGNQYTNPLTIEVPYICTEGEDQITVWGFHSDVSTNMAELYG
+                     DSKPQKFTSSANGVTTHYVSQIGGFPNQTEDEGLPQSGRIVVDYMVQKSGKTGTITYQ
+                     RGILLPQKVWCASGRSKVIKGSLPLIGEADCLHEKYGGLNKSKPYYTGEHAKAIGNCP
+                     IWVKTPLKLANGTKYRPPAKLLKERGFFGAIAGFLEGGWEGMIAGWHGYTSHGAHGVA
+                     VAADLKSTQEAINKITKNLNSLSELEVKNLQRLSGAMDELHNEILELDEKVDDLRADT
+                     ISSQIELAVLLSNEGIINSEDEHLLALERKLKKMLGPSAVEIGNGCFETKHKCNQTCL
+                     DRIAAGTFDAGEFSLPTFDSLNITAASLNDDGLDNHTILLYYSTAASSLAVTLMIAIF
+                     VVYMVSRDNVSCSICL"
+ORIGIN      
+        1 atgaaggcaa taattgtact actcatggta gtaacatcca atgcagatcg aatctgcact
+       61 gggataacat cgtcaaactc accacatgtc gtcaaaactg ctactcaagg ggaggtcaat
+      121 gtgactggtg taataccact gacaacaaca cccaccaaat ctcattttgc aaatctcaaa
+      181 ggaacagaaa ccagggggaa actatgccca aaatgcctca actgcacaga tctggacgta
+      241 gccttgggca gaccaaaatg cacggggaac ataccttcgg caagagtttc aatactccat
+      301 gaagtcagac ctgttacatc tgggtgcttt cctataatgc acgacagaac aaaaattaga
+      361 cagctgccta accttctccg aggatacgaa agaatcgagt tatcaaccca taacgttatc
+      421 aatgcagaag tggcaccagg aggaccctac aaaattggaa cctcaaaatc ttgcccagat
+      481 aaaggagcca gcagcttttt cgcaacaatg gcttgggccg tcccaaagag aggaaatcag
+      541 tatacaaatc cattaacaat agaagtacca tacatttgta cagaaggaga agaccaaatt
+      601 accgtttggg ggttccactc tgacgtttcc acaaacatgg cggaactcta tggggactca
+      661 aagccccaga agttcacctc atctgccaac ggagtgacca cacattacgt ttcacagatt
+      721 ggtggcttcc caaatcaaac agaagacgaa ggactaccac aaagtggtag aattgttgtt
+      781 gattacatgg tgcaaaaatc tgggaaaaca ggaacaatta cctatcaaag gggtatttta
+      841 ttgcctcaaa aggtgtggtg cgcaagtggc aggagcaagg taataaaagg atccttgcct
+      901 ttaattggag aagcagattg cctccacgaa aaatacggtg gattaaacaa aagcaagcct
+      961 tactacacag gggaacatgc aaaggccata ggaaattgcc caatatgggt gaaaacaccc
+     1021 ttgaagctgg ccaatggaac caaatataga cctcctgcaa aactattaaa ggaaaggggt
+     1081 ttcttcggag ctattgctgg tttcttagaa ggaggatggg aaggaatgat tgcaggttgg
+     1141 cacggataca catcccatgg ggcacatgga gtagcggtgg cagcagacct taagagcact
+     1201 caagaggcca taaacaagat aacaaaaaat ctcaactctt tgagtgagct ggaagtaaag
+     1261 aatcttcaaa gactaagcgg tgccatggat gaactccaca acgaaatact agaactagat
+     1321 gagaaagtgg atgatctcag agctgataca ataagctcac aaatagaact cgcagtcctg
+     1381 ctttccaatg aaggaataat aaacagtgaa gatgaacatc tcttggcgct tgaaagaaag
+     1441 ctgaagaaaa tgctgggccc ctctgctgta gagataggga atggatgctt tgaaaccaaa
+     1501 cacaagtgca accagacctg tctcgacaga atagctgctg gtacctttga tgcaggagaa
+     1561 ttttctctcc ccacctttga ttcactgaat attactgctg catctttaaa tgacgatgga
+     1621 ttggataatc atactatact gctttactac tcaactgctg cctccagttt ggctgtaaca
+     1681 ctgatgatag ctatctttgt tgtttatatg gtctccagag acaatgtttc ttgctccatc
+     1741 tgtctataa
+//
+===================================================================
+LOCUS       NP                      1683 bp    DNA     linear       29-JUL-2025
+DEFINITION  .
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Unknown.
+  ORGANISM  Unknown.
+            Unclassified.
+FEATURES             Location/Qualifiers
+     source          1..1683
+                     /organism="unknown"
+                     /mol_type="genomic DNA"
+     gene            1..1683
+                     /gene="NP"
+     CDS             1..1683
+                     /gene="NP"
+                     /codon_start=1
+                     /product="nucleoprotein"
+                     /translation="MSNMDIDGINTGTIDKAPEEITSGTSGTTRPIIRPATLAPPSNK
+                     RTRNPSPERATTISEADVGRKTQKKQTPTEIKKSVYNMVVKLGEFYNQMMVKAGLNDD
+                     MERNLIQNAHAVERILLAATDDKKTEFQKKKNARDVKEGKEEIDHNKTGGTFYKMVRD
+                     DKTIYFSPIRVTFLKEEVKTMYKTTMGSDGFSGLNHIMIGHSQMNDVCFQRSKALKRV
+                     GLDPSLISTFAGSTLPRRSGATGVAIKGGGTLVAEAIRFIGRAMADRGLLRDIKAKTA
+                     YEKILLNLKNKCSAPQQKALVDQVIGSRNPGIADIEDLTLLARSMVVVRPSVASKVVL
+                     PISIYAKIPQLGFNVEEYSMVGYEAMALYNMATPVSILRVGDDAKDKSQLFFMSCFGA
+                     AYEDLRVLSALTGTEFKPRSALKCKGFHVPAKEQVEGMGAALMSIKLQFWAPMTRSGG
+                     NEVGGDGGSGQISCSPVFAVERPIALSKQAVRRMLSMNIEGRDADVKGNLLKMMNDSM
+                     AKKTNGNAFIGKKMFQISDKNKTNPVEIPIKQTIPNFFFGRDTAEDYDDLDY"
+ORIGIN      
+        1 atgtccaaca tggatattga cggtatcaac actgggacaa ttgacaaagc accggaagaa
+       61 ataacttctg gaaccagtgg gacaaccaga ccaatcatca gaccagcaac ccttgcccca
+      121 ccaagcaaca aacgaacccg gaacccatcc ccggaaagag caaccacaat cagtgaagct
+      181 gatgtcggaa ggaaaaccca aaagaaacag accccgacag agataaagaa gagcgtctac
+      241 aatatggtag tgaaactggg tgaattctat aaccagatga tggtcaaagc tggacttaac
+      301 gatgacatgg agagaaacct aattcaaaat gcgcatgctg tggaaagaat tctattggct
+      361 gccactgatg acaagaaaac tgaattccag aagaaaaaga atgccagaga tgtcaaagaa
+      421 gggaaagaag aaatagatca caacaaaaca gggggcacct tttacaagat ggtaagagat
+      481 gataaaacca tctacttcag ccctataaga gtcacctttt taaaagaaga agtaaaaaca
+      541 atgtacaaaa ccaccatggg gagtgatggc ttcagcggac taaatcacat aatgattggg
+      601 cattcacaga tgaatgatgt ctgtttccaa agatcaaagg cactaaaaag agttggactt
+      661 gacccttcat taatcagtac ctttgcagga agcacactcc ccagaagatc aggtgcaact
+      721 ggtgttgcga tcaaaggagg tggaactcta gtggctgaag ccattcgatt tataggaaga
+      781 gcaatggcag acagagggct attgagagac atcaaagcca agactgcgta tgaaaagatt
+      841 cttctgaacc taaaaaacaa atgctctgcg ccccaacaga aggctctagt tgatcaagtg
+      901 atcggaagta gaaatccagg gattgcagac attgaagacc taaccctact tgctcgtagt
+      961 atggtcgttg ttaggccctc tgtggcgagc aaagtagtgc ttcccataag catttacgcc
+     1021 aaaatacctc aactagggtt caacgttgaa gagtactcta tggttgggta tgaagccatg
+     1081 gctctttaca atatggcaac acctgtttcc atattaagag tgggagatga tgcaaaggac
+     1141 aaatcacaat tattcttcat gtcttgcttc ggagctgcct atgaagacct gagagttttg
+     1201 tctgcattaa caggcacaga attcaagcct agatcagcat taaaatgcaa gggtttccat
+     1261 gttccagcaa aggaacaggt ggaaggaatg ggggcagctc tgatgtccat caagctccag
+     1321 ttttgggctc caatgaccag atctggggga aacgaagtag gtggagacgg ggggtctggc
+     1381 caaataagtt gcagcccagt gtttgcagta gaaagaccta ttgctctaag caagcaagct
+     1441 gtaagaagaa tgctgtcaat gaatattgag ggacgtgatg cagatgtcaa aggaaatcta
+     1501 ctcaagatga tgaatgactc aatggctaag aaaaccaatg gaaatgcttt cattgggaag
+     1561 aaaatgtttc aaatatcaga caaaaacaaa accaatcccg ttgaaattcc aattaagcaa
+     1621 accatcccca atttcttctt tgggagggac acagcagagg attatgatga cctcgattat
+     1681 taa
+//
+===================================================================
+LOCUS       NA                      1408 bp    DNA     linear       29-JUL-2025
+DEFINITION  .
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Unknown.
+  ORGANISM  Unknown.
+            Unclassified.
+FEATURES             Location/Qualifiers
+     source          1..1408
+                     /organism="unknown"
+                     /mol_type="genomic DNA"
+     gene            1..303
+                     /gene="NB"
+     CDS             1..303
+                     /gene="NB"
+                     /codon_start=1
+                     /product="NB protein"
+                     /translation="MNNATFNYTNVNPISHIRGSIIITICVSFIVILTIFGYIAKIPI
+                     NRNYCTNNAIGLCKRIKCSGCEPFCNKRGDTSSPRTGVDIPAFILPGLNLSESTPN"
+     gene            8..1408
+                     /gene="NA"
+     CDS             8..1408
+                     /gene="NA"
+                     /codon_start=1
+                     /product="neuraminidase"
+                     /translation="MLPSTIQTLTLFLTSGGVLLSLYVSASLSYLLYSDILLKFPSTE
+                     ITAPTMPLDCANASNVQAVNRSATKGVTLLLPEPEWTYPRLSCPGSTFQKALLISPHR
+                     FGETKGNSAPLIIREPFIACGPKECKHFALTHYAAQPGGYYNGTRGDRNKLRHLISVK
+                     LGKIPTVENSIFHMAAWSGSACHDGKEWTYIGVDGPDNNALLKIKYGEAYTDTYHSYA
+                     NNILRTQESACNCIGGNCYLMITDGSASGVSECRFLKIREGRIIKEIFPTGRIKHTEE
+                     CTCGFASNKTIECACRDNSYTAKRPFVKLNVETDTAEIRLMCTETYLDTPRPDDGSIT
+                     GPCESNGDKGSGGIKGGFVHQRMASKIGRWYSRTMSKTKRMGMGLYVKYDGDPWADSD
+                     ALAFSGVMVSMEEPGWYSFGFEIKDKKCDVPCIGIEMVHDGGKETWHSAATAIYCLMG
+                     SGQLLWDTVTGVNMAL"
+ORIGIN      
+        1 atgaacaatg ctaccttcaa ctatacaaac gttaacccta tttctcacat cagggggagt
+       61 attattatca ctatatgtgt cagcttcatt gtcatactta ctatattcgg atatattgct
+      121 aaaattccca tcaacagaaa ttactgcacc aacaatgcca ttggattgtg caaacgcatc
+      181 aaatgttcag gctgtgaacc gttctgcaac aaaaggggtg acacttcttc tcccagaacc
+      241 ggagtggaca tacccgcgtt tatcttgccc gggctcaacc tttcagaaag cactcctaat
+      301 tagccctcat agattcggag aaaccaaagg aaactcagct cccttgataa taagggaacc
+      361 ttttattgct tgtggaccaa aggaatgcaa acactttgct ctaacccact atgcagccca
+      421 accaggggga tactacaatg gaacaagagg agacagaaac aagctgaggc atctaatttc
+      481 agtcaaattg ggcaaaatcc caacagtaga aaactccatt ttccacatgg cagcatggag
+      541 cgggtccgca tgccatgatg gtaaggaatg gacatatatc ggagttgatg gccctgacaa
+      601 taatgcattg ctcaaaataa aatatggaga agcatatact gacacatacc attcctatgc
+      661 aaacaacatc ctaagaacac aagaaagtgc ctgcaattgc atcgggggaa attgttatct
+      721 tatgataact gatggctcag cttcaggtgt tagtgaatgc agatttctta agattcgaga
+      781 gggccgaata ataaaagaaa tatttccaac aggaagaata aaacatactg aagaatgcac
+      841 atgcggattt gctagcaata aaaccataga atgtgcctgt agagataaca gttacacagc
+      901 aaaaagaccc tttgtcaaat taaacgtgga gactgataca gcagaaataa gattgatgtg
+      961 cacagagact tatttggaca cccccagacc agatgatgga agcataacag ggccttgtga
+     1021 atctaatggg gacaaaggga gtggaggcat caagggagga tttgtccatc aaagaatggc
+     1081 atccaagatt ggaaggtggt actctcgaac gatgtctaaa actaaaagga tggggatggg
+     1141 gctgtatgtc aagtatgatg gagacccatg ggctgacagt gatgcccttg cttttagtgg
+     1201 agtaatggtt tcaatggaag aacctggttg gtactccttt ggcttcgaaa taaaagacaa
+     1261 gaaatgtgat gtcccctgta ttgggataga gatggtacat gatggtggaa aagagacttg
+     1321 gcactcagca gctacagcca tttactgttt aatgggctca ggacagctgc tgtgggacac
+     1381 tgtcacaggt gttaatatgg ctctgtaa
+//
+===================================================================
+LOCUS       M                       1076 bp    DNA     linear       29-JUL-2025
+DEFINITION  .
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Unknown.
+  ORGANISM  Unknown.
+            Unclassified.
+FEATURES             Location/Qualifiers
+     source          1..1076
+                     /organism="unknown"
+                     /mol_type="genomic DNA"
+     gene            1..747
+                     /gene="M1"
+     CDS             1..747
+                     /gene="M1"
+                     /codon_start=1
+                     /product="matrix protein 1"
+                     /translation="MSLFGDTIAYLLSLTEDGEGKAELAEKLHCWFGGKEFDLDSALE
+                     WIKNKRCLTDIQKALIGASICFLKPKDQERKRRFITEPLSGMGTTATKKKGLILAERK
+                     MRRCVSFHEAFEIAEGHESSALLYCLMVMYLNPGNYSMQVKLGTLCALCEKQASHSHR
+                     AHSRAARSSVPGVRREMQMVSAMNTAKTMNGMGKGEDVQKLAEELQSNIGVLRSLGAS
+                     QKNGEGIAKDVMEVLKQSSMGNSALVKKYL"
+     gene            747..1076
+                     /gene="BM2"
+     CDS             747..1076
+                     /gene="BM2"
+                     /codon_start=1
+                     /product="BM2 protein"
+                     /translation="MLEPFQILSICSFILSALHFMAWTIGHLNQIKRGINMKIRIKGP
+                     NKETINREVSILRHSYQKEIQAKETMKEVLSDNMEVLSDHIIIEGLSAEEIIKMGETV
+                     LEIEELH"
+ORIGIN      
+        1 atgtcgctgt ttggagacac aattgcctac ctgctttcat tgacagaaga tggagaaggc
+       61 aaagcagaac tagcagaaaa attacactgt tggtttggtg ggaaagaatt tgacctagac
+      121 tctgccttgg aatggataaa aaacaaaaga tgcttaactg atatacaaaa agcactaatt
+      181 ggtgcctcta tatgcttttt aaaacccaaa gaccaggaaa gaaaaagaag attcatcaca
+      241 gaacccttat caggaatggg aacaacagca acaaaaaaga aaggcctgat tctggctgag
+      301 agaaaaatga gaagatgtgt gagctttcat gaggcatttg aaatagcaga aggccatgaa
+      361 agctcagcgc tactatactg tctcatggtc atgtacctga atcctggaaa ttattcaatg
+      421 caagtaaaac taggaacgct ctgtgcttta tgcgagaaac aagcatcaca ttcacacagg
+      481 gctcatagca gagcagcgag atcttcagtg cctggagtga gacgagaaat gcagatggtc
+      541 tcagctatga acacagcgaa aacaatgaat ggaatgggaa aaggagaaga cgtccaaaag
+      601 ctggcagaag agctgcaaag caacattgga gtgctgagat ctcttggggc aagtcaaaag
+      661 aatggggaag gaattgcaaa agatgtaatg gaagtgctaa agcagagctc tatgggaaat
+      721 tcagctcttg tgaagaaata tctataatgc tcgaaccatt tcagattctt tcaatttgtt
+      781 cttttatctt atcagctctc catttcatgg cttggacaat agggcatttg aatcaaataa
+      841 aaagaggaat aaacatgaaa atacgaataa aaggtccaaa caaagagaca ataaacagag
+      901 aggtatcaat tttgagacac agttaccaaa aagaaatcca ggccaaagaa acaatgaagg
+      961 aagtactctc tgacaacatg gaggtattga gtgaccacat aataattgag gggctttctg
+     1021 ccgaagagat aataaaaatg ggtgaaacag ttttggagat agaagaattg cattaa
+//
+===================================================================
+LOCUS       NS                      1024 bp    DNA     linear       29-JUL-2025
+DEFINITION  .
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Unknown.
+  ORGANISM  Unknown.
+            Unclassified.
+FEATURES             Location/Qualifiers
+     source          1..1024
+                     /organism="unknown"
+                     /mol_type="genomic DNA"
+     gene            1..1024
+                     /gene="NEP"
+                     /gene_synonym="NS2"
+     CDS             join(1..33,689..1024)
+                     /gene="NEP"
+                     /gene_synonym="NS2"
+                     /note="nonstructural protein 2"
+                     /codon_start=1
+                     /product="nuclear export protein"
+                     /translation="MANNMTTTQIEWRMKKMAIGSSTHSSSVLMKDIQSQFEQLKLRW
+                     ESYPNLVKSTDYHQKRETIRLVTEELYLLSKRIDDNILFHKTVIANSSIIADMVVSLS
+                     LLETLYEMKDVVEVYSRQCL"
+     gene            1..846
+                     /gene="NS1"
+     CDS             1..846
+                     /gene="NS1"
+                     /codon_start=1
+                     /product="nonstructural protein 1"
+                     /translation="MANNMTTTQIEVGPGATNATINFEAGILECYERLSWQRALDYPG
+                     QDRLNRLKRKLESRIKTHNKSEPESKRMSLEERKAIGVKMMKVLLFMDPSAGIEGFEP
+                     YCMKSSSNSNCTKYNWTDYPSTPGRCLDDIEEEPEDVDGPTEIVLRDMNNKDARQKIK
+                     EEVNTQKEGKFRLTIKRDMRNVLSLRVLVNGTFLKHPNGYKSLSTLHRLNAYDQSGRL
+                     VAKLVATDDLTVEDEEDGHRILNSLFERLNEGHSKPIRAAETAVGVLSQFGQEHRLSP
+                     EEGDN"
+ORIGIN      
+        1 atggcgaaca acatgaccac aacacaaatt gaggtgggtc cgggagcaac caatgccacc
+       61 ataaactttg aagcaggaat tctggagtgc tatgaaaggc tttcatggca aagagccctt
+      121 gactaccctg gtcaagaccg cctaaacaga ctaaagagaa aattagagtc aagaataaag
+      181 actcacaaca aaagtgagcc tgaaagtaaa aggatgtccc ttgaagagag aaaagcaatt
+      241 ggagtaaaaa tgatgaaagt actcctattt atggatccgt ctgctggaat tgaagggttt
+      301 gagccatact gtatgaaaag ttcctcaaat agcaactgta cgaaatacaa ttggaccgat
+      361 tacccttcaa caccagggag gtgccttgat gacatagaag aagaaccaga ggatgttgat
+      421 ggcccaactg aaatagtatt aagggacatg aacaacaaag atgcaaggca aaagataaag
+      481 gaggaagtaa acactcagaa agaagggaag ttccgtttga caataaaaag ggatatgcgt
+      541 aatgtattgt ccttgagagt gttggtaaac ggaacattcc tcaaacatcc caatggatac
+      601 aagtccttat caactctgca tagattgaat gcatatgacc agagtggaag gcttgttgct
+      661 aaacttgttg ctactgatga tcttacagtg gaggatgaag aagatggcca tcggatcctc
+      721 aactcactct tcgagcgtct taatgaagga cattcaaagc caattcgagc agctgaaact
+      781 gcggtgggag tcttatccca atttggtcaa gagcaccgat tatcaccaga agagggagac
+      841 aattagactg gtcacggaag aactttatct tttaagtaaa agaattgatg ataacatatt
+      901 gttccacaaa acagtaatag ctaacagctc cataatagct gacatggttg tatcattatc
+      961 attattagaa acattgtatg aaatgaagga tgtagttgaa gtgtacagca ggcagtgctt
+     1021 gtga
+//
