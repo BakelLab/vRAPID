@@ -44,12 +44,13 @@ rule file_rename:
     log:
         "logs/{sample}/01_rename/01_rename-fastqs.snakemake.log"
     shell:
-        """
-        mv {input.R1} {output.R1}
-        mv {input.R2} {output.R2}
-        rm -rf {wildcards.sample}/{wildcards.sample}
-        """
-
+        r"""
+        (
+            mv "{input.R1}" "{output.R1}"
+            mv "{input.R2}" "{output.R2}"
+            rm -rf "{wildcards.sample}"/"{wildcards.sample}"
+        ) &> "{log}"
+        """ 
 
 rule run_cutadapt:
     message: "Trim primers using cutadapt"
