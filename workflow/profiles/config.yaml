@@ -16,8 +16,10 @@ retries:            1
 ############################
 
 default-resources:
-  mem_mb: 95000
-  queue: "express"
-  project: "acc_PVI"
-  runtime: "12h"
-  span: "\"span[hosts=1]\""
+  lsf_queue:    "express"
+  lsf_project:  "acc_PVI"
+  mem_mb:       95000
+  runtime:      "12h"
+  threads:      4
+  span:         "span[hosts=1]"
+  lsf_extra:    "-oo clusterlogs/%J.OU"

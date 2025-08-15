@@ -100,7 +100,7 @@ if (any(set.var)) {
                     
                     # Adjust alt.bases if base matches pilon base
                     # Adjust alt.bases if base matches pilon base
-                    if (b == toupper(d.var$pilon_base[row])) {
+                    if (b == toupper(d.var$vcf_base[row])) {
                         all.bases = colnames(alt.ratio[which(alt.ratio[i,] > opt$varthr)])
                         
                         if (length(all.bases) == 1) {
@@ -124,7 +124,7 @@ if (any(set.var)) {
         # Create variants data.frame
         if (length(alt.bases) > 0) {
             vars = as.numeric(names(alt.bases))
-            alt.change = paste(d.var$position[vars], paste(toupper(d.var$pilon_base[vars]), alt.bases, sep=">"))
+            alt.change = paste(d.var$position[vars], paste(toupper(d.var$vcf_base[vars]), alt.bases, sep=">"))
             variants = data.frame(d.var$reference[vars], d.var$position[vars], alt.change)
             variants = variants[order(variants[, 1], variants[, 2]), ]
         } else {

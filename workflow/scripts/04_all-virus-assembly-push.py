@@ -514,7 +514,7 @@ if __name__ == "__main__":
         base_dir=altpath
 
     # begin logging
-    logpath = snakemake.output.upload_log
+    logpath = snakemake.output.up_log
     #logpath = os.path.join(sample,'05_status',sample+'.assembly-push.log')
     logging.basicConfig(filename=logpath, filemode='w', level=logging.INFO)
 
