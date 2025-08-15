@@ -332,7 +332,7 @@ rule run_bamtools_split:
         sorted_rg_bam = "{sample}/02_assembly/{sample}_ref.sorted.rg.bam",
         tsv           = "{sample}/04_variants/{chromosomes}_variable_bases.tsv"
     output:
-        mapped        = temp("{sample}/02_assembly/{sample}_ref.sorted.REF_{chromosomes}.bam")
+        mapped        = temp("{sample}/02_assembly/{sample}_ref.sorted.rg.REF_{chromosomes}.bam")
     log:
         "logs/{sample}/02_assembly/10_{chromosomes}.bamtools-split.snakemake.log"
     conda:
@@ -348,7 +348,7 @@ rule run_picard_insert_metrics:
     input:
         fasta         =  "{sample}/02_assembly/{sample}.fasta",
         sorted_rg_bam = "{sample}/02_assembly/{sample}_ref.sorted.rg.bam",
-        mapped        = expand("{sample}/02_assembly/{sample}_ref.sorted.REF_{chromosomes}.bam", 
+        mapped        = expand("{sample}/02_assembly/{sample}_ref.sorted.rg.REF_{chromosomes}.bam", 
                                  sample = sampleids, chromosomes = chromosomes)
     output:
         txt           = temp("{sample}/02_assembly/{sample}_insert_size_metrics.txt"),
@@ -673,19 +673,6 @@ rule push_data_pathogendb:
     script:
         "scripts/05_all-virus-assembly-push.py"
       
-      
-rule push_QC_report:
-    message: "Push the MultiQC Report to PDB"
-    input:
-      mqc_file = "multiqc_report.html"
-    output:
-      moed_txt = temp("file_movement_message.txt")
-    log:
-        "logs/06_qcpush.snakemake.log"
-    conda:
-        "envs/env.yml"
-    script:
-        "scripts/06_move-QC-PDB.py"
  
  
 rule run_report:
