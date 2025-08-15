@@ -155,8 +155,8 @@ for R1_file in *_R1_001.fastq.gz; do
     mkdir -p "$SAMPLE/$SAMPLE"
 
     # Move R1 and R2 files into the new subdirectories
-    mv "$R1_file" "$SAMPLE/$SAMPLE/${SAMPLE}_1.fastq.gz"
-    mv "${R1_file/R1/R2}" "$SAMPLE/$SAMPLE/${SAMPLE}_2.fastq.gz"
+    mv "$R1_file" "$SAMPLE/00_fastqs/${SAMPLE}_1.fastq.gz"
+    mv "${R1_file/R1/R2}" "$SAMPLE/00_fastqs/${SAMPLE}_2.fastq.gz"
 done
 
 
@@ -168,6 +168,9 @@ done
 echo -e "Organize sample folders by virus type and submitter ID"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 python ${SCRIPT_DIR}/bin/psp_organize-sample-run-folders
+
+
+
 
 for VIRUSTYPE in SARS-CoV-2
 do
@@ -192,6 +195,8 @@ do
          (cd "${FOLDERNAME}" && python ${SCRIPT_DIR}/bin/psp_set_up_run_folders)
          echo "Setting up logging directory for cluster jobs in ${FOLDERNAME}"
          (cd "${FOLDERNAME}" && mkdir -p clusterlogs)
+         echo "Downloading Clair3 model in ${FOLDERNAME}"
+         (cd "${FOLDERNAME}" && wget https://www.bio8.cs.hku.hk/clair3/clair3_models/ilmn.tar.gz && tar -xvzf ilmn.tar.gz && rm ilmn.tar.gz) 
       done
    fi
 done
