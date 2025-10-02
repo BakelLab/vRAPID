@@ -16,16 +16,13 @@ The pipeline automates the following major steps:
 
 ## Directory Structure
 
-```
+```bash
 vRAPID/
 ├── workflow/            # Snakemake rules and scripts
 ├── config/              # Configuration YAML files for runs
-├── db/                  # Reference genomes, primer sets, GenBank annotations, Kraken2 DB
+├── db/                  # Reference genomes, primer sets, GenBank annotations
 ├── envs/                # Conda environments for reproducibility
-├── docs/                # Documentation
-├── logs/                # Log files generated during runs
-├── multi_bamqc/         # Qualimap multi-sample QC output
-└── <sample-specific>    # Output per sample
+└── docs/                # Documentation
 ```
 
 ------
