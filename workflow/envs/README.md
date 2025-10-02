@@ -1,3 +1,7 @@
+# vRAPID Workflow Environments
+
+
+
 ## 🧪 Overview
 
 The `envs` directory includes YAML files that define the Conda environments required for various stages of the `vRAPID`pipeline. These environments ensure consistent and reproducible execution of bioinformatics tools across different systems.
