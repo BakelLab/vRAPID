@@ -6,10 +6,9 @@ The `workflow` directory contains the core Snakemake-based pipeline for vRAPID, 
 
 1. [Overview](#overview)
 2. [Directory Structure](#directory-structure)
-3. [Pipeline Execution](#pipeline-execution)
-4. [Configuration](#configuration)
-5. [Dependencies](#dependencies)
-6. [Contributing](#contributing)
+3. [Configuration](#configuration)
+4. [Dependencies](#dependencies)
+5. [Contributing](#contributing)
 
 ## Overview
 
