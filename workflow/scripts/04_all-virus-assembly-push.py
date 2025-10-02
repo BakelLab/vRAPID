@@ -661,9 +661,9 @@ if __name__ == "__main__":
             'subtype': None,
             'file_paths': {
                 'base_dir': base_dir,
-                'assembly_dir': os.path.join(base_dir, sample, '02_assembly').replace("\\", "/"),
+                'assembly_dir': os.path.join(base_dir, sample, '01_assembly').replace("\\", "/"),
                 'qc_dir': os.path.join(base_dir, sample, '03_qualityControl').replace("\\", "/"),
-                'variant_dir': os.path.join(base_dir, sample, '04_variants').replace("\\", "/"),
+                'variant_dir': os.path.join(base_dir, sample, '02_variants').replace("\\", "/"),
                 'fasta_path': os.path.join(sample + '.fasta').replace("\\", "/"),
                 'flagstat_path': os.path.join(sample + '_refbam.flagstat').replace("\\", "/"),
                 'kraken_path': os.path.join(sample + '_kraken_report.out').replace("\\", "/")

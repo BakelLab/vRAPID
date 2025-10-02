@@ -16,10 +16,19 @@ retries:            1
 ############################
 
 default-resources:
-  lsf_queue:    "express"
+  lsf_queue:    "private"
   lsf_project:  "acc_PVI"
-  mem_mb:       95000
+  mem_mb:       120000
   runtime:      "12h"
   threads:      4
   span:         "span[hosts=1]"
   lsf_extra:    "-oo clusterlogs/%J.OU"
+  lsf_tmp: "/sc/arion/scratch/khaliz03"
+
+###################################
+# Define rule-specific resources #
+##################################
+
+set-resources:
+  run_kraken:
+    mem_mb: 1000000

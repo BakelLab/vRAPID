@@ -81,8 +81,8 @@ rule minimap2_clip:
         cR1 = "{sample}/01_assembly/reads.1.fastq.gz",
         cR2 = "{sample}/01_assembly/reads.2.fastq.gz"
     output:
-        bam = "{sample}/01_assembly/{sample}_ref.bam",
-        bai = "{sample}/01_assembly/{sample}_ref.bam.bai"
+        bam = temp("{sample}/01_assembly/{sample}_ref.bam"),
+        bai = temp("{sample}/01_assembly/{sample}_ref.bam.bai")
     log:
         "logs/{sample}/01_assembly/03_minimap2-clip.snakemake.log"
     conda: 
@@ -112,7 +112,8 @@ rule sorted_bam:
     input:
         bam = "{sample}/01_assembly/{sample}_ref.bam"
     output:
-        bam = "{sample}/01_assembly/{sample}_ref.sorted.bam"
+        bam = temp("{sample}/01_assembly/{sample}_ref.sorted.bam"),
+        bai = temp("{sample}/01_assembly/{sample}_ref.sorted.bam.bai")
     log:
         "logs/{sample}/01_assembly/04_sort-bam.snakemake.log"
     conda:
@@ -150,7 +151,7 @@ rule run_clair3:
     message: "Run Clair3 on final ref BAM"
     input:
         sorted_rg_bam = "{sample}/01_assembly/{sample}_ref.sorted.rg.bam",
-        model         = "ilmn"
+        model         = "/sc/arion/projects/PVI/SPI_project/SPI_genomes/ilmn"
     output:
         vcf           = "{sample}/01_assembly/clair3/merge_output.vcf.gz",
         folder        = directory("{sample}/01_assembly/clair3")
@@ -166,7 +167,7 @@ rule run_clair3:
         		--ref_fn="{config[reference_genome]}" \
         		--threads="{threads}" \
         		--platform=ilmn \
-        		--model_path=./ilmn \
+        		--model_path=/sc/arion/projects/PVI/SPI_project/SPI_genomes/ilmn \
         		--output="{output.folder}" \
         		--include_all_ctgs
         ) &> "{log}"
@@ -209,7 +210,7 @@ rule generate_preconsensus_sequence:
     shell:
          r"""
          (
-         	bcftools index "{input.vcf}"
+         	bcftools index -f "{input.vcf}"
          	python "{params.mask}" "{config[reference_genome]}" "{input.mask_sites}" "{input.vcf}" "{output.fasta}"
          ) &> "{log}"
          """
@@ -219,7 +220,8 @@ rule polish_consensus:
     message: "Polish sequence for each header in reference FASTA"
     input:
         vcf         = "{sample}/01_assembly/clair3/merge_output.vcf.gz",
-        fasta       = "{sample}/01_assembly/{chromosomes}_preconsensus.fasta"
+        fasta       = "{sample}/01_assembly/{chromosomes}_preconsensus.fasta",
+        mask_sites  = "{sample}/01_assembly/{chromosomes}_coverage_mask.txt"
     output:
         fasta       = "{sample}/01_assembly/{chromosomes}_polished.fasta",
         normalised  = "{sample}/01_assembly/{chromosomes}_normalised.vcf.gz"
@@ -232,9 +234,9 @@ rule polish_consensus:
     shell:
         r"""
         (
-        	bcftools norm -f "{config[reference_genome]}" -m-any -o "{output.normalised}" "{input.vcf}"
+        	bcftools norm --check-ref x --fasta-ref "{config[reference_genome]}" -O z -o "{output.normalised}" "{input.vcf}"
         	bcftools index "{output.normalised}"
-        	bcftools consensus -f "{config[reference_genome]}" -o "{output.fasta}" "{output.normalised}"
+        	bcftools consensus -f "{config[reference_genome]}" -m "{input.mask_sites}" -o "{output.fasta}" "{output.normalised}"
         ) &> "{log}"
         """ 
 
@@ -242,9 +244,11 @@ rule polish_consensus:
 rule concatenate_FASTAs:
     message: "Concatenate all headers into one FASTA per sample with chromosome name appended"
     input:
-        lambda wildcards: expand("{sample}/01_assembly/{chromosomes}_polished.fasta", 
-                                 sample = wildcards.sample, 
-                                 chromosomes = chromosomes)
+        lambda wildcards: expand(
+            "{sample}/01_assembly/{chromosomes}_polished.fasta",
+            sample=wildcards.sample,
+            chromosomes=chromosomes
+        )
     output:
         fasta = "{sample}/01_assembly/{sample}.fasta"
     log:
@@ -252,14 +256,13 @@ rule concatenate_FASTAs:
     shell:
         r"""
         (
-        	for fasta in "{input}"; do
-        		sample_id=$(dirname "$fasta" | cut -d '/' -f1)
-            	chrom=$(basename "$fasta" | cut -d'_' -f1)
-            	awk -v s="$sample_id" -v c="$chrom" 'BEGIN{{OFS=""}} /^>/ {{$0 = ">" s "_" c}} {{print}}' "$fasta"
-        	done > "{output.fasta}"
+            for fasta in {input}; do
+                sample_id=$(dirname "$fasta" | cut -d '/' -f1)
+                chrom=$(basename "$fasta" | cut -d'_' -f1)
+                awk -v s="$sample_id" -v c="$chrom" 'BEGIN{{OFS=""}} /^>/ {{$0 = ">" s "_" c}} {{print}}' "$fasta"
+            done > "{output.fasta}"
         ) &> "{log}"
         """
-
 
 rule run_bamtools_split:
     message: "Run bamtools split"
@@ -275,7 +278,7 @@ rule run_bamtools_split:
         r"""
         (
         	bamtools split -in "{input.sorted_rg_bam}" -reference
-        ) &> "{log}"     
+        ) &> "{log}"  
         """
     
 
@@ -296,7 +299,7 @@ rule run_picard_insert_metrics:
     shell:
         r"""
         (
-        	if [ "$(awk 'END {{print NR}}' "{input.fasta}")" -eq 1 ]; then
+        	if awk 'NR>1 {{seq=seq $0}} END {{if (seq ~ /^[Nn]+$/) exit 0; else exit 1}}' "{input.fasta}"; then
             	touch {output.txt} {output.pdf}
         	else
             	picard CollectInsertSizeMetrics \
@@ -325,7 +328,7 @@ rule run_picard_read_groups:
     shell:
         r"""
         (
-        	if [ "$(awk 'END {{print NR}}' "{input.fasta}")" -eq 1 ]; then
+        	if awk 'NR>1 {{seq=seq $0}} END {{if (seq ~ /^[Nn]+$/) exit 0; else exit 1}}' "{input.fasta}"; then
             	touch "{output.bam}"
         	else
             	picard AddOrReplaceReadGroups \
@@ -357,7 +360,7 @@ rule run_picard_duplicates:
     shell:
         r"""
         (
-        	if [ "$(awk 'END {{print NR}}' {input.fasta})" -eq 1 ]; then
+        	if awk 'NR>1 {{seq=seq $0}} END {{if (seq ~ /^[Nn]+$/) exit 0; else exit 1}}' "{input.fasta}"; then
             	touch "{output.txt}" "{output.bam}"
         	else
             	picard MarkDuplicates \
@@ -384,7 +387,7 @@ rule run_picard_alignment_metrics:
     shell:
         r"""
         (
-        	if [ "$(awk 'END {{print NR}}' {input.fasta})" -eq 1 ]; then
+        	if awk 'NR>1 {{seq=seq $0}} END {{if (seq ~ /^[Nn]+$/) exit 0; else exit 1}}' "{input.fasta}"; then
             	touch "{output.txt}"
         	else
             	picard CollectAlignmentSummaryMetrics \

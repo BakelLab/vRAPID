@@ -213,7 +213,8 @@ tryCatch( {
   mtext("Variant frequency",side=4,line=3, las=0, cex=opt$scale);
 
   # Plot variant labels
-  if (any(set.var)) {
+if (any(set.var)) {
+    ## --- inside the plot, like before ---
     mv = 0.02;
     text.x  = variants[,2];
     text.y  = y.var[x.var %in% text.x]+0.015;
@@ -226,7 +227,17 @@ tryCatch( {
     }
     text.y[text.y>0.49] = 0.49;
     text(text.x, text.y, variants[,3], cex=0.7);
-  }
+
+    ## --- outside the plot, beneath x-axis ---
+    axis(1, at=variants[,2], labels=FALSE, tcl=-0.2)  # tick marks at variants
+    mtext(
+      text = variants[,3],
+      side = 1, line = 3,   # 3 lines beneath x-axis
+      at = variants[,2],
+      las = 2, cex = 0.6, col = "red"  # vertical labels
+    )
+}
+
 }, error=function(e) { # Just print exception message
   message("\n### An error occurred during plotting: possibly because no minor variants were found\n\n");
   print(e)

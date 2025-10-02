@@ -118,13 +118,14 @@ rule plot_intrahosts:
     log:
         "logs/{sample}/03_qualityControl/05_{chromosomes}.plot-intrahost.snakemake.log"
     conda:
-        "../envs/env.yml"
+        "../envs/PDBload.yaml"
     shell:
     	r"""
     	(
     		Rscript "{params.intrahost_plot}" -i "{input.tsv}" -o "{output.pdf}" -v "{output.tsv}"
     	) &> "{log}"
     	"""
+
 
 rule run_kraken:
     message: "Run kraken2 to get the read breakdown"
@@ -152,7 +153,6 @@ rule run_kraken:
         ) &> "{log}"
         """
 
-
 rule plot_taxonomic_breakdown:
     message: "Plot taxanomic breakdown using kraken2 output"
     input:
@@ -162,7 +162,7 @@ rule plot_taxonomic_breakdown:
     log:
         "logs/{sample}/03_qualityControl/07_taxonomic-breakdown.snakemake.log"
     conda:
-        "../envs/env.yml"
+        "../envs/PDBload.yaml"
     script:
         "../scripts/03_plot-taxonomic-breakdown.R"
 

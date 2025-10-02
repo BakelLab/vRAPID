@@ -1,20 +1,26 @@
 #!/bin/bash
 
-# 02.13.2025
-
 ########################################
 # DEFINE GLOBAL ENVIRONMENT PARAMETERS #
 ########################################
 
-# Set path to parent dir for conda environment
+# Set path to parent dir for conda environment work directory and git repositories
 # Also pick up on the number of CPUs defined in jobstatus
-CONDA_PKGS_DIRS="${PWD}/.snakemake/conda/pkgs"
-GIT_REPODIR="${GIT_REPODIR:=$HOME/opt/vRAPID}"
+CONDA_WORKDIR="${CONDA_WORKDIR:-/sc/arion/projects/PVI/SPI_project/SPI_genomes/conda_envs}"
+CONDA_PKGS_DIRS="/sc/arion/projects/PVI/SPI_project/SPI_genomes/conda_envs/pkgs"
+GIT_REPODIR="${GIT_REPODIR:-$HOME/opt/vRAPID}"
+JOB_NCPUS="${JOB_NCPUS:=24}"
 
-# Make sure the repository exists and has a Snakefile at the expected location
-if [[ ! -f "${GIT_REPODIR}/workflow/Snakefile" ]]
+# Create the conda environment work directory if it doesn't already exist
+if [[ ! -d "${CONDA_WORKDIR}" ]]
 then
-   echo "Error: could not find the Snakemake file in the defined repository location:\n  ${GIT_REPODIR}"
+   mkdir -p "${CONDA_WORKDIR}"
+fi
+
+# Make sure we have a conda environment work directory at this point (the directory creation could have failed)
+if [[ ! -d "${CONDA_WORKDIR}" ]]
+then
+   echo "Error: could not find the conda environment work directory at the defined location:\n  ${CONDA_WORKDIR}"
    exit 2
 fi
 
@@ -24,61 +30,100 @@ then
    mkdir -p "${CONDA_PKGS_DIRS}"
 fi
 
+# Make sure the repository exists and has a Snakefile at the expected location
+if [[ ! -f "${GIT_REPODIR}/workflow/Snakefile" ]]
+then
+   echo "❌ Error: could not find the Snakemake file in the defined repository location:\n  ${GIT_REPODIR} ❌"
+   exit 2
+fi
+
 # Export environment parameters
 export GIT_REPODIR
+export CONDA_WORKDIR
 export CONDA_PKGS_DIRS
+
+########################################
+# DEFINE DEFAULT SNAKEMAKE PARAMETERS  #
+########################################
+
+DEFAULT_SNAKEMAKE_OPTS=(
+  --profile   "${GIT_REPODIR}/workflow/profiles"
+)
+
+EXTRA_SNAKEMAKE_OPTS=()
+
+##################################
+# DEFINE REUSABLE HELP FUNCTION  #
+##################################
+
+show_help() {
+  cat << EOF
+
+Usage: run-vRAPID -i <run-id> [options] [Snakemake args]
+
+Required:
+  -i <run-id>        Assigned run ID from the data release (TDXXXXX, SRXXXXX)
+
+Optional:
+  -C <config.yaml>        Use custom config file
+  -D                      Dry run with printed shell commands (-p -n)
+  -T                      Touch outputs only
+  -help                   Show this help message
+
+Extra Snakemake arguments (passed through):
+  Any other flags will be forwarded directly to Snakemake and
+  override defaults like --profile or --executor if provided.
+
+EOF
+}
 
 ############################
 # PROCESS COMMANDLINE ARGS #
 ############################
 
-# Process command line arguments
-RUN_ID=""
-RUN_PATH=""
-SAMPLES=""
-DEBUG=""
+if [[ $# -eq 0 ]]; then
+  show_help
+  exit 1
+fi
 
-while getopts "i:p:s:D" opt; do
-   case $opt in
-
-   i) RUN_ID="run_id=$OPTARG"
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -i)
+      RUNID="run_id=$2"
+      shift 2
       ;;
-   p) RUN_PATH="path=$OPTARG"
+    -C)
+      CONFIGFILE="--configfile $2"
+      shift 2
       ;;
-   s) SAMPLES="samples=$OPTARG"
-      ;;
-   D)
+    -D)
       DEBUG="-p -n"
+      shift
       ;;
-   *)
-      echo "Incorrect options provided"
-      exit 1
+    -T)
+      TOUCH="--touch"
+      shift
       ;;
-
-   esac
+    -help|--help)
+      show_help
+      exit 0
+      ;;
+    *)
+      EXTRA_SNAKEMAKE_OPTS+=("$1")
+      shift
+      ;;
+  esac
 done
 
+####################
+# INPUT VALIDATION #
+####################
+
 # Check arguments and display a help message if the required arguments are not found
-if [ -z "$RUN_ID" ];
-then
-  cat << EOF
-
-   Usage: run-vRAPID [ -D ] -i <run-id> -p <run-path> -s <samples-in-run.csv>
-
-   Arguments:
-    -i <string>
-      Run identifier
-    -p <string>
-      Path to the Run directory
-    -s <string>
-      File containing samples to be processed. Column name must be "Sample_ID"
-    -D
-      Run pipeline in debug mode to show the commands that will be executed.
-    -help
-      This help message
-
-EOF
-  exit 0
+if [[ -z "$RUNID" ]]; then
+  echo -e "\n❌ Error: Missing required -i <run-id> argument.❌\n"
+  show_help
+  exit 1
 fi
 
 ############################
@@ -90,13 +135,11 @@ fi
 # added to the pipeline log file name.
 
 # Write basic analysis parameters to a log file
-timestamp="$(date +"%F_%H-%M-%S")"
-if [ -n "$LSB_JOBID" ]
-then
-   timestamp="${timestamp}_lsf${LSB_JOBID}"
-fi
-echo "## Starting vRAPID assembly with the following parameters:"               > pipeline_${timestamp}.log
-echo "   ${RUN_ID} ${RUN_PATH} ${SAMPLES} "  >> pipeline_${timestamp}.log
+timestamp="$(date +"%F_%H-%M-%S")${LSB_JOBID:+_lsf$LSB_JOBID}"
+logfile="pipeline_${timestamp}.log"
+
+echo "## 💬 Starting vRAPID assembly with the following parameters:" > pipeline_${timestamp}.log
+echo "${RUNID}"  >> pipeline_${timestamp}.log
 
 # Generate a random name for the jobs
 JOBNAME=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 5 | head -n 1)
@@ -105,40 +148,61 @@ JOBNAME=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 5 | head -n 1)
 # PREPARE SNAKEMAKE ENVIRONMENT #
 #################################
 
-# Load snakemake conda environment on chimera
-module purge all
+module purge
 unset PYTHONPATH PERL5LIB R_LIBS
-module load anaconda3 singularity/3.6.4 proxies cuda
+module load anaconda3 singularity/3.6.4 proxies
 source activate snakemake
+export PATH="$GIT_REPODIR/bin:$PATH"
 
-# Add the bin folder with any external scripts that may be called from the pipeline to the path
-export PATH="$GIT_REPODIR/bin/:$PATH"
+##################################
+# BUILD FINAL SNAKEMAKE OPTIONS  #
+##################################
+
+SNAKEMAKE_OPTS=()
+for opt in "${DEFAULT_SNAKEMAKE_OPTS[@]}"; do
+  key=$(echo "$opt" | cut -d= -f1)
+  skip=
+  for useropt in "${EXTRA_SNAKEMAKE_OPTS[@]}"; do
+    if [[ "$useropt" == "$key"* ]]; then
+      skip=1
+      break
+    fi
+  done
+  [[ -z "$skip" ]] && SNAKEMAKE_OPTS+=("$opt")
+done
+SNAKEMAKE_OPTS+=("${EXTRA_SNAKEMAKE_OPTS[@]}")
+SNAKEMAKE_OPTS+=(--conda-prefix "${CONDA_WORKDIR}")
 
 ############################
 # START SNAKEMAKE PIPELINE #
 ############################
-# Prepare the snakemake command with support for conda and docker (singularity) environments
 
-cmd="snakemake \
-    ${DEBUG} ${CONFIGFILE} ${TOUCH} \
-    --profile /sc/arion/work/$USER/snakemake/profiles/lsf/vRAPID \
-    --executor cluster-generic \
-    --use-singularity --use-conda \
-    --snakefile      ${GIT_REPODIR}/workflow/Snakefile \
-    --config         ${RUN_ID} ${RUN_PATH} ${SAMPLES}"
+cmd="snakemake ${DEBUG} ${CONFIGFILE} ${TOUCH} \
+  --snakefile ${GIT_REPODIR}/workflow/Snakefile \
+  --config ${RUNID} \
+  ${SNAKEMAKE_OPTS[@]}"
 
 # Make sure the exact command that was run ends up in the pipeline log
 echo -e "\n## Run command\n$cmd\n\n## Pipeline output" >> pipeline_${timestamp}.log
 
-# Run pipeline
-$cmd >>  pipeline_${timestamp}.log 2>&1
+eval "$cmd" >> "$logfile" 2>&1
 
-# Check if the pipeline completed without errors
-if [ $? -eq 0 ]
- then
-   sleep 5
-   echo -e "\n#######################################\n# vRAPID PIPELINE ENDED SUCCESSFULLY #\n#######################################\n" >> pipeline_${timestamp}.log;
+if [[ $? -eq 0 ]]; then
+  echo -e "\n ✅ PIPELINE COMPLETED SUCCESSFULLY ✅" >> "$logfile"
+  echo -e "\n## Generating DAG of executed steps..." >> "$logfile"
+
+  snakemake \
+    "${SNAKEMAKE_OPTS[@]}" \
+    --snakefile "${GIT_REPODIR}/workflow/Snakefile" \
+    --config ${SAMPLES} \
+    --dag | dot -Tpdf > "pipeline_${timestamp}_dag.pdf" 2>> "$logfile"
+
+  if [[ $? -eq 0 ]]; then
+    echo "DAG saved to pipeline_${timestamp}_dag.pdf" >> "$logfile"
+  else
+    echo "😵 Failed to generate DAG 😵" >> "$logfile"
+  fi
 else
-   sleep 5
-   echo -e "\n#######################################\n# vRAPID PIPELINE ENDED WITH ERRORS #\n#######################################\n" >> pipeline_${timestamp}.log;
+  echo -e "\n ❌ PIPELINE FAILED WITH ERRORS ❌" >> "$logfile"
 fi
+

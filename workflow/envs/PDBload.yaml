@@ -1,0 +1,24 @@
+name: PDBload
+channels:
+ - conda-forge
+ - bioconda
+ - r
+ - defaults
+dependencies:
+ - r>=4.2
+ - r-devtools
+ - r-odbc
+ - r-rmariadb
+ - r-ini
+ - r-getopt
+ - r-dplyr
+ - r-plyr
+ - r-readxl
+ - r-writexl
+ - r-lubridate
+ - r-sendmailr
+ - r-openxlsx
+ - r-pryr
+ - r-data.table
+ - r-r.utils
+ - r-tidyverse

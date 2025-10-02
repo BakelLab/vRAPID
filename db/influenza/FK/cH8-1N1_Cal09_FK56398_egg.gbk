@@ -1,4 +1,4 @@
-LOCUS       PB2                     2341 bp    DNA     linear       29-JUL-2025
+LOCUS       PB2                     2341 bp    DNA     linear       18-SEP-2025
 DEFINITION  .
 ACCESSION   
 VERSION
@@ -24,7 +24,7 @@ FEATURES             Location/Qualifiers
                      LASLLEMCHSTQIGGIRMVDILRQNPTEEQAVDICKAAMGLRISSSFSFGGFTFKRTS
                      GSSVKREEEVLTGNLQTLKIRVHEGYEEFTMVGRRATAILRKATRRLIQLIVSGRDEQ
                      SIAEAIIVAMVFSQEDCMIKAVRGDLNFVNRANQRLNPMHQLLRHFQKDAKVLFQNWG
-                     VEPIDNVMGMIGILPDMTPSIEMSMRGVRISKMGVDGYSSTERVVVSIDRFLRIRDQR
+                     VEPIDNVMGMIGILPDMTPSIEMSMRGVRISKMGVDEYSSTERVVVSIDRFLRIRDQR
                      GNVLLSPEEVSETQGTEKLTITYSSSMMWEINGPESVLVNTYQWIIRNWETVKIQWSQ
                      NPTMLYNKMEFEPFQSLVPKAIRGQYSGFVRTLFQQMRDVLGTFDTAQIIKLLPFAAA
                      PPKQSRMQFSSFTVNVRGSGMRILVRGNSPVFNYNKATKRLTVLGKDAGTLTEDPDEG
@@ -55,7 +55,7 @@ ORIGIN
      1261 aaagcagtca gaggtgatct gaatttcgtc aatagggcga atcagcgatt gaatcctatg
      1321 catcaacttt taagacattt tcagaaggat gcgaaagtgc tttttcaaaa ttggggagtt
      1381 gaacctatcg acaatgtgat gggaatgatt gggatattgc cagacatgac tccaagcatc
-     1441 gagatgtcaa tgagaggagt gagaatcagc aaaatgggtg tagatgggta ctccagcacg
+     1441 gagatgtcaa tgagaggagt gagaatcagc aaaatgggtg tagatgagta ctccagcacg
      1501 gagagggtag tggtgagcat tgaccgtttt ttgagaatcc gggaccaacg aggaaatgta
      1561 ctactgtctc ccgaggaggt cagtgaaaca cagggaacag agaaactgac aataacttac
      1621 tcatcgtcaa tgatgtggga gattaatggt cctgaatcag tgttggtcaa tacctatcaa
@@ -73,7 +73,7 @@ ORIGIN
      2341 t
 //
 ===================================================================
-LOCUS       PB1                     2341 bp    DNA     linear       29-JUL-2025
+LOCUS       PB1                     2341 bp    DNA     linear       18-SEP-2025
 DEFINITION  .
 ACCESSION   
 VERSION
@@ -156,7 +156,7 @@ ORIGIN
      2341 t
 //
 ===================================================================
-LOCUS       PA                      2233 bp    DNA     linear       29-JUL-2025
+LOCUS       PA                      2233 bp    DNA     linear       18-SEP-2025
 DEFINITION  .
 ACCESSION   
 VERSION
@@ -180,7 +180,7 @@ FEATURES             Location/Qualifiers
                      YTLDEESRARIKTRLFTIRQEMASRGLWDSFRQSERGEETIEERFEITGTMRKLADQS
                      LPPNFSSLENFRAYVDGFEPNGYIEGKLSQMSKEVNARIEPFLKTTPRPLRLPNGPPC
                      SQRSKFLLMDALKLSIEDPSHEGEGIPLYDAIKCMRTFFGWKEPNVVKPHEKGINPNY
-                     LLSWKQVLAELQDIENEEKIPKTKNMKKTSQLKWALGEAMAPEKVDFDDCKDVGDLKQ
+                     LLSWKQVLAELQDIENEEKIPKTKNMKKTSQLKWALGEDMAPEKVDFDDCKDVGDLKQ
                      YDSDEPELRSLASWIQNEFNKACELTDSSWIELDEIGEDVAPIEHIASMRRNYFTSEV
                      SHCRATEYIMKGVYINTALLNASCAAMDDFQLIPMISKCRTKEGRRKTNLYGFIIKGR
                      SHLRNDTDVVNFVSMEFSLTDPRLEPHKWEKYCVLEIGDMLIRSAIGQVSRPMFLYVR
@@ -219,7 +219,7 @@ ORIGIN
       961 acattctttg gatggaagga acccaatgtt gttaaaccac acgaaaaggg aataaatcca
      1021 aattatcttc tgtcatggaa gcaagtactg gcagaactgc aggacattga gaatgaggag
      1081 aaaattccaa agactaaaaa tatgaagaaa acaagtcagc taaagtgggc acttggtgag
-     1141 gccatggcac cagaaaaggt agactttgac gactgtaaag atgtaggtga tttgaagcaa
+     1141 gacatggcac cagaaaaggt agactttgac gactgtaaag atgtaggtga tttgaagcaa
      1201 tatgatagtg atgaaccaga attgaggtcg ctagcaagtt ggattcagaa tgagtttaac
      1261 aaggcatgcg aactgacaga ttcaagctgg atagagctcg atgagattgg agaagatgtg
      1321 gctccaattg aacacattgc aagcatgaga aggaattatt tcacatcaga ggtgtctcac
@@ -240,7 +240,7 @@ ORIGIN
      2221 ccttgtttct act
 //
 ===================================================================
-LOCUS       HA                      1776 bp    DNA     linear       29-JUL-2025
+LOCUS       HA                      1776 bp    DNA     linear       18-SEP-2025
 DEFINITION  .
 ACCESSION   
 VERSION
@@ -254,13 +254,36 @@ FEATURES             Location/Qualifiers
                      /mol_type="genomic DNA"
      gene            32..1732
                      /gene="HA"
-     misc_feature    32..1732
+     CDS             32..1732
                      /gene="HA"
-                     /note="nonfunctional hemagglutinin due to mutation"
+                     /function="receptor binding and fusion protein"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hemagglutinin"
+                     /protein_id="WEM02612.1"
+                     /translation="MKAILVVLLYTFATANADTLCIGYHANNSTDTVDTVLEKNVTVT
+                     HSVNLLEDKHNGKLCNTDLGAPLELRDCKIEAVIYGNPKCDIHLKDQGWSYIVERPSA
+                     PEGMCYPGSVENLEELRFVFSSAASYKRIRLFDYSRWNVTRSGTSKACNASTGGQSFY
+                     RSINWLTKKKPDTYDFNEGTYINNEDGDIIFLWGIHHPPDAKEQTTLYKNANTLSSVT
+                     TNTINRSFQPNIGPRPLVRGQQGRMDYYWGILKRGETLKIRTNGNLIAPEFGYLLKGE
+                     SHGRIIQNEDIPIGSCNTTCQTPKGAINTSLPFQNIHPITIGKCPKYVKSTKLRLATG
+                     LRNVPSIQSRGLFGAIAGFIEGGWTGMVDGWYGYHHQNEQGSGYAADLKSTQNAIDEI
+                     TNKVNSVIEKMNTQFTAVGKEFNHLEKRIENLNKKVDDGFLDIWTYNAELLVLLENER
+                     TLDYHDSNVKNLYEKVRSQLKNNAKEIGNGCFEFYHKCDNTCMESVKNGTYDYPKYSE
+                     EAKLNREEIDGVKLESTRIYQILAIYSTVASSLVLVVSLGAISFWMCSNGSLQCRICI
+                     "
+     sig_peptide     32..82
+                     /gene="HA"
+     mat_peptide     83..1060
+                     /gene="HA1"
+                     /product="HA1"
+     mat_peptide     1061..1729
+                     /gene="HA2"
+                     /product="HA2"
 ORIGIN      
         1 agcaaaagca ggggaaaata aaagcaacaa aatgaaggca atactagtag ttctgctata
        61 tacatttgca accgcaaatg cagacacatt atgtataggt tatcatgcga acaattcaac
-      121 agacactgta gacacaatac tagaaaagaa tgtaacagta acacactctg ttaaccttct
+      121 agacactgta gacacagtac tagaaaagaa tgtaacagta acacactctg ttaaccttct
       181 agaagacaag cataacggga aactatgcaa tactgatttg ggtgctccac tagagttgcg
       241 tgattgcaag attgaggcgg tgatctatgg gaacccaaaa tgtgacatcc acttgaaaga
       301 ccaaggttgg tcatacatag tggagagacc cagtgcacca gaggggatgt gctaccctgg
@@ -290,7 +313,7 @@ ORIGIN
      1741 tttcagaagc atgagaaaaa cacccttgtt tctact
 //
 ===================================================================
-LOCUS       NP                      1565 bp    DNA     linear       29-JUL-2025
+LOCUS       NP                      1565 bp    DNA     linear       18-SEP-2025
 DEFINITION  .
 ACCESSION   
 VERSION
@@ -347,7 +370,7 @@ ORIGIN
      1561 ctact
 //
 ===================================================================
-LOCUS       NA                      1458 bp    DNA     linear       29-JUL-2025
+LOCUS       NA                      1458 bp    DNA     linear       18-SEP-2025
 DEFINITION  .
 ACCESSION   
 VERSION
@@ -402,7 +425,7 @@ ORIGIN
      1441 aaactccttg tttctact
 //
 ===================================================================
-LOCUS       M                       1027 bp    DNA     linear       29-JUL-2025
+LOCUS       M                       1027 bp    DNA     linear       18-SEP-2025
 DEFINITION  .
 ACCESSION   
 VERSION
@@ -429,7 +452,7 @@ FEATURES             Location/Qualifiers
                      /codon_start=1
                      /product="matrix protein 1"
                      /translation="MSLLTEVETYVLSIIPSGPLKAEIAQRLEDVFAGKNTDLEVLME
-                     WLKTRPILSSLTKGILGFVFTLTVPSERGLQRRRFVQNALNGNGDPNNMDKAVKLYRK
+                     WLKTRPILSPLTKGILGFVFTLTVPSERGLQRRRFVQNALNGNGDPNNMDKAVKLYRK
                      LKREITFHGAKEISLSYSAGALASCMGLIYNRMGAVTTEVAFGLVCATCEQIADSQHR
                      SHRQMVTTTNPLIRHENRMVLASTTAKAMEQMAGSSEQAAEAMEVASQARQMVQAMRT
                      IGTHPSSSAGLKNDLLENLQAYQKRMGVQMQRFK"
@@ -437,7 +460,7 @@ ORIGIN
         1 agcaaaagca ggtagatatt gaaagatgag tcttctaacc gaggtcgaaa cgtacgtact
        61 ctctatcatc ccgtcaggcc ccctcaaagc cgagatcgca cagagacttg aagatgtctt
       121 tgcagggaag aacactgatc ttgaggttct catggaatgg ctaaagacaa gaccaatcct
-      181 gtcatctctg actaagggga ttttaggatt tgtgttcacg ctcaccgtgc ccagtgagcg
+      181 gtcacctctg actaagggga ttttaggatt tgtgttcacg ctcaccgtgc ccagtgagcg
       241 aggactgcag cgtagacgct ttgtccaaaa tgcccttaat gggaacgggg atccaaataa
       301 catggacaaa gcagttaaac tgtataggaa gctcaagagg gagataacat tccatggggc
       361 caaagaaatc tcactcagtt attctgctgg tgcacttgcc agttgtatgg gcctcatata
@@ -454,7 +477,7 @@ ORIGIN
      1021 ttctact
 //
 ===================================================================
-LOCUS       NS                       890 bp    DNA     linear       29-JUL-2025
+LOCUS       NS                       890 bp    DNA     linear       18-SEP-2025
 DEFINITION  .
 ACCESSION   
 VERSION

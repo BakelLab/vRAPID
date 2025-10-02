@@ -67,5 +67,5 @@ def main(output_file):
         f.write("\n".join(report_lines))
 
 if __name__ == "__main__":
-    main(snakemake.output.txt)
+    main(snakemake.output[0])
 

@@ -26,6 +26,37 @@ chromosomes = config['ref_fasta_headers']
 #########
 # RULES #
 #########
+      
+      
+rule push_data_pathogendb:
+    message: "Push genome assembly data to pathogenDB"
+    input:
+        bam            = "{sample}/03_qualityControl/{sample}_refbam.flagstat"
+    output:
+        up_log         = "{sample}/04_status/{sample}.assembly-push.log",
+    params:
+        sample_name    = "{sample}",
+        config         = "config.yaml",
+    log:
+        "logs/{sample}/04_PathogenDB-Push.snakemake.log"
+    conda:
+        "../envs/PDB_connect.yaml"
+    script:
+        "../scripts/04_all-virus-assembly-push.py"
+      
+ 
+rule run_report:
+    message: "Generate run summary report"
+    input:
+        expand("{sample}/04_status/{sample}.assembly-push.log", sample = sampleids)
+    output:
+        expand("{runid}_run_report.csv", runid = config["run_id"])
+    conda:
+        "../envs/PDBload.yaml"
+    log:
+        "logs/04_run-report.snakemake.log"
+    script:
+        "../scripts/04_generate-run-report.R"
 
 
 rule run_QualiMap_sample:
@@ -33,10 +64,10 @@ rule run_QualiMap_sample:
     input:
         bam           = expand("{sample}/01_assembly/{sample}_ref.sorted.rg.bam", 
                             sample = sampleids, chromosomes = chromosomes),
-        qc_file       = expand("{sample}/03_qualityControl/{sample}_qualityControl.pdf",
-                            sample = sampleids, chromosomes = chromosomes),
-        flagstat      = expand("{sample}/03_qualityControl/{sample}_refbam.flagstat",
-                            sample = sampleids, chromosomes = chromosomes)
+        up_log        = expand("{sample}/04_status/{sample}.assembly-push.log",
+                            sample = sampleids),
+        run_report    = expand("{runid}_run_report.csv",
+                            runid = config["run_id"])
     output:
         qualimap_dirs = "multi_bamqc/multisampleBamQcReport.html"
     log:
@@ -67,45 +98,13 @@ rule run_multiqc:
           multiqc .
       ) &> "{log}"
       """
-      
-      
-rule push_data_pathogendb:
-    message: "Push genome assembly data to pathogenDB"
-    input:
-        qualimap_dirs  = "multi_bamqc/multisampleBamQcReport.html",
-        mqc_file       = "multiqc_report.html",
-        bam            = "{sample}/03_qualityControl/{sample}_refbam.flagstat"
-    output:
-        up_log         = "{sample}/04_status/{sample}.assembly-push.log",
-    params:
-        sample_name    = "{sample}",
-        config         = "config.yaml",
-    log:
-        "logs/{sample}/04_PathogenDB-Push.snakemake.log"
-    conda:
-        "../envs/env.yml"
-    script:
-        "../scripts/04_all-virus-assembly-push.py"
-      
- 
-rule run_report:
-    message: "Generate run summary report"
-    input:
-        expand("{sample}/04_status/{sample}.assembly-push.log", sample = sampleids)
-    output:
-        expand("{runid}_run_report.csv", runid = config["run_id"])
-    conda:
-    	"../envs/env.yml"
-    log:
-    	"logs/04_run-report.snakemake.log"
-    script:
-    	"../scripts/04_generate-run-report.R"
 
 
 rule summary:
     message: "Get a summary report for the packages used in the run"
     input:
-        expand("{runid}_run_report.csv", runid = config["run_id"])
+        mqc = "multiqc_report.html",
+        csv = expand("{runid}_run_report.csv", runid = config["run_id"])
     output:
         "workflow_summary.txt"
     log:

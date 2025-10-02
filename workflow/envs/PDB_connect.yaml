@@ -13,3 +13,4 @@ dependencies:
  - perl
  - perl-dbi
  - perl-dbd-mysql
+ - biopython
