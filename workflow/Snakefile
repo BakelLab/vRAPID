@@ -4,9 +4,32 @@
 # IMPORT #
 ##########
 
+import os
+import glob
 import pandas as pd
 from snakemake.utils import min_version
+from datetime import datetime
 min_version("9.0.0")
+
+#############
+# FUNCTIONS #
+#############
+
+# Function to find the barcode file for this run
+def get_barcode_file():
+    # 1. Check if user provided a specific file in config
+    conf_val = config.get("barcodes_file")
+    if conf_val:
+        return conf_val
+    
+    # 2. If not, search for any csv
+    found_files = glob.glob("*.csv")
+    if found_files:
+        return found_files[0]
+    
+    # 3. Fallback or Error
+    raise ValueError("No barcode file provided in config and no .csv found in directory.")
+    
 
 ##########
 # CONFIG #
@@ -16,26 +39,70 @@ configfile: "config.yaml"
 mappings  = pd.read_csv(config["samples"])
 sampleids = mappings["Sample_ID"].tolist()
 
-########
-# DEF #
-########
+# Get the current YYYY-MM-DD formatted date string
+DATE = datetime.now().strftime("%Y-%m-%d")
 
-reference   = config['reference_genome'] 
-chromosomes = config['ref_fasta_headers']
+# Set snakemake main workdir variable. 
+SNAKEDIR = os.path.dirname(workflow.snakefile) + "/"
 
-#########
-# RULES #
-#########
+# Set sane defaults for config file variables
+RUN_ID                  = config.get("run_ID")
+VIRUS                   = config.get("virus")
+ASSEMBLY_PIPELINE       = config.get("assembly_pipeline")
+
+# Reference genome config parameters
+REFERENCE_GENOMES       = config.get("reference_genome")
+REFERENCE_FASTA_HEADERS = config.get("reference_fasta_headers")
+REFERENCE_GENBANK_FILE  = config.get("reference_genbank_file")
+
+# Primer FASTA config parameters
+FORWARD_PRIMERS_FASTA   = config.get("forward_primers_fasta")
+REVERSE_PRIMERS_FASTA   = config.get("reverse_primers_fasta")
+PRIMER_FILE             = config.get("primer_file")
+
+# Kraken parameters
+KINGDOM                 = config.get("kingdom")
+KRAKEN_DB               = config.get("kraken_db")
+
+# Depth
+DEPTH                   = config.get("depth")
+LENGTH                  = config.get("length")
+
+# Clair3 parameters
+CLAIR_MODEL            = config.get("clair_model")
+
+# Nextclade reference
+NXTCLD_REFERENCE       = config.get("nxtcld_reference", "BA.2.86")
+
+# VADR model defaults
+VADR_MODEL_VERSION     = config.get("vadr_model_version",     "1.3-2")
+VADR_MODEL             = config.get("vadr_model",             "vadr-models-sarscov2-1.3-2")
+
+# Database connection information defaults
+PDB_MY_CNF_FILE        = config.get("pdb_my_cnf_file",       "~/.my.cnf")
+PDB_MY_CNF_GROUP       = config.get("pdb_my_cnf_group",      "vanbah01_pathogens_root")
 
 
+#################
+# INCLUDE RULES #
+#################
+
+# Always include the following rules
+include: os.path.join(workflow.basedir, "../workflow/rules/01_assembly.smk")
+include: os.path.join(workflow.basedir, "../workflow/rules/02_variants.smk")
+include: os.path.join(workflow.basedir, "../workflow/rules/03_QC.smk")
+include: os.path.join(workflow.basedir, "../workflow/rules/04_reports.smk")
+
+###########
+# TARGETS #
+###########
+
+# Define targets list
+targets = []
+
+targets.append("workflow_summary.txt")
 rule all:
     input:
-        txt = "workflow_summary.txt"
+        targets
 
-include: os.path.join(workflow.basedir, "../workflow/snakemake_rules/01_assembly.smk")
 
-include: os.path.join(workflow.basedir, "../workflow/snakemake_rules/02_variants.smk")
-
-include: os.path.join(workflow.basedir, "../workflow/snakemake_rules/03_QC.smk")
-
-include: os.path.join(workflow.basedir, "../workflow/snakemake_rules/04_reports.smk")
