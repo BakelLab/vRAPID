@@ -6,28 +6,95 @@ get_time <- function() format(Sys.time(), "%H:%M:,%S")
 ## Libraries
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Check for 'connectPDB' and install if necessary
-if (!requireNamespace("connectPDB")) {
-  if (!requireNamespace("devtools")) {
-    install.packages("devtools", repos = 'http://cran.us.r-project.org')
-  }
-  library(devtools)
-  pdbtoken <- readLines("~/.pdbtoken")
-  install_github("BakelLab/pathogendb-connect", auth_token = pdbtoken)
-}
-# List of libraries to load
-packages <- c("getopt", "lubridate", "tidyverse","connectPDB")
+suppressPackageStartupMessages(library(connectPDB))
+suppressPackageStartupMessages(library(lubridate))
+suppressPackageStartupMessages(library(tidyverse))
 
-# Function to check if package is installed and load it
-load_or_install <- function(pkg) {
-  if (!requireNamespace(pkg, quietly = TRUE)) {
-    install.packages(pkg, repos = 'http://cran.us.r-project.org')
-  }
-  suppressPackageStartupMessages(library(pkg, character.only = TRUE))
+#############
+# FUNCTIONS #
+#############
+
+
+# PDB database config
+pdb_db_group       <- snakemake@params[["pdb_db_group"]]
+pdb_db_config      <- snakemake@params[["pdb_db_config"]]
+
+
+# Utility function for timestamped messages
+get_time <- function() format(Sys.time(), "%H:%M:%S")
+
+# Snakemake logging function
+log_smk <- function() {
+    if (exists("snakemake") && length(snakemake@log) != 0) {
+        log_path <- snakemake@log[[1]]
+        log_con <- file(log_path, open = "wt")
+        sink(log_con, split = FALSE)
+        sink(log_con, type = "message")
+        return(log_con)
+    }
+    return(NULL)
 }
 
-# Load all required packages
-lapply(packages, load_or_install)
+
+########
+# MAIN #
+########
+
+# NOTE:  We define the main block to run as a function.
+#        This is done to ensure that we can run an on.exit function if there is any error during
+#        the execution of the main block. This ensures that we always clean up any stray tunnels and
+#        database connections.
+
+main <- function() {
+
+# -------------------------------------------------------------------------------------------------
+# ENSURE CONNECTION CLEANUP
+# -------------------------------------------------------------------------------------------------
+
+# Initialize resources so on.exit can clean them
+db_pathogendb       <- NULL
+
+# Define on.exit function for the main block
+on.exit({
+    # Print first while sinks are still active, so these messages go to the log
+    cat("\n", get_time(), "[!] Starting connection cleanup...\n")
+
+    # Close DBs (best effort)
+    cat("\n", get_time(), "[!] Closing database handles...\n")
+    if (!is.null(db_pathogendb)) try(dbDisconnect(db_pathogendb), silent = TRUE)
+
+    # Unsink strictly BEFORE closing the connection
+    # Handle the 'message' type sink first
+    if (sink.number(type = "message") > 0) {
+        sink(type = "message")
+    }
+
+    # Handle standard output sinks
+    while (sink.number() > 0) {
+        sink()
+    }
+
+    # Close the file connection
+    if (!is.null(log_con)) {
+        cat(get_time(), "[!] Log connection closed.\n") # This goes to console now
+        try(close(log_con), silent = TRUE)
+    }
+
+}, add = TRUE)
+
+# -------------------------------------------------------------------------------------------------
+# START LOGGING TO SNAKEMAKE LOG FILE
+# -------------------------------------------------------------------------------------------------
+
+log_con = log_smk()
+
+# -------------------------------------------------------------------------------------------------
+# DATABASE CONNECTIONS
+# -------------------------------------------------------------------------------------------------
+
+# connectPDB functions open MariaDB and MS SQL connections through the SSH tunnels created above.
+cat("[-] Connecting to PathogenDB.\n")
+db_pathogendb  <- dbconnect_mariadb( db_group = pdb_db_group,    db_config = pdb_db_config)
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Input Files & Error Messages Configuration
@@ -35,12 +102,6 @@ lapply(packages, load_or_install)
 
 # format output name
 output_name <- paste0(snakemake@config[["run_id"]], "_run_report.csv")
-
-#############
-# FUNCTIONS #
-#############
-
-db_pathogendb <- dbconnect_mariadb('vanbah01_pathogens')
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Pathogen DB Info
@@ -91,3 +152,5 @@ write_csv(inter_3, output_name)
 write(paste0("\nTotal Samples in PDB = ", sum(inter_3$Count), "\n"), file = output_name, append = T)
 
 cat(paste0("\n", get_time(), " [-] Done\n"))
+}
+main()
