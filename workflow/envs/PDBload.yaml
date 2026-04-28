@@ -1,8 +1,9 @@
-name: PDBload
+name: PDBconnect
 channels:
  - conda-forge
  - bioconda
  - r
+ - hvbakel
  - defaults
 dependencies:
  - r>=4.2
@@ -21,4 +22,9 @@ dependencies:
  - r-pryr
  - r-data.table
  - r-r.utils
+ - r-seqinr
+ - r-readr
  - r-tidyverse
+ - r-rjson
+ - blat
+ - r-connectpdb>=1.2.2
