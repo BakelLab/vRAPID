@@ -23,6 +23,10 @@ sampleids = mappings["Sample_ID"].tolist()
 reference   = config['reference_genome'] 
 chromosomes = config['ref_fasta_headers']
 
+# Database connection information defaults
+PDB_MY_CNF_FILE             = config.get("pdb_my_cnf_file",       "~/.my.cnf")
+PDB_MY_CNF_GROUP            = config.get("pdb_my_cnf_group",      "vanbah01_pathogens_root")
+
 #########
 # RULES #
 #########
@@ -51,6 +55,9 @@ rule run_report:
         expand("{sample}/04_status/{sample}.assembly-push.log", sample = sampleids)
     output:
         expand("{runid}_run_report.csv", runid = config["run_id"])
+    params:
+        pdb_db_group = PDB_MY_CNF_GROUP,
+        pdb_db_config = PDB_MY_CNF_FILE
     conda:
         "../envs/PDBload.yaml"
     log:
