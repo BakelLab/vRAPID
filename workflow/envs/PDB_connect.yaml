@@ -1,30 +1,16 @@
-name: PDBconnect
+name: PDB_connect
 channels:
  - conda-forge
  - bioconda
- - r
- - hvbakel
  - defaults
 dependencies:
- - r>=4.2
- - r-devtools
- - r-odbc
- - r-rmariadb
- - r-ini
- - r-getopt
- - r-dplyr
- - r-plyr
- - r-readxl
- - r-writexl
- - r-lubridate
- - r-sendmailr
- - r-openxlsx
- - r-pryr
- - r-data.table
- - r-r.utils
- - r-seqinr
- - r-readr
- - r-tidyverse
- - r-rjson
- - blat
- - r-connectpdb>=1.2.2
+ - python
+ - numpy
+ - pandas
+ - mariadb-connector-c
+ - mysql<9
+ - mysql-connector-python<9
+ - perl
+ - perl-dbi
+ - perl-dbd-mysql
+ - biopython
