@@ -62,22 +62,22 @@ opendir my($dir), './' or die "Can't open ./ : $!\n";
 my @asFolderContent = readdir $dir;
 foreach my $sInputFolder (@asFolderContent){
    if ( (-d $sInputFolder) and ($sInputFolder !~ /^\.+$/) ){
-      if ( (-e "$sInputFolder/01_fastqs/${sInputFolder}_1.fastq.gz") and (-e "$sInputFolder/01_fastqs/${sInputFolder}_2.fastq.gz") ){
+      if ( (-e "$sInputFolder/00_fastqs/${sInputFolder}_1.fastq.gz") and (-e "$sInputFolder/00_fastqs/${sInputFolder}_2.fastq.gz") ){
          if ($sInputFolder =~ /^([A-Z]{2})_(\d+)$/){
             my $sSubmitterID = $1;
             my $sExtractID   = $2;
             my $nCheckFailed = 0;
             
             # Query for assembly results
-            my ($sSampleName,$sStrain,$sType,$sExpectedSubtype,$sAssemblyStatus, $sAssemblyQuality, $sAssemblySubtype, $nTotalReads, $nMappedReads, $nIAVpct, $nIBVpct, $nEUKpct, $nBCTpct, $nVariants) = ("Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown");
-            my $oAssemblyData = $dbPUB->selectall_arrayref("SELECT assembly_status,Assembly_quality,assembly_subtype,Total_reads,Uniq_mapped_read_percent,IAV_percent,IBV_percent,Eukaryota_percent,Bacteria_percent,Variant_pos_sum_15pct FROM tCEIRS_assemblies WHERE Extract_ID=$sExtractID AND assembly_run='$sRunID';") or die $DBI::errstr;
+            my ($sSampleName,$sStrain,$sType,$sExpectedSubtype,$sAssemblyStatus, $sAssemblyQuality, $sAssemblySubtype, $nTotalReads, $nMappedReads, $nIAVpct, $nIBVpct, $nEUKpct, $nBCTpct, $nVariants, $nCompleteness) = ("Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown", "Unknown");
+            my $oAssemblyData = $dbPUB->selectall_arrayref("SELECT assembly_status,Assembly_quality,assembly_subtype,Total_reads,Uniq_mapped_read_percent,IAV_percent,IBV_percent,Eukaryota_percent,Bacteria_percent,Variant_pos_sum_15pct,completeness FROM tCEIRS_assemblies WHERE Extract_ID=$sExtractID AND assembly_run='$sRunID';") or die $DBI::errstr;
             if (@$oAssemblyData == 0){
                # No records found, we proceed with defaults of 'unknown'
             }
             elsif (@$oAssemblyData == 1){
                # Get the data for the current assembly
                my $rRow = shift @$oAssemblyData;
-               ($sAssemblyStatus, $sAssemblyQuality, $sAssemblySubtype, $nTotalReads, $nMappedReads, $nIAVpct, $nIBVpct, $nEUKpct, $nBCTpct, $nVariants) = @$rRow;
+               ($sAssemblyStatus, $sAssemblyQuality, $sAssemblySubtype, $nTotalReads, $nMappedReads, $nIAVpct, $nIBVpct, $nEUKpct, $nBCTpct, $nVariants, $nCompleteness) = @$rRow;
             }
             else{
                # We got more than one record. This shouldn't happen!
@@ -103,7 +103,7 @@ foreach my $sInputFolder (@asFolderContent){
 
             $sSampleName =~ s/[\r\n]//g;
             $sStrain     =~ s/[\r\n]//g;            
-            $hCheckPassed{$sInputFolder} = join("\t", $sSampleName,$sStrain,$sType,$sExpectedSubtype,$sAssemblyStatus, $sAssemblyQuality, $sAssemblySubtype, $nTotalReads, $nMappedReads, $nIAVpct, $nIBVpct, $nEUKpct, $nBCTpct, $nVariants);
+            $hCheckPassed{$sInputFolder} = join("\t", $sSampleName,$sStrain,$sType,$sExpectedSubtype,$sAssemblyStatus, $sAssemblyQuality, $sAssemblySubtype, $nTotalReads, $nMappedReads, $nIAVpct, $nIBVpct, $nEUKpct, $nBCTpct, $nVariants, $nCompleteness);
          }
       }
       else{
@@ -124,7 +124,7 @@ if (%hCheckErrors){
 # Write metadata file
 if (%hCheckPassed){
    open OUT, ">${sPrefix}_metadata.txt" or die "Error: can't open '${sPrefix}_metadata.txt': $!\n";
-   print OUT "NGS_Sample_ID\tSample_Name\tStrain\tType\tExpectedSubtype\tAssembly_Status\tAssembly_Quality\tAssembly_Subtype\tTotal_Reads\tMapped_Reads\tIAV_percent\tIBV_percent\tHost_percent\tBacteria_percent\tCount_Alt_Variants_above15%\n";
+   print OUT "NGS_Sample_ID\tSample_Name\tStrain\tType\tExpectedSubtype\tAssembly_Status\tAssembly_Quality\tAssembly_Subtype\tTotal_Reads\tMapped_Reads\tIAV_percent\tIBV_percent\tHost_percent\tBacteria_percent\tCount_Alt_Variants_above15%\tGenome_Completeness\n";
    foreach my $sInputFolder (sort keys %hCheckPassed){
       print OUT "$sInputFolder\t$hCheckPassed{$sInputFolder}\n";
    }
@@ -135,19 +135,19 @@ if (%hCheckPassed){
 open TAR, ">${sPrefix}_tar.tmp" or die "Error: can't open '${sPrefix}_tar.tmp': $!\n";
 
 foreach my $sInputFolder (keys %hCheckPassed){
-   print TAR "$sInputFolder/01_fastqs/${sInputFolder}_1.fastq.gz\n"                     if (-e "$sInputFolder/01_fastqs/${sInputFolder}_1.fastq.gz");
-   print TAR "$sInputFolder/01_fastqs/${sInputFolder}_2.fastq.gz\n"                     if (-e "$sInputFolder/01_fastqs/${sInputFolder}_2.fastq.gz");
-   print TAR "$sInputFolder/02_assembly/${sInputFolder}_ref.bam\n"                      if (-e "$sInputFolder/02_assembly/${sInputFolder}_ref.bam");
-   print TAR "$sInputFolder/02_assembly/${sInputFolder}_ref.bam.bai\n"                  if (-e "$sInputFolder/02_assembly/${sInputFolder}_ref.bam.bai");
-   print TAR "$sInputFolder/02_assembly/${sInputFolder}.fasta\n"                        if (-e "$sInputFolder/02_assembly/${sInputFolder}.fasta");
+   print TAR "$sInputFolder/00_fastqs/${sInputFolder}_1.fastq.gz\n"                     if (-e "$sInputFolder/00_fastqs/${sInputFolder}_1.fastq.gz");
+   print TAR "$sInputFolder/00_fastqs/${sInputFolder}_2.fastq.gz\n"                     if (-e "$sInputFolder/00_fastqs/${sInputFolder}_2.fastq.gz");
+   print TAR "$sInputFolder/01_assembly/${sInputFolder}_ref.sorted.rg.bam\n"            if (-e "$sInputFolder/01_assembly/${sInputFolder}_ref.sorted.rg.bam");
+   print TAR "$sInputFolder/01_assembly/${sInputFolder}_ref.sorted.rg.bam.bai\n"        if (-e "$sInputFolder/01_assembly/${sInputFolder}_ref.sorted.rg.bam.bai");
+   print TAR "$sInputFolder/01_assembly/${sInputFolder}.fasta\n"                        if (-e "$sInputFolder/01_assembly/${sInputFolder}.fasta");
    print TAR "$sInputFolder/03_qualityControl/${sInputFolder}_qualityControl.pdf\n"     if (-e "$sInputFolder/03_qualityControl/${sInputFolder}_qualityControl.pdf");
    #print TAR "multiqc_report.html"                                                      if (-e "multiqc_report.html");
    #print TAR "multi_bamqc/multisampleBamQcReport.html"                                  if (-e "multi_bamqc/multisampleBamQcReport.html");
    #   print TAR "$sInputFolder/04_variants/${sInputFolder}_variable_bases.tsv\n"           if (-e "$sInputFolder/04_variants/${sInputFolder}_variable_bases.tsv");
 }
 # Add additional reports to TAR
-print TAR "multiqc_report.html\n";                                                 
-print TAR "multi_bamqc/multisampleBamQcReport.html\n";
+#print TAR "multiqc_report.html\n";                                                 
+#print TAR "multi_bamqc/multisampleBamQcReport.html\n";
 
 print TAR "${sPrefix}_metadata.txt\n";
 `tar czvf ${sPrefix}_release_${sCurrentDate}_${sCurrentTime}.tar.gz -T ${sPrefix}_tar.tmp`;
